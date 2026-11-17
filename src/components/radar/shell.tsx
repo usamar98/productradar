@@ -7,7 +7,7 @@ import styles from "./shell.module.css";
 
 const navigation = [{ label: "Products", href: "/products" }, { label: "Buying guides", href: "/guides" }, { label: "Pricing", href: "/pricing" }, { label: "Our track record", href: "/proof" }];
 const footerGroups = [
-  { title: "Explore", links: [{ label: "All products", href: "/products" }, { label: "iPhone Duo", href: "/iphone-duo" }, { label: "PlayStation 5 Pro", href: "/playstation-5-pro" }, { label: "NVIDIA GeForce RTX 5090", href: "/rtx-5090" }, { label: "Buying guides", href: "/guides" }] },
+  { title: "Explore", links: [{ label: "All products", href: "/products" }, { label: "Apple products", href: "/brands/apple" }, { label: "PlayStation products", href: "/brands/playstation" }, { label: "NVIDIA graphics cards", href: "/brands/nvidia" }, { label: "Buying guides", href: "/guides" }] },
   { title: "Get to know us", links: [{ label: "How checks work", href: "/methodology" }, { label: "Our track record", href: "/proof" }, { label: "Pricing", href: "/pricing" }, { label: "Contact", href: "/contact" }] },
   { title: "The essentials", links: [{ label: "My alerts", href: "/alerts/manage" }, { label: "Terms", href: "/terms" }, { label: "Privacy", href: "/privacy" }, { label: "Refunds", href: "/refunds" }] },
 ];
@@ -20,7 +20,7 @@ export function RadarShell({ children }: { children: React.ReactNode }) {
     <header className="rr-header"><div className="rr-nav rr-container">
       <Link href="/" className="rr-brand" aria-label="Restock Radar home" onClick={() => setOpen(false)}><span><Radar size={25}/></span>restock<span className="rr-brand-light">radar</span><i/></Link>
       <nav id="main-navigation" aria-label="Main navigation" className={open ? "rr-nav-links rr-nav-open" : "rr-nav-links"}>{navigation.map(link => {
-        const current = path === link.href;
+        const current = path === link.href || (link.href === "/products" && path.startsWith("/brands/"));
         return <Link key={link.href} onClick={() => setOpen(false)} href={link.href} aria-current={current ? "page" : undefined} className={current ? "rr-nav-current" : ""}>{link.label}</Link>;
       })}<Link href="/alerts/manage" className="rr-mobile-account" onClick={() => setOpen(false)}>My alerts</Link></nav>
       <div className="rr-nav-actions"><Link href="/alerts/manage" className="rr-account-link">My alerts <ArrowUpRight size={14}/></Link><Link href="/alerts" className="rr-button rr-primary rr-nav-cta"><Bell size={15}/>Create alert</Link><button type="button" className="rr-mobile-toggle" aria-label={open ? "Close menu" : "Open menu"} aria-controls="main-navigation" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X/> : <Menu/>}</button></div>

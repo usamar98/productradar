@@ -1,5 +1,13 @@
-/** Official product photography, with source references in docs/product-visual-sources.md. */
+import { launchProducts } from "@/config/launch-catalog";
+
+/** Official imagery, with references in the launch catalog and docs/*-launch-research.md. */
 export const productVisuals: Record<string, { src: string; alt: string; theme: string; description: string }> = {
+  ...Object.fromEntries(launchProducts.map(product => [product.slug, {
+    src: product.image.src,
+    alt: product.image.alt,
+    theme: product.brand,
+    description: product.description,
+  }])),
   "iphone-duo": {
     src: "/images/products/iphone-duo-star-white.png",
     alt: "iPhone Duo in Star White, shown folded and open",

@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getCatalog, siteUrl } from "@/lib/radar/catalog";
 import { categoryContent, getProductContent } from "@/lib/radar/product-content";
 import { hasObservations, isCatalogPublished } from "@/lib/radar/seo";
+import { getLaunchProduct } from "@/config/launch-catalog";
 
 export const dynamic = "force-dynamic";
 
@@ -17,6 +18,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       routes.add("/guides");
     }
     for (const item of items) {
+      const product = getLaunchProduct(item.slug);
+      if (product) routes.add(`/brands/${product.brand}`);
       routes.add(`/${item.slug}`);
       routes.add(`/how-to-get-${item.slug}`);
       if (categoryContent[item.category.slug]) routes.add(`/categories/${item.category.slug}`);

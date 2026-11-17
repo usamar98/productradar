@@ -1,3 +1,6 @@
+import { brands, launchDateLabel, launchProducts, type LaunchProduct } from "@/config/launch-catalog";
+import { configurationValues } from "./configuration";
+
 export type ProductContent = {
   summary: string;
   brand: string;
@@ -8,9 +11,103 @@ export type ProductContent = {
   guideSections: { heading: string; body: string }[];
 };
 
+type CategoryContent = { description: string; buyingNotes: string[] };
+
+const expandedCategoryContent: Record<string, CategoryContent> = {
+  tablets: {
+    description: "Compare iPad models by screen size, chip, storage and connectivity. Choose a documented configuration, then check the keyboard, Pencil and cellular compatibility that matters for your setup.",
+    buyingNotes: ["Match the exact iPad model and generation to its keyboard or Pencil compatibility list.", "Choose storage and Wi-Fi or cellular connectivity before comparing offers; a cellular plan is a separate purchase.", "Confirm the contents of the box and any accessories included in a retailer bundle."],
+  },
+  laptops: {
+    description: "Explore MacBook models, compare the documented chip and display options, and select a configuration for work or everyday use. Check memory, storage and external-display support on the exact model's specifications.",
+    buyingNotes: ["Check chip, memory and storage together; the same laptop name can cover different hardware configurations.", "Verify the ports and external-display support required by your accessories.", "Review the included power adapter, keyboard layout and warranty for your region."],
+  },
+  desktops: {
+    description: "Compare Mac desktop models by chip, memory, storage and form factor. Review the exact configuration and the display or peripherals you need before comparing retailer offers.",
+    buyingNotes: ["Check the chip and memory in the full retailer configuration, rather than relying on the product family name.", "Review display support, ports and accessory compatibility for your workspace.", "Check which display, keyboard, mouse and cables are included with the specific model."],
+  },
+  displays: {
+    description: "Explore Apple displays and their documented glass and stand choices. Compare the screen and mounting configuration, then check compatibility with your computer and workspace.",
+    buyingNotes: ["Check the exact glass, stand or mounting option in the retailer's basket.", "Verify computer compatibility and required cables against the manufacturer's specifications.", "Measure desk space and mounting clearance before choosing a display configuration."],
+  },
+  smartwatches: {
+    description: "Compare Apple Watch models by case, connectivity and supported configurations. Check phone compatibility and choose a case and band combination that suits your wrist.",
+    buyingNotes: ["Check case size, material and connectivity together when comparing watch configurations.", "Confirm the required iPhone and software version on Apple's compatibility page.", "Review band sizing and, for cellular use, carrier support and plan terms separately."],
+  },
+  headphones: {
+    description: "Compare Apple headphones and earbuds by their documented audio, charging and fit features. Check the exact generation and included charging accessories before choosing an offer.",
+    buyingNotes: ["Match the generation and charging case to the exact product name.", "Check the requirements for features that depend on a compatible device or software version.", "Review fit, included accessories and the seller's return terms."],
+  },
+  "smart-home": {
+    description: "Explore Apple smart-home hardware and compare its documented audio and connected-home features. Review device, app and network requirements before adding it to your home.",
+    buyingNotes: ["Check compatibility with the devices and home services you already use.", "Review setup requirements, including a compatible device, software and network.", "Confirm the color, power accessories and regional model at the retailer."],
+  },
+  "item-trackers": {
+    description: "Explore Apple item trackers and compare the documented pack options. Check device compatibility, attachment accessories and the features available with your phone before buying.",
+    buyingNotes: ["Check the generation and number of trackers included in the pack.", "Verify the device requirements for setup and the finding features you want to use.", "Review whether holders or attachments are included or sold separately."],
+  },
+  controllers: {
+    description: "Compare PlayStation controllers, including documented special editions and DualSense Edge. Select the exact model or design and review controls, compatibility and included accessories.",
+    buyingNotes: ["Check the controller model and edition; cosmetic designs and controller features are separate choices.", "Verify device and game compatibility for the features you plan to use.", "Compare the included cables, cases and replaceable components in the exact listing."],
+  },
+  "remote-players": {
+    description: "Explore PlayStation remote players and their documented editions. Review network, console and account requirements for your intended way of playing before choosing a device.",
+    buyingNotes: ["Check the requirements for Remote Play and any supported cloud-streaming mode separately.", "Review network guidance and applicable account or subscription requirements on PlayStation's site.", "Confirm the exact device edition and included charging accessories."],
+  },
+  "vr-headsets": {
+    description: "Explore PlayStation VR hardware and compare the documented headset configuration. Check the equipment, compatible games and play-space requirements for your intended setup.",
+    buyingNotes: ["Verify the required console or PC equipment and any separate adapters.", "Check the features and games supported on your chosen platform.", "Review play-space guidance, included controllers and the contents of any bundle."],
+  },
+  "gaming-audio": {
+    description: "Compare PlayStation gaming headsets and earbuds by fit, connection and documented audio features. Check platform compatibility and the accessories included with each model.",
+    buyingNotes: ["Check the supported connection method for your console, computer or mobile device.", "Confirm whether the necessary adapter, charging case or cables are included.", "Review fit, microphone features and any device-specific feature requirements."],
+  },
+  "gaming-monitors": {
+    description: "Explore PlayStation gaming displays and their documented screen and connection features. Match the monitor to your console or PC, available desk space and required inputs.",
+    buyingNotes: ["Check the resolution and refresh rates supported by your console or PC and its connection.", "Confirm the inputs, included cables and stand or mounting arrangement.", "Compare the full regional specifications and warranty at the retailer."],
+  },
+  "console-covers": {
+    description: "Explore PlayStation console cover designs and their stated model compatibility. Select the exact cover set for your console; these accessories do not include the console itself.",
+    buyingNotes: ["Match the cover set to the exact PS5 model and hardware revision specified by PlayStation.", "Check whether the selected set fits your disc-drive configuration.", "Confirm the design and all included panels before ordering; a cover is an accessory."],
+  },
+};
+
+function launchContent(product: LaunchProduct): ProductContent {
+  const choices = product.options.map(option => `${option.label}: ${configurationValues(product.variants, option.key).join(", ")}.`);
+  const hardwareNotes = expandedCategoryContent[product.category.slug]?.buyingNotes ?? (
+    product.brand === "nvidia"
+      ? ["Match the GPU, memory capacity and card manufacturer. Partner cards can have different coolers, dimensions and power requirements.", "Check case clearance, power supply and connectors against the exact card maker's installation guidance."]
+      : product.category.slug === "smartphones"
+        ? ["Check storage and finish together, then confirm carrier and eSIM compatibility for the regional model.", "Review activation, trade-in and financing terms separately from the phone's purchase price."]
+        : ["Confirm the exact model, included accessories and compatible equipment using the manufacturer's specifications.", "Compare a standalone product and a bundle by their contents, condition and final price."]
+  );
+  return {
+    summary: `${product.description} Compare the documented configurations and manufacturer specifications for ${product.name}.`,
+    brand: brands[product.brand].name,
+    reviewedAt: "2026-11-17",
+    coverage: `${product.name} has ${product.variants.length} documented configuration${product.variants.length === 1 ? "" : "s"} in this catalog. Automated inventory is not configured for this product. Manufacturer links provide product information; they do not establish current stock, local pickup or a delivery date.`,
+    officialLinks: [
+      { label: `${product.name} official product information`, url: product.officialUrl },
+      ...(product.launchSourceUrl === product.officialUrl ? [] : [{ label: `${product.name} launch reference`, url: product.launchSourceUrl }]),
+    ],
+    buyingNotes: [
+      ...choices,
+      ...hardwareNotes,
+      "Confirm the exact configuration, seller, condition, delivery or pickup option and final price with the retailer. This catalog does not reserve an item.",
+    ],
+    guideSections: [
+      { heading: `Understand ${product.name}`, body: `${product.description} ${product.features.map(feature => `${feature.label}: ${feature.value}. ${feature.description}`).join(" ")}` },
+      { heading: "Choose a documented configuration", body: `${choices.join(" ")} Select a complete configuration, then match all of its details to the retailer's listing. The choices shown here represent documented combinations, rather than every possible custom build or retailer bundle.` },
+      { heading: "Check compatibility and included accessories", body: hardwareNotes.join(" ") },
+      { heading: "Separate the launch from today's availability", body: `The documented launch is ${launchDateLabel(product)}. A launch date records when a product was introduced or made available; it does not show whether a retailer has it now. This catalog has no connected inventory source for ${product.name}. Use the official product reference to find current buying information, and confirm the exact configuration and fulfillment at the retailer before paying or traveling.` },
+    ],
+  };
+}
+
 // Editorial facts are reviewed independently from inventory. This date must never
 // be presented as a retailer check time or used to manufacture a stock event.
 export const productContent: Record<string, ProductContent> = {
+  ...Object.fromEntries(launchProducts.map(product => [product.slug, launchContent(product)])),
   "rtx-5090": {
     summary: "Meet NVIDIA GeForce RTX 5090 Founders Edition. Explore 32GB GDDR7 memory, Blackwell architecture and exact retailer links for your next PC build.",
     brand: "NVIDIA",
@@ -128,12 +225,10 @@ export function getProductContent(slug: string): ProductContent | undefined {
   return Object.hasOwn(productContent, slug) ? productContent[slug] : undefined;
 }
 
-export const categoryContent: Record<
-  string,
-  { description: string; buyingNotes: string[] }
-> = {
+export const categoryContent: Record<string, CategoryContent> = {
+  ...expandedCategoryContent,
   "graphics-cards": {
-    description: "Explore NVIDIA graphics cards with exact model information, official product references and retailer links. Start with the GeForce RTX 5090 Founders Edition, then check that your PC and the retailer's listing match the card you want.",
+    description: "Explore the NVIDIA GeForce RTX desktop lineup by GPU model and documented memory configuration. Compare official specifications, distinguish Founders Edition from partner cards, and check that your PC matches the exact card you want.",
     buyingNotes: [
       "Compare the GPU and card manufacturer together; Founders Edition and partner cards can have different physical specifications.",
       "Check power, cable and case-clearance requirements against the manufacturer's guide before ordering.",
@@ -151,7 +246,7 @@ export const categoryContent: Record<
   },
   smartphones: {
     description:
-      "Browse smartphone configurations by color and storage, with official purchase links and clear coverage information. The iPhone Duo catalog includes eight variants; local Apple Store pickup monitoring is not yet available.",
+      "Browse iPhone models and compare documented finishes, storage and hardware features. Choose the complete configuration before checking the manufacturer's buying options; local Apple Store pickup monitoring is not yet available.",
     buyingNotes: [
       "Choose the complete model, capacity and finish before comparing offers.",
       "Check carrier compatibility, activation requirements and financing terms separately from the phone's listed price.",

@@ -1,0 +1,1117 @@
+[
+  {
+    "slug": "playstation-5-pro",
+    "name": "PlayStation 5 Pro",
+    "brand": "playstation",
+    "family": "PS5",
+    "category": {
+      "slug": "consoles",
+      "name": "Consoles"
+    },
+    "launchDate": "2024-11-07",
+    "tagline": "More detail. More play.",
+    "description": "Explore the PS5 Pro console with enhanced graphics and a 2 TB SSD. Disc drive and vertical stand are sold separately.",
+    "officialUrl": "https://www.playstation.com/en-us/ps5/ps5-pro/",
+    "launchSourceUrl": "https://blog.playstation.com/2024/11/07/getting-started-with-playstation-5-pro-out-today/",
+    "image": {
+      "src": "/images/products/ps5-pro-hero.jpg",
+      "alt": "PlayStation 5 Pro console and DualSense controller",
+      "sourceUrl": "https://www.playstation.com/en-us/ps5/ps5-pro/"
+    },
+    "features": [
+      {
+        "label": "Graphics",
+        "value": "AI upscaling",
+        "description": "Enhanced image detail in supported PS5 Pro games."
+      },
+      {
+        "label": "Lighting",
+        "value": "Advanced ray tracing",
+        "description": "More detailed reflections and lighting in supported titles."
+      },
+      {
+        "label": "Storage",
+        "value": "2 TB SSD",
+        "description": "Built-in solid-state storage for your game library."
+      },
+      {
+        "label": "Disc games",
+        "value": "Optional disc drive",
+        "description": "Add the compatible disc drive separately; initial pairing requires internet."
+      }
+    ],
+    "options": [
+      {
+        "key": "edition",
+        "label": "Edition"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "standard",
+        "label": "Standard",
+        "attributes": {
+          "edition": "Standard"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "playstation-5",
+    "name": "PlayStation 5",
+    "brand": "playstation",
+    "family": "PS5",
+    "category": {
+      "slug": "consoles",
+      "name": "Consoles"
+    },
+    "launchDate": "2020-11-12",
+    "tagline": "Choose your way to play.",
+    "description": "Choose a disc-drive or Digital Edition PS5. The family debuted in 2020; retail chassis and storage capacity vary, so check the linked listing.",
+    "officialUrl": "https://www.playstation.com/en-us/ps5/",
+    "launchSourceUrl": "https://blog.playstation.com/2020/11/09/ps5-the-ultimate-faq/",
+    "image": {
+      "src": "/images/launches/playstation-ps5.png",
+      "alt": "Original white PS5 disc console and DualSense controller; current retail chassis may differ",
+      "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/ps5-product-thumbnail-01-en-14sep21?$facebook$"
+    },
+    "features": [
+      {
+        "label": "Games",
+        "value": "PS5 and supported PS4 titles",
+        "description": "Play PS5 titles and thousands of backward-compatible PS4 games."
+      },
+      {
+        "label": "Performance",
+        "value": "Up to 120 fps",
+        "description": "Requires a compatible game, display and settings."
+      },
+      {
+        "label": "Storage",
+        "value": "High-speed SSD",
+        "description": "Designed for rapid loading; capacity depends on the retail model."
+      },
+      {
+        "label": "Edition",
+        "value": "Disc or Digital",
+        "description": "Choose physical-disc support or a console for digital games."
+      }
+    ],
+    "options": [
+      {
+        "key": "edition",
+        "label": "Edition"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "disc",
+        "label": "Disc Edition",
+        "attributes": {
+          "edition": "Disc Edition"
+        }
+      },
+      {
+        "slug": "digital",
+        "label": "Digital Edition",
+        "attributes": {
+          "edition": "Digital Edition"
+        }
+      }
+    ],
+    "launchLabel": "PS5 family launched November 2020"
+  },
+  {
+    "slug": "playstation-portal",
+    "name": "PlayStation Portal",
+    "brand": "playstation",
+    "family": "Remote Play",
+    "category": {
+      "slug": "remote-players",
+      "name": "Remote players"
+    },
+    "launchDate": "2023-11-15",
+    "tagline": "Your games. Around the home.",
+    "description": "A dedicated handheld for PS5 Remote Play, with an integrated screen and DualSense-style controls. Select cloud games require PlayStation Plus Premium and an eligible account and region.",
+    "officialUrl": "https://www.playstation.com/en-us/accessories/playstation-portal-remote-player/",
+    "launchSourceUrl": "https://blog.playstation.com/2023/08/23/playstations-first-remote-play-dedicated-device-playstation-portal-remote-player-to-launch-later-this-year-at-199-99/",
+    "image": {
+      "src": "/images/launches/playstation-portal.png",
+      "alt": "PlayStation Portal remote player in White",
+      "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/ps-portal-remote-player-keyart-01-en-18aug23?$facebook$"
+    },
+    "features": [
+      {
+        "label": "Display",
+        "value": "8-inch LCD",
+        "description": "1080p display with up to 60 fps in supported games."
+      },
+      {
+        "label": "Remote Play",
+        "value": "Connect to your PS5",
+        "description": "Requires a PS5, compatible games and a broadband Wi-Fi connection."
+      },
+      {
+        "label": "Cloud streaming",
+        "value": "Select PS5 games",
+        "description": "Requires eligible PlayStation Plus Premium membership, region, account and connection."
+      },
+      {
+        "label": "Controls",
+        "value": "Haptics and adaptive triggers",
+        "description": "Available in supported games."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "white",
+        "label": "White",
+        "attributes": {
+          "color": "White"
+        }
+      },
+      {
+        "slug": "midnight-black",
+        "label": "Midnight Black",
+        "attributes": {
+          "color": "Midnight Black"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "dualsense-edge",
+    "name": "DualSense Edge",
+    "brand": "playstation",
+    "family": "DualSense",
+    "category": {
+      "slug": "controllers",
+      "name": "Controllers"
+    },
+    "launchDate": "2023-01-26",
+    "tagline": "Tune your control.",
+    "description": "Customize buttons, trigger travel and stick response with the premium PS5 controller. White is shown; Midnight Black is another official finish.",
+    "officialUrl": "https://www.playstation.com/en-us/accessories/dualsense-edge-wireless-controller/",
+    "launchSourceUrl": "https://blog.playstation.com/2023/01/26/dualsense-edge-wireless-controller-launches-globally-today/",
+    "image": {
+      "src": "/images/launches/playstation-edge.png",
+      "alt": "DualSense Edge wireless controller in White",
+      "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/dualsense-edge-listing-thumb-01-en-23aug22?$facebook$"
+    },
+    "features": [
+      {
+        "label": "Mapping",
+        "value": "Remappable controls",
+        "description": "Save settings for different games."
+      },
+      {
+        "label": "Triggers",
+        "value": "Adjustable travel",
+        "description": "Change trigger stops to suit your play style."
+      },
+      {
+        "label": "Back buttons",
+        "value": "Two interchangeable styles",
+        "description": "Use half-dome or lever back buttons."
+      },
+      {
+        "label": "Sticks",
+        "value": "Replaceable modules",
+        "description": "Stick modules are sold separately."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "white",
+        "label": "White",
+        "attributes": {
+          "color": "White"
+        }
+      },
+      {
+        "slug": "midnight-black",
+        "label": "Midnight Black",
+        "attributes": {
+          "color": "Midnight Black"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "playstation-vr2",
+    "name": "PlayStation VR2",
+    "brand": "playstation",
+    "family": "PS VR",
+    "category": {
+      "slug": "vr-headsets",
+      "name": "VR headsets"
+    },
+    "launchDate": "2023-02-22",
+    "tagline": "Step into the game.",
+    "description": "A VR headset with PS VR2 Sense controllers for compatible PS5 virtual-reality games.",
+    "officialUrl": "https://www.playstation.com/en-us/ps-vr2/",
+    "launchSourceUrl": "https://blog.playstation.com/2023/02/22/a-new-generation-of-virtual-reality-gaming-is-here/",
+    "image": {
+      "src": "/images/launches/playstation-vr2.png",
+      "alt": "White PlayStation VR2 headset and PS VR2 Sense controllers",
+      "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/PSVR2-thumbnail-01-en-22feb22?$facebook$"
+    },
+    "features": [
+      {
+        "label": "Display",
+        "value": "4K HDR OLED",
+        "description": "2000 x 2040 pixels per eye."
+      },
+      {
+        "label": "Tracking",
+        "value": "Eye tracking",
+        "description": "Supported games respond to where you look."
+      },
+      {
+        "label": "Immersion",
+        "value": "Headset feedback",
+        "description": "Headset vibration and Sense controller features enhance supported experiences."
+      },
+      {
+        "label": "Connection",
+        "value": "USB-C to PS5",
+        "description": "PS5 console required for the PS5 experience; sold separately."
+      }
+    ],
+    "options": [
+      {
+        "key": "edition",
+        "label": "Package"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "standard",
+        "label": "Headset and Sense controllers",
+        "attributes": {
+          "edition": "Headset and Sense controllers"
+        }
+      },
+      {
+        "slug": "horizon-bundle",
+        "label": "Horizon Call of the Mountain bundle",
+        "attributes": {
+          "edition": "Horizon Call of the Mountain bundle"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "pulse-elite",
+    "name": "PULSE Elite",
+    "brand": "playstation",
+    "family": "PULSE",
+    "category": {
+      "slug": "gaming-audio",
+      "name": "Gaming audio"
+    },
+    "launchDate": "2024-02-21",
+    "tagline": "Hear the whole world.",
+    "description": "A wireless gaming headset with planar magnetic drivers, a retractable microphone and PlayStation Link.",
+    "officialUrl": "https://www.playstation.com/en-us/accessories/pulse-elite-wireless-headset/",
+    "launchSourceUrl": "https://blog.playstation.com/2023/08/23/playstations-first-remote-play-dedicated-device-playstation-portal-remote-player-to-launch-later-this-year-at-199-99/",
+    "image": {
+      "src": "/images/launches/playstation-elite.png",
+      "alt": "PULSE Elite wireless headset in White",
+      "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/PULSE-Elite-headset-thumbnail-02-en-12sep23?$facebook$"
+    },
+    "features": [
+      {
+        "label": "Drivers",
+        "value": "Planar magnetic",
+        "description": "Designed for detailed gaming audio."
+      },
+      {
+        "label": "Connection",
+        "value": "PlayStation Link",
+        "description": "Lossless, low-latency wireless on supported devices."
+      },
+      {
+        "label": "Microphone",
+        "value": "Retractable boom",
+        "description": "AI-enhanced noise rejection supports voice chat."
+      },
+      {
+        "label": "Battery",
+        "value": "Up to 30 hours",
+        "description": "Battery life varies with use and settings."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "white",
+        "label": "White",
+        "attributes": {
+          "color": "White"
+        }
+      },
+      {
+        "slug": "midnight-black",
+        "label": "Midnight Black",
+        "attributes": {
+          "color": "Midnight Black"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "pulse-explore",
+    "name": "PULSE Explore",
+    "brand": "playstation",
+    "family": "PULSE",
+    "category": {
+      "slug": "gaming-audio",
+      "name": "Gaming audio"
+    },
+    "launchDate": "2023-12-06",
+    "tagline": "Gaming audio. Pocket sized.",
+    "description": "Wireless earbuds with planar magnetic drivers, PlayStation Link and a charging case.",
+    "officialUrl": "https://www.playstation.com/en-us/accessories/pulse-explore-wireless-earbuds/",
+    "launchSourceUrl": "https://blog.playstation.com/2023/08/23/playstations-first-remote-play-dedicated-device-playstation-portal-remote-player-to-launch-later-this-year-at-199-99/",
+    "image": {
+      "src": "/images/launches/playstation-explore.png",
+      "alt": "PULSE Explore wireless earbuds in White",
+      "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/PULSE-Explore-earbuds-thumbnail-01-en-12sep23?$facebook$"
+    },
+    "features": [
+      {
+        "label": "Connection",
+        "value": "PlayStation Link",
+        "description": "Low-latency wireless on supported gaming devices."
+      },
+      {
+        "label": "Bluetooth",
+        "value": "Simultaneous audio",
+        "description": "Listen to a connected Bluetooth device alongside PlayStation Link."
+      },
+      {
+        "label": "Battery",
+        "value": "Up to 5 + 10 hours",
+        "description": "Up to 5 hours in the earbuds and 10 additional hours from the case."
+      },
+      {
+        "label": "Voice",
+        "value": "Built-in microphones",
+        "description": "AI-enhanced noise rejection for chat."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "white",
+        "label": "White",
+        "attributes": {
+          "color": "White"
+        }
+      },
+      {
+        "slug": "midnight-black",
+        "label": "Midnight Black",
+        "attributes": {
+          "color": "Midnight Black"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "access-controller",
+    "name": "Access controller",
+    "brand": "playstation",
+    "family": "Accessibility",
+    "category": {
+      "slug": "controllers",
+      "name": "Controllers"
+    },
+    "launchDate": "2023-12-06",
+    "tagline": "Make play your own.",
+    "description": "A customizable PS5 controller kit designed to support a wide range of accessibility needs.",
+    "officialUrl": "https://www.playstation.com/en-us/accessories/access-controller/",
+    "launchSourceUrl": "https://blog.playstation.com/2023/12/06/celebrating-inclusivity-access-controller-for-ps5-launches-today/",
+    "image": {
+      "src": "/images/launches/playstation-access.png",
+      "alt": "Access controller with interchangeable button caps and adjustable stick",
+      "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/access-controller-image-block-01-en-12may23?$facebook$"
+    },
+    "features": [
+      {
+        "label": "Caps",
+        "value": "19 button caps",
+        "description": "Different shapes make it easier to build a comfortable layout."
+      },
+      {
+        "label": "Stick",
+        "value": "3 stick caps",
+        "description": "Choose the shape and adjust the stick position."
+      },
+      {
+        "label": "Expansion",
+        "value": "4 ports",
+        "description": "3.5 mm expansion ports connect compatible external accessories."
+      },
+      {
+        "label": "Profiles",
+        "value": "3 saved profiles",
+        "description": "Switch between personalized button configurations."
+      }
+    ],
+    "options": [
+      {
+        "key": "edition",
+        "label": "Package"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "standard",
+        "label": "Controller kit",
+        "attributes": {
+          "edition": "Controller kit"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "playstation-27-inch-gaming-monitor",
+    "name": "PlayStation 27-inch Gaming Monitor",
+    "brand": "playstation",
+    "family": "Displays",
+    "category": {
+      "slug": "gaming-monitors",
+      "name": "Gaming monitors"
+    },
+    "launchDate": "2026-08-27",
+    "tagline": "Bring the game to your desk.",
+    "description": "A 27-inch QHD gaming display with a DualSense charging hook and connections for console and desktop play.",
+    "officialUrl": "https://www.playstation.com/en-us/accessories/27-inch-gaming-monitor/",
+    "launchSourceUrl": "https://blog.playstation.com/2026/06/01/flexstrike-wireless-fight-stick-27-gaming-monitor-and-pulse-elite-wireless-speakers-new-playstation-hardware-details/",
+    "image": {
+      "src": "/images/launches/playstation-monitor.png",
+      "alt": "PlayStation 27-inch Gaming Monitor with a controller on its charging hook; controller sold separately",
+      "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/ps-gaming-monitor-keyart-01-en-01apr26?$facebook$"
+    },
+    "features": [
+      {
+        "label": "Display",
+        "value": "27-inch QHD IPS",
+        "description": "2560 x 1440 resolution."
+      },
+      {
+        "label": "Refresh rate",
+        "value": "Up to 240 Hz",
+        "description": "Up to 120 Hz on PS5; up to 240 Hz with compatible PC or Mac."
+      },
+      {
+        "label": "Motion",
+        "value": "Variable refresh rate",
+        "description": "VRR helps reduce tearing with compatible content and devices."
+      },
+      {
+        "label": "Charging",
+        "value": "Controller hook",
+        "description": "Built-in charging hook supports DualSense and DualSense Edge."
+      },
+      {
+        "label": "Inputs",
+        "value": "HDMI and DisplayPort",
+        "description": "Two HDMI 2.1 inputs and DisplayPort 1.4."
+      }
+    ],
+    "options": [
+      {
+        "key": "size",
+        "label": "Screen size"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "27-inch",
+        "label": "27-inch QHD",
+        "attributes": {
+          "size": "27-inch QHD"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "dualsense-genshin-impact",
+    "name": "DualSense Genshin Impact Limited Edition",
+    "brand": "playstation",
+    "family": "DualSense",
+    "category": {
+      "slug": "controllers",
+      "name": "Controllers"
+    },
+    "launchDate": "2026-02-25",
+    "tagline": "A touch of Teyvat.",
+    "description": "A white, gold and green DualSense edition inspired by Genshin Impact. US release was February 25, after its January launch in Asia.",
+    "officialUrl": "https://blog.playstation.com/2025/12/01/step-into-a-new-adventure-with-the-upcoming-dualsense-wireless-controller-genshin-impact-limited-edition/",
+    "launchSourceUrl": "https://blog.playstation.com/2025/12/01/step-into-a-new-adventure-with-the-upcoming-dualsense-wireless-controller-genshin-impact-limited-edition/",
+    "image": {
+      "src": "/images/launches/playstation-genshin.jpg",
+      "alt": "Genshin Impact DualSense in white, gold and green",
+      "sourceUrl": "https://blog.playstation.com/tachyon/2025/12/e21ee2ad4224a4aa5b5fd47c3f57fec4de72ee01.jpg"
+    },
+    "features": [
+      {
+        "label": "Design",
+        "value": "Genshin Impact",
+        "description": "Official special-edition DualSense design."
+      },
+      {
+        "label": "Immersion",
+        "value": "Haptics and adaptive triggers",
+        "description": "Game support required; available features vary by device."
+      },
+      {
+        "label": "Voice",
+        "value": "Integrated microphone",
+        "description": "Built-in microphone and a headset jack for supported chat."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Design"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "genshin-impact",
+        "label": "Genshin Impact",
+        "attributes": {
+          "color": "Genshin Impact"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "dualsense-marathon",
+    "name": "DualSense Marathon Limited Edition",
+    "brand": "playstation",
+    "family": "DualSense",
+    "category": {
+      "slug": "controllers",
+      "name": "Controllers"
+    },
+    "launchDate": "2026-03-05",
+    "tagline": "Built for your next run.",
+    "description": "A Marathon-themed DualSense with graphic markings and bold accents.",
+    "officialUrl": "https://blog.playstation.com/2026/01/19/marathon-releases-march-5-new-limited-edition-dualsense-controller-revealed/",
+    "launchSourceUrl": "https://blog.playstation.com/2026/01/19/marathon-releases-march-5-new-limited-edition-dualsense-controller-revealed/",
+    "image": {
+      "src": "/images/launches/playstation-marathon.jpg",
+      "alt": "Marathon Limited Edition DualSense controller",
+      "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/Marathon-LE-DualSense-image-block-02-en-12jan26?$1200px$"
+    },
+    "features": [
+      {
+        "label": "Design",
+        "value": "Marathon",
+        "description": "Official special-edition DualSense design."
+      },
+      {
+        "label": "Immersion",
+        "value": "Haptics and adaptive triggers",
+        "description": "Game support required; available features vary by device."
+      },
+      {
+        "label": "Voice",
+        "value": "Integrated microphone",
+        "description": "Built-in microphone and a headset jack for supported chat."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Design"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "marathon",
+        "label": "Marathon",
+        "attributes": {
+          "color": "Marathon"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "dualsense-hyperpop",
+    "name": "DualSense Hyperpop Collection",
+    "brand": "playstation",
+    "family": "DualSense",
+    "category": {
+      "slug": "controllers",
+      "name": "Controllers"
+    },
+    "launchDate": "2026-03-12",
+    "tagline": "Choose your color.",
+    "description": "Three glossy DualSense finishes blend black into vivid red, green or blue.",
+    "officialUrl": "https://blog.playstation.com/2026/01/07/revealing-the-hyperpop-collection-with-three-new-designs-for-ps5-accessories-launching-this-march/",
+    "launchSourceUrl": "https://blog.playstation.com/2026/01/07/revealing-the-hyperpop-collection-with-three-new-designs-for-ps5-accessories-launching-this-march/",
+    "image": {
+      "src": "/images/launches/playstation-hyperpop-red.jpg",
+      "alt": "Techno Red Hyperpop DualSense controller",
+      "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/dualsense-techno-red-screenshot-01-en-07jan26?$1200px$"
+    },
+    "features": [
+      {
+        "label": "Design",
+        "value": "Three neon gradients",
+        "description": "Official special-edition DualSense design."
+      },
+      {
+        "label": "Immersion",
+        "value": "Haptics and adaptive triggers",
+        "description": "Game support required; available features vary by device."
+      },
+      {
+        "label": "Voice",
+        "value": "Integrated microphone",
+        "description": "Built-in microphone and a headset jack for supported chat."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Design"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "techno-red",
+        "label": "Techno Red",
+        "attributes": {
+          "color": "Techno Red"
+        },
+        "image": {
+          "src": "/images/launches/playstation-hyperpop-red.jpg",
+          "alt": "Techno Red Hyperpop DualSense controller",
+          "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/dualsense-techno-red-screenshot-01-en-07jan26?$1200px$"
+        }
+      },
+      {
+        "slug": "remix-green",
+        "label": "Remix Green",
+        "attributes": {
+          "color": "Remix Green"
+        },
+        "image": {
+          "src": "/images/launches/playstation-hyperpop-green.jpg",
+          "alt": "Remix Green Hyperpop DualSense controller",
+          "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/dualsense-remix-green-screenshot-01-en-07jan26?$1200px$"
+        }
+      },
+      {
+        "slug": "rhythm-blue",
+        "label": "Rhythm Blue",
+        "attributes": {
+          "color": "Rhythm Blue"
+        },
+        "image": {
+          "src": "/images/launches/playstation-hyperpop-blue.jpg",
+          "alt": "Rhythm Blue Hyperpop DualSense controller",
+          "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/dualsense-rhythm-blue-screenshot-01-en-07jan26?$1200px$"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "ps5-hyperpop-console-covers",
+    "name": "PS5 Hyperpop Console Covers",
+    "brand": "playstation",
+    "family": "Console covers",
+    "category": {
+      "slug": "console-covers",
+      "name": "Console covers"
+    },
+    "launchDate": "2026-03-12",
+    "tagline": "Color your console.",
+    "description": "Official Hyperpop replacement covers for compatible PS5 slim consoles. Console, controller and vertical stand are sold separately.",
+    "officialUrl": "https://direct.playstation.com/en-us/buy-accessories/ps5-console-covers-model-group-slim-techno-red",
+    "launchSourceUrl": "https://blog.playstation.com/2026/01/07/revealing-the-hyperpop-collection-with-three-new-designs-for-ps5-accessories-launching-this-march/",
+    "image": {
+      "src": "/images/launches/playstation-hyperpop-covers.jpg",
+      "alt": "Hyperpop covers fitted to consoles in red, green and blue with matching controllers; other hardware sold separately",
+      "sourceUrl": "https://blog.playstation.com/tachyon/2026/01/e0453c7e84f017fd3de381c276073c3a828537d6-scaled.jpg"
+    },
+    "features": [
+      {
+        "label": "Fit",
+        "value": "PS5 slim CFI-2000 / CFI-2100",
+        "description": "Check your console model before choosing these covers."
+      },
+      {
+        "label": "Edition",
+        "value": "Disc and Digital",
+        "description": "Designed for the supported slim model groups."
+      },
+      {
+        "label": "Finish",
+        "value": "Three Hyperpop colors",
+        "description": "Techno Red, Remix Green and Rhythm Blue."
+      },
+      {
+        "label": "Installation",
+        "value": "Replacement panels",
+        "description": "Remove the existing covers and fit the matching panels."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "techno-red",
+        "label": "Techno Red",
+        "attributes": {
+          "color": "Techno Red"
+        }
+      },
+      {
+        "slug": "remix-green",
+        "label": "Remix Green",
+        "attributes": {
+          "color": "Remix Green"
+        }
+      },
+      {
+        "slug": "rhythm-blue",
+        "label": "Rhythm Blue",
+        "attributes": {
+          "color": "Rhythm Blue"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "dualsense-007-first-light",
+    "name": "DualSense 007 First Light Limited Edition",
+    "brand": "playstation",
+    "family": "DualSense",
+    "category": {
+      "slug": "controllers",
+      "name": "Controllers"
+    },
+    "launchDate": "2026-05-27",
+    "tagline": "A golden touch.",
+    "description": "A gold DualSense design inspired by the 007 First Light adventure.",
+    "officialUrl": "https://blog.playstation.com/2026/04/08/first-look-at-the-007-first-light-limited-edition-dualsense-wireless-controller/",
+    "launchSourceUrl": "https://blog.playstation.com/2026/04/08/first-look-at-the-007-first-light-limited-edition-dualsense-wireless-controller/",
+    "image": {
+      "src": "/images/launches/playstation-007.jpg",
+      "alt": "Gold 007 First Light Limited Edition DualSense controller",
+      "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/007-First-Light-LE-DualSense-image-block-01-en-02apr26?$1200px$"
+    },
+    "features": [
+      {
+        "label": "Design",
+        "value": "007 First Light gold",
+        "description": "Official special-edition DualSense design."
+      },
+      {
+        "label": "Immersion",
+        "value": "Haptics and adaptive triggers",
+        "description": "Game support required; available features vary by device."
+      },
+      {
+        "label": "Voice",
+        "value": "Integrated microphone",
+        "description": "Built-in microphone and a headset jack for supported chat."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Design"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "007-first-light",
+        "label": "007 First Light",
+        "attributes": {
+          "color": "007 First Light"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "ps5-wolverine-bundle",
+    "name": "PS5 Wolverine Battle Yellow Bundle",
+    "brand": "playstation",
+    "family": "PS5",
+    "category": {
+      "slug": "consoles",
+      "name": "Consoles"
+    },
+    "launchDate": "2026-09-15",
+    "tagline": "A bold new look.",
+    "description": "PS5 Digital Edition with Battle Yellow styling, a matching controller and a Marvel’s Wolverine game code. Vertical stand sold separately.",
+    "officialUrl": "https://blog.playstation.com/2026/08/11/first-look-at-marvels-wolverine-limited-edition-ps5-console-bundle-and-accessories/",
+    "launchSourceUrl": "https://blog.playstation.com/2026/08/11/first-look-at-marvels-wolverine-limited-edition-ps5-console-bundle-and-accessories/",
+    "image": {
+      "src": "/images/launches/playstation-wolverine-bundle.jpg",
+      "alt": "Wolverine Battle Yellow PS5 Digital Edition console and matching controller",
+      "sourceUrl": "https://blog.playstation.com/tachyon/2026/08/5ec8a01815e6668e929082667e4cb532c2e11255-scaled.jpg"
+    },
+    "features": [
+      {
+        "label": "Console",
+        "value": "PS5 Digital Edition",
+        "description": "Digital games; no disc drive included."
+      },
+      {
+        "label": "Controller",
+        "value": "Matching DualSense",
+        "description": "Battle Yellow controller included."
+      },
+      {
+        "label": "Game",
+        "value": "Digital game code",
+        "description": "Marvel’s Wolverine code included."
+      }
+    ],
+    "options": [
+      {
+        "key": "edition",
+        "label": "Bundle"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "battle-yellow",
+        "label": "Battle Yellow bundle",
+        "attributes": {
+          "edition": "Battle Yellow bundle"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "dualsense-wolverine",
+    "name": "DualSense Wolverine Limited Edition",
+    "brand": "playstation",
+    "family": "DualSense",
+    "category": {
+      "slug": "controllers",
+      "name": "Controllers"
+    },
+    "launchDate": "2026-09-15",
+    "tagline": "Choose your Wolverine finish.",
+    "description": "Choose the Battle Yellow or metallic Adamantium controller design.",
+    "officialUrl": "https://blog.playstation.com/2026/08/11/first-look-at-marvels-wolverine-limited-edition-ps5-console-bundle-and-accessories/",
+    "launchSourceUrl": "https://blog.playstation.com/2026/08/11/first-look-at-marvels-wolverine-limited-edition-ps5-console-bundle-and-accessories/",
+    "image": {
+      "src": "/images/launches/playstation-wolverine-yellow.jpg",
+      "alt": "Wolverine Battle Yellow Limited Edition DualSense controller",
+      "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/DUALSENSE-LE-MWOLVERINE-PR-01-YELL-4x3-01-06jul26-en?$1200px$"
+    },
+    "features": [
+      {
+        "label": "Design",
+        "value": "Wolverine claw graphics",
+        "description": "Official special-edition DualSense design."
+      },
+      {
+        "label": "Immersion",
+        "value": "Haptics and adaptive triggers",
+        "description": "Game support required; available features vary by device."
+      },
+      {
+        "label": "Voice",
+        "value": "Integrated microphone",
+        "description": "Built-in microphone and a headset jack for supported chat."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Design"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "battle-yellow",
+        "label": "Battle Yellow",
+        "attributes": {
+          "color": "Battle Yellow"
+        },
+        "image": {
+          "src": "/images/launches/playstation-wolverine-yellow.jpg",
+          "alt": "Wolverine Battle Yellow DualSense controller",
+          "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/DUALSENSE-LE-MWOLVERINE-PR-01-YELL-4x3-01-06jul26-en?$1200px$"
+        }
+      },
+      {
+        "slug": "adamantium",
+        "label": "Adamantium",
+        "attributes": {
+          "color": "Adamantium"
+        },
+        "image": {
+          "src": "/images/launches/playstation-wolverine-metal.jpg",
+          "alt": "Wolverine Adamantium DualSense controller",
+          "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/DUALSENSE-LE-MWOLVERINE-PR-4x3-01-06jul26-en?$1200px$"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "ps5-wolverine-console-covers",
+    "name": "PS5 Wolverine Console Covers",
+    "brand": "playstation",
+    "family": "Console covers",
+    "category": {
+      "slug": "console-covers",
+      "name": "Console covers"
+    },
+    "launchDate": "2026-09-15",
+    "tagline": "Match the right console.",
+    "description": "Battle Yellow covers fit supported PS5 slim or PS5 Pro models. Adamantium is a PS5 Pro option. Console and stand sold separately.",
+    "officialUrl": "https://blog.playstation.com/2026/08/11/first-look-at-marvels-wolverine-limited-edition-ps5-console-bundle-and-accessories/",
+    "launchSourceUrl": "https://blog.playstation.com/2026/08/11/first-look-at-marvels-wolverine-limited-edition-ps5-console-bundle-and-accessories/",
+    "image": {
+      "src": "/images/launches/playstation-wolverine-covers.jpg",
+      "alt": "Wolverine Battle Yellow covers fitted to a PS5 slim console; console and stand sold separately",
+      "sourceUrl": "https://blog.playstation.com/tachyon/2026/08/1d2eed8b9736bec4cec3dc109c434d8d7656c313-scaled.jpg"
+    },
+    "features": [
+      {
+        "label": "Compatibility",
+        "value": "Model-specific panels",
+        "description": "Select your console model before selecting a finish."
+      },
+      {
+        "label": "PS5 slim",
+        "value": "Battle Yellow",
+        "description": "Separate slim cover set."
+      },
+      {
+        "label": "PS5 Pro",
+        "value": "Two finishes",
+        "description": "Battle Yellow or Adamantium cover set."
+      }
+    ],
+    "options": [
+      {
+        "key": "model",
+        "label": "Console model"
+      },
+      {
+        "key": "color",
+        "label": "Finish"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "slim-battle-yellow",
+        "label": "PS5 slim / Battle Yellow",
+        "attributes": {
+          "model": "PS5 slim",
+          "color": "Battle Yellow"
+        }
+      },
+      {
+        "slug": "pro-battle-yellow",
+        "label": "PS5 Pro / Battle Yellow",
+        "attributes": {
+          "model": "PS5 Pro",
+          "color": "Battle Yellow"
+        }
+      },
+      {
+        "slug": "pro-adamantium",
+        "label": "PS5 Pro / Adamantium",
+        "attributes": {
+          "model": "PS5 Pro",
+          "color": "Adamantium"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "dualsense-lisa",
+    "name": "DualSense LISA Limited Edition",
+    "brand": "playstation",
+    "family": "DualSense",
+    "category": {
+      "slug": "controllers",
+      "name": "Controllers"
+    },
+    "launchDate": "2026-10-30",
+    "tagline": "Play with a signature look.",
+    "description": "A LISA collaboration featuring a pearl finish, signature graphics and star details.",
+    "officialUrl": "https://blog.playstation.com/2026/09/21/lisa-x-playstation-arrives-this-october-first-look-at-the-dualsense-wireless-controller-lisa-limited-edition-and-all-new-merchandise/",
+    "launchSourceUrl": "https://blog.playstation.com/2026/09/21/lisa-x-playstation-arrives-this-october-first-look-at-the-dualsense-wireless-controller-lisa-limited-edition-and-all-new-merchandise/",
+    "image": {
+      "src": "/images/launches/playstation-lisa.jpg",
+      "alt": "LISA Limited Edition DualSense controller in a pearl finish with signature and star graphics",
+      "sourceUrl": "https://gmedia.playstation.com/is/image/SIEPDC/Lisa-dualsense-controller-direct-offset-01-en-05oct26?$1200px$"
+    },
+    "features": [
+      {
+        "label": "Design",
+        "value": "LISA pearl design",
+        "description": "Official special-edition DualSense design."
+      },
+      {
+        "label": "Immersion",
+        "value": "Haptics and adaptive triggers",
+        "description": "Game support required; available features vary by device."
+      },
+      {
+        "label": "Voice",
+        "value": "Integrated microphone",
+        "description": "Built-in microphone and a headset jack for supported chat."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Design"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "lisa",
+        "label": "LISA",
+        "attributes": {
+          "color": "LISA"
+        }
+      }
+    ]
+  }
+]

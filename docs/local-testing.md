@@ -2,6 +2,8 @@
 
 The lab at [localhost:3001/local-test](http://localhost:3001/local-test) exercises Stripe sandbox checkout, verified webhook activation, the stock worker and signed notification links. Stock comes from controls you operate, not Apple inventory. The main app remains at [localhost:3000](http://localhost:3000) with its ordinary retailer sources paused.
 
+The expanded main catalog contains **49 products and 290 curated configurations** across Apple, PlayStation and NVIDIA. Its 46 added products have no inventory sources; the original 14 ordinary sources remain paused and unapproved. The lab still exercises the eight iPhone Duo configurations. Catalog browsing does not enable checkout for products without an eligible source. See [catalog implementation and maintenance](product-catalog.md) for scope, research references and stable IDs.
+
 ## Start the configured workspace again
 
 The PostgreSQL cluster, lab database and ignored `.env.local-test` are already prepared in this workspace. After a computer restart, start PostgreSQL if it is not running:
@@ -49,7 +51,7 @@ The lab uses real Stripe **sandbox** objects and signed events. It does not inse
 
 ### Verification checkpoint: November 17, 2026
 
-The production build and 88 unit tests passed. A hosted Stripe sandbox checkout completed, and its signed webhook produced one verified payment record and an active alert. Replaying the canonical `charge.updated` event returned HTTP 200; a duplicate replay also returned HTTP 200 and retained one payment record. These checks establish checkout activation and replay handling. Notification-click, account and portal browser verification is recorded separately as it is completed; this checkpoint does not claim those later steps passed.
+At this earlier checkout checkpoint, the production build and 88 unit tests passed. A hosted Stripe sandbox checkout completed, and its signed webhook produced one verified payment record and an active alert. Replaying the canonical `charge.updated` event returned HTTP 200; a duplicate replay also returned HTTP 200 and retained one payment record. These checks establish checkout activation and replay handling. Notification-click, account and portal browser verification is recorded separately below. The latest catalog test counts are recorded in the expanded-catalog checkpoint.
 
 ## Isolation and local files
 
@@ -59,7 +61,7 @@ The production build and 88 unit tests passed. A hosted Stripe sandbox checkout 
 | Database | `restock_radar` | `restock_radar_local_test` |
 | Environment | `.env` | `.env.local-test` |
 | Build output | `.next` | `.next-local-test` |
-| Stock source | Paused retailer configurations | Eight deterministic `local-test` sources |
+| Stock source | 14 paused ordinary sources; no sources for 46 added products | Eight deterministic `local-test` sources |
 | Notification delivery | Provider configuration or explicit local capture | Local capture only |
 
 `RADAR_LOCAL_TEST_MODE=true` works only in development, with a loopback app origin and a database name ending in `_local_test`. The runner also requires local mailbox capture and port 3001. It clears inherited application settings before loading the lab file. Use a separately generated `RADAR_AUTH_SECRET` for the lab. The app uses a separate lab session cookie.
@@ -136,15 +138,29 @@ The listener scripts read the key from the chosen environment file, pass it thro
 
 The browser test completed a $9 Stripe sandbox pass for 256GB Star White, received the signed checkout webhook, signed in using the captured single-use link, and opened the Stripe sandbox billing portal. Changing that configuration from out of stock to in stock produced one worker stock event and one locally captured notification. Following its signed link redirected to the correct Apple configuration and expired the until-caught pass with a recorded click.
 
-Final lab counts were one payment, one stock event and one captured notification. The main database retained zero payments, stock events and notifications, with all 12 ordinary sources paused. Production inbox/control endpoints and requests with the wrong Host returned 404. The production build, 88 unit tests and 23 integration tests passed. External email and browser push delivery were not exercised.
+At that checkout checkpoint, final lab counts were one payment, one stock event and one captured notification. The main database retained zero payments, stock events and notifications, with its then-existing 12 ordinary sources paused. Production inbox/control endpoints and requests with the wrong Host returned 404. The production build, 88 unit tests and 23 integration tests passed. External email and browser push delivery were not exercised. Subsequent catalog changes and their current source/test counts are recorded below.
 
 The early `charge.updated` delivery reached the app before checkout had created its payment projection and returned a retryable 503. A locally signed replay of that canonical Stripe test event returned 200; repeating it returned `duplicate: true` and the payment count stayed at one. This replay exercised webhook processing without manually granting payment or access.
 
 ## Product-page redesign verification — November 17, 2026
 
-The catalog now exposes iPhone Duo, PlayStation 5 Pro and NVIDIA GeForce RTX 5090, each with a manufacturer-inspired product overview, original product photography and configuration links. The iPhone finish and storage controls update the image and carry the exact variant into alert setup. NVIDIA includes a Founders Edition configuration, graphics-card category, buying guide, and manual NVIDIA Marketplace and Best Buy links. Image provenance is recorded in [product photography sources](product-visual-sources.md).
+The earlier product-page redesign exposed iPhone Duo, PlayStation 5 Pro and NVIDIA GeForce RTX 5090, each with a manufacturer-inspired product overview, original product photography and configuration links. The iPhone finish and storage controls update the image and carry the exact variant into alert setup. NVIDIA includes a Founders Edition configuration, graphics-card category, buying guide, and manual NVIDIA Marketplace and Best Buy links. Image provenance is recorded in [product photography sources](product-visual-sources.md).
 
 The production build, 93 unit tests and 23 integration tests passed. Desktop and 390px mobile browser checks covered all three product pages, with no horizontal page overflow; the iPhone 1TB Night Sky selection reached the matching alert form. HTTP checks verified all product pages, NVIDIA category/guide/variant/retailer routes, canonical metadata, social images and sitemap inclusion. Product structured data contains no unverified offers. All 14 ordinary retailer sources remain paused and unapproved; no live inventory was connected by this redesign. The isolated Stripe test lab and its previous payment/event/notification records remain separate.
+
+## Expanded-catalog verification — November 17, 2026
+
+The main catalog now contains **49 products / 290 configurations**: Apple **24 / 251**, PlayStation **18 / 31**, and NVIDIA **7 / 8**. The inclusive research window is **November 17, 2025–November 17, 2026**, containing 24 Apple launches, 10 PlayStation launches and no verified new NVIDIA desktop GPU model launches. Older core hardware stays in the full catalog with its actual release date. Configuration choices are curated valid combinations, not every manufacturer configure-to-order option.
+
+Start at [Apple](http://localhost:3000/brands/apple), [PlayStation](http://localhost:3000/brands/playstation) or [NVIDIA](http://localhost:3000/brands/nvidia). Filter or compare products, open a product's features, choose its documented options and follow the selected variant into alert setup. Only an eligible connected source can proceed to checkout; use the separate iPhone Duo lab above for the complete Stripe and notification flow. New product pages do not imply live monitoring.
+
+TypeScript checking, the production build, **104 unit tests and 23 integration tests (127 total)** passed. HTTP checks covered all three brand routes, all 49 product pages and 49 representative variant pages, the complete sitemap, canonical metadata, Product JSON-LD and images. No unverified offers were added. All **290 database configurations** were validated. The 46 added products have no sources; all 14 original ordinary sources remain paused and unapproved.
+
+Browser checks verified Apple Mac filtering and comparison, brand-navigation state reset, the PlayStation recent-launch filter showing 10 products, and the DualSense Wolverine controller's Adamantium configuration/image switch. Selecting M5 Ultra on Mac Studio chose its valid 96GB / 1TB configuration and reached the exact alert form. RTX 5060 Ti 16GB / 8GB selections carried the matching variant into alert links. NVIDIA's past-year filter correctly showed zero verified launches. At 390px, the Apple hub and NVIDIA configuration page had no horizontal overflow; no browser console errors were observed. The screenshot is `.local/expanded-product-catalog.jpg`, and the app was left open at `/products`.
+
+The broader route and configuration coverage above comes from HTTP, database and automated checks, not an assertion that every configuration was clicked in a browser. The earlier Stripe lab results remain separate; expanding the catalog did not establish live retailer stock or external notification delivery.
+
+See [catalog maintenance](product-catalog.md), [Apple research](apple-launch-research.md), [PlayStation research](playstation-launch-research.md) and [NVIDIA research](nvidia-launch-research.md) for sources, date qualifications and configuration constraints.
 
 ## Live iPhone inventory remains pending
 

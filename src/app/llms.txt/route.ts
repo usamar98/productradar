@@ -25,6 +25,9 @@ ${products}
 
 ## Find information
 - [Products](${siteUrl}/products): Published product directory and tracking coverage.
+- [Apple collection](${siteUrl}/brands/apple): Recent Apple hardware launches, product features and curated configurations.
+- [PlayStation collection](${siteUrl}/brands/playstation): Consoles, accessories and dated hardware launches.
+- [NVIDIA collection](${siteUrl}/brands/nvidia): GeForce desktop graphics cards with actual release dates and memory options.
 - [Buying guides](${siteUrl}/guides): Product-specific buying advice and official links.
 - [How stock is checked](${siteUrl}/methodology): Source permissions, freshness, event definitions and limitations.
 - [Proof](${siteUrl}/proof): The record of observations, sent alerts and source-linked customer posts, if any. Empty sections mean no evidence has been recorded.

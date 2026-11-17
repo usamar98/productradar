@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Bell } from "lucide-react";
 import { ProductExperience } from "@/components/radar/product-experience";
+import { getLaunchProduct, launchProducts, brands, isRecentLaunch, launchDateLabel } from "@/config/launch-catalog";
 import { Breadcrumbs } from "@/components/radar/breadcrumbs";
 import { ProductCards } from "@/components/radar/catalog-cards";
 import { DataNotice, EventLog, JsonLd, RetailerTable } from "@/components/radar/public";
@@ -50,13 +51,16 @@ export default async function ProductPage({ params }: Props) {
   if (!item) notFound();
   const content = getProductContent(item.slug);
   const events = allEvents(item);
+  const launch = getLaunchProduct(item.slug);
+  const publishedSlugs = new Set(catalog.items.map(value => value.slug));
+  const models = launch ? launchProducts.filter(value => value.brand === launch.brand && value.family === launch.family && publishedSlugs.has(value.slug)).map(({ slug, name }) => ({ slug, name })) : [];
   let total: number | null = null;
   if (isCatalogPublished(catalog)) {
     try { total = await prisma.radarStockEvent.count({ where: { source: { itemId: item.id, connector: { not: "mock" } } } }); } catch { /* No invented activity when database is unavailable. */ }
   }
   const available = item.sources.filter(source => sourceState(source).tone === "green");
   const observed = hasObservations(item.sources);
-  const crumbs = [{ label: "Products", href: "/products" }, { label: item.category.name, href: `/categories/${item.category.slug}` }, { label: item.name, ...(guide ? { href: `/${item.slug}` } : {}) }, ...(guide ? [{ label: "Buying guide" }] : [])];
+  const crumbs = [{ label: "Products", href: "/products" }, launch ? { label: brands[launch.brand].name, href: `/brands/${launch.brand}` } : { label: item.category.name, href: `/categories/${item.category.slug}` }, { label: item.name, ...(guide ? { href: `/${item.slug}` } : {}) }, ...(guide ? [{ label: "Buying guide" }] : [])];
   const coverage = content?.coverage || "Only connected sources can report availability. Check each source's status and timestamp before acting.";
 
   if (guide) return <div className="rr-container">
@@ -77,9 +81,9 @@ export default async function ProductPage({ params }: Props) {
     </article>
   </div>;
 
-  return <div className={styles.productPage} data-product={item.slug}>
+  return <div className={styles.productPage} data-product={item.slug} data-brand={launch?.brand}>
     <div className="rr-container"><Breadcrumbs items={crumbs}/></div>
-    <ProductExperience key={item.slug} item={{ slug: item.slug, name: item.name, imageUrl: item.imageUrl, variants: item.variants.map(({ id, slug, label }) => ({ id, slug, label })) }}/>
+    <ProductExperience key={item.slug} product={launch} dateLabel={launch && launchDateLabel(launch)} recent={launch && isRecentLaunch(launch)} models={models} item={{ slug: item.slug, name: item.name, imageUrl: item.imageUrl, variants: item.variants.map(({ id, slug, label }) => ({ id, slug, label })) }}/>
     <div className={`rr-container ${styles.productDetails}`}>
     <DataNotice available={catalog.available} seeded={catalog.seeded}/>
     <section className={styles.availabilityIntro} id="availability"><span className="rr-eyebrow">YOUR NEXT MOVE STARTS HERE</span><h2>Availability.<br/><span>Without the guesswork.</span></h2><p>Compare retailer observations for the exact product you want. A pending connection means availability is unknown.</p></section>
@@ -88,7 +92,7 @@ export default async function ProductPage({ params }: Props) {
     <section className={styles.section}><div className="rr-section-heading"><div><span className="rr-eyebrow">THE STOCK CHECK</span><h2>Find your retailer.</h2></div></div><RetailerTable item={item}/></section>
     <div className={styles.split}><section className={`rr-panel ${styles.history}`}><header><span className="rr-eyebrow">ACTUAL OBSERVATIONS</span><h2>The latest stock periods</h2><p className={styles.note}><Link href={`/${item.slug}/restocks`}>View timestamps, durations and observation coverage →</Link></p></header><EventLog item={item} limit={6}/></section><aside className={styles.aside}><Bell size={26}/><h2>Your time.<br/>Back in your hands.</h2><p>Choose the exact variant and retailers you want. Email and browser push can notify you when a connected source detects a new in-stock period.</p><Link className="rr-button rr-primary" href={`/alerts?item=${item.slug}`}>Put it on my radar<ArrowRight size={15}/></Link><Link className={styles.mutedLink} href="/pricing">Compare alert plans and retailer slots</Link></aside></div>
     {content && <section className={styles.guide}><h2>Before you buy {item.name}</h2><ul className={styles.linkList}>{content.buyingNotes.map(note => <li key={note}>{note}</li>)}</ul><p><Link href={`/how-to-get-${item.slug}`}>Read the full {item.name} buying guide</Link> for configuration advice, monitoring limits and purchase checks.</p><h2>Check the official information.</h2><ul className={styles.linkList}>{content.officialLinks.map(link => <li key={link.url}><a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} ↗</a></li>)}</ul><p className={styles.note}>Product guidance reviewed {content.reviewedAt}. Prices and availability must be confirmed at the retailer. Restock Radar is an independent monitoring service.</p></section>}
-    {catalog.items.length > 1 && <section className={styles.section}><span className="rr-eyebrow">ALSO ON THE RADAR</span><h2>Explore another product.</h2><ProductCards items={catalog.items.filter(other => other.id !== item.id)}/></section>}
+    {catalog.items.length > 1 && <section className={styles.section}><span className="rr-eyebrow">ALSO ON THE RADAR</span><h2>Explore another product.</h2><ProductCards items={catalog.items.filter(other => other.id !== item.id && (!launch || getLaunchProduct(other.slug)?.brand === launch.brand)).slice(0,3)}/>{launch && <Link className={styles.mutedLink} href={`/brands/${launch.brand}`}>Explore the full {brands[launch.brand].name} collection →</Link>}</section>}
     <ProductSchema item={item}/>
     </div>
   </div>;

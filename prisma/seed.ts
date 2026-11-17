@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { prisma } from "../src/lib/db";
 import { PLANS } from "../src/config/pricing";
+import { launchProducts, productItemId, productVariantId } from "../src/config/launch-catalog";
 // Catalog metadata only. No stock, customer, delivery or financial activity is seeded.
 await prisma.radarCategory.upsert({ where: { id: "consoles" }, create: { id: "consoles", slug: "consoles", name: "Consoles" }, update: {} });
 await prisma.radarCategory.upsert({ where: { id: "graphics-cards" }, create: { id: "graphics-cards", slug: "graphics-cards", name: "Graphics cards" }, update: {} });
@@ -60,6 +61,36 @@ for (const capacity of ["256GB", "512GB", "1TB", "2TB"]) {
       // Re-running the catalog seed must not overwrite an operator's settings,
       // approval decision, source URL, or previously collected observations.
       update: {},
+    });
+  }
+}
+// The original three items above keep their IDs, variants and retailer settings.
+// New launches register specifications only. A manufacturer's product page is
+// not a variant-specific inventory feed and must not create a stock source.
+const existingProducts = new Set(["iphone-duo", "playstation-5-pro", "rtx-5090"]);
+const newProducts = launchProducts.filter(product => !existingProducts.has(product.slug));
+const categoryIds = new Map<string, string>();
+for (const category of new Map(newProducts.map(product => [product.category.slug, product.category])).values()) {
+  const saved = await prisma.radarCategory.upsert({
+    where: { slug: category.slug },
+    create: { id: category.slug, ...category },
+    update: { name: category.name },
+  });
+  categoryIds.set(category.slug, saved.id);
+}
+for (const product of newProducts) {
+  const categoryId = categoryIds.get(product.category.slug)!;
+  const item = await prisma.radarItem.upsert({
+    where: { slug: product.slug },
+    create: { id: productItemId(product.slug), categoryId, slug: product.slug, name: product.name, imageUrl: product.image.src },
+    // Preserve operator visibility, price settings and every existing relation.
+    update: { categoryId, name: product.name, imageUrl: product.image.src },
+  });
+  for (const variant of product.variants) {
+    await prisma.radarVariant.upsert({
+      where: { itemId_slug: { itemId: item.id, slug: variant.slug } },
+      create: { id: productVariantId(product.slug, variant.slug), itemId: item.id, slug: variant.slug, label: variant.label },
+      update: { label: variant.label },
     });
   }
 }

@@ -1,0 +1,3622 @@
+[
+  {
+    "slug": "iphone-duo",
+    "name": "iPhone Duo",
+    "brand": "apple",
+    "family": "iPhone",
+    "category": {
+      "slug": "smartphones",
+      "name": "Smartphones"
+    },
+    "launchDate": "2026-10-23",
+    "tagline": "A phone that opens into more.",
+    "description": "Explore Apple’s folding iPhone, then choose the finish and storage you want to track.",
+    "officialUrl": "https://www.apple.com/iphone-duo/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/10/iphone-duo-arrives-at-apple-store-locations-worldwide/",
+    "image": {
+      "src": "/images/products/iphone-duo-hero.jpg",
+      "alt": "iPhone Duo open and folded, from Apple",
+      "sourceUrl": "https://www.apple.com/v/iphone-duo/f/images/overview/media-hero/hero_endframe__gdt3l3spaqie_large.jpg"
+    },
+    "features": [
+      {
+        "label": "Display",
+        "value": "7.6-inch inner display",
+        "description": "Unfold for a larger workspace; the outer display measures 5.4 inches."
+      },
+      {
+        "label": "Performance",
+        "value": "A20 Pro",
+        "description": "Apple silicon powers multitasking across the folding display."
+      },
+      {
+        "label": "Camera",
+        "value": "48MP Dual Fusion",
+        "description": "Two rear cameras support everyday photography and video."
+      },
+      {
+        "label": "Security",
+        "value": "Touch ID",
+        "description": "Fingerprint authentication is integrated into the hardware."
+      }
+    ],
+    "options": [
+      {
+        "key": "storage",
+        "label": "Storage"
+      },
+      {
+        "key": "color",
+        "label": "Finish"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "256gb-night-sky",
+        "label": "256GB / Night Sky",
+        "attributes": {
+          "storage": "256GB",
+          "color": "Night Sky"
+        }
+      },
+      {
+        "slug": "256gb-star-white",
+        "label": "256GB / Star White",
+        "attributes": {
+          "storage": "256GB",
+          "color": "Star White"
+        }
+      },
+      {
+        "slug": "512gb-night-sky",
+        "label": "512GB / Night Sky",
+        "attributes": {
+          "storage": "512GB",
+          "color": "Night Sky"
+        }
+      },
+      {
+        "slug": "512gb-star-white",
+        "label": "512GB / Star White",
+        "attributes": {
+          "storage": "512GB",
+          "color": "Star White"
+        }
+      },
+      {
+        "slug": "1tb-night-sky",
+        "label": "1TB / Night Sky",
+        "attributes": {
+          "storage": "1TB",
+          "color": "Night Sky"
+        }
+      },
+      {
+        "slug": "1tb-star-white",
+        "label": "1TB / Star White",
+        "attributes": {
+          "storage": "1TB",
+          "color": "Star White"
+        }
+      },
+      {
+        "slug": "2tb-night-sky",
+        "label": "2TB / Night Sky",
+        "attributes": {
+          "storage": "2TB",
+          "color": "Night Sky"
+        }
+      },
+      {
+        "slug": "2tb-star-white",
+        "label": "2TB / Star White",
+        "attributes": {
+          "storage": "2TB",
+          "color": "Star White"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "iphone-17e",
+    "name": "iPhone 17e",
+    "brand": "apple",
+    "family": "iPhone",
+    "category": {
+      "slug": "smartphones",
+      "name": "Smartphones"
+    },
+    "launchDate": "2026-03-11",
+    "tagline": "Everyday essentials, with A19.",
+    "description": "Choose a finish and storage for Apple’s 2026 entry iPhone.",
+    "officialUrl": "https://www.apple.com/iphone-17e/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/03/apple-introduces-iphone-17e/",
+    "image": {
+      "src": "/images/launches/apple-iphone-17e.jpg",
+      "alt": "iPhone 17e — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/03/apple-introduces-iphone-17e/tile/Apple-iPhone-17e-hero-260302-lp.jpg.og.jpg?202608191655"
+    },
+    "features": [
+      {
+        "label": "Performance",
+        "value": "A19",
+        "description": "A six-core CPU and four-core GPU power apps and games."
+      },
+      {
+        "label": "Display",
+        "value": "6.1-inch Super Retina XDR",
+        "description": "Ceramic Shield 2 protects the OLED display."
+      },
+      {
+        "label": "Camera",
+        "value": "48MP Fusion",
+        "description": "Capture detailed photos and optical-quality 2x framing."
+      },
+      {
+        "label": "Charging",
+        "value": "MagSafe and Qi2",
+        "description": "Compatible wireless chargers support up to 15W."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      },
+      {
+        "key": "storage",
+        "label": "Storage"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "black-256gb",
+        "label": "Black / 256GB",
+        "attributes": {
+          "color": "Black",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "black-512gb",
+        "label": "Black / 512GB",
+        "attributes": {
+          "color": "Black",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "white-256gb",
+        "label": "White / 256GB",
+        "attributes": {
+          "color": "White",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "white-512gb",
+        "label": "White / 512GB",
+        "attributes": {
+          "color": "White",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "soft-pink-256gb",
+        "label": "Soft Pink / 256GB",
+        "attributes": {
+          "color": "Soft Pink",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "soft-pink-512gb",
+        "label": "Soft Pink / 512GB",
+        "attributes": {
+          "color": "Soft Pink",
+          "storage": "512GB"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "iphone-18-pro",
+    "name": "iPhone 18 Pro",
+    "brand": "apple",
+    "family": "iPhone",
+    "category": {
+      "slug": "smartphones",
+      "name": "Smartphones"
+    },
+    "launchDate": "2026-09-18",
+    "tagline": "A pro camera, with more control.",
+    "description": "Explore the A20 Pro generation and select your preferred finish and capacity.",
+    "officialUrl": "https://www.apple.com/iphone-18-pro/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+    "image": {
+      "src": "/images/launches/apple-iphone-18-pro.jpg",
+      "alt": "iPhone 18 Pro and iPhone 18 Pro Max in Apple’s official lineup image",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/tile/Apple-iPhone-18-Pro-2up-260909-lp.jpg.og.jpg?202610310034"
+    },
+    "features": [
+      {
+        "label": "Performance",
+        "value": "A20 Pro",
+        "description": "A revised vapor chamber helps sustain demanding workloads."
+      },
+      {
+        "label": "Camera",
+        "value": "Variable aperture",
+        "description": "The 48MP Fusion Main camera offers four aperture settings."
+      },
+      {
+        "label": "Interface",
+        "value": "Smaller Dynamic Island",
+        "description": "More display space surrounds the front camera system."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      },
+      {
+        "key": "storage",
+        "label": "Storage"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "burgundy-256gb",
+        "label": "Burgundy / 256GB",
+        "attributes": {
+          "color": "Burgundy",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "burgundy-512gb",
+        "label": "Burgundy / 512GB",
+        "attributes": {
+          "color": "Burgundy",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "burgundy-1tb",
+        "label": "Burgundy / 1TB",
+        "attributes": {
+          "color": "Burgundy",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "burgundy-2tb",
+        "label": "Burgundy / 2TB",
+        "attributes": {
+          "color": "Burgundy",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "glacier-256gb",
+        "label": "Glacier / 256GB",
+        "attributes": {
+          "color": "Glacier",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "glacier-512gb",
+        "label": "Glacier / 512GB",
+        "attributes": {
+          "color": "Glacier",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "glacier-1tb",
+        "label": "Glacier / 1TB",
+        "attributes": {
+          "color": "Glacier",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "glacier-2tb",
+        "label": "Glacier / 2TB",
+        "attributes": {
+          "color": "Glacier",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "silver-256gb",
+        "label": "Silver / 256GB",
+        "attributes": {
+          "color": "Silver",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "silver-512gb",
+        "label": "Silver / 512GB",
+        "attributes": {
+          "color": "Silver",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "silver-1tb",
+        "label": "Silver / 1TB",
+        "attributes": {
+          "color": "Silver",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "silver-2tb",
+        "label": "Silver / 2TB",
+        "attributes": {
+          "color": "Silver",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "black-256gb",
+        "label": "Black / 256GB",
+        "attributes": {
+          "color": "Black",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "black-512gb",
+        "label": "Black / 512GB",
+        "attributes": {
+          "color": "Black",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "black-1tb",
+        "label": "Black / 1TB",
+        "attributes": {
+          "color": "Black",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "black-2tb",
+        "label": "Black / 2TB",
+        "attributes": {
+          "color": "Black",
+          "storage": "2TB"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "iphone-18-pro-max",
+    "name": "iPhone 18 Pro Max",
+    "brand": "apple",
+    "family": "iPhone",
+    "category": {
+      "slug": "smartphones",
+      "name": "Smartphones"
+    },
+    "launchDate": "2026-09-18",
+    "tagline": "A pro camera, with more control.",
+    "description": "Explore the A20 Pro generation and select your preferred finish and capacity.",
+    "officialUrl": "https://www.apple.com/iphone-18-pro/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+    "image": {
+      "src": "/images/launches/apple-iphone-18-pro-max.jpg",
+      "alt": "iPhone 18 Pro and iPhone 18 Pro Max in Apple’s official lineup image",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/tile/Apple-iPhone-18-Pro-2up-260909-lp.jpg.og.jpg?202610310034"
+    },
+    "features": [
+      {
+        "label": "Performance",
+        "value": "A20 Pro",
+        "description": "A revised vapor chamber helps sustain demanding workloads."
+      },
+      {
+        "label": "Camera",
+        "value": "Variable aperture",
+        "description": "The 48MP Fusion Main camera offers four aperture settings."
+      },
+      {
+        "label": "Interface",
+        "value": "Smaller Dynamic Island",
+        "description": "More display space surrounds the front camera system."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      },
+      {
+        "key": "storage",
+        "label": "Storage"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "burgundy-256gb",
+        "label": "Burgundy / 256GB",
+        "attributes": {
+          "color": "Burgundy",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "burgundy-512gb",
+        "label": "Burgundy / 512GB",
+        "attributes": {
+          "color": "Burgundy",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "burgundy-1tb",
+        "label": "Burgundy / 1TB",
+        "attributes": {
+          "color": "Burgundy",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "burgundy-2tb",
+        "label": "Burgundy / 2TB",
+        "attributes": {
+          "color": "Burgundy",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "glacier-256gb",
+        "label": "Glacier / 256GB",
+        "attributes": {
+          "color": "Glacier",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "glacier-512gb",
+        "label": "Glacier / 512GB",
+        "attributes": {
+          "color": "Glacier",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "glacier-1tb",
+        "label": "Glacier / 1TB",
+        "attributes": {
+          "color": "Glacier",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "glacier-2tb",
+        "label": "Glacier / 2TB",
+        "attributes": {
+          "color": "Glacier",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "silver-256gb",
+        "label": "Silver / 256GB",
+        "attributes": {
+          "color": "Silver",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "silver-512gb",
+        "label": "Silver / 512GB",
+        "attributes": {
+          "color": "Silver",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "silver-1tb",
+        "label": "Silver / 1TB",
+        "attributes": {
+          "color": "Silver",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "silver-2tb",
+        "label": "Silver / 2TB",
+        "attributes": {
+          "color": "Silver",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "black-256gb",
+        "label": "Black / 256GB",
+        "attributes": {
+          "color": "Black",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "black-512gb",
+        "label": "Black / 512GB",
+        "attributes": {
+          "color": "Black",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "black-1tb",
+        "label": "Black / 1TB",
+        "attributes": {
+          "color": "Black",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "black-2tb",
+        "label": "Black / 2TB",
+        "attributes": {
+          "color": "Black",
+          "storage": "2TB"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "ipad-air-m4",
+    "name": "iPad Air with M4",
+    "brand": "apple",
+    "family": "iPad",
+    "category": {
+      "slug": "tablets",
+      "name": "Tablets"
+    },
+    "launchDate": "2026-03-11",
+    "tagline": "Two sizes. More room to create.",
+    "description": "Pick an 11-inch or 13-inch iPad Air, then configure connectivity, storage, and finish.",
+    "officialUrl": "https://www.apple.com/ipad-air/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/03/apple-introduces-the-new-ipad-air-powered-by-m4/",
+    "image": {
+      "src": "/images/launches/apple-ipad-air-m4.jpg",
+      "alt": "iPad Air with M4 — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/03/apple-introduces-the-new-ipad-air-powered-by-m4/tile/Apple-iPad-Air-M4-multitasking-260302-lp.jpg.og.jpg?202608191804"
+    },
+    "features": [
+      {
+        "label": "Performance",
+        "value": "M4 and 12GB memory",
+        "description": "More unified memory supports demanding apps and multitasking."
+      },
+      {
+        "label": "Wireless",
+        "value": "Wi-Fi 7",
+        "description": "Apple’s N1 chip also brings Bluetooth 6 and Thread."
+      },
+      {
+        "label": "Camera",
+        "value": "Landscape Center Stage",
+        "description": "The 12MP front camera is positioned for landscape video calls."
+      },
+      {
+        "label": "Accessories",
+        "value": "Apple Pencil Pro support",
+        "description": "Compatible Pencil and Magic Keyboard accessories are sold separately."
+      }
+    ],
+    "options": [
+      {
+        "key": "size",
+        "label": "Size"
+      },
+      {
+        "key": "color",
+        "label": "Finish"
+      },
+      {
+        "key": "storage",
+        "label": "Storage"
+      },
+      {
+        "key": "connectivity",
+        "label": "Connectivity"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "11-inch-blue-128gb-wi-fi",
+        "label": "11-inch / Blue / 128GB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Blue",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-blue-128gb-wi-fi-plus-cellular",
+        "label": "11-inch / Blue / 128GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Blue",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-blue-256gb-wi-fi",
+        "label": "11-inch / Blue / 256GB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Blue",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-blue-256gb-wi-fi-plus-cellular",
+        "label": "11-inch / Blue / 256GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Blue",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-blue-512gb-wi-fi",
+        "label": "11-inch / Blue / 512GB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Blue",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-blue-512gb-wi-fi-plus-cellular",
+        "label": "11-inch / Blue / 512GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Blue",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-blue-1tb-wi-fi",
+        "label": "11-inch / Blue / 1TB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Blue",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-blue-1tb-wi-fi-plus-cellular",
+        "label": "11-inch / Blue / 1TB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Blue",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-purple-128gb-wi-fi",
+        "label": "11-inch / Purple / 128GB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Purple",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-purple-128gb-wi-fi-plus-cellular",
+        "label": "11-inch / Purple / 128GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Purple",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-purple-256gb-wi-fi",
+        "label": "11-inch / Purple / 256GB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Purple",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-purple-256gb-wi-fi-plus-cellular",
+        "label": "11-inch / Purple / 256GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Purple",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-purple-512gb-wi-fi",
+        "label": "11-inch / Purple / 512GB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Purple",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-purple-512gb-wi-fi-plus-cellular",
+        "label": "11-inch / Purple / 512GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Purple",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-purple-1tb-wi-fi",
+        "label": "11-inch / Purple / 1TB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Purple",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-purple-1tb-wi-fi-plus-cellular",
+        "label": "11-inch / Purple / 1TB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Purple",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-starlight-128gb-wi-fi",
+        "label": "11-inch / Starlight / 128GB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Starlight",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-starlight-128gb-wi-fi-plus-cellular",
+        "label": "11-inch / Starlight / 128GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Starlight",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-starlight-256gb-wi-fi",
+        "label": "11-inch / Starlight / 256GB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Starlight",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-starlight-256gb-wi-fi-plus-cellular",
+        "label": "11-inch / Starlight / 256GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Starlight",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-starlight-512gb-wi-fi",
+        "label": "11-inch / Starlight / 512GB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Starlight",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-starlight-512gb-wi-fi-plus-cellular",
+        "label": "11-inch / Starlight / 512GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Starlight",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-starlight-1tb-wi-fi",
+        "label": "11-inch / Starlight / 1TB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Starlight",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-starlight-1tb-wi-fi-plus-cellular",
+        "label": "11-inch / Starlight / 1TB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Starlight",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-space-gray-128gb-wi-fi",
+        "label": "11-inch / Space Gray / 128GB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Space Gray",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-space-gray-128gb-wi-fi-plus-cellular",
+        "label": "11-inch / Space Gray / 128GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Space Gray",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-space-gray-256gb-wi-fi",
+        "label": "11-inch / Space Gray / 256GB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Space Gray",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-space-gray-256gb-wi-fi-plus-cellular",
+        "label": "11-inch / Space Gray / 256GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Space Gray",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-space-gray-512gb-wi-fi",
+        "label": "11-inch / Space Gray / 512GB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Space Gray",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-space-gray-512gb-wi-fi-plus-cellular",
+        "label": "11-inch / Space Gray / 512GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Space Gray",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "11-inch-space-gray-1tb-wi-fi",
+        "label": "11-inch / Space Gray / 1TB / Wi-Fi",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Space Gray",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "11-inch-space-gray-1tb-wi-fi-plus-cellular",
+        "label": "11-inch / Space Gray / 1TB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "11-inch",
+          "color": "Space Gray",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-blue-128gb-wi-fi",
+        "label": "13-inch / Blue / 128GB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Blue",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-blue-128gb-wi-fi-plus-cellular",
+        "label": "13-inch / Blue / 128GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Blue",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-blue-256gb-wi-fi",
+        "label": "13-inch / Blue / 256GB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Blue",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-blue-256gb-wi-fi-plus-cellular",
+        "label": "13-inch / Blue / 256GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Blue",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-blue-512gb-wi-fi",
+        "label": "13-inch / Blue / 512GB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Blue",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-blue-512gb-wi-fi-plus-cellular",
+        "label": "13-inch / Blue / 512GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Blue",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-blue-1tb-wi-fi",
+        "label": "13-inch / Blue / 1TB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Blue",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-blue-1tb-wi-fi-plus-cellular",
+        "label": "13-inch / Blue / 1TB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Blue",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-purple-128gb-wi-fi",
+        "label": "13-inch / Purple / 128GB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Purple",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-purple-128gb-wi-fi-plus-cellular",
+        "label": "13-inch / Purple / 128GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Purple",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-purple-256gb-wi-fi",
+        "label": "13-inch / Purple / 256GB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Purple",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-purple-256gb-wi-fi-plus-cellular",
+        "label": "13-inch / Purple / 256GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Purple",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-purple-512gb-wi-fi",
+        "label": "13-inch / Purple / 512GB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Purple",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-purple-512gb-wi-fi-plus-cellular",
+        "label": "13-inch / Purple / 512GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Purple",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-purple-1tb-wi-fi",
+        "label": "13-inch / Purple / 1TB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Purple",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-purple-1tb-wi-fi-plus-cellular",
+        "label": "13-inch / Purple / 1TB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Purple",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-starlight-128gb-wi-fi",
+        "label": "13-inch / Starlight / 128GB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Starlight",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-starlight-128gb-wi-fi-plus-cellular",
+        "label": "13-inch / Starlight / 128GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Starlight",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-starlight-256gb-wi-fi",
+        "label": "13-inch / Starlight / 256GB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Starlight",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-starlight-256gb-wi-fi-plus-cellular",
+        "label": "13-inch / Starlight / 256GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Starlight",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-starlight-512gb-wi-fi",
+        "label": "13-inch / Starlight / 512GB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Starlight",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-starlight-512gb-wi-fi-plus-cellular",
+        "label": "13-inch / Starlight / 512GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Starlight",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-starlight-1tb-wi-fi",
+        "label": "13-inch / Starlight / 1TB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Starlight",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-starlight-1tb-wi-fi-plus-cellular",
+        "label": "13-inch / Starlight / 1TB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Starlight",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-space-gray-128gb-wi-fi",
+        "label": "13-inch / Space Gray / 128GB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Space Gray",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-space-gray-128gb-wi-fi-plus-cellular",
+        "label": "13-inch / Space Gray / 128GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Space Gray",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-space-gray-256gb-wi-fi",
+        "label": "13-inch / Space Gray / 256GB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Space Gray",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-space-gray-256gb-wi-fi-plus-cellular",
+        "label": "13-inch / Space Gray / 256GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Space Gray",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-space-gray-512gb-wi-fi",
+        "label": "13-inch / Space Gray / 512GB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Space Gray",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-space-gray-512gb-wi-fi-plus-cellular",
+        "label": "13-inch / Space Gray / 512GB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Space Gray",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      },
+      {
+        "slug": "13-inch-space-gray-1tb-wi-fi",
+        "label": "13-inch / Space Gray / 1TB / Wi-Fi",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Space Gray",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi"
+        }
+      },
+      {
+        "slug": "13-inch-space-gray-1tb-wi-fi-plus-cellular",
+        "label": "13-inch / Space Gray / 1TB / Wi-Fi + Cellular",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Space Gray",
+          "storage": "1TB",
+          "connectivity": "Wi-Fi + Cellular"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "ipad-mini-a20-pro",
+    "name": "iPad mini with A20 Pro",
+    "brand": "apple",
+    "family": "iPad",
+    "category": {
+      "slug": "tablets",
+      "name": "Tablets"
+    },
+    "launchDate": "2026-11-06",
+    "tagline": "A compact OLED canvas.",
+    "description": "Choose a compact iPad with OLED, then select storage, glass, connectivity, and finish.",
+    "officialUrl": "https://www.apple.com/ipad-mini/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/10/apple-gives-ipad-mini-its-biggest-update-ever/",
+    "image": {
+      "src": "/images/launches/apple-ipad-mini-a20-pro.jpg",
+      "alt": "iPad mini with A20 Pro — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/10/apple-gives-ipad-mini-its-biggest-update-ever/tile/Apple-iPad-mini-hero-261026-lp.jpg.og.jpg?202611161922"
+    },
+    "features": [
+      {
+        "label": "Display",
+        "value": "8.5-inch OLED",
+        "description": "Super Retina XDR reaches up to 1200 nits for HDR content."
+      },
+      {
+        "label": "Performance",
+        "value": "A20 Pro",
+        "description": "CPU and Neural Engine configuration varies by storage capacity."
+      },
+      {
+        "label": "Design",
+        "value": "5.4mm thin",
+        "description": "The enclosure is rated IP67 under laboratory conditions."
+      },
+      {
+        "label": "Camera",
+        "value": "12MP Center Stage",
+        "description": "A landscape front camera supports video calls."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      },
+      {
+        "key": "storage",
+        "label": "Storage"
+      },
+      {
+        "key": "connectivity",
+        "label": "Connectivity"
+      },
+      {
+        "key": "display",
+        "label": "Display glass"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "midnight-128gb-wi-fi-standard-glass",
+        "label": "Midnight / 128GB / Wi-Fi / Standard glass",
+        "attributes": {
+          "color": "Midnight",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi",
+          "display": "Standard glass"
+        }
+      },
+      {
+        "slug": "midnight-128gb-wi-fi-plus-cellular-standard-glass",
+        "label": "Midnight / 128GB / Wi-Fi + Cellular / Standard glass",
+        "attributes": {
+          "color": "Midnight",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi + Cellular",
+          "display": "Standard glass"
+        }
+      },
+      {
+        "slug": "midnight-256gb-wi-fi-standard-glass",
+        "label": "Midnight / 256GB / Wi-Fi / Standard glass",
+        "attributes": {
+          "color": "Midnight",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi",
+          "display": "Standard glass"
+        }
+      },
+      {
+        "slug": "midnight-256gb-wi-fi-nano-texture-glass",
+        "label": "Midnight / 256GB / Wi-Fi / Nano-texture glass",
+        "attributes": {
+          "color": "Midnight",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi",
+          "display": "Nano-texture glass"
+        }
+      },
+      {
+        "slug": "midnight-256gb-wi-fi-plus-cellular-standard-glass",
+        "label": "Midnight / 256GB / Wi-Fi + Cellular / Standard glass",
+        "attributes": {
+          "color": "Midnight",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi + Cellular",
+          "display": "Standard glass"
+        }
+      },
+      {
+        "slug": "midnight-256gb-wi-fi-plus-cellular-nano-texture-glass",
+        "label": "Midnight / 256GB / Wi-Fi + Cellular / Nano-texture glass",
+        "attributes": {
+          "color": "Midnight",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi + Cellular",
+          "display": "Nano-texture glass"
+        }
+      },
+      {
+        "slug": "midnight-512gb-wi-fi-standard-glass",
+        "label": "Midnight / 512GB / Wi-Fi / Standard glass",
+        "attributes": {
+          "color": "Midnight",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi",
+          "display": "Standard glass"
+        }
+      },
+      {
+        "slug": "midnight-512gb-wi-fi-nano-texture-glass",
+        "label": "Midnight / 512GB / Wi-Fi / Nano-texture glass",
+        "attributes": {
+          "color": "Midnight",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi",
+          "display": "Nano-texture glass"
+        }
+      },
+      {
+        "slug": "midnight-512gb-wi-fi-plus-cellular-standard-glass",
+        "label": "Midnight / 512GB / Wi-Fi + Cellular / Standard glass",
+        "attributes": {
+          "color": "Midnight",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi + Cellular",
+          "display": "Standard glass"
+        }
+      },
+      {
+        "slug": "midnight-512gb-wi-fi-plus-cellular-nano-texture-glass",
+        "label": "Midnight / 512GB / Wi-Fi + Cellular / Nano-texture glass",
+        "attributes": {
+          "color": "Midnight",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi + Cellular",
+          "display": "Nano-texture glass"
+        }
+      },
+      {
+        "slug": "starlight-128gb-wi-fi-standard-glass",
+        "label": "Starlight / 128GB / Wi-Fi / Standard glass",
+        "attributes": {
+          "color": "Starlight",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi",
+          "display": "Standard glass"
+        }
+      },
+      {
+        "slug": "starlight-128gb-wi-fi-plus-cellular-standard-glass",
+        "label": "Starlight / 128GB / Wi-Fi + Cellular / Standard glass",
+        "attributes": {
+          "color": "Starlight",
+          "storage": "128GB",
+          "connectivity": "Wi-Fi + Cellular",
+          "display": "Standard glass"
+        }
+      },
+      {
+        "slug": "starlight-256gb-wi-fi-standard-glass",
+        "label": "Starlight / 256GB / Wi-Fi / Standard glass",
+        "attributes": {
+          "color": "Starlight",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi",
+          "display": "Standard glass"
+        }
+      },
+      {
+        "slug": "starlight-256gb-wi-fi-nano-texture-glass",
+        "label": "Starlight / 256GB / Wi-Fi / Nano-texture glass",
+        "attributes": {
+          "color": "Starlight",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi",
+          "display": "Nano-texture glass"
+        }
+      },
+      {
+        "slug": "starlight-256gb-wi-fi-plus-cellular-standard-glass",
+        "label": "Starlight / 256GB / Wi-Fi + Cellular / Standard glass",
+        "attributes": {
+          "color": "Starlight",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi + Cellular",
+          "display": "Standard glass"
+        }
+      },
+      {
+        "slug": "starlight-256gb-wi-fi-plus-cellular-nano-texture-glass",
+        "label": "Starlight / 256GB / Wi-Fi + Cellular / Nano-texture glass",
+        "attributes": {
+          "color": "Starlight",
+          "storage": "256GB",
+          "connectivity": "Wi-Fi + Cellular",
+          "display": "Nano-texture glass"
+        }
+      },
+      {
+        "slug": "starlight-512gb-wi-fi-standard-glass",
+        "label": "Starlight / 512GB / Wi-Fi / Standard glass",
+        "attributes": {
+          "color": "Starlight",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi",
+          "display": "Standard glass"
+        }
+      },
+      {
+        "slug": "starlight-512gb-wi-fi-nano-texture-glass",
+        "label": "Starlight / 512GB / Wi-Fi / Nano-texture glass",
+        "attributes": {
+          "color": "Starlight",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi",
+          "display": "Nano-texture glass"
+        }
+      },
+      {
+        "slug": "starlight-512gb-wi-fi-plus-cellular-standard-glass",
+        "label": "Starlight / 512GB / Wi-Fi + Cellular / Standard glass",
+        "attributes": {
+          "color": "Starlight",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi + Cellular",
+          "display": "Standard glass"
+        }
+      },
+      {
+        "slug": "starlight-512gb-wi-fi-plus-cellular-nano-texture-glass",
+        "label": "Starlight / 512GB / Wi-Fi + Cellular / Nano-texture glass",
+        "attributes": {
+          "color": "Starlight",
+          "storage": "512GB",
+          "connectivity": "Wi-Fi + Cellular",
+          "display": "Nano-texture glass"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "macbook-neo",
+    "name": "MacBook Neo",
+    "brand": "apple",
+    "family": "Mac",
+    "category": {
+      "slug": "laptops",
+      "name": "Laptops"
+    },
+    "launchDate": "2026-03-11",
+    "tagline": "A colorful place to start.",
+    "description": "Configure Apple’s 13-inch A18 Pro notebook in four finishes. The 512GB model includes Touch ID.",
+    "officialUrl": "https://www.apple.com/macbook-neo/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/03/say-hello-to-macbook-neo/",
+    "image": {
+      "src": "/images/launches/apple-macbook-neo.jpg",
+      "alt": "MacBook Neo — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/03/say-hello-to-macbook-neo/tile/Apple-MacBook-Neo-hero-260304-lp.jpg.og.jpg?202608191801"
+    },
+    "features": [
+      {
+        "label": "Performance",
+        "value": "A18 Pro",
+        "description": "A six-core CPU and five-core GPU power this fanless notebook."
+      },
+      {
+        "label": "Display",
+        "value": "13-inch Liquid Retina",
+        "description": "The display reaches 500 nits and supports one billion colors."
+      },
+      {
+        "label": "Battery",
+        "value": "Up to 16 hours",
+        "description": "Apple’s battery estimate varies with use and settings."
+      },
+      {
+        "label": "Camera",
+        "value": "1080p FaceTime HD",
+        "description": "An integrated camera supports meetings and calls."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      },
+      {
+        "key": "storage",
+        "label": "Storage"
+      },
+      {
+        "key": "memory",
+        "label": "Memory"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "silver-256gb-8gb",
+        "label": "Silver / 256GB / 8GB",
+        "attributes": {
+          "color": "Silver",
+          "storage": "256GB",
+          "memory": "8GB"
+        }
+      },
+      {
+        "slug": "silver-512gb-8gb",
+        "label": "Silver / 512GB / 8GB",
+        "attributes": {
+          "color": "Silver",
+          "storage": "512GB",
+          "memory": "8GB"
+        }
+      },
+      {
+        "slug": "blush-256gb-8gb",
+        "label": "Blush / 256GB / 8GB",
+        "attributes": {
+          "color": "Blush",
+          "storage": "256GB",
+          "memory": "8GB"
+        }
+      },
+      {
+        "slug": "blush-512gb-8gb",
+        "label": "Blush / 512GB / 8GB",
+        "attributes": {
+          "color": "Blush",
+          "storage": "512GB",
+          "memory": "8GB"
+        }
+      },
+      {
+        "slug": "citrus-256gb-8gb",
+        "label": "Citrus / 256GB / 8GB",
+        "attributes": {
+          "color": "Citrus",
+          "storage": "256GB",
+          "memory": "8GB"
+        }
+      },
+      {
+        "slug": "citrus-512gb-8gb",
+        "label": "Citrus / 512GB / 8GB",
+        "attributes": {
+          "color": "Citrus",
+          "storage": "512GB",
+          "memory": "8GB"
+        }
+      },
+      {
+        "slug": "indigo-256gb-8gb",
+        "label": "Indigo / 256GB / 8GB",
+        "attributes": {
+          "color": "Indigo",
+          "storage": "256GB",
+          "memory": "8GB"
+        }
+      },
+      {
+        "slug": "indigo-512gb-8gb",
+        "label": "Indigo / 512GB / 8GB",
+        "attributes": {
+          "color": "Indigo",
+          "storage": "512GB",
+          "memory": "8GB"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "macbook-air-m5",
+    "name": "MacBook Air with M5",
+    "brand": "apple",
+    "family": "Mac",
+    "category": {
+      "slug": "laptops",
+      "name": "Laptops"
+    },
+    "launchDate": "2026-03-11",
+    "tagline": "Light to carry. Ready to create.",
+    "description": "Choose a 13-inch or 15-inch Air from curated memory and storage configurations.",
+    "officialUrl": "https://www.apple.com/macbook-air/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5/",
+    "image": {
+      "src": "/images/launches/apple-macbook-air-m5.jpg",
+      "alt": "MacBook Air with M5 — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/03/apple-introduces-the-new-macbook-air-with-m5/tile/Apple-MacBook-Air-hero-260303-lp.jpg.og.jpg?202608191653"
+    },
+    "features": [
+      {
+        "label": "Performance",
+        "value": "M5",
+        "description": "Neural Accelerators in the GPU support local AI workloads."
+      },
+      {
+        "label": "Display",
+        "value": "Liquid Retina",
+        "description": "Choose a 13.6-inch or 15.3-inch display."
+      },
+      {
+        "label": "Wireless",
+        "value": "Wi-Fi 7 and Bluetooth 6",
+        "description": "Apple’s N1 chip handles wireless connectivity."
+      },
+      {
+        "label": "Camera",
+        "value": "12MP Center Stage",
+        "description": "Automatic framing supports video calls."
+      }
+    ],
+    "options": [
+      {
+        "key": "size",
+        "label": "Size"
+      },
+      {
+        "key": "color",
+        "label": "Finish"
+      },
+      {
+        "key": "memory",
+        "label": "Memory"
+      },
+      {
+        "key": "storage",
+        "label": "Storage"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "13-inch-sky-blue-16gb-512gb",
+        "label": "13-inch / Sky Blue / 16GB / 512GB",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Sky Blue",
+          "memory": "16GB",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "13-inch-sky-blue-24gb-1tb",
+        "label": "13-inch / Sky Blue / 24GB / 1TB",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Sky Blue",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "13-inch-silver-16gb-512gb",
+        "label": "13-inch / Silver / 16GB / 512GB",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Silver",
+          "memory": "16GB",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "13-inch-silver-24gb-1tb",
+        "label": "13-inch / Silver / 24GB / 1TB",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Silver",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "13-inch-starlight-16gb-512gb",
+        "label": "13-inch / Starlight / 16GB / 512GB",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Starlight",
+          "memory": "16GB",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "13-inch-starlight-24gb-1tb",
+        "label": "13-inch / Starlight / 24GB / 1TB",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Starlight",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "13-inch-midnight-16gb-512gb",
+        "label": "13-inch / Midnight / 16GB / 512GB",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Midnight",
+          "memory": "16GB",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "13-inch-midnight-24gb-1tb",
+        "label": "13-inch / Midnight / 24GB / 1TB",
+        "attributes": {
+          "size": "13-inch",
+          "color": "Midnight",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "15-inch-sky-blue-16gb-512gb",
+        "label": "15-inch / Sky Blue / 16GB / 512GB",
+        "attributes": {
+          "size": "15-inch",
+          "color": "Sky Blue",
+          "memory": "16GB",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "15-inch-sky-blue-24gb-1tb",
+        "label": "15-inch / Sky Blue / 24GB / 1TB",
+        "attributes": {
+          "size": "15-inch",
+          "color": "Sky Blue",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "15-inch-silver-16gb-512gb",
+        "label": "15-inch / Silver / 16GB / 512GB",
+        "attributes": {
+          "size": "15-inch",
+          "color": "Silver",
+          "memory": "16GB",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "15-inch-silver-24gb-1tb",
+        "label": "15-inch / Silver / 24GB / 1TB",
+        "attributes": {
+          "size": "15-inch",
+          "color": "Silver",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "15-inch-starlight-16gb-512gb",
+        "label": "15-inch / Starlight / 16GB / 512GB",
+        "attributes": {
+          "size": "15-inch",
+          "color": "Starlight",
+          "memory": "16GB",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "15-inch-starlight-24gb-1tb",
+        "label": "15-inch / Starlight / 24GB / 1TB",
+        "attributes": {
+          "size": "15-inch",
+          "color": "Starlight",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "15-inch-midnight-16gb-512gb",
+        "label": "15-inch / Midnight / 16GB / 512GB",
+        "attributes": {
+          "size": "15-inch",
+          "color": "Midnight",
+          "memory": "16GB",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "15-inch-midnight-24gb-1tb",
+        "label": "15-inch / Midnight / 24GB / 1TB",
+        "attributes": {
+          "size": "15-inch",
+          "color": "Midnight",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "macbook-pro-m5-pro-max",
+    "name": "MacBook Pro with M5 Pro or M5 Max",
+    "brand": "apple",
+    "family": "Mac",
+    "category": {
+      "slug": "laptops",
+      "name": "Laptops"
+    },
+    "launchDate": "2026-03-11",
+    "tagline": "Power for demanding projects.",
+    "description": "The March 2026 Liquid Retina XDR generation, with curated M5 Pro and M5 Max configurations.",
+    "officialUrl": "https://www.apple.com/macbook-pro/liquid-retina-xdr-display/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/03/apple-introduces-macbook-pro-with-all-new-m5-pro-and-m5-max/",
+    "image": {
+      "src": "/images/launches/apple-macbook-pro-m5-pro-max.jpg",
+      "alt": "MacBook Pro with M5 Pro or M5 Max — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/03/apple-introduces-macbook-pro-with-all-new-m5-pro-and-m5-max/tile/Apple-MacBook-Pro-M5-Pro-and-M5-Max-Capture-One-260303-lp.jpg.og.jpg?202608191653"
+    },
+    "features": [
+      {
+        "label": "Performance",
+        "value": "M5 Pro or M5 Max",
+        "description": "Choose the chip tier for your professional workloads."
+      },
+      {
+        "label": "Display",
+        "value": "Liquid Retina XDR",
+        "description": "Available in 14-inch and 16-inch sizes."
+      },
+      {
+        "label": "Connectivity",
+        "value": "Thunderbolt 5",
+        "description": "High-speed ports connect storage, docks, and displays."
+      },
+      {
+        "label": "Wireless",
+        "value": "Wi-Fi 7 and Bluetooth 6",
+        "description": "N1 brings updated wireless connectivity."
+      }
+    ],
+    "options": [
+      {
+        "key": "size",
+        "label": "Size"
+      },
+      {
+        "key": "color",
+        "label": "Finish"
+      },
+      {
+        "key": "chip",
+        "label": "Chip"
+      },
+      {
+        "key": "memory",
+        "label": "Memory"
+      },
+      {
+        "key": "storage",
+        "label": "Storage"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "14-inch-space-black-m5-pro-24gb-1tb",
+        "label": "14-inch / Space Black / M5 Pro / 24GB / 1TB",
+        "attributes": {
+          "size": "14-inch",
+          "color": "Space Black",
+          "chip": "M5 Pro",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "14-inch-space-black-m5-max-36gb-2tb",
+        "label": "14-inch / Space Black / M5 Max / 36GB / 2TB",
+        "attributes": {
+          "size": "14-inch",
+          "color": "Space Black",
+          "chip": "M5 Max",
+          "memory": "36GB",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "14-inch-silver-m5-pro-24gb-1tb",
+        "label": "14-inch / Silver / M5 Pro / 24GB / 1TB",
+        "attributes": {
+          "size": "14-inch",
+          "color": "Silver",
+          "chip": "M5 Pro",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "14-inch-silver-m5-max-36gb-2tb",
+        "label": "14-inch / Silver / M5 Max / 36GB / 2TB",
+        "attributes": {
+          "size": "14-inch",
+          "color": "Silver",
+          "chip": "M5 Max",
+          "memory": "36GB",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "16-inch-space-black-m5-pro-24gb-1tb",
+        "label": "16-inch / Space Black / M5 Pro / 24GB / 1TB",
+        "attributes": {
+          "size": "16-inch",
+          "color": "Space Black",
+          "chip": "M5 Pro",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "16-inch-space-black-m5-max-36gb-2tb",
+        "label": "16-inch / Space Black / M5 Max / 36GB / 2TB",
+        "attributes": {
+          "size": "16-inch",
+          "color": "Space Black",
+          "chip": "M5 Max",
+          "memory": "36GB",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "16-inch-silver-m5-pro-24gb-1tb",
+        "label": "16-inch / Silver / M5 Pro / 24GB / 1TB",
+        "attributes": {
+          "size": "16-inch",
+          "color": "Silver",
+          "chip": "M5 Pro",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "16-inch-silver-m5-max-36gb-2tb",
+        "label": "16-inch / Silver / M5 Max / 36GB / 2TB",
+        "attributes": {
+          "size": "16-inch",
+          "color": "Silver",
+          "chip": "M5 Max",
+          "memory": "36GB",
+          "storage": "2TB"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "macbook-pro-m6",
+    "name": "14-inch MacBook Pro with M6",
+    "brand": "apple",
+    "family": "Mac",
+    "category": {
+      "slug": "laptops",
+      "name": "Laptops"
+    },
+    "launchDate": "2026-11-06",
+    "tagline": "Portable performance, with M6.",
+    "description": "Explore the 14-inch Liquid Retina XDR model with the M6 chip. Configurations shown use standard display glass.",
+    "officialUrl": "https://www.apple.com/macbook-pro/liquid-retina-xdr-display/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/",
+    "image": {
+      "src": "/images/launches/apple-macbook-pro-m6.jpg",
+      "alt": "14-inch MacBook Pro with M6 — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/tile/Apple-MacBook-Pro-14-in-with-M6-hero-261027-lp.jpg.og.jpg?202611161923"
+    },
+    "features": [
+      {
+        "label": "Performance",
+        "value": "12-core CPU and GPU",
+        "description": "M6 adds Neural Accelerators and a Dual 16-core Neural Engine."
+      },
+      {
+        "label": "Display",
+        "value": "Liquid Retina XDR",
+        "description": "ProMotion adapts refresh rates up to 120Hz."
+      },
+      {
+        "label": "Battery",
+        "value": "Up to 24 hours",
+        "description": "Apple’s video streaming estimate varies with use and settings."
+      },
+      {
+        "label": "Wireless",
+        "value": "Wi-Fi 7 and Bluetooth 6",
+        "description": "Connect to compatible networks and accessories."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      },
+      {
+        "key": "memory",
+        "label": "Memory"
+      },
+      {
+        "key": "storage",
+        "label": "Storage"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "space-black-16gb-1tb",
+        "label": "Space Black / 16GB / 1TB",
+        "attributes": {
+          "color": "Space Black",
+          "memory": "16GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "space-black-16gb-2tb",
+        "label": "Space Black / 16GB / 2TB",
+        "attributes": {
+          "color": "Space Black",
+          "memory": "16GB",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "space-black-24gb-1tb",
+        "label": "Space Black / 24GB / 1TB",
+        "attributes": {
+          "color": "Space Black",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "space-black-24gb-2tb",
+        "label": "Space Black / 24GB / 2TB",
+        "attributes": {
+          "color": "Space Black",
+          "memory": "24GB",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "space-black-32gb-1tb",
+        "label": "Space Black / 32GB / 1TB",
+        "attributes": {
+          "color": "Space Black",
+          "memory": "32GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "space-black-32gb-2tb",
+        "label": "Space Black / 32GB / 2TB",
+        "attributes": {
+          "color": "Space Black",
+          "memory": "32GB",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "silver-16gb-1tb",
+        "label": "Silver / 16GB / 1TB",
+        "attributes": {
+          "color": "Silver",
+          "memory": "16GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "silver-16gb-2tb",
+        "label": "Silver / 16GB / 2TB",
+        "attributes": {
+          "color": "Silver",
+          "memory": "16GB",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "silver-24gb-1tb",
+        "label": "Silver / 24GB / 1TB",
+        "attributes": {
+          "color": "Silver",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "silver-24gb-2tb",
+        "label": "Silver / 24GB / 2TB",
+        "attributes": {
+          "color": "Silver",
+          "memory": "24GB",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "silver-32gb-1tb",
+        "label": "Silver / 32GB / 1TB",
+        "attributes": {
+          "color": "Silver",
+          "memory": "32GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "silver-32gb-2tb",
+        "label": "Silver / 32GB / 2TB",
+        "attributes": {
+          "color": "Silver",
+          "memory": "32GB",
+          "storage": "2TB"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "macbook-pro-proled-xdr",
+    "name": "MacBook Pro with PROLED XDR",
+    "brand": "apple",
+    "family": "Mac",
+    "category": {
+      "slug": "laptops",
+      "name": "Laptops"
+    },
+    "launchDate": "2026-11-06",
+    "tagline": "OLED meets a pro notebook.",
+    "description": "Choose a touch-enabled PROLED XDR MacBook Pro. Curated configurations use standard glass.",
+    "officialUrl": "https://www.apple.com/macbook-pro/proled-xdr-display/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/",
+    "image": {
+      "src": "/images/launches/apple-macbook-pro-proled-xdr.jpg",
+      "alt": "MacBook Pro with PROLED XDR — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/tile/Apple-MacBook-Pro-with-PROLED-XDR-Display-Touch-experience-261028-lp.jpg.og.jpg?202611161921"
+    },
+    "features": [
+      {
+        "label": "Display",
+        "value": "Tandem OLED with touch",
+        "description": "PROLED XDR supports up to 120Hz refresh rates."
+      },
+      {
+        "label": "Brightness",
+        "value": "Up to 2000 nits",
+        "description": "The display supports high-brightness SDR and HDR content."
+      },
+      {
+        "label": "Performance",
+        "value": "M5 Pro or M5 Max",
+        "description": "Choose a professional chip tier in either display size."
+      },
+      {
+        "label": "Connectivity",
+        "value": "Thunderbolt 5",
+        "description": "Connect high-speed peripherals and external displays."
+      }
+    ],
+    "options": [
+      {
+        "key": "size",
+        "label": "Size"
+      },
+      {
+        "key": "color",
+        "label": "Finish"
+      },
+      {
+        "key": "chip",
+        "label": "Chip"
+      },
+      {
+        "key": "memory",
+        "label": "Memory"
+      },
+      {
+        "key": "storage",
+        "label": "Storage"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "14-inch-space-black-m5-pro-24gb-1tb",
+        "label": "14-inch / Space Black / M5 Pro / 24GB / 1TB",
+        "attributes": {
+          "size": "14-inch",
+          "color": "Space Black",
+          "chip": "M5 Pro",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "14-inch-space-black-m5-max-36gb-2tb",
+        "label": "14-inch / Space Black / M5 Max / 36GB / 2TB",
+        "attributes": {
+          "size": "14-inch",
+          "color": "Space Black",
+          "chip": "M5 Max",
+          "memory": "36GB",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "14-inch-silver-m5-pro-24gb-1tb",
+        "label": "14-inch / Silver / M5 Pro / 24GB / 1TB",
+        "attributes": {
+          "size": "14-inch",
+          "color": "Silver",
+          "chip": "M5 Pro",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "14-inch-silver-m5-max-36gb-2tb",
+        "label": "14-inch / Silver / M5 Max / 36GB / 2TB",
+        "attributes": {
+          "size": "14-inch",
+          "color": "Silver",
+          "chip": "M5 Max",
+          "memory": "36GB",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "16-inch-space-black-m5-pro-24gb-1tb",
+        "label": "16-inch / Space Black / M5 Pro / 24GB / 1TB",
+        "attributes": {
+          "size": "16-inch",
+          "color": "Space Black",
+          "chip": "M5 Pro",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "16-inch-space-black-m5-max-36gb-2tb",
+        "label": "16-inch / Space Black / M5 Max / 36GB / 2TB",
+        "attributes": {
+          "size": "16-inch",
+          "color": "Space Black",
+          "chip": "M5 Max",
+          "memory": "36GB",
+          "storage": "2TB"
+        }
+      },
+      {
+        "slug": "16-inch-silver-m5-pro-24gb-1tb",
+        "label": "16-inch / Silver / M5 Pro / 24GB / 1TB",
+        "attributes": {
+          "size": "16-inch",
+          "color": "Silver",
+          "chip": "M5 Pro",
+          "memory": "24GB",
+          "storage": "1TB"
+        }
+      },
+      {
+        "slug": "16-inch-silver-m5-max-36gb-2tb",
+        "label": "16-inch / Silver / M5 Max / 36GB / 2TB",
+        "attributes": {
+          "size": "16-inch",
+          "color": "Silver",
+          "chip": "M5 Max",
+          "memory": "36GB",
+          "storage": "2TB"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "imac-m6",
+    "name": "iMac with M6",
+    "brand": "apple",
+    "family": "Mac",
+    "category": {
+      "slug": "desktops",
+      "name": "Desktops"
+    },
+    "launchDate": "2026-11-06",
+    "tagline": "Color for your whole desktop.",
+    "description": "Select an M6 iMac in seven colors. These configurations include standard glass and the desktop stand.",
+    "officialUrl": "https://www.apple.com/imac/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/10/apple-unveils-new-imac-with-m6/",
+    "image": {
+      "src": "/images/launches/apple-imac-m6.jpg",
+      "alt": "iMac with M6 — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/10/apple-unveils-new-imac-with-m6/tile/Apple-iMac-with-M6-hero-261027-lp.jpg.og.jpg?202611161923"
+    },
+    "features": [
+      {
+        "label": "Display",
+        "value": "24-inch 4.5K Retina",
+        "description": "The actual diagonal measures 23.5 inches."
+      },
+      {
+        "label": "Performance",
+        "value": "M6",
+        "description": "Choose ten-core or twelve-core CPU and GPU configurations."
+      },
+      {
+        "label": "Camera",
+        "value": "12MP Center Stage",
+        "description": "Video calls benefit from automatic framing."
+      },
+      {
+        "label": "Wireless",
+        "value": "Wi-Fi 7 and Bluetooth 6",
+        "description": "Connect to compatible networks and accessories."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      },
+      {
+        "key": "chip",
+        "label": "Chip"
+      },
+      {
+        "key": "memory",
+        "label": "Memory"
+      },
+      {
+        "key": "storage",
+        "label": "Storage"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "blue-m6-10-core-cpu-10-core-gpu-16gb-256gb",
+        "label": "Blue / M6 10-core CPU / 10-core GPU / 16GB / 256GB",
+        "attributes": {
+          "color": "Blue",
+          "chip": "M6 10-core CPU / 10-core GPU",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "blue-m6-12-core-cpu-12-core-gpu-16gb-256gb",
+        "label": "Blue / M6 12-core CPU / 12-core GPU / 16GB / 256GB",
+        "attributes": {
+          "color": "Blue",
+          "chip": "M6 12-core CPU / 12-core GPU",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "green-m6-10-core-cpu-10-core-gpu-16gb-256gb",
+        "label": "Green / M6 10-core CPU / 10-core GPU / 16GB / 256GB",
+        "attributes": {
+          "color": "Green",
+          "chip": "M6 10-core CPU / 10-core GPU",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "green-m6-12-core-cpu-12-core-gpu-16gb-256gb",
+        "label": "Green / M6 12-core CPU / 12-core GPU / 16GB / 256GB",
+        "attributes": {
+          "color": "Green",
+          "chip": "M6 12-core CPU / 12-core GPU",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "pink-m6-10-core-cpu-10-core-gpu-16gb-256gb",
+        "label": "Pink / M6 10-core CPU / 10-core GPU / 16GB / 256GB",
+        "attributes": {
+          "color": "Pink",
+          "chip": "M6 10-core CPU / 10-core GPU",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "pink-m6-12-core-cpu-12-core-gpu-16gb-256gb",
+        "label": "Pink / M6 12-core CPU / 12-core GPU / 16GB / 256GB",
+        "attributes": {
+          "color": "Pink",
+          "chip": "M6 12-core CPU / 12-core GPU",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "yellow-m6-10-core-cpu-10-core-gpu-16gb-256gb",
+        "label": "Yellow / M6 10-core CPU / 10-core GPU / 16GB / 256GB",
+        "attributes": {
+          "color": "Yellow",
+          "chip": "M6 10-core CPU / 10-core GPU",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "yellow-m6-12-core-cpu-12-core-gpu-16gb-256gb",
+        "label": "Yellow / M6 12-core CPU / 12-core GPU / 16GB / 256GB",
+        "attributes": {
+          "color": "Yellow",
+          "chip": "M6 12-core CPU / 12-core GPU",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "purple-m6-10-core-cpu-10-core-gpu-16gb-256gb",
+        "label": "Purple / M6 10-core CPU / 10-core GPU / 16GB / 256GB",
+        "attributes": {
+          "color": "Purple",
+          "chip": "M6 10-core CPU / 10-core GPU",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "purple-m6-12-core-cpu-12-core-gpu-16gb-256gb",
+        "label": "Purple / M6 12-core CPU / 12-core GPU / 16GB / 256GB",
+        "attributes": {
+          "color": "Purple",
+          "chip": "M6 12-core CPU / 12-core GPU",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "orange-m6-10-core-cpu-10-core-gpu-16gb-256gb",
+        "label": "Orange / M6 10-core CPU / 10-core GPU / 16GB / 256GB",
+        "attributes": {
+          "color": "Orange",
+          "chip": "M6 10-core CPU / 10-core GPU",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "orange-m6-12-core-cpu-12-core-gpu-16gb-256gb",
+        "label": "Orange / M6 12-core CPU / 12-core GPU / 16GB / 256GB",
+        "attributes": {
+          "color": "Orange",
+          "chip": "M6 12-core CPU / 12-core GPU",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "silver-m6-10-core-cpu-10-core-gpu-16gb-256gb",
+        "label": "Silver / M6 10-core CPU / 10-core GPU / 16GB / 256GB",
+        "attributes": {
+          "color": "Silver",
+          "chip": "M6 10-core CPU / 10-core GPU",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "silver-m6-12-core-cpu-12-core-gpu-16gb-256gb",
+        "label": "Silver / M6 12-core CPU / 12-core GPU / 16GB / 256GB",
+        "attributes": {
+          "color": "Silver",
+          "chip": "M6 12-core CPU / 12-core GPU",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "mac-mini-2026",
+    "name": "Mac mini with M6 or M5 Pro",
+    "brand": "apple",
+    "family": "Mac",
+    "category": {
+      "slug": "desktops",
+      "name": "Desktops"
+    },
+    "launchDate": "2026-09-22",
+    "tagline": "A small home for big projects.",
+    "description": "Choose a compact desktop with M6 or M5 Pro. Display, keyboard, and mouse are sold separately.",
+    "officialUrl": "https://www.apple.com/mac-mini/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/09/the-new-mac-mini-and-mac-studio-are-available-today/",
+    "image": {
+      "src": "/images/launches/apple-mac-mini-2026.jpg",
+      "alt": "Mac mini with M6 or M5 Pro — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/v/mac-mini/ab/images/meta/mac-mini__dvce2jrm11w2_og.jpg?202611101257"
+    },
+    "features": [
+      {
+        "label": "Performance",
+        "value": "M6 or M5 Pro",
+        "description": "Pick an everyday or professional chip configuration."
+      },
+      {
+        "label": "Wireless",
+        "value": "Wi-Fi 7 and Bluetooth 6",
+        "description": "Updated radios connect to compatible networks and accessories."
+      },
+      {
+        "label": "Networking",
+        "value": "2.5Gb Ethernet",
+        "description": "Wired networking is included; other configurations exist at Apple."
+      }
+    ],
+    "options": [
+      {
+        "key": "chip",
+        "label": "Chip"
+      },
+      {
+        "key": "memory",
+        "label": "Memory"
+      },
+      {
+        "key": "storage",
+        "label": "Storage"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "m6-16gb-256gb",
+        "label": "M6 / 16GB / 256GB",
+        "attributes": {
+          "chip": "M6",
+          "memory": "16GB",
+          "storage": "256GB"
+        }
+      },
+      {
+        "slug": "m6-16gb-512gb",
+        "label": "M6 / 16GB / 512GB",
+        "attributes": {
+          "chip": "M6",
+          "memory": "16GB",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "m6-24gb-512gb",
+        "label": "M6 / 24GB / 512GB",
+        "attributes": {
+          "chip": "M6",
+          "memory": "24GB",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "m5-pro-24gb-512gb",
+        "label": "M5 Pro / 24GB / 512GB",
+        "attributes": {
+          "chip": "M5 Pro",
+          "memory": "24GB",
+          "storage": "512GB"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "mac-studio-2026",
+    "name": "Mac Studio with M5 Max or M5 Ultra",
+    "brand": "apple",
+    "family": "Mac",
+    "category": {
+      "slug": "desktops",
+      "name": "Desktops"
+    },
+    "launchDate": "2026-09-22",
+    "tagline": "A desktop for large workflows.",
+    "description": "Compare the standard M5 Max and M5 Ultra configurations. Peripherals are sold separately.",
+    "officialUrl": "https://www.apple.com/mac-studio/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/09/the-new-mac-mini-and-mac-studio-are-available-today/",
+    "image": {
+      "src": "/images/launches/apple-mac-studio-2026.png",
+      "alt": "Mac Studio with M5 Max or M5 Ultra — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/v/mac-studio/o/images/meta/mac-studio_overview__eedzbosm1t26_og.png?202611101257"
+    },
+    "features": [
+      {
+        "label": "Performance",
+        "value": "M5 Max or M5 Ultra",
+        "description": "The standard chips feature 32-core or 64-core GPUs respectively."
+      },
+      {
+        "label": "Memory",
+        "value": "36GB or 96GB",
+        "description": "These are the memory capacities of the curated base configurations."
+      },
+      {
+        "label": "Connectivity",
+        "value": "Thunderbolt 5",
+        "description": "High-speed connections support professional peripherals."
+      }
+    ],
+    "options": [
+      {
+        "key": "chip",
+        "label": "Chip"
+      },
+      {
+        "key": "memory",
+        "label": "Memory"
+      },
+      {
+        "key": "storage",
+        "label": "Storage"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "m5-max-36gb-512gb",
+        "label": "M5 Max / 36GB / 512GB",
+        "attributes": {
+          "chip": "M5 Max",
+          "memory": "36GB",
+          "storage": "512GB"
+        }
+      },
+      {
+        "slug": "m5-ultra-96gb-1tb",
+        "label": "M5 Ultra / 96GB / 1TB",
+        "attributes": {
+          "chip": "M5 Ultra",
+          "memory": "96GB",
+          "storage": "1TB"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "studio-display-2026",
+    "name": "Studio Display (2026)",
+    "brand": "apple",
+    "family": "Mac",
+    "category": {
+      "slug": "displays",
+      "name": "Displays"
+    },
+    "launchDate": "2026-03-11",
+    "tagline": "A clear view of your work.",
+    "description": "Choose display glass and a stand or VESA adapter for the 2026 Studio Display.",
+    "officialUrl": "https://www.apple.com/studio-display/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/03/apple-unveils-new-studio-display-and-all-new-studio-display-xdr/",
+    "image": {
+      "src": "/images/launches/apple-studio-display-2026.png",
+      "alt": "Studio Display (2026) — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/v/studio-display/f/images/meta/studio-display_overview__cc7vair07fjm_og.png?202603261117"
+    },
+    "features": [
+      {
+        "label": "Display",
+        "value": "27-inch 5K",
+        "description": "600-nit brightness and P3 color support detailed everyday work."
+      },
+      {
+        "label": "Camera",
+        "value": "12MP Center Stage",
+        "description": "Desk View supports presentations during video calls."
+      },
+      {
+        "label": "Connectivity",
+        "value": "Thunderbolt 5",
+        "description": "Connect a compatible Mac and accessories."
+      }
+    ],
+    "options": [
+      {
+        "key": "display",
+        "label": "Display glass"
+      },
+      {
+        "key": "stand",
+        "label": "Stand"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "standard-glass-tilt-adjustable-stand",
+        "label": "Standard glass / Tilt-adjustable stand",
+        "attributes": {
+          "display": "Standard glass",
+          "stand": "Tilt-adjustable stand"
+        }
+      },
+      {
+        "slug": "standard-glass-tilt-and-height-adjustable-stand",
+        "label": "Standard glass / Tilt- and height-adjustable stand",
+        "attributes": {
+          "display": "Standard glass",
+          "stand": "Tilt- and height-adjustable stand"
+        }
+      },
+      {
+        "slug": "standard-glass-vesa-mount-adapter",
+        "label": "Standard glass / VESA mount adapter",
+        "attributes": {
+          "display": "Standard glass",
+          "stand": "VESA mount adapter"
+        }
+      },
+      {
+        "slug": "nano-texture-glass-tilt-adjustable-stand",
+        "label": "Nano-texture glass / Tilt-adjustable stand",
+        "attributes": {
+          "display": "Nano-texture glass",
+          "stand": "Tilt-adjustable stand"
+        }
+      },
+      {
+        "slug": "nano-texture-glass-tilt-and-height-adjustable-stand",
+        "label": "Nano-texture glass / Tilt- and height-adjustable stand",
+        "attributes": {
+          "display": "Nano-texture glass",
+          "stand": "Tilt- and height-adjustable stand"
+        }
+      },
+      {
+        "slug": "nano-texture-glass-vesa-mount-adapter",
+        "label": "Nano-texture glass / VESA mount adapter",
+        "attributes": {
+          "display": "Nano-texture glass",
+          "stand": "VESA mount adapter"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "studio-display-xdr",
+    "name": "Studio Display XDR",
+    "brand": "apple",
+    "family": "Mac",
+    "category": {
+      "slug": "displays",
+      "name": "Displays"
+    },
+    "launchDate": "2026-03-11",
+    "tagline": "More detail in light and shadow.",
+    "description": "Configure Apple’s 27-inch mini-LED display for your desk or a VESA mount.",
+    "officialUrl": "https://www.apple.com/studio-display-xdr/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/03/apple-unveils-new-studio-display-and-all-new-studio-display-xdr/",
+    "image": {
+      "src": "/images/launches/apple-studio-display-xdr.png",
+      "alt": "Studio Display XDR — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/v/studio-display-xdr/b/images/meta/studio_display_xdr__dvvwjvcv36uu_og.png?202604071112"
+    },
+    "features": [
+      {
+        "label": "Display",
+        "value": "27-inch 5K mini-LED",
+        "description": "2304 local dimming zones support high-contrast imagery."
+      },
+      {
+        "label": "Brightness",
+        "value": "Up to 2000 nits HDR",
+        "description": "SDR brightness reaches up to 1000 nits."
+      },
+      {
+        "label": "Refresh rate",
+        "value": "120Hz",
+        "description": "Adaptive Sync spans 47Hz to 120Hz."
+      }
+    ],
+    "options": [
+      {
+        "key": "display",
+        "label": "Display glass"
+      },
+      {
+        "key": "stand",
+        "label": "Stand"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "standard-glass-tilt-and-height-adjustable-stand",
+        "label": "Standard glass / Tilt- and height-adjustable stand",
+        "attributes": {
+          "display": "Standard glass",
+          "stand": "Tilt- and height-adjustable stand"
+        }
+      },
+      {
+        "slug": "standard-glass-vesa-mount-adapter",
+        "label": "Standard glass / VESA mount adapter",
+        "attributes": {
+          "display": "Standard glass",
+          "stand": "VESA mount adapter"
+        }
+      },
+      {
+        "slug": "nano-texture-glass-tilt-and-height-adjustable-stand",
+        "label": "Nano-texture glass / Tilt- and height-adjustable stand",
+        "attributes": {
+          "display": "Nano-texture glass",
+          "stand": "Tilt- and height-adjustable stand"
+        }
+      },
+      {
+        "slug": "nano-texture-glass-vesa-mount-adapter",
+        "label": "Nano-texture glass / VESA mount adapter",
+        "attributes": {
+          "display": "Nano-texture glass",
+          "stand": "VESA mount adapter"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "apple-watch-series-12",
+    "name": "Apple Watch Series 12",
+    "brand": "apple",
+    "family": "Apple Watch",
+    "category": {
+      "slug": "smartwatches",
+      "name": "Smartwatches"
+    },
+    "launchDate": "2026-09-18",
+    "tagline": "Your daily companion, updated.",
+    "description": "Choose an aluminum case, size, and connectivity. Select your preferred compatible band at the retailer.",
+    "officialUrl": "https://www.apple.com/apple-watch-series-12/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+    "image": {
+      "src": "/images/launches/apple-apple-watch-series-12.jpg",
+      "alt": "Apple Watch Series 12 — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/tile/Apple-Watch-Series-12-2up-260909-lp.jpg.og.jpg?202610310045"
+    },
+    "features": [
+      {
+        "label": "Performance",
+        "value": "S11",
+        "description": "Updated Apple silicon powers the watch experience."
+      },
+      {
+        "label": "Sensors",
+        "value": "Health Sensing System",
+        "description": "Supports heart rate, heart-rate variability, and readiness insights."
+      },
+      {
+        "label": "Battery",
+        "value": "Up to 24 hours",
+        "description": "Apple’s estimate depends on usage and settings."
+      },
+      {
+        "label": "Cover glass",
+        "value": "Ceramic Shield 2",
+        "description": "Used on the aluminum models shown here."
+      }
+    ],
+    "options": [
+      {
+        "key": "size",
+        "label": "Size"
+      },
+      {
+        "key": "color",
+        "label": "Finish"
+      },
+      {
+        "key": "connectivity",
+        "label": "Connectivity"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "42mm-dark-bronze-gps",
+        "label": "42mm / Dark Bronze / GPS",
+        "attributes": {
+          "size": "42mm",
+          "color": "Dark Bronze",
+          "connectivity": "GPS"
+        }
+      },
+      {
+        "slug": "42mm-dark-bronze-gps-plus-cellular",
+        "label": "42mm / Dark Bronze / GPS + Cellular",
+        "attributes": {
+          "size": "42mm",
+          "color": "Dark Bronze",
+          "connectivity": "GPS + Cellular"
+        }
+      },
+      {
+        "slug": "42mm-black-gps",
+        "label": "42mm / Black / GPS",
+        "attributes": {
+          "size": "42mm",
+          "color": "Black",
+          "connectivity": "GPS"
+        }
+      },
+      {
+        "slug": "42mm-black-gps-plus-cellular",
+        "label": "42mm / Black / GPS + Cellular",
+        "attributes": {
+          "size": "42mm",
+          "color": "Black",
+          "connectivity": "GPS + Cellular"
+        }
+      },
+      {
+        "slug": "42mm-light-gold-gps",
+        "label": "42mm / Light Gold / GPS",
+        "attributes": {
+          "size": "42mm",
+          "color": "Light Gold",
+          "connectivity": "GPS"
+        }
+      },
+      {
+        "slug": "42mm-light-gold-gps-plus-cellular",
+        "label": "42mm / Light Gold / GPS + Cellular",
+        "attributes": {
+          "size": "42mm",
+          "color": "Light Gold",
+          "connectivity": "GPS + Cellular"
+        }
+      },
+      {
+        "slug": "42mm-space-gray-gps",
+        "label": "42mm / Space Gray / GPS",
+        "attributes": {
+          "size": "42mm",
+          "color": "Space Gray",
+          "connectivity": "GPS"
+        }
+      },
+      {
+        "slug": "42mm-space-gray-gps-plus-cellular",
+        "label": "42mm / Space Gray / GPS + Cellular",
+        "attributes": {
+          "size": "42mm",
+          "color": "Space Gray",
+          "connectivity": "GPS + Cellular"
+        }
+      },
+      {
+        "slug": "46mm-dark-bronze-gps",
+        "label": "46mm / Dark Bronze / GPS",
+        "attributes": {
+          "size": "46mm",
+          "color": "Dark Bronze",
+          "connectivity": "GPS"
+        }
+      },
+      {
+        "slug": "46mm-dark-bronze-gps-plus-cellular",
+        "label": "46mm / Dark Bronze / GPS + Cellular",
+        "attributes": {
+          "size": "46mm",
+          "color": "Dark Bronze",
+          "connectivity": "GPS + Cellular"
+        }
+      },
+      {
+        "slug": "46mm-black-gps",
+        "label": "46mm / Black / GPS",
+        "attributes": {
+          "size": "46mm",
+          "color": "Black",
+          "connectivity": "GPS"
+        }
+      },
+      {
+        "slug": "46mm-black-gps-plus-cellular",
+        "label": "46mm / Black / GPS + Cellular",
+        "attributes": {
+          "size": "46mm",
+          "color": "Black",
+          "connectivity": "GPS + Cellular"
+        }
+      },
+      {
+        "slug": "46mm-light-gold-gps",
+        "label": "46mm / Light Gold / GPS",
+        "attributes": {
+          "size": "46mm",
+          "color": "Light Gold",
+          "connectivity": "GPS"
+        }
+      },
+      {
+        "slug": "46mm-light-gold-gps-plus-cellular",
+        "label": "46mm / Light Gold / GPS + Cellular",
+        "attributes": {
+          "size": "46mm",
+          "color": "Light Gold",
+          "connectivity": "GPS + Cellular"
+        }
+      },
+      {
+        "slug": "46mm-space-gray-gps",
+        "label": "46mm / Space Gray / GPS",
+        "attributes": {
+          "size": "46mm",
+          "color": "Space Gray",
+          "connectivity": "GPS"
+        }
+      },
+      {
+        "slug": "46mm-space-gray-gps-plus-cellular",
+        "label": "46mm / Space Gray / GPS + Cellular",
+        "attributes": {
+          "size": "46mm",
+          "color": "Space Gray",
+          "connectivity": "GPS + Cellular"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "apple-watch-ultra-4",
+    "name": "Apple Watch Ultra 4",
+    "brand": "apple",
+    "family": "Apple Watch",
+    "category": {
+      "slug": "smartwatches",
+      "name": "Smartwatches"
+    },
+    "launchDate": "2026-09-18",
+    "tagline": "Built for longer adventures.",
+    "description": "Choose a titanium finish. Compatible band style and fit are selected at the retailer.",
+    "officialUrl": "https://www.apple.com/apple-watch-ultra-4/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+    "image": {
+      "src": "/images/launches/apple-apple-watch-ultra-4.jpg",
+      "alt": "Apple Watch Ultra 4 — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/09/apple-unveils-apple-watch-ultra-4/tile/Apple-Watch-Ultra-4-hero-260909-lp.jpg.og.jpg?202610310035"
+    },
+    "features": [
+      {
+        "label": "Performance",
+        "value": "S11",
+        "description": "Apple silicon supports the updated sensing system."
+      },
+      {
+        "label": "Battery",
+        "value": "Up to 50 hours",
+        "description": "Apple’s everyday-use estimate varies with settings and activity."
+      },
+      {
+        "label": "Navigation",
+        "value": "GPS and satellite features",
+        "description": "Satellite service availability and requirements vary by region."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      },
+      {
+        "key": "connectivity",
+        "label": "Connectivity"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "natural-titanium-gps-plus-cellular",
+        "label": "Natural Titanium / GPS + Cellular",
+        "attributes": {
+          "color": "Natural Titanium",
+          "connectivity": "GPS + Cellular"
+        }
+      },
+      {
+        "slug": "black-titanium-gps-plus-cellular",
+        "label": "Black Titanium / GPS + Cellular",
+        "attributes": {
+          "color": "Black Titanium",
+          "connectivity": "GPS + Cellular"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "airpods-5",
+    "name": "AirPods 5",
+    "brand": "apple",
+    "family": "AirPods",
+    "category": {
+      "slug": "headphones",
+      "name": "Headphones"
+    },
+    "launchDate": "2026-09-18",
+    "tagline": "Open-ear listening, with ANC.",
+    "description": "Choose the USB-C case or the Wireless Charging Case edition with on-stem volume control.",
+    "officialUrl": "https://www.apple.com/airpods-5/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/09/apple-introduces-airpods-5-with-best-in-class-open-ear-active-noise-cancellation/",
+    "image": {
+      "src": "/images/launches/apple-airpods-5.jpg",
+      "alt": "AirPods 5 — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/09/apple-introduces-airpods-5-with-best-in-class-open-ear-active-noise-cancellation/tile/Apple-AirPods-5-hero-260909-lp.jpg.og.jpg?202610310036"
+    },
+    "features": [
+      {
+        "label": "Noise control",
+        "value": "Active Noise Cancellation",
+        "description": "ANC is included in both AirPods 5 editions."
+      },
+      {
+        "label": "Audio",
+        "value": "Adaptive EQ",
+        "description": "The acoustic system adjusts audio for the listening experience."
+      },
+      {
+        "label": "Case choices",
+        "value": "USB-C or wireless",
+        "description": "The Wireless Charging Case edition also adds on-stem volume control."
+      }
+    ],
+    "options": [
+      {
+        "key": "edition",
+        "label": "Edition"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "usb-c-charging-case",
+        "label": "USB-C Charging Case",
+        "attributes": {
+          "edition": "USB-C Charging Case"
+        }
+      },
+      {
+        "slug": "wireless-charging-case",
+        "label": "Wireless Charging Case",
+        "attributes": {
+          "edition": "Wireless Charging Case"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "airpods-max-2",
+    "name": "AirPods Max 2",
+    "brand": "apple",
+    "family": "AirPods",
+    "category": {
+      "slug": "headphones",
+      "name": "Headphones"
+    },
+    "launchDate": "2026-03-25",
+    "tagline": "Over-ear listening, updated.",
+    "description": "Choose one of five finishes for the H2-powered over-ear headphones.",
+    "officialUrl": "https://www.apple.com/airpods-max/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/03/apple-introduces-airpods-max-2-powered-by-h2/",
+    "image": {
+      "src": "/images/launches/apple-airpods-max-2.jpg",
+      "alt": "AirPods Max 2 — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/03/apple-introduces-airpods-max-2/tile/Apple-AirPods-Max-2-color-lineup-lp.jpg.og.jpg?202608191652"
+    },
+    "features": [
+      {
+        "label": "Performance",
+        "value": "H2",
+        "description": "Apple’s headphone chip powers updated computational audio."
+      },
+      {
+        "label": "Noise control",
+        "value": "ANC and Adaptive Audio",
+        "description": "Adaptive Audio adjusts noise control to the surroundings."
+      },
+      {
+        "label": "Wired audio",
+        "value": "24-bit / 48kHz lossless",
+        "description": "Requires the included USB-C cable and compatible audio content."
+      },
+      {
+        "label": "Conversations",
+        "value": "Conversation Awareness",
+        "description": "Audio lowers when you begin speaking; compatible software is required."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "midnight",
+        "label": "Midnight",
+        "attributes": {
+          "color": "Midnight"
+        }
+      },
+      {
+        "slug": "starlight",
+        "label": "Starlight",
+        "attributes": {
+          "color": "Starlight"
+        }
+      },
+      {
+        "slug": "orange",
+        "label": "Orange",
+        "attributes": {
+          "color": "Orange"
+        }
+      },
+      {
+        "slug": "purple",
+        "label": "Purple",
+        "attributes": {
+          "color": "Purple"
+        }
+      },
+      {
+        "slug": "blue",
+        "label": "Blue",
+        "attributes": {
+          "color": "Blue"
+        }
+      }
+    ],
+    "launchLabel": "Orders opened March 25, 2026; retail early April"
+  },
+  {
+    "slug": "homeview",
+    "name": "Apple HomeView",
+    "brand": "apple",
+    "family": "Home",
+    "category": {
+      "slug": "smart-home",
+      "name": "Smart home"
+    },
+    "launchDate": "2026-11-13",
+    "tagline": "A shared screen for home.",
+    "description": "Select a tabletop or wall-mounted HomeView. Wall-mount hardware is sold separately.",
+    "officialUrl": "https://www.apple.com/apple-homeview/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/11/apple-homeview-available-today/",
+    "image": {
+      "src": "/images/launches/apple-homeview.jpg",
+      "alt": "Apple HomeView — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/10/meet-apple-homeview-a-new-way-to-enjoy-entertainment-and-manage-the-home/tile/Apple-HomeView-lineup-261013-lp.jpg.og.jpg?202611161923"
+    },
+    "features": [
+      {
+        "label": "Display",
+        "value": "7-inch Liquid Retina",
+        "description": "A dedicated screen brings household controls and entertainment together."
+      },
+      {
+        "label": "Performance",
+        "value": "A18",
+        "description": "Apple silicon powers the HomeView experience."
+      },
+      {
+        "label": "Communication",
+        "value": "FaceTime",
+        "description": "Use the built-in camera for video calls."
+      },
+      {
+        "label": "Smart home",
+        "value": "Matter compatibility",
+        "description": "Control compatible connected-home accessories."
+      }
+    ],
+    "options": [
+      {
+        "key": "edition",
+        "label": "Edition"
+      },
+      {
+        "key": "color",
+        "label": "Finish"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "tabletop-silver",
+        "label": "Tabletop / Silver",
+        "attributes": {
+          "edition": "Tabletop",
+          "color": "Silver"
+        }
+      },
+      {
+        "slug": "tabletop-starlight",
+        "label": "Tabletop / Starlight",
+        "attributes": {
+          "edition": "Tabletop",
+          "color": "Starlight"
+        }
+      },
+      {
+        "slug": "tabletop-rose-pink",
+        "label": "Tabletop / Rose Pink",
+        "attributes": {
+          "edition": "Tabletop",
+          "color": "Rose Pink"
+        }
+      },
+      {
+        "slug": "tabletop-space-gray",
+        "label": "Tabletop / Space Gray",
+        "attributes": {
+          "edition": "Tabletop",
+          "color": "Space Gray"
+        }
+      },
+      {
+        "slug": "wall-mounted-silver",
+        "label": "Wall-mounted / Silver",
+        "attributes": {
+          "edition": "Wall-mounted",
+          "color": "Silver"
+        }
+      },
+      {
+        "slug": "wall-mounted-space-gray",
+        "label": "Wall-mounted / Space Gray",
+        "attributes": {
+          "edition": "Wall-mounted",
+          "color": "Space Gray"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "homepod-mini-2",
+    "name": "HomePod mini 2",
+    "brand": "apple",
+    "family": "Home",
+    "category": {
+      "slug": "smart-home",
+      "name": "Smart home"
+    },
+    "launchDate": "2026-10-30",
+    "tagline": "More sound around the home.",
+    "description": "Choose a compact smart speaker in one of five finishes.",
+    "officialUrl": "https://www.apple.com/homepod-mini/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/10/apple-announces-the-next-generation-of-homepod-mini/",
+    "image": {
+      "src": "/images/launches/apple-homepod-mini-2.jpg",
+      "alt": "HomePod mini 2 — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/10/apple-announces-the-next-generation-of-homepod-mini/tile/Apple-HomePod-mini-2-color-lineup-261013-lp.jpg.og.jpg?202611161924"
+    },
+    "features": [
+      {
+        "label": "Audio",
+        "value": "Room-filling sound",
+        "description": "Use one speaker, a stereo pair, or compatible multiroom playback."
+      },
+      {
+        "label": "Home theater",
+        "value": "Four-speaker surround",
+        "description": "Requires the new Apple TV 4K and compatible matching speaker pairs."
+      },
+      {
+        "label": "Smart home",
+        "value": "Voice and Home app control",
+        "description": "Manage compatible accessories with your Apple home setup."
+      }
+    ],
+    "options": [
+      {
+        "key": "color",
+        "label": "Finish"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "pink",
+        "label": "Pink",
+        "attributes": {
+          "color": "Pink"
+        }
+      },
+      {
+        "slug": "green",
+        "label": "Green",
+        "attributes": {
+          "color": "Green"
+        }
+      },
+      {
+        "slug": "blue",
+        "label": "Blue",
+        "attributes": {
+          "color": "Blue"
+        }
+      },
+      {
+        "slug": "white",
+        "label": "White",
+        "attributes": {
+          "color": "White"
+        }
+      },
+      {
+        "slug": "midnight",
+        "label": "Midnight",
+        "attributes": {
+          "color": "Midnight"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "apple-tv-4k-2026",
+    "name": "Apple TV 4K (4th generation)",
+    "brand": "apple",
+    "family": "Home",
+    "category": {
+      "slug": "smart-home",
+      "name": "Smart home"
+    },
+    "launchDate": "2026-11-13",
+    "tagline": "Entertainment with A19.",
+    "description": "Explore the 128GB Wi-Fi and Ethernet Apple TV 4K. Streaming subscriptions and display are separate.",
+    "officialUrl": "https://www.apple.com/apple-tv-4k/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/10/apple-unveils-the-new-apple-tv-4k/",
+    "image": {
+      "src": "/images/launches/apple-apple-tv-4k-2026.jpg",
+      "alt": "Apple TV 4K (4th generation) — official Apple product photography",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/10/apple-unveils-the-new-apple-tv-4k/tile/Apple-TV-4K-261013-lp.jpg.og.jpg?202611161935"
+    },
+    "features": [
+      {
+        "label": "Performance",
+        "value": "A19",
+        "description": "Apple silicon powers entertainment and games."
+      },
+      {
+        "label": "Video",
+        "value": "4K HDR",
+        "description": "Supports Dolby Vision and HDR10+ with compatible content and displays."
+      },
+      {
+        "label": "Connectivity",
+        "value": "Wi-Fi 7 and Ethernet",
+        "description": "Gigabit Ethernet, Thread, and Bluetooth 6 are included."
+      },
+      {
+        "label": "Remote",
+        "value": "Find My Precision Finding",
+        "description": "Locate the compatible Siri Remote using a supported iPhone."
+      }
+    ],
+    "options": [
+      {
+        "key": "storage",
+        "label": "Storage"
+      },
+      {
+        "key": "connectivity",
+        "label": "Connectivity"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "128gb-wi-fi-plus-ethernet",
+        "label": "128GB / Wi-Fi + Ethernet",
+        "attributes": {
+          "storage": "128GB",
+          "connectivity": "Wi-Fi + Ethernet"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "airtag-2",
+    "name": "AirTag (2nd generation)",
+    "brand": "apple",
+    "family": "Accessories",
+    "category": {
+      "slug": "item-trackers",
+      "name": "Item trackers"
+    },
+    "launchDate": "2026-01-26",
+    "tagline": "Keep everyday things close.",
+    "description": "Choose a single AirTag or a four-pack for your belongings. Compatible Apple devices are required.",
+    "officialUrl": "https://www.apple.com/airtag/",
+    "launchSourceUrl": "https://www.apple.com/newsroom/2026/01/apple-introduces-new-airtag-with-expanded-range-and-improved-findability/",
+    "image": {
+      "src": "/images/launches/apple-airtag-2.jpg",
+      "alt": "Second-generation AirTag shown with a separately sold FineWoven Key Ring",
+      "sourceUrl": "https://www.apple.com/newsroom/images/2026/01/apple-introduces-new-airtag-with-expanded-range-and-improved-findability/tile/Apple-AirTag-FineWoven-Key-Ring-lp.jpg.og.jpg?202608191806"
+    },
+    "features": [
+      {
+        "label": "Finding",
+        "value": "Second-generation Ultra Wideband",
+        "description": "Expanded Precision Finding helps locate nearby belongings."
+      },
+      {
+        "label": "Sound",
+        "value": "Louder speaker",
+        "description": "An updated speaker helps you hear a misplaced item."
+      },
+      {
+        "label": "Network",
+        "value": "Find My",
+        "description": "Use Apple’s Find My network with supported devices."
+      }
+    ],
+    "options": [
+      {
+        "key": "edition",
+        "label": "Edition"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "1-pack",
+        "label": "1-pack",
+        "attributes": {
+          "edition": "1-pack"
+        }
+      },
+      {
+        "slug": "4-pack",
+        "label": "4-pack",
+        "attributes": {
+          "edition": "4-pack"
+        }
+      }
+    ],
+    "launchLabel": "Online availability January 26, 2026; stores later that week"
+  }
+]

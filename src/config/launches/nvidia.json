@@ -1,0 +1,460 @@
+[
+  {
+    "slug": "rtx-5090",
+    "name": "NVIDIA GeForce RTX 5090",
+    "brand": "nvidia",
+    "family": "GeForce RTX 50 Series",
+    "category": {
+      "slug": "graphics-cards",
+      "name": "Graphics cards"
+    },
+    "launchDate": "2025-01-30",
+    "tagline": "Build without holding back.",
+    "description": "Explore NVIDIA's flagship Blackwell graphics card with 32GB of GDDR7 memory. The configuration here is NVIDIA Founders Edition; check power, clearance and connector requirements before ordering.",
+    "officialUrl": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/",
+    "launchSourceUrl": "https://www.nvidia.com/en-us/geforce/news/rtx-5090-5080-out-now/",
+    "image": {
+      "src": "/images/products/rtx-5090-hero.jpg",
+      "alt": "NVIDIA GeForce RTX 5090 Founders Edition graphics card",
+      "sourceUrl": "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/graphic-cards/50-series/rtx-5090/geforce-rtx-5090-learn-more-og-1200x630.jpg"
+    },
+    "features": [
+      {
+        "label": "Graphics memory",
+        "value": "32GB GDDR7",
+        "description": "Dedicated video memory. Select the exact listed capacity before comparing retailer offers."
+      },
+      {
+        "label": "Architecture",
+        "value": "Blackwell",
+        "description": "NVIDIA's RTX 50-series GPU architecture with fifth-generation Tensor Cores."
+      },
+      {
+        "label": "CUDA cores",
+        "value": "21,760",
+        "description": "NVIDIA's published GPU specification; partner card cooling and clock speeds may differ."
+      },
+      {
+        "label": "Ray tracing",
+        "value": "4th-generation RT Cores",
+        "description": "Hardware acceleration for lighting and reflections in supported games and applications."
+      },
+      {
+        "label": "AI graphics",
+        "value": "DLSS Multi Frame Generation",
+        "description": "AI-assisted rendering in supported games. Results depend on the game, settings and system."
+      }
+    ],
+    "options": [
+      {
+        "key": "edition",
+        "label": "Edition"
+      },
+      {
+        "key": "memory",
+        "label": "Graphics memory"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "founders-edition",
+        "label": "Founders Edition · 32GB GDDR7",
+        "attributes": {
+          "edition": "Founders Edition",
+          "memory": "32GB GDDR7"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "rtx-5080",
+    "name": "NVIDIA GeForce RTX 5080",
+    "brand": "nvidia",
+    "family": "GeForce RTX 50 Series",
+    "category": {
+      "slug": "graphics-cards",
+      "name": "Graphics cards"
+    },
+    "launchDate": "2025-01-30",
+    "tagline": "Make more of every frame.",
+    "description": "A Blackwell graphics card with 16GB GDDR7 for demanding games and creative applications. Explore the Founders Edition specification, then confirm the exact retailer listing.",
+    "officialUrl": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5080/",
+    "launchSourceUrl": "https://www.nvidia.com/en-us/geforce/news/rtx-5090-5080-out-now/",
+    "image": {
+      "src": "/images/launches/nvidia-rtx-5080.jpg",
+      "alt": "NVIDIA GeForce RTX 5080 Founders Edition graphics card",
+      "sourceUrl": "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/graphic-cards/50-series/rtx-5080/geforce-rtx-5080-og-1200x630.jpg"
+    },
+    "features": [
+      {
+        "label": "Graphics memory",
+        "value": "16GB GDDR7",
+        "description": "Dedicated video memory. Select the exact listed capacity before comparing retailer offers."
+      },
+      {
+        "label": "Architecture",
+        "value": "Blackwell",
+        "description": "NVIDIA's RTX 50-series GPU architecture with fifth-generation Tensor Cores."
+      },
+      {
+        "label": "CUDA cores",
+        "value": "10,752",
+        "description": "NVIDIA's published GPU specification; partner card cooling and clock speeds may differ."
+      },
+      {
+        "label": "Ray tracing",
+        "value": "4th-generation RT Cores",
+        "description": "Hardware acceleration for lighting and reflections in supported games and applications."
+      },
+      {
+        "label": "AI graphics",
+        "value": "DLSS Multi Frame Generation",
+        "description": "AI-assisted rendering in supported games. Results depend on the game, settings and system."
+      }
+    ],
+    "options": [
+      {
+        "key": "edition",
+        "label": "Edition"
+      },
+      {
+        "key": "memory",
+        "label": "Graphics memory"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "founders-edition",
+        "label": "Founders Edition · 16GB GDDR7",
+        "attributes": {
+          "edition": "Founders Edition",
+          "memory": "16GB GDDR7"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "rtx-5070-ti",
+    "name": "NVIDIA GeForce RTX 5070 Ti",
+    "brand": "nvidia",
+    "family": "GeForce RTX 50 Series",
+    "category": {
+      "slug": "graphics-cards",
+      "name": "Graphics cards"
+    },
+    "launchDate": "2025-02-20",
+    "tagline": "More room for your next build.",
+    "description": "Choose the RTX 5070 Ti GPU with 16GB GDDR7. Cards are made by NVIDIA's partners, so cooler design, dimensions and clock speeds depend on the board you buy. The promotional PC image does not represent an included computer.",
+    "officialUrl": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/",
+    "launchSourceUrl": "https://www.nvidia.com/en-us/geforce/news/rtx-5070-ti-out-now/",
+    "image": {
+      "src": "/images/launches/nvidia-rtx-5070-ti.jpg",
+      "alt": "NVIDIA's RTX 5070 Ti launch promotional image showing an illustrative desktop PC; computer not included",
+      "sourceUrl": "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/news/rtx-5070-ti-out-now/geforce-rtx-5070-ti-out-now-ogimage.jpg"
+    },
+    "features": [
+      {
+        "label": "Graphics memory",
+        "value": "16GB GDDR7",
+        "description": "Dedicated video memory. Select the exact listed capacity before comparing retailer offers."
+      },
+      {
+        "label": "Architecture",
+        "value": "Blackwell",
+        "description": "NVIDIA's RTX 50-series GPU architecture with fifth-generation Tensor Cores."
+      },
+      {
+        "label": "CUDA cores",
+        "value": "8,960",
+        "description": "NVIDIA's published GPU specification; partner card cooling and clock speeds may differ."
+      },
+      {
+        "label": "Ray tracing",
+        "value": "4th-generation RT Cores",
+        "description": "Hardware acceleration for lighting and reflections in supported games and applications."
+      },
+      {
+        "label": "AI graphics",
+        "value": "DLSS Multi Frame Generation",
+        "description": "AI-assisted rendering in supported games. Results depend on the game, settings and system."
+      }
+    ],
+    "options": [
+      {
+        "key": "memory",
+        "label": "Graphics memory"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "16gb",
+        "label": "16GB GDDR7",
+        "attributes": {
+          "memory": "16GB GDDR7"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "rtx-5070",
+    "name": "NVIDIA GeForce RTX 5070",
+    "brand": "nvidia",
+    "family": "GeForce RTX 50 Series",
+    "category": {
+      "slug": "graphics-cards",
+      "name": "Graphics cards"
+    },
+    "launchDate": "2025-03-05",
+    "tagline": "Find your next graphics upgrade.",
+    "description": "Explore Blackwell graphics with 12GB GDDR7. Partner cards first launched March 5, 2025; the pictured Founders Edition followed later that month. Confirm the edition in the retailer's listing.",
+    "officialUrl": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/",
+    "launchSourceUrl": "https://www.nvidia.com/en-us/geforce/news/rtx-5070-out-now/",
+    "image": {
+      "src": "/images/launches/nvidia-rtx-5070.jpg",
+      "alt": "NVIDIA GeForce RTX 5070 Founders Edition promotional image",
+      "sourceUrl": "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/news/rtx-5070-out-now/geforce-rtx-5070-out-now-ogimage.jpg"
+    },
+    "features": [
+      {
+        "label": "Graphics memory",
+        "value": "12GB GDDR7",
+        "description": "Dedicated video memory. Select the exact listed capacity before comparing retailer offers."
+      },
+      {
+        "label": "Architecture",
+        "value": "Blackwell",
+        "description": "NVIDIA's RTX 50-series GPU architecture with fifth-generation Tensor Cores."
+      },
+      {
+        "label": "CUDA cores",
+        "value": "6,144",
+        "description": "NVIDIA's published GPU specification; partner card cooling and clock speeds may differ."
+      },
+      {
+        "label": "Ray tracing",
+        "value": "4th-generation RT Cores",
+        "description": "Hardware acceleration for lighting and reflections in supported games and applications."
+      },
+      {
+        "label": "AI graphics",
+        "value": "DLSS Multi Frame Generation",
+        "description": "AI-assisted rendering in supported games. Results depend on the game, settings and system."
+      }
+    ],
+    "options": [
+      {
+        "key": "edition",
+        "label": "Edition"
+      },
+      {
+        "key": "memory",
+        "label": "Graphics memory"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "founders-edition",
+        "label": "Founders Edition · 12GB GDDR7",
+        "attributes": {
+          "edition": "Founders Edition",
+          "memory": "12GB GDDR7"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "rtx-5060-ti",
+    "name": "NVIDIA GeForce RTX 5060 Ti",
+    "brand": "nvidia",
+    "family": "GeForce RTX 50 Series",
+    "category": {
+      "slug": "graphics-cards",
+      "name": "Graphics cards"
+    },
+    "launchDate": "2025-04-16",
+    "tagline": "Choose the memory for your workload.",
+    "description": "RTX 5060 Ti comes in 16GB and 8GB GDDR7 configurations. Select the memory capacity first, then compare the exact partner card. NVIDIA's promotional PC image is illustrative; a computer is not included.",
+    "officialUrl": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/",
+    "launchSourceUrl": "https://www.nvidia.com/en-us/geforce/news/geforce-rtx-5060-ti-game-ready-driver/",
+    "image": {
+      "src": "/images/launches/nvidia-rtx-5060-ti.jpg",
+      "alt": "NVIDIA's RTX 5060 family promotional image showing an illustrative desktop PC; computer not included",
+      "sourceUrl": "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/graphic-cards/50-series/5060-family/geforce-rtx-5060-family-og-1200x630@2x.jpg"
+    },
+    "features": [
+      {
+        "label": "Graphics memory",
+        "value": "8GB or 16GB GDDR7",
+        "description": "Dedicated video memory. Select the exact listed capacity before comparing retailer offers."
+      },
+      {
+        "label": "Architecture",
+        "value": "Blackwell",
+        "description": "NVIDIA's RTX 50-series GPU architecture with fifth-generation Tensor Cores."
+      },
+      {
+        "label": "CUDA cores",
+        "value": "4,608",
+        "description": "NVIDIA's published GPU specification; partner card cooling and clock speeds may differ."
+      },
+      {
+        "label": "Ray tracing",
+        "value": "4th-generation RT Cores",
+        "description": "Hardware acceleration for lighting and reflections in supported games and applications."
+      },
+      {
+        "label": "AI graphics",
+        "value": "DLSS Multi Frame Generation",
+        "description": "AI-assisted rendering in supported games. Results depend on the game, settings and system."
+      }
+    ],
+    "options": [
+      {
+        "key": "memory",
+        "label": "Graphics memory"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "16gb",
+        "label": "16GB GDDR7",
+        "attributes": {
+          "memory": "16GB GDDR7"
+        }
+      },
+      {
+        "slug": "8gb",
+        "label": "8GB GDDR7",
+        "attributes": {
+          "memory": "8GB GDDR7"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "rtx-5060",
+    "name": "NVIDIA GeForce RTX 5060",
+    "brand": "nvidia",
+    "family": "GeForce RTX 50 Series",
+    "category": {
+      "slug": "graphics-cards",
+      "name": "Graphics cards"
+    },
+    "launchDate": "2025-05-19",
+    "tagline": "A fresh start for your PC.",
+    "description": "Explore the RTX 5060 desktop GPU with 8GB GDDR7, Blackwell architecture and hardware ray tracing. Choose the specific partner card at the retailer. The promotional image shows a sample gaming setup, not an included system.",
+    "officialUrl": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/",
+    "launchSourceUrl": "https://www.nvidia.com/en-us/geforce/news/rtx-5060-out-now/",
+    "image": {
+      "src": "/images/launches/nvidia-rtx-5060.jpg",
+      "alt": "NVIDIA's RTX 5060 launch promotional image with a sample gaming PC and displays; system not included",
+      "sourceUrl": "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/news/rtx-5060-out-now/geforce-rtx-5060-out-now-ogimiage.jpg"
+    },
+    "features": [
+      {
+        "label": "Graphics memory",
+        "value": "8GB GDDR7",
+        "description": "Dedicated video memory. Select the exact listed capacity before comparing retailer offers."
+      },
+      {
+        "label": "Architecture",
+        "value": "Blackwell",
+        "description": "NVIDIA's RTX 50-series GPU architecture with fifth-generation Tensor Cores."
+      },
+      {
+        "label": "CUDA cores",
+        "value": "3,840",
+        "description": "NVIDIA's published GPU specification; partner card cooling and clock speeds may differ."
+      },
+      {
+        "label": "Ray tracing",
+        "value": "4th-generation RT Cores",
+        "description": "Hardware acceleration for lighting and reflections in supported games and applications."
+      },
+      {
+        "label": "AI graphics",
+        "value": "DLSS Multi Frame Generation",
+        "description": "AI-assisted rendering in supported games. Results depend on the game, settings and system."
+      }
+    ],
+    "options": [
+      {
+        "key": "memory",
+        "label": "Graphics memory"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "8gb",
+        "label": "8GB GDDR7",
+        "attributes": {
+          "memory": "8GB GDDR7"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "rtx-5050",
+    "name": "NVIDIA GeForce RTX 5050",
+    "brand": "nvidia",
+    "family": "GeForce RTX 50 Series",
+    "category": {
+      "slug": "graphics-cards",
+      "name": "Graphics cards"
+    },
+    "launchDate": "2025-07-01",
+    "launchDatePrecision": "month",
+    "launchLabel": "July 2025",
+    "tagline": "Step into Blackwell.",
+    "description": "The desktop RTX 5050 pairs Blackwell architecture with 8GB GDDR6. This is the desktop GPU, distinct from the laptop version's GDDR7 memory. Partner card dimensions vary; the promotional PC is not included.",
+    "officialUrl": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5050/",
+    "launchSourceUrl": "https://www.nvidia.com/en-us/geforce/news/rtx-5050-desktop-gpu-and-laptops/",
+    "image": {
+      "src": "/images/launches/nvidia-rtx-5050.jpg",
+      "alt": "NVIDIA's RTX 5050 desktop promotional image showing an illustrative PC; computer not included",
+      "sourceUrl": "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/graphic-cards/50-series/rtx-5050/geforce-rtx-5050-og-1200x630.jpg"
+    },
+    "features": [
+      {
+        "label": "Graphics memory",
+        "value": "8GB GDDR6",
+        "description": "Dedicated video memory. Select the exact listed capacity before comparing retailer offers."
+      },
+      {
+        "label": "Architecture",
+        "value": "Blackwell",
+        "description": "NVIDIA's RTX 50-series GPU architecture with fifth-generation Tensor Cores."
+      },
+      {
+        "label": "CUDA cores",
+        "value": "2,560",
+        "description": "NVIDIA's published GPU specification; partner card cooling and clock speeds may differ."
+      },
+      {
+        "label": "Ray tracing",
+        "value": "4th-generation RT Cores",
+        "description": "Hardware acceleration for lighting and reflections in supported games and applications."
+      },
+      {
+        "label": "AI graphics",
+        "value": "DLSS Multi Frame Generation",
+        "description": "AI-assisted rendering in supported games. Results depend on the game, settings and system."
+      }
+    ],
+    "options": [
+      {
+        "key": "memory",
+        "label": "Graphics memory"
+      }
+    ],
+    "variants": [
+      {
+        "slug": "8gb",
+        "label": "8GB GDDR6",
+        "attributes": {
+          "memory": "8GB GDDR6"
+        }
+      }
+    ]
+  }
+]

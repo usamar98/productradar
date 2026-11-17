@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowDown, ArrowRight, Check, ChevronRight, ShieldCheck } from "lucide-react";
+import type { LaunchProduct } from "@/config/launch-catalog";
+import { chooseConfiguration, configurationValues } from "@/lib/radar/configuration";
 import styles from "./product-experience.module.css";
 
 type ProductVariant = { id: string; slug: string; label: string };
@@ -102,16 +104,25 @@ function colorLabel(value: string) {
 }
 
 /** Product presentation is independent of stock observations and retailer prices. */
-export function ProductExperience({ item }: { item: ProductExperienceItem }) {
-  const presentation = presentations[item.slug];
+export function ProductExperience({ item, product, dateLabel, recent, models = [] }: { item: ProductExperienceItem; product?: LaunchProduct; dateLabel?: string; recent?: boolean; models?: { slug: string; name: string }[] }) {
+  const presentation = presentations[item.slug] || (product ? {
+    brand: product.brand, label: product.brand === "apple" ? "Apple" : product.brand === "nvidia" ? "NVIDIA GeForce" : "PlayStation",
+    eyebrow: product.family.toUpperCase(), title: product.name, tagline: product.tagline, description: product.description,
+    image: product.image.src, detailImage: product.image.src, imageAlt: product.image.alt,
+    configureLabel: "Choose your configuration", selectionNote: "These are curated product configurations. Confirm the exact model, compatibility, included accessories and additional options with the manufacturer before ordering.",
+    features: product.features.slice(0, 3),
+  } : undefined);
   const [selectedSlug, setSelectedSlug] = useState(
-    item.variants.find(variant => variant.slug === "256gb-star-white")?.slug ?? item.variants[0]?.slug ?? "",
+    item.variants.find(variant => variant.slug === "256gb-star-white")?.slug ?? product?.variants.find(variant => item.variants.some(value => value.slug === variant.slug))?.slug ?? item.variants[0]?.slug ?? "",
   );
+  const [selectionMessage, setSelectionMessage] = useState("");
 
   if (!presentation) return null;
 
   const selected = item.variants.find(variant => variant.slug === selectedSlug) ?? item.variants[0];
-  const phone = presentation.brand === "apple";
+  const phone = item.slug === "iphone-duo";
+  const configurations = product?.variants.filter(variant => item.variants.some(value => value.slug === variant.slug)) ?? [];
+  const selectedConfiguration = configurations.find(variant => variant.slug === selected?.slug);
   const selectedDetails = selected ? phoneDetails(selected) : null;
   const phoneVariants = item.variants.flatMap(variant => {
     const details = phoneDetails(variant);
@@ -121,12 +132,12 @@ export function ProductExperience({ item }: { item: ProductExperienceItem }) {
   const capacities = ["256gb", "512gb", "1tb", "2tb"].filter(storage => phoneVariants.some(variant => variant.storage === storage));
   const detailImage = phone && selectedDetails
     ? `/images/products/iphone-duo-${selectedDetails.color}.png`
-    : presentation.detailImage;
+    : selectedConfiguration?.image?.src ?? presentation.detailImage;
   const detailAlt = phone && selectedDetails
     ? `iPhone Duo in ${colorLabel(selectedDetails.color)}`
-    : presentation.brand === "playstation"
+    : selectedConfiguration?.image?.alt ?? (item.slug === "playstation-5-pro"
       ? "PlayStation 5 Pro console viewed horizontally"
-      : "Close-up of the NVIDIA GeForce RTX 5090 Founders Edition cooler";
+      : item.slug === "rtx-5090" ? "Close-up of the NVIDIA GeForce RTX 5090 Founders Edition cooler" : presentation.imageAlt);
   const alertHref = selected
     ? `/alerts?item=${encodeURIComponent(item.slug)}&variant=${encodeURIComponent(selected.slug)}`
     : `/alerts?item=${encodeURIComponent(item.slug)}`;
@@ -140,12 +151,22 @@ export function ProductExperience({ item }: { item: ProductExperienceItem }) {
     if (next) setSelectedSlug(next.variant.slug);
   }
 
-  return <section className={`${styles.experience} ${styles[presentation.brand]}`} aria-label={`${item.name} product overview`}>
+  function selectOption(key: string, value: string) {
+    const next = chooseConfiguration(configurations, selectedConfiguration, key, value);
+    if (!next) return;
+    const changed = Object.entries(next.attributes).filter(([field, selection]) => field !== key && selectedConfiguration?.attributes[field] !== selection).map(([field, selection]) => `${product?.options.find(option => option.key === field)?.label ?? field}: ${selection}`);
+    setSelectionMessage(changed.length ? `Available combination selected. Also updated ${changed.join(", ")}.` : "");
+    setSelectedSlug(next.slug);
+  }
+
+  return <section className={`${styles.experience} ${styles[presentation.brand]} ${!presentations[item.slug] ? styles.extendedProduct : ""}`} aria-label={`${item.name} product overview`}>
+    {product && <div className={styles.collectionNav}><div><Link href={`/brands/${product.brand}`}>← All {presentation.label} products</Link><span>Choose product <ChevronRight size={12}/> Explore features <ChevronRight size={12}/> Configure</span></div><nav aria-label={`${product.family} models`}>{models.map(model => <Link key={model.slug} href={`/${model.slug}`} aria-current={model.slug === item.slug ? "page" : undefined}>{model.name}</Link>)}</nav></div>}
     <div className={styles.productNav}>
       <div className={styles.productNavInner}>
         <a href="#overview" className={styles.productName}>{presentation.title}</a>
         <nav aria-label={`${item.name} page sections`}>
           <a href="#overview">Overview</a>
+          {product && <a href="#features">Features</a>}
           <a href="#configure">Configurations</a>
           <a href="#availability">Availability</a>
           <Link href={`/how-to-get-${item.slug}`}>Buying guide</Link>
@@ -162,6 +183,7 @@ export function ProductExperience({ item }: { item: ProductExperienceItem }) {
           <h1>{presentation.title}</h1>
           <p className={styles.tagline}>{presentation.tagline}</p>
           <p className={styles.description}>{presentation.description}</p>
+          {product && <p className={styles.launchDate}>{recent ? "Past year’s launch" : "Earlier release"} · {dateLabel}</p>}
           <div className={styles.heroActions}>
             <a className={styles.primaryButton} href="#configure">{presentation.configureLabel}<ArrowRight size={17}/></a>
             <a className={styles.textButton} href="#availability">Check availability<ChevronRight size={17}/></a>
@@ -192,6 +214,12 @@ export function ProductExperience({ item }: { item: ProductExperienceItem }) {
       </div>)}
     </div>
 
+    {product && <section id="features" className={styles.featuresSection} aria-labelledby="features-title">
+      <div className={styles.sectionIntro}><span className={styles.sectionEyebrow}>GET TO KNOW YOUR NEXT PRODUCT</span><h2 id="features-title">Made for more.<br/><span>Explore the details.</span></h2><p>{product.description}</p></div>
+      <div className={styles.featureCards}>{product.features.map(feature => <article key={feature.label}><span>{feature.label}</span><h3>{feature.value}</h3><p>{feature.description}</p></article>)}</div>
+      <a className={styles.specificationLink} href={product.officialUrl} target="_blank" rel="noopener noreferrer">Read the full {presentation.label} specifications ↗</a>
+    </section>}
+
     <section className={styles.configure} id="configure" aria-labelledby="configuration-title">
       <div className={styles.sectionIntro}>
         <span className={styles.sectionEyebrow}>MAKE IT YOURS</span>
@@ -206,7 +234,7 @@ export function ProductExperience({ item }: { item: ProductExperienceItem }) {
           </div>
           <div className={styles.previewCaption}>
             <strong>{presentation.title}</strong>
-            <span>{phone ? "Explore every finish and storage option." : "A closer look at your next upgrade."}</span>
+            <span>{phone || selectedConfiguration?.image ? "Your selected configuration." : "Official product photograph. Shown finish and accessories may differ from your selection."}</span>
           </div>
         </div>
 
@@ -241,6 +269,12 @@ export function ProductExperience({ item }: { item: ProductExperienceItem }) {
                 >{storageLabel(storage)}{selectedDetails.storage === storage && <Check size={16} aria-hidden="true"/>}</button>)}
               </div>
             </fieldset>
+          </> : product && selectedConfiguration ? <>
+            {product.options.map(option => <fieldset className={styles.fieldset} key={option.key}>
+              <legend><span>{option.label}.</span> Choose your match.</legend>
+              <div className={styles.optionChoices}>{configurationValues(configurations, option.key).map(value => <button type="button" key={value} className={styles.optionChoice} aria-pressed={selectedConfiguration.attributes[option.key] === value} onClick={() => selectOption(option.key, value)}><span>{value}</span>{selectedConfiguration.attributes[option.key] === value && <Check size={16} aria-hidden="true"/>}</button>)}</div>
+            </fieldset>)}
+            <p className={styles.configurationMessage} role="status">{selectionMessage}</p>
           </> : <fieldset className={styles.fieldset}>
             <legend><span>{presentation.brand === "nvidia" ? "Edition." : "Your console."}</span> Choose the right match.</legend>
             <div className={styles.editionChoices}>
@@ -263,6 +297,7 @@ export function ProductExperience({ item }: { item: ProductExperienceItem }) {
             <p aria-live="polite" aria-atomic="true"><strong>{presentation.title}</strong><span>{selected?.label ?? "Choose a configuration"}</span></p>
             <Link href={detailsHref} className={styles.primaryButton}>View this configuration<ArrowRight size={17}/></Link>
             <Link href={alertHref} className={styles.alertLink}>Explore alert options<ChevronRight size={15}/></Link>
+            {product && <a className={styles.alertLink} href={product.officialUrl} target="_blank" rel="noopener noreferrer">View {presentation.label} options ↗</a>}
             <small>Stock and prices are confirmed separately by retailer. Product purchases happen on the retailer’s website.</small>
           </div>
         </div>

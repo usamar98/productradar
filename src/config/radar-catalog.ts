@@ -1,4 +1,5 @@
 import type { PublicItem, PublicSource } from "@/lib/radar/catalog";
+import { launchProducts, productItemId, productVariantId } from "./launch-catalog";
 
 function source(itemId: string, variantId: string, retailer: string, label: string, productUrl: string): PublicSource {
   return {
@@ -14,7 +15,7 @@ const iphoneVariants = ["256GB", "512GB", "1TB", "2TB"].flatMap(capacity => ["Ni
 }));
 
 /** Metadata-only preview. Never publish these entries as observed stock or offers. */
-export const previewCatalog: PublicItem[] = [
+const existingCatalog: PublicItem[] = [
   {
     id: "ps5-pro", slug: "playstation-5-pro", name: "PlayStation 5 Pro", msrpCents: null, imageUrl: "/images/products/ps5-pro-hero.jpg", hidden: false,
     category: { name: "Consoles", slug: "consoles" },
@@ -40,4 +41,22 @@ export const previewCatalog: PublicItem[] = [
       source("rtx-5090", "rtx-5090-standard", "best-buy", "Best Buy", "https://www.bestbuy.com/product/nvidia-geforce-rtx-5090-32gb-founders-edition/6614151"),
     ],
   },
+];
+
+/** New launch records supply browsing metadata, never synthetic inventory. */
+export const previewCatalog: PublicItem[] = [
+  ...existingCatalog,
+  ...launchProducts.filter(product => !existingCatalog.some(item => item.slug === product.slug)).map(product => ({
+    id: productItemId(product.slug),
+    slug: product.slug,
+    name: product.name,
+    msrpCents: null,
+    imageUrl: product.image.src,
+    hidden: false,
+    category: product.category,
+    variants: product.variants.map(variant => ({
+      id: productVariantId(product.slug, variant.slug), slug: variant.slug, label: variant.label,
+    })),
+    sources: [],
+  })),
 ];
