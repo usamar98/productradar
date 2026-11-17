@@ -7,8 +7,8 @@ import { dispatchNotifications, recordCheck } from "../src/worker/runtime";
 import { DeliveryError } from "../src/worker/notifications";
 
 const connectionString = process.env.TEST_DATABASE_URL;
-const safeTestDatabase = connectionString && new URL(connectionString).pathname === "/gpu_stock_watch_test";
-if (connectionString && !safeTestDatabase) throw new Error("Worker integration tests require an isolated gpu_stock_watch_test database.");
+const safeTestDatabase = connectionString && /_test$/.test(new URL(connectionString).pathname);
+if (connectionString && !safeTestDatabase) throw new Error("Worker integration tests require an isolated database whose name ends in _test.");
 
 describe.skipIf(!safeTestDatabase)("durable inventory-to-notification flow (synthetic provider fixtures, real PostgreSQL)", () => {
   const db = new PrismaClient({ adapter: new PrismaPg({ connectionString, max: 5 }) });

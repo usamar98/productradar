@@ -1,0 +1,13 @@
+# Optional deployment template. Fly Machines may incur charges; do not deploy
+# under a free-only constraint unless your account has applicable free credits.
+app = "restock-radar-worker"
+primary_region = "iad"
+[build]
+  dockerfile = "worker/Dockerfile"
+[env]
+  NODE_ENV = "production"
+[processes]
+  worker = "npm run worker"
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"

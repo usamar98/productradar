@@ -1,48 +1,53 @@
-# GPU Stock Watch
+# Restock Radar
 
-A focused TypeScript app for one product: **NVIDIA GeForce RTX 5090 Founders Edition, United States**. Next.js, Tailwind, PostgreSQL/Prisma, a persistent background worker, Better Auth email links, Stripe-hosted billing, Resend and standard Web Push.
+A generic restock-alert MVP: browse stock without an account, select an exact item/variant and retailers, pay through Stripe test Checkout, and receive Resend email and browser push when an observed stock period opens. Launch catalog: **PlayStation 5 Pro**, US retailers, USD. **RTX 5090** is seeded but hidden.
 
-## Current operational status
+The app is implemented for local use and provider setup. **No live retail feeds, real payments, customer alerts, or hosted deployment are claimed.** Retailer URLs are intentionally paused placeholders. The seed inserts catalog metadata and plans only. Public metrics and history come from PostgreSQL; empty states say no data yet. A database outage displays an explicit connection notice and metadata-only preview.
 
-The application and its account, billing, inventory, notification and audit paths are implemented. **Live inventory tracking is not established and live checkout is disabled.** Best Buy's documented Products API needs a developer key and approval for this service's paid-alert use, retention and branding. NVIDIA collection remains disabled because no approved feed was established. See [the source verification record](docs/retailer-sources.md) for exact product identifiers, official documentation, quotas, evidence semantics and required approval.
+## Local setup
 
-No stock observations, customer counts, testimonials or revenue are fabricated. An empty database displays unknown stock and an honest pending-connection message. Retailer links lead to the official exact-edition product pages. This service is independent of NVIDIA and retailers.
+Requires Node 22.12+, npm, and PostgreSQL 17. Copy `.env.example` to `.env`, then set `DATABASE_URL`, `APP_URL`, a random `RADAR_AUTH_SECRET` (32+ characters), and `ADMIN_PASSWORD` (16+ characters). Generate each secret separately:
 
-## Run locally
-
-Use Node.js 22.12+ (a current Node 22 LTS patch is recommended), npm, and a locally installed PostgreSQL 17 server. No paid provider account is needed to explore the public interface. Provider features remain unavailable until configured.
-
-1. Install dependencies: `npm ci --include=dev --include=optional`.
-2. Copy `.env.example` to `.env`. Set `DATABASE_URL` to your PostgreSQL database. Create an empty `gpu_stock_watch` database and a role that owns it. The example credentials are for local development only; use your own password. Generate `BETTER_AUTH_SECRET` with the command in the example.
-3. Run `npm run db:generate`, `npm run db:migrate`, then `npm run db:seed`. The seed only registers retailer metadata; it creates no inventory or customer data.
-4. Start `npm run dev` and open **http://localhost:3000**.
-5. In a second terminal run `npm run worker`.
-
-For example, with `psql` connected as a PostgreSQL administrator:
-
-```sql
-CREATE ROLE gpu LOGIN PASSWORD 'replace-with-your-local-password';
-CREATE DATABASE gpu_stock_watch OWNER gpu;
-CREATE DATABASE gpu_stock_watch_test OWNER gpu;
+```sh
+node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"
+npm ci --include=dev
+npm run db:generate
+npm run db:migrate
+npm run db:seed
+npm run dev
 ```
 
-Set `DATABASE_URL=postgresql://gpu:YOUR_PASSWORD@localhost:5432/gpu_stock_watch` and the analogous `TEST_DATABASE_URL` ending in `/gpu_stock_watch_test`. URL-encode special characters in passwords. The database port in `.env.example` can be changed to match your installation.
+Open http://localhost:3000. In a second terminal run `npm run worker`. `npm run worker:once` performs one cycle for diagnostics. Never run the old `src/worker` entrypoint for Restock Radar.
 
-Production build: `npm run build`, then `npm start`. Run the worker as a separate always-on Node process under your process manager. Set HTTPS `APP_URL`/`BETTER_AUTH_URL`, secure database connectivity, secret storage and restart policies in your hosting environment. Nothing in this task registers a domain, buys a service or deploys publicly.
+This workspace has an isolated local cluster at `.local/postgres`, listening on **127.0.0.1:55432**, and `restock_radar` / `restock_radar_test` databases. The ignored `.env` contains its URLs and generated application/admin secrets. The cluster uses local development trust authentication and binds only to loopback; do not expose it to a network. To restart it on Windows:
 
-## Provider configuration
+```powershell
+& 'C:\Program Files\PostgreSQL\17\bin\pg_ctl.exe' -D 'D:\productfind\.local\postgres' -l 'D:\productfind\.local\postgres-server.log' -o '-p 55432 -h 127.0.0.1' start
+```
 
-**Inventory:** read `docs/retailer-sources.md` first. `BESTBUY_API_KEY` and `BESTBUY_USAGE_APPROVED=true` enable the candidate adapter. The latter is an operator attestation of actual approval, including retention and required branding; it is not a grant of permission. Verify a genuine API response before selling the service. The exact SKU and model must both match; a broad “RTX 5090” name is insufficient. NVIDIA has no enabled adapter. Never use a frontend cart endpoint or bypass a retailer challenge.
+## Configure the product
 
-**Email sign-in:** configure `BETTER_AUTH_SECRET` (at least 32 random characters), `RESEND_API_KEY`, and `EMAIL_FROM` using a verified Resend sending domain. Set the application origin exactly to the browser origin. Magic links expire in ten minutes and tokens are hashed at rest. Password registration is disabled. The app does not print sign-in links or credentials to logs. Configure `SUPPORT_EMAIL` before launch.
+- Plans and refund wording: `src/config/pricing.ts`. Starter $5/month, 2 retailer alerts; Plus $10, 5; Max $20, 10; until-caught pass $9, one retailer, at most 14 days. Each chosen retailer consumes one slot across the plan.
+- Brand and canonical origin: default name **Restock Radar**; set `APP_URL` to the final HTTPS origin. Update branding in `src/components/radar` if changing the name. No domain is purchased.
+- Admin: `/admin`; password is `ADMIN_PASSWORD` in `.env`. Sessions are signed, HTTP-only, same-site, and expire after 8 hours. Changing the password revokes them. Login rate limits persist in PostgreSQL.
+- Source setup: seed, sign in to admin, edit the placeholder exact product URLs, select JSON-LD, set polling interval, review retailer terms/permission, check approval, activate. URLs with existing stock history cannot be reassigned. The worker stops on access denial, rate limits, CAPTCHA, or disallowed robots rules.
+- Support: set `SUPPORT_EMAIL`. Review supplied legal text and operator details before accepting customers.
+- The root layout `<head>` contains the **HACKATHON TRAFFIC TRACKER SLOT**. Add the organizer script there; no tracker is loaded by default.
 
-**Stripe:** use a test secret key during development. Create one USD monthly recurring price, default **799 cents**, and set `STRIPE_PRICE_ID`. `NEXT_PUBLIC_PLAN_PRICE_CENTS` must match the Stripe price; it also sets displayed pricing at build time. Rebuild after changing it. Configure your hosted Checkout terms/privacy URLs and enable cancellation in Customer Portal. Set the webhook signing secret for `/api/billing/webhook`. A success URL alone never grants access. The SDK pins its supported API version; configure Stripe snapshot events to match it.
+## Stripe test billing
 
-Subscribe the endpoint to:
+Set `STRIPE_SECRET_KEY=sk_test_...` and `STRIPE_WEBHOOK_SECRET=whsec_...`. The payment boundary is `src/lib/payments.ts`. It creates inline USD prices from the pricing constants; no Stripe price IDs are required. Live keys and live webhook events are rejected. Card details are entered only on Stripe-hosted Checkout.
+
+```sh
+stripe listen --forward-to localhost:3000/api/radar/webhook
+```
+
+Register that endpoint in Stripe for these snapshot events:
 
 ```text
 checkout.session.completed
 checkout.session.async_payment_succeeded
+checkout.session.expired
 customer.subscription.created
 customer.subscription.updated
 customer.subscription.deleted
@@ -53,75 +58,63 @@ invoice.payment_failed
 invoice.voided
 invoice.marked_uncollectible
 charge.refunded
+charge.updated
 refund.created
 refund.updated
 refund.failed
 ```
 
-The optional Stripe CLI can forward test events with `stripe listen --forward-to localhost:3000/api/billing/webhook`. Copy its `whsec_` secret into `.env`. Complete an actual hosted test checkout and test renewal, failed payment, cancellation and refunds. Unit fixtures do not replace provider test-mode acceptance. A fully refunded current paid period loses alert access. Refunds do not automatically cancel future renewals; cancellation is managed in the portal.
+Enable cancellation in the Stripe Customer Portal. The account dashboard opens an owned portal session. Webhooks verify signatures and commit event markers with payment/subscription changes atomically. Database locks serialize concurrent updates; current Stripe state handles delayed events. A success redirect never grants access. Full refunds of the current paid period deactivate alerts. Renewals restore access only after a confirmed paid period. Refund requests are handled manually in Stripe under the editable 14-day policy; each refund retains its original date for reporting.
 
-**Browser push:** generate VAPID keys with `npx web-push generate-vapid-keys`, then set `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY` and `VAPID_SUBJECT` (`mailto:` or HTTPS contact). Connect a browser from the dashboard through an explicit click. Push requires a secure context; localhost is supported for development. Browser support and OS notification settings vary. Subscription endpoint hosts are restricted to known Web Push providers to prevent arbitrary outbound requests.
+Checkout requires configured transactional email, a secure session secret, and active approved sources. Placeholder retailers cannot be purchased. After checkout, customers request a secure email link to manage alerts and enable push. Login links last 10 minutes and are single use; sessions last 30 days. Notification clicks record `caught_at`; for one-time passes, clicking ends the pass even if the customer does not purchase. This is explained in the interface and terms.
 
-## Live checkout gate
+## Email and browser push
 
-Test checkout requires configured authentication, Stripe test price and signed webhooks. Live checkout additionally requires all of:
+Set `RESEND_API_KEY` and `EMAIL_FROM` using a verified sending domain. Set `SUPPORT_EMAIL` separately. Generate VAPID keys with `npx web-push generate-vapid-keys`, and set `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`. Share `RADAR_AUTH_SECRET` and `APP_URL` between the worker and web app. Public VAPID changes require rebuilding.
 
-- `ENABLE_LIVE_CHECKOUT=true`, a permitted enabled source, and a recent successful known-state observation with no current provider error.
-- Operational Resend and VAPID configuration.
-- `AUTH_FLOW_VERIFIED`, `EMAIL_DELIVERY_VERIFIED`, `PUSH_DELIVERY_VERIFIED`, and `BILLING_FLOW_VERIFIED` after completing those real acceptance checks.
-- In `HACKATHON_MODE`, the organizer's actual HTTPS `TRAFFIC_VERIFICATION_SCRIPT_URL` and `TRAFFIC_VERIFICATION_VERIFIED=true` after verification.
+Push uses an explicit button on `/alerts/manage`, `/sw.js`, and HTTPS (or localhost). Expired endpoints are removed. Email sends use stable Resend idempotency keys. Push uses per-alert/event tags and persistent browser deduplication. Transport delivery can be at-least-once after a network failure; stock is never reserved and no purchase is automated.
 
-Do not set verification flags merely to remove a disabled button. Source and credential checks are enforced on the server. `DEMO_MODE=true` blocks source requests, authentication emails, billing and customer delivery, displays a banner, and does not seed invented stock history.
+## Worker
 
-## Worker and stock correctness
+`/worker` is a continuously running TypeScript process. Sources have individual intervals (15 seconds default), jitter, exponential backoff, and fenced database leases. It opens one event per in-stock period and closes it on an out-of-stock observation. An initial genuine in-stock observation opens an observed period; it does not claim when inventory first became available. Database uniqueness prevents multiple open periods and duplicate alert/event/channel/target jobs. Detection-to-send latency is recorded.
 
-`src/lib/inventory` contains provider adapters and pure rules. `src/worker` owns the scheduler, durable jobs and delivery. Inventory is checked once per retailer across all accounts. Best Buy defaults to a 300-second interval, with a 60-second floor; retailer-specific limits and approval take priority. The five-second worker tick is a queue wakeup, **not** a five-second inventory or notification promise. This requires a continuously running process; serverless cron is not assumed.
+JSON-LD checks use a clear Restock Radar User-Agent, robots rules, public HTTPS addresses only, pinned validated DNS, timeouts, response-size limits, and no redirects. Ambiguous offers are rejected instead of guessing a variant. Terms and polling permissions need operator review. Bot protections are never evaded. Hidden development-only mock sources require `ALLOW_MOCK_CONNECTOR=true` and a non-production runtime; their events never trigger customer delivery or enter public reports. `DEMO_MODE=true` disables polling and stock notification delivery.
 
-The database represents in stock, out of stock, preorder, backorder, unknown and check failed. Failures update check health while preserving the last successful observation. Public results show stale data honestly. Preorder/backorder/future-release evidence takes precedence over order buttons. A restock event needs an observed unavailable-to-available transition; first-ever/unknown discovery does not create an invented restock.
+## Add another item with data
 
-Per-source leases and fenced commits protect overlapping workers. Observations, stock events and matching jobs commit together. Jobs have unique recipient/event/channel/target keys, cooldowns, retries, expiry and leases. Price filters reject missing prices when a cap is configured. Paid access, current preferences, source health and observation freshness are checked again immediately before delivery. Unknown or failed states cannot trigger stock alerts.
+Use Prisma Studio (`npx prisma studio`) or a SQL administration tool:
 
-Resend retries use a stable idempotency key within its 24-hour window; jobs expire much sooner. Web Push is at-least-once, with persistent browser event-ID deduplication and notification tags. No distributed delivery system can promise purchase availability; notifications explicitly say stock is not reserved.
+1. Insert a category if needed.
+2. Insert an item with its category, unique slug, name, optional MSRP/image, and `hidden=true` during preparation.
+3. Insert one or more variants belonging to it.
+4. In `/admin`, add exact retailer sources linked to the item/variant. Review permissions and connector output before activation.
+5. Set `hidden=false`. Public product, retailer, guide, restock, alert-selection, and sitemap routes discover it automatically.
 
-## Privacy, attribution and administration
+Prisma `Radar*` model names map to the brief’s lowercase tables. Existing GPU-only models/data remain for legacy compatibility; new flows use `/api/radar/*`. All tables have RLS enabled with no public Data API policies. Access is through the trusted server database connection only; never expose it or a Supabase service key to browsers.
 
-Optional acquisition measurement is recorded only after opt-in: actual campaign parameters, referring domain, landing path and timestamps. Missing attribution remains null. The first available consented record is linked to the signed-in account and payment. No visitor fingerprint is invented. The optional verification script loads only after consent. The account page allows consent withdrawal.
+## Deployment
 
-`GET /api/admin/export` requires a signed-in, verified email explicitly listed in `ADMIN_EMAILS`. It exports payments, refunds, acquisition records and recorded marketing expenses, with CSV formula escaping and private/no-store headers. It is not a public dashboard. The current export has a documented 10,000-record per-category cap. Add genuine expenses directly to `MarketingExpense` with your database administration tooling; no fictional ad spend is seeded.
+No paid resources are provisioned. An always-on paid-alert business cannot be promised indefinitely free: check provider terms and quotas. [Railway Free](https://docs.railway.com/pricing/plans) provides limited monthly credit; [Fly Machines incur usage charges](https://docs.fly.io/about/cost-management). [Supabase Free](https://supabase.com/pricing) limits active projects to two. Use local execution while credentials or free capacity are unavailable. Stripe test mode does not charge real cards; live processing would have fees and requires a later explicit change.
 
-For an eventual deployment, configure your trusted reverse proxy to overwrite forwarding headers, apply appropriate ingress/body limits, set verified support/operator details, establish approved retention and backups, and schedule rate-limit/expired-session cleanup. Secrets stay server-side. The public stock endpoint returns no customer records. User data queries always derive ownership from the authenticated session.
+**Supabase:** select an appropriate free project, set its direct or session-pooler PostgreSQL URL in `DIRECT_URL` for migrations and `DATABASE_URL` for runtime, and require SSL as directed by its connection panel. Run `npm run db:migrate` then `npm run db:seed`. Do not reuse unrelated projects. See [Prisma connection guidance](https://supabase.com/docs/guides/database/prisma). Prisma migrations are authoritative; never reset a production database. Retain backups and protect the privileged server connection.
 
-## TrustMRR
+**Vercel:** import the repository as Next.js, Node 22; `vercel.json` supplies install/build commands. Configure web variables, run migrations as a deliberate release step, then deploy the tested commit. Set the final HTTPS origin, webhook URL, verified sender and support contact. Check current permitted use and quota before commercial launch. The worker is **not** a Vercel cron job.
 
-There is no custom TrustMRR revenue-writing API in this app. Connect the real Stripe account through TrustMRR's **Dashboard → My Startups / Add startup** flow. Create a separate restricted **read-only** Stripe key with the permissions currently requested by TrustMRR; their published terms specify charges, subscriptions and account information. Supply it directly to TrustMRR, never to this repository or a public environment variable. Do not submit development/test charges as real revenue. Review the current [TrustMRR FAQ](https://trustmrr.com/faq) and [credential requirements](https://trustmrr.com/terms) when connecting. TrustMRR's separate public-data API is not the payment-provider verification connection.
+**Railway worker:** create a service only if free capacity is available. Set configuration path to `worker/railway.json`, leave the repository root as build context, and supply worker secrets. Its Dockerfile generates Prisma and runs `npm run worker`. Use one replica; leases support overlapping restarts. Set spending limits and never upgrade automatically. If credits run out, run locally.
+
+**Fly alternative:** `worker/fly.toml` and `worker/Dockerfile` provide a template. Choose a unique app name and configure secrets. From repository root: `fly deploy --config worker/fly.toml`. No HTTP service is needed. **Do not deploy under a free-only requirement without applicable credits.**
 
 ## Verification
 
-```text
+```sh
 npm test
 npm run typecheck
 npm run build
 npm run test:integration
 ```
 
-Integration tests require an isolated `gpu_stock_watch_test` PostgreSQL database with all migrations applied. Set `TEST_DATABASE_URL`; temporarily use that same URL as `DATABASE_URL` when running `npm run db:migrate` for the test database, then restore the application URL. The suites refuse an unsuitable database or skip without a test URL. They use synthetic retailer/Stripe responses and captured email transport; they do not send customer messages or charge money.
+Integration tests need `TEST_DATABASE_URL` pointing to a separate database ending in `_test`, with migrations applied. The runner loads `.env`; tests create/remove fixture rows. Never use the application database. Coverage includes period open/close/reopen, concurrent worker fencing, actual uniqueness, notification deduplication, plan limits, signed clicks, account isolation, duplicate/failed payment events, refunds and dated reporting. Synthetic provider fixtures send no customer messages or real charges.
 
-Covered cases include exact-edition rejection, preorder precedence, access denial/timeouts, stale results, failure recovery, price filtering, cooldowns, concurrent duplicate checks, retry delivery, subscription changes, duplicate/signed webhooks, payment/refund lifecycle, single-use authentication links and cross-account isolation. The real PostgreSQL pipeline test follows a fixture observation through matching, durable notification generation, captured delivery and the same persisted history joins used by the dashboard.
+Before launch, complete a real Stripe **test** checkout and cancellation/refund, a Resend inbox delivery, supported browser push delivery, and a permitted retailer observation-to-notification run. Local fixtures do not establish external acceptance. Check `/admin`, `/proof`, `sitemap.xml`, `robots.txt`, `/llms.txt` at the final origin. Results are in `docs/verification.md`.
 
-**Still required externally:** approved Best Buy key/usage/retention; a genuine observation-to-delivery acceptance run; verified Resend sender and real inbox test; browser push delivery test; Stripe hosted test checkout and portal acceptance; support/operator information; organizer verification script when applicable. None of those checks is claimed complete merely because local tests pass.
-
-## Structure
-
-```text
-prisma/                 schema, migrations, metadata seed
-src/app/                pages and HTTP routes
-src/components/         responsive interface and consent/push onboarding
-src/lib/inventory/      verified identities, adapters, stock rules
-src/lib/billing/        paid access, readiness, Stripe projections
-src/worker/             persistent scheduler and notification delivery
-tests/                  unit and isolated PostgreSQL integration tests
-docs/retailer-sources.md official-source research and acceptance requirements
-```
-
-Dependency baseline checked against official documentation: [Next.js installation](https://nextjs.org/docs/app/getting-started/installation), [Prisma 7 driver adapters](https://www.prisma.io/docs/orm/v7), [Better Auth Prisma adapter](https://better-auth.com/docs/adapters/prisma). Exact installed versions are locked in `package-lock.json`.
-
+Defaults: Restock Radar; localhost until a domain is assigned; US/USD; PS5 Pro standard edition; four paused retailer placeholders; hidden RTX 5090; one slot per retailer; UTC history; no invented activity; test-only billing; local database/worker until free hosting and credentials are configured.

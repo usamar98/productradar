@@ -1,5 +1,5 @@
 {
-  "name": "gpu-stock-watch",
+  "name": "restock-radar",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,7 +10,8 @@
     "dev": "next dev --hostname 127.0.0.1 --port 3000",
     "build": "prisma generate && next build --webpack",
     "start": "next start --hostname 127.0.0.1 --port 3000",
-    "worker": "tsx src/worker/index.ts",
+    "worker": "tsx worker/index.ts",
+    "worker:once": "tsx worker/index.ts --once",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate deploy",
     "db:seed": "tsx prisma/seed.ts",

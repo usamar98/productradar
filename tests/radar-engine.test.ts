@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { canDeliver, notificationIdentity, pollDelayMs, stockTransition, withinPlanLimit } from "../src/lib/radar/domain";
-import { parseJsonLd, publicAddress, robotsAllows } from "../src/lib/radar/connectors";
+import { assertUnblockedResponse, parseJsonLd, publicAddress, robotsAllows } from "../src/lib/radar/connectors";
 
 describe("observed stock periods", () => {
   it("opens once on availability, closes once on loss and reopens on a subsequent period", () => {
@@ -50,6 +50,22 @@ describe("polite exact-product JSON-LD connector", () => {
   });
   it("uses an exact URL to disambiguate product nodes", () => {
     expect(parseJsonLd(page([{ ...product("InStock"), url: "https://shop.example/item" }, { ...product("OutOfStock"), url: "https://shop.example/recommendation" }]), "https://shop.example/item").inStock).toBe(true);
+  });
+  it("does not assume multiple in-stock offers are the exact chosen variant", () => {
+    expect(() => parseJsonLd(page({ "@type": "Product", offers: [product("InStock").offers, product("InStock").offers] }), "https://shop.example/item")).toThrow("Multiple offers");
+  });
+  it("preserves variant query parameters and rejects mismatching single Product or Offer URLs", () => {
+    const red = "https://shop.example/item?variant=red", blue = "https://shop.example/item?variant=blue";
+    expect(() => parseJsonLd(page({ ...product("InStock"), url: red }), blue)).toThrow("Product URL does not match");
+    expect(() => parseJsonLd(page({ ...product("InStock"), offers: { ...product("InStock").offers, url: red } }), blue)).toThrow("Offer URL does not match");
+    const offers = [{ ...product("InStock").offers, url: red }, { ...product("OutOfStock").offers, url: blue }];
+    expect(parseJsonLd(page({ "@type": "Product", offers }), blue).inStock).toBe(false);
+    expect(parseJsonLd(page({ ...product("InStock"), url: "?variant=red" }), red).inStock).toBe(true);
+  });
+  it("stops on a robots captcha response before checking the product", () => {
+    expect(() => assertUnblockedResponse({ status: 200, text: "<!doctype html><title>Captcha</title>Verify you are human" }, true)).toThrow("Retailer protection detected");
+    expect(() => assertUnblockedResponse({ status: 200, text: "User-agent: *\nDisallow: /captcha" }, true)).not.toThrow();
+    expect(() => assertUnblockedResponse({ status: 429, text: "Slow down" }, true)).toThrow();
   });
   it("honors longest robots rule, group specificity and allow ties", () => {
     const robots = "User-agent: *\nDisallow: /\nUser-agent: RestockRadar\nDisallow: /shop\nAllow: /shop/product\n";

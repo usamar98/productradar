@@ -6,6 +6,13 @@ import type { StockCheck } from "./domain";
 export type ConnectorSource = { id: string; productUrl: string; connector: string; approved: boolean; item?: { hidden: boolean } };
 export interface Connector { check(source: ConnectorSource): Promise<StockCheck> }
 export class BlockedSourceError extends Error {}
+export function assertUnblockedResponse(response: { status: number; text: string }, robots = false) {
+  const challenge = /(?:verify (?:that )?you are human|captcha|access denied|unusual traffic)/i.test(response.text);
+  // A robots directive such as Disallow: /captcha is not a challenge page.
+  if (response.status === 403 || response.status === 429 || (challenge && (!robots || /<(?:html|!doctype|body|script|title)\b/i.test(response.text)))) {
+    throw new BlockedSourceError(`Retailer protection detected (${response.status}); no further polling.`);
+  }
+}
 
 export function publicAddress(address: string): boolean {
   if (isIP(address) === 4) {
@@ -32,7 +39,7 @@ async function safeFetch(value: string, redirects = 0, allowRedirects = true): P
   const response = await new Promise<{ status: number; text: string; location?: string }>((resolve, reject) => {
     const req = request(url, {
       headers: { "User-Agent": `RestockRadar/1.0 (+${process.env.APP_URL || "https://example.com"}; stock availability monitoring)`, Accept: "text/html,application/ld+json,text/plain", "Accept-Encoding": "identity" },
-      lookup: (_host, _options, callback) => callback(null, address.address, address.family),
+      lookup: (_host, options, callback) => options.all ? callback(null, [address]) : callback(null, address.address, address.family),
       timeout: 12_000,
     }, (res) => {
       let body = ""; let size = 0;
@@ -85,7 +92,8 @@ function records(value: unknown): Record<string, unknown>[] {
   return [object, ...records(object["@graph"])];
 }
 const typeIs = (value: unknown, type: string) => (Array.isArray(value) ? value : [value]).some((x) => typeof x === "string" && x.replace(/^https?:\/\/schema.org\//, "") === type);
-const normalize = (value: string) => { const url = new URL(value); return `${url.origin}${url.pathname.replace(/\/$/, "")}`; };
+const normalize = (value: string, base?: string) => { const url = new URL(value, base); url.searchParams.sort(); return `${url.origin}${url.pathname.replace(/\/$/, "")}${url.search}`; };
+const matchesUrl = (candidate: unknown, expected: string) => { try { return typeof candidate === "string" && normalize(candidate, expected) === normalize(expected); } catch { return false; } };
 
 export function parseJsonLd(html: string, productUrl?: string): StockCheck {
   const all: Record<string, unknown>[] = [];
@@ -94,9 +102,15 @@ export function parseJsonLd(html: string, productUrl?: string): StockCheck {
   }
   const products = all.filter((node) => typeIs(node["@type"], "Product"));
   let selected = products;
-  if (products.length > 1) selected = products.filter((p) => typeof p.url === "string" && productUrl && (() => { try { return normalize(p.url as string) === normalize(productUrl); } catch { return false; } })());
+  if (products.length > 1) selected = products.filter((p) => productUrl && matchesUrl(p.url, productUrl));
   if (selected.length !== 1) throw new Error("No unambiguous product JSON-LD found on this exact product page.");
-  const offers = records(selected[0].offers).filter((offer) => typeIs(offer["@type"], "Offer"));
+  if (productUrl && selected[0].url != null && !matchesUrl(selected[0].url, productUrl)) throw new Error("Product URL does not match the exact requested item or variant.");
+  let offers = records(selected[0].offers).filter((offer) => typeIs(offer["@type"], "Offer"));
+  if (offers.length > 1) {
+    offers = offers.filter((offer) => productUrl && matchesUrl(offer.url, productUrl));
+    if (offers.length !== 1) throw new Error("Multiple offers may represent different variants; use an exact offer URL.");
+  }
+  if (productUrl && offers.some(offer => offer.url != null && !matchesUrl(offer.url, productUrl))) throw new Error("Offer URL does not match the exact requested item or variant.");
   const states = offers.map((offer) => {
     const availability = typeof offer.availability === "string" ? offer.availability.replace(/^https?:\/\/schema.org\//, "") : "";
     if (!["InStock", "OutOfStock", "SoldOut", "Discontinued", "PreOrder", "PreSale", "BackOrder", "LimitedAvailability"].includes(availability)) return null;
@@ -118,13 +132,13 @@ export const jsonldConnector: Connector = { async check(source) {
   let robots = robotsCache.get(url.origin);
   if (!robots || robots.expires <= Date.now()) {
     const response = await safeFetch(`${url.origin}/robots.txt`);
-    if (response.status === 403 || response.status === 429) throw new BlockedSourceError(`Robots request blocked (${response.status}).`);
+    assertUnblockedResponse(response, true);
     if (response.status !== 404 && response.status !== 200) throw new Error("Could not verify robots.txt; polling suspended until the next retry.");
     robots = { expires: Date.now() + 3_600_000, text: response.status === 404 ? "" : response.text }; robotsCache.set(url.origin, robots);
   }
   if (!robotsAllows(robots.text, `${url.pathname}${url.search}`)) throw new BlockedSourceError("robots.txt disallows this product path for RestockRadar.");
   const response = await safeFetch(source.productUrl, 0, false);
-  if (response.status === 403 || response.status === 429 || /(?:verify (?:that )?you are human|captcha|access denied|unusual traffic)/i.test(response.text)) throw new BlockedSourceError(`Retailer protection detected (${response.status}); no further polling.`);
+  assertUnblockedResponse(response);
   if (response.status !== 200) throw new Error(`Retailer returned HTTP ${response.status}.`);
   return parseJsonLd(response.text, source.productUrl);
 } };
