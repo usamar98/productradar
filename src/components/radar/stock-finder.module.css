@@ -5,3 +5,5 @@
 .more p { color: var(--rr-muted, #617080); font-size: .875rem; }
 
 .connection{display:grid;gap:.6rem;margin:1.5rem 0;padding:1.25rem;border:1px solid #d8dde6;border-radius:16px;background:#f6f8fb;color:#263343}.connection p{margin:0;line-height:1.55}.connectionLabel{font-size:.8rem;font-weight:750;text-transform:uppercase;letter-spacing:.06em}.connection small{color:#596678;line-height:1.5}.connection a{font-weight:650;color:#1754ba;justify-self:start}
+
+.reason{font-size:12px;line-height:1.65;color:#6c6379;margin:10px 0 0}

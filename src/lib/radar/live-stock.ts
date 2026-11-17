@@ -6,13 +6,18 @@ import { lookupApplePickup, lookupOfficialOnline, type OfficialConnectorName } f
 import { BlockedSourceError } from "./source-http";
 import { recordObservation } from "../../../worker/runtime";
 import type { StockCheck } from "./domain";
+import { collectAppleCoverage } from "./apple-coverage";
+import { readOfficialResource } from "./official-api";
 
 const blockPrefix = "Inventory endpoint blocked: ";
-export type LiveLookup = { checkedAt: string; count: number; cached: boolean };
-type Input = { itemId: string; variantId: string; connector: OfficialConnectorName; productUrl: string; zip?: string };
-type Observation = { locationId: string | null; result: StockCheck | null; error: string | null };
+export type LiveLookup = { checkedAt: string; count: number; cached: boolean; lookups: number; unresolvedStoreIds: string[]; warning: string | null };
+type Input = { itemId: string; variantId: string; connector: OfficialConnectorName; productUrl: string; zip?: string; storeIds?: string[]; singleStore?: boolean };
+type Observation = { locationId: string | null; result: StockCheck | null; error: string | null; checkedAt?: Date };
 const cache = new Map<string, { until: number; value: LiveLookup }>();
 const inFlight = new Map<string, Promise<LiveLookup>>();
+type AppleBatch = Awaited<ReturnType<typeof lookupApplePickup>>;
+const appleBatches = new Map<string, AppleBatch>();
+const applePending = new Map<string, Promise<AppleBatch>>();
 const canCheckOnDemand = (source: Pick<RadarSource, "status" | "approved" | "lastError">) => source.status === "on_demand"
   || (source.status === "active" && source.approved)
   || (source.status === "blocked" && source.lastError?.startsWith("Research 2026-11-17: ") === true);
@@ -53,30 +58,59 @@ export async function saveLiveObservation(input: Input, observation: Observation
   await recordObservation(claimed, leaseUntil, observation.result, checkedAt, database);
 }
 
+async function assertProviderAvailable(connector: string) {
+  const blocked = await prisma.radarSource.findFirst({ where: { connector, status: "blocked", lastError: { startsWith: blockPrefix } }, select: { id: true } });
+  if (blocked) throw new BlockedSourceError("The official inventory endpoint blocked requests. An operator must review the connection before it can be retried.");
+}
+
+async function readLimited(connector: string, url: string) {
+  await assertProviderAvailable(connector);
+  // Count every actual upstream request, including each additional Apple ZIP.
+  await rateLimit(`official-live:${connector}`, 12, 60);
+  return readOfficialResource(url);
+}
+
+async function appleBatch(productUrl: string, zip: string) {
+  const key = JSON.stringify([productUrl, zip]);
+  const saved = appleBatches.get(key);
+  if (saved && Date.now() - saved.checkedAt.getTime() < 30_000) return saved;
+  const pending = applePending.get(key);
+  if (pending) return pending;
+  const lookup = lookupApplePickup(productUrl, zip, url => readLimited("apple-pickup", url));
+  applePending.set(key, lookup);
+  try {
+    const result = await lookup;
+    if (appleBatches.size >= 200) appleBatches.delete(appleBatches.keys().next().value!);
+    appleBatches.set(key, result);
+    return result;
+  } finally { applePending.delete(key); }
+}
+
 export async function refreshLiveStock(input: Input): Promise<LiveLookup> {
   if (process.env.DEMO_MODE === "true") throw new Error("Live inventory is disabled in demo mode.");
-  const blocked = await prisma.radarSource.findFirst({ where: { connector: input.connector, status: "blocked", lastError: { startsWith: blockPrefix } }, select: { id: true } });
-  if (blocked) throw new BlockedSourceError("The official inventory endpoint blocked requests. An operator must review the connection before it can be retried.");
-  const key = JSON.stringify([input.connector, input.itemId, input.variantId, input.productUrl, input.zip || ""]);
+  await assertProviderAvailable(input.connector);
+  const key = JSON.stringify([input.connector, input.itemId, input.variantId, input.productUrl, input.zip || "", [...(input.storeIds || [])].sort(), !!input.singleStore]);
   const saved = cache.get(key);
   if (saved && saved.until > Date.now()) return { ...saved.value, cached: true };
   const pending = inFlight.get(key);
   if (pending) return pending;
   const lookup = (async () => {
-    // Shared database limit also bounds callers spread across application processes.
-    await rateLimit(`official-live:${input.connector}`, 12, 60);
     try {
       let observations: Observation[], checkedAt: Date;
+      let lookups = 1, unresolvedStoreIds: string[] = [], warning: string | null = null;
       if (input.connector === "apple-pickup") {
         if (!input.zip) throw new Error("Enter a ZIP code to check Apple pickup availability.");
-        const result = await lookupApplePickup(input.productUrl, input.zip);
+        const targets = storeDirectory.stores.filter(store => input.storeIds?.includes(store.id));
+        const result = await collectAppleCoverage(targets, input.zip, zip => appleBatch(input.productUrl, zip), input.singleStore ? 1 : undefined);
         observations = result.observations; checkedAt = result.checkedAt;
+        lookups = result.lookups; unresolvedStoreIds = result.unresolvedStoreIds; warning = result.warning;
       } else {
-        const result = await lookupOfficialOnline({ connector: input.connector, productUrl: input.productUrl, fulfillment: "online", locationId: null });
+        const result = await lookupOfficialOnline({ connector: input.connector, productUrl: input.productUrl, fulfillment: "online", locationId: null }, url => readLimited(input.connector, url));
         observations = [{ locationId: null, result, error: null }]; checkedAt = new Date();
       }
-      for (const observation of observations) await saveLiveObservation(input, observation, checkedAt);
-      const result = { checkedAt: checkedAt.toISOString(), count: observations.filter(value => value.result !== null).length, cached: false };
+      await assertProviderAvailable(input.connector);
+      for (const observation of observations) await saveLiveObservation(input, observation, observation.checkedAt || checkedAt);
+      const result = { checkedAt: checkedAt.toISOString(), count: observations.filter(value => value.result !== null).length, cached: false, lookups, unresolvedStoreIds, warning };
       if (!result.count) throw new Error("The store returned no usable availability for this configuration.");
       if (cache.size >= 200) cache.delete(cache.keys().next().value!);
       cache.set(key, { until: Date.now() + 30_000, value: result });

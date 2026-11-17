@@ -14,7 +14,7 @@ An inventory adapter must explicitly supply `RadarSource.fulfillment = "pickup"`
 
 The endpoint returns the bounded complete matching directory (at most 269 entries). The client filters before paginating in groups of 30, so an in-stock result cannot disappear merely because it was outside the first page. Rapid requests abort and discard old responses. Product/configuration changes clear old results. A missing inventory connection is shown as unknown, not sold out.
 
-US Apple is the implemented physical-store coverage. There is no PlayStation/NVIDIA physical-store inventory integration or international directory. Official manufacturer links remain available. Official adapters now support exact Apple pickup configuration, PlayStation Direct product parsing and NVIDIA product API responses, with the upstream restrictions described in the [integration report](official-store-integrations.md). Configured core products are checked directly on request with a 30-second result cache. Actual endpoint protection blocks stop further checks. Background polling and external alerts remain separate; the competitor's inventory API is not reused.
+US Apple is the implemented physical-store coverage. There is no PlayStation/NVIDIA physical-store inventory integration or international directory. Official manufacturer links remain available. Official adapters now support exact Apple pickup configuration, PlayStation Direct product parsing and NVIDIA product API responses, with the upstream restrictions described in the [integration report](official-store-integrations.md). Configured core products are checked directly on request with a 30-second result cache. Apple searches expand to nearby store ZIP codes, with at most five lookups per search. Each actual upstream call counts against the shared provider limit; cached ZIP responses retain their original timestamps. A Check this store action queries the selected store’s ZIP once and preserves the original search area. Actual endpoint protection blocks stop further checks. Background polling and external alerts remain separate; the competitor's inventory API is not reused.
 
 ## Free offer and activation
 
@@ -30,3 +30,10 @@ Email transport and a strong `RADAR_AUTH_SECRET` are required. The isolated lab 
 ## Verification
 
 The automated coverage includes ZIP validation and provider failures, distance/radius filtering, exact store/source matching, freshness, token scope/expiry, verification before entitlement, concurrent/replayed confirmations, invalidated resend links, source pauses and non-renewable claims. Browser checks cover ZIP and city search, pagination, in-stock filtering, configuration continuity, free activation and a captured simulated restock. See [the lab guide](local-testing.md) for commands and scope.
+
+
+## Apple coverage improvement — November 18, 2026
+
+The directory can contain more stores than a single Apple response: the previous ZIP 10001 result listed 31 stores but checked only 12. The checker now selects additional search areas to cover omitted stores. Geography only chooses the next ZIP; it never establishes availability. If a later lookup times out or hits the application limit, successful earlier batches remain usable with their original check times. A protection response stops the provider immediately.
+
+The results show how many listed stores have a fresh stock observation. Missing results explain whether a store was omitted, has not been checked, is paused/blocked, or has no configured product connector. Each eligible store has a manual check button. A single-store request must refer to a real store in the original results, and paused sources stay paused. Device coordinates remain in the current browser search only; additional upstream lookups use public store ZIP codes.
