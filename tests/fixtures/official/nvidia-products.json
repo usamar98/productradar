@@ -1,0 +1,24 @@
+{
+  "searchedProducts": {
+    "productDetails": [
+      {
+        "internalLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5090-founders-edition/",
+        "manufacturer": "NVIDIA",
+        "isFounderEdition": true,
+        "locale": "US",
+        "productSKU": "NVGFT590",
+        "productAvailable": false,
+        "prdStatus": "out_of_stock",
+        "retailers": [
+          {
+            "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5090-founders-edition/",
+            "sku": "NVGFT590",
+            "stock": 0,
+            "salePrice": "1999.0",
+            "isAvailable": true
+          }
+        ]
+      }
+    ]
+  }
+}

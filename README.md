@@ -1,8 +1,8 @@
 # Restock Radar
 
-A generic restock-alert MVP: browse stock without an account, select an exact item/variant and retailers, pay through Stripe test Checkout, and receive Resend email and browser push when an observed stock period opens. Catalog: **PlayStation 5 Pro** and **iPhone Duo**, US retailers, USD. **RTX 5090** is seeded but hidden.
+A generic restock-alert MVP: browse stock without an account, select an exact item/variant and retailers, pay through Stripe test Checkout, and receive Resend email and browser push when an observed stock period opens. Catalog: **49 products and 290 configurations** across Apple, PlayStation and NVIDIA, with US availability checks and USD pricing.
 
-The app is implemented for local use and provider setup. **No live retail feeds, real payments, customer alerts, or hosted deployment are claimed.** Retailer URLs are intentionally paused placeholders. The seed inserts catalog metadata and plans only. Public metrics and history come from PostgreSQL; empty states say no data yet. A database outage displays an explicit connection notice and metadata-only preview.
+The app is implemented for local use and provider setup. **Direct official-store checks are implemented for iPhone Duo pickup, PS5 Pro and RTX 5090.** These checks run when requested; automatic monitoring, external customer alerts, real payments and a hosted deployment are not claimed. Other retailer URLs remain inactive placeholders. The seed inserts catalog metadata and plans only. Public metrics and history come from PostgreSQL; empty states say no data yet. A database outage displays an explicit connection notice and metadata-only preview.
 
 A separate [local test lab](docs/local-testing.md) at **http://localhost:3001/local-test** combines Stripe sandbox checkout, the normal webhook/worker pipeline, controlled stock signals and a local email inbox. Its inventory is explicitly simulated and its database is separate from the main app on port 3000. The temporary Stripe sandbox expires **November 24, 2026** unless claimed.
 
@@ -98,7 +98,7 @@ Use Prisma Studio (`npx prisma studio`) or a SQL administration tool:
 
 ## Product discovery and SEO
 
-The public catalog contains 49 products and 290 configurations across Apple, PlayStation and NVIDIA. Run `npm run db:seed` to add missing catalog rows; existing source settings are preserved. The [official-store adapters](docs/official-store-integrations.md) resolve selected purchase-page identities and distinguish pickup from online stock. Live monitoring remains inactive or blocked by the documented upstream limits. A generic product-page offer cannot be used as store-specific pickup inventory.
+The public catalog contains 49 products and 290 configurations across Apple, PlayStation and NVIDIA. Run `npm run db:seed` to add missing catalog rows; existing source settings are preserved. The [official-store adapters](docs/official-store-integrations.md) resolve selected purchase-page identities and distinguish pickup from online stock. The stock finder requests direct on-demand availability for configured exact products; background monitoring remains separately gated. A generic product-page offer cannot be used as store-specific pickup inventory.
 
 Browse `/products`, `/guides`, `/categories/consoles` and `/categories/smartphones`. Product pages link variants, retailers, buying guides and recorded history. Variant URLs use `/{item}/variants/{variant}`; alert links preserve product, variant and retailer selection. `/methodology` explains coverage, freshness, counting and duration limits.
 
@@ -133,8 +133,8 @@ Integration tests need `TEST_DATABASE_URL` pointing to a separate database endin
 
 Before launch, complete a real Stripe **test** checkout and cancellation/refund, a Resend inbox delivery, supported browser push delivery, and a permitted retailer observation-to-notification run. Local fixtures do not establish external acceptance. Check `/admin`, `/proof`, `sitemap.xml`, `robots.txt`, `/llms.txt` at the final origin. Results are in `docs/verification.md`.
 
-Defaults: Restock Radar; localhost until a domain is assigned; US/USD; Apple, PlayStation and NVIDIA catalog; exact configuration and fulfillment matching; inactive or blocked ordinary sources; UTC history; no invented activity; test-only billing; local database/worker until hosting and provider access are configured.
+Defaults: Restock Radar; localhost until a domain is assigned; US/USD; Apple, PlayStation and NVIDIA catalog; exact configuration and fulfillment matching; on-demand official checks and inactive other sources; UTC history; no invented activity; test-only billing; local database/worker until hosting and provider access are configured.
 
 ## Official Apple, PlayStation and NVIDIA sources
 
-The [official-store integration report](docs/official-store-integrations.md) documents the public frontend research, implemented adapters, exact SKU/store matching, and current upstream blocks. These connectors do not use Best Buy. Live retailer inventory and real alert delivery are not verified. Run `npm run sources:official` for local source and email configuration status. In PowerShell, prepare source records with `npm.cmd run sources:official -- --setup --zip 10001 --limit 5`; this does not activate monitoring.
+The [official-store integration report](docs/official-store-integrations.md) documents the public API research, direct availability lookups, exact SKU/store matching, protection stops and verification limits. These connectors do not use Best Buy. Real external alert delivery is not verified. Run `npm run sources:official` for local source and email configuration status. In PowerShell, prepare source records with `npm.cmd run sources:official -- --setup --zip 10001 --limit 5`; this does not activate monitoring.

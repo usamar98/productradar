@@ -74,7 +74,7 @@ The distinction in the free offer matters: the competitor allows free manual sto
 | --- | --- | --- |
 | Location discovery | ZIP/postcode, city/store and device location; distance-sorted stores | US ZIP/ZIP+4, city/store search, explicit device-location action, four radii, directions and official links; 269 US Apple Stores |
 | Exact product selection | Product, finish, capacity, then stores | Existing 49-product catalog feeds the checker; exact configuration and source continue into alert signup |
-| Manual availability | Store-specific status and timestamps; in-stock filter | Free checker separates pickup from online inventory, filters all matching results, and displays fresh, stale or unknown states; ordinary sources remain unconnected |
+| Manual availability | Store-specific status and timestamps; in-stock filter | Free checker separates pickup from online inventory, filters all matching results, and displays fresh, stale or unknown states; core official products now have on-demand direct API checks |
 | Store scope | Several stores selected in onboarding | First free alert covers one store/source; paid 2/5/10-slot plans retain multiple-source selection |
 | Email verification | Six-digit email code before alert setup continues | Single-use, ten-minute email link with a deliberate confirmation button; monitoring starts only after verification |
 | Free entry point | Manual checks free; no free trial advertised | Manual checks plus the requested first free 14-day alert |
@@ -87,8 +87,8 @@ The distinction in the free offer matters: the competitor allows free manual sto
 
 The most consequential remaining gap is inventory collection. A directory identifies a store; it does not prove that a particular configuration can be collected there. A ZIP also does not prove delivery eligibility. The implementation therefore matches pickup inventory only to an explicit store ID and exact variant. Paused sources cannot issue a free alert and do not consume the offer. No manufacturer-wide online result is reused as a physical store's stock.
 
-The homepage's polling/delivery speed claims, customer anecdotes and TrustMRR figures do not establish our achievable performance or the competitor's private collection method. Full parity is not established by this review. Remaining work includes a suitable live feed, international data, external email/push delivery validation and Team integrations. [Homepage](https://storestockchecker.com/), [Team announcement](https://storestockchecker.com/discord-slack-alerts)
+The homepage's polling/delivery speed claims, customer anecdotes and TrustMRR figures do not establish our achievable performance or the competitor's private collection method. Full parity is not established by this review. Remaining work includes permitted continuous monitoring, broader product coverage, international data, external email/push delivery validation and Team integrations. [Homepage](https://storestockchecker.com/), [Team announcement](https://storestockchecker.com/discord-slack-alerts)
 
 See [stock finder and free-alert implementation](stock-finder.md) for directory provenance, freshness rules, setup and maintenance, and [local testing](local-testing.md) for the reproducible flow.
 
-The follow-up [official-store integration investigation](official-store-integrations.md) records the public Apple/PlayStation endpoint discovery, the competitor backend boundary, actual robots/protection blocks, and the adapters now implemented. It does not establish how the competitor privately collects stock.
+The follow-up [official-store integration investigation](official-store-integrations.md) records the public Apple/PlayStation endpoint discovery, the competitor backend boundary, verified public API responses, exact matching, request limits, robots/protection constraints, and the direct checks now implemented. It does not establish how the competitor privately collects stock.

@@ -1,50 +1,55 @@
 # Official store integrations — 17 November 2026
 
-The app now has separate connectors for Apple Store pickup, PlayStation Direct US online stock and NVIDIA Marketplace US structured offers. **Live inventory and real alert delivery are not enabled or verified.** No Best Buy account or key is used by these connectors.
+The stock finder now connects directly to public Apple pickup, PlayStation Direct and NVIDIA product APIs. These integrations do not use Best Buy or the competitor's inventory. A lookup records the response's actual observation time; automatic monitoring and external alert delivery are separate capabilities.
 
-## Evidence and current limits
+## What Store Stock Checker reveals
 
-| Source | What was verified from public material | What remains unavailable |
+Its [terms](https://storestockchecker.com/legal) describe checking Apple's online store for the selected product and store's pickup availability. Its [public client](https://storestockchecker.com/app.js) calls its own catalog, store and stock APIs. The upstream collector is private: neither its specific Apple endpoint nor its permission arrangements can be established from that client. Polling Apple's pickup data and caching results is a plausible implementation, not a verified description of its backend. No competitor inventory API is reused.
+
+## Direct operations and exact identity
+
+| Provider | Implemented source | Interpretation |
 | --- | --- | --- |
-| Store Stock Checker | Its [public client](https://storestockchecker.com/app.js) calls its own catalog, store, stock and notification APIs. The [website](https://storestockchecker.com/) describes configuration-specific Apple pickup alerts. | Its upstream collector is private. The frontend does not establish which Apple endpoint or commercial permission it uses. Its robots-disallowed APIs were not queried or reused. |
-| Apple | The [exact iPhone Duo purchase page](https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-256gb-star-white-unlocked) contains SKU `MK1E4LL/A+unlocked`, the fulfillment bootstrap `/shop/fulfillment-messages?fae=true`, and a pickup URL adding `pl=true`. The linked storefront client serializes `parts.0` and store/location inputs. The identity parser was checked against the downloaded page. | [Apple's site terms](https://www.apple.com/legal/internet-services/terms/site.html) restrict automated monitoring. The user has no retailer permission. No fulfillment request or ongoing poll was made, so the pickup response parser is contract-tested only. |
-| PlayStation Direct | The [PS5 Pro page](https://direct.playstation.com/en-us/buy-consoles/playstation5-pro-console) exposes hero product code `1000050805` and the `api.direct.playstation.com` product-list route. Its public client refers to anonymous users, `stock.stockLevelStatus`, `purchasable`, preorder and membership gates. The identity parser was checked against the downloaded page. | [The API's robots.txt](https://api.direct.playstation.com/robots.txt) returned `User-agent: *` and `Disallow: /`. No inventory API request was made. The response-envelope/parser contract has not been verified against a live response. |
-| NVIDIA | The [RTX 5090 Founders Edition listing](https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5090-founders-edition/) is the exact official storefront link. A normal server request returned an Access Denied page; requests stopped. | No usable inventory response or public live API contract was obtained. The adapter accepts only an unambiguous exact-product JSON-LD offer if NVIDIA serves one in future. It is not a verified NVIDIA API integration. [NVIDIA's terms, §3.2](https://www.nvidia.com/en-us/about-nvidia/terms-of-service/) also restrict automated extraction and monitoring. |
+| Apple | `www.apple.com/shop/retail/pickup-message?pl=true&location=10001&parts.0=MK1E4LL%2FA` | The current response uses `body.stores`. Match the exact store number and part number. A ZIP lookup returns a limited set of stores, not every store in a radius. |
+| PlayStation | `api.direct.playstation.com/commercewebservices/ps-direct-us/users/anonymous/products/productList?fields=BASIC&productCodes=1000050805` | Exact product code, `stock.stockLevelStatus`, `purchasable` and preorder state determine online stock. Sign-in or Plus requirements are purchase conditions, not missing inventory. |
+| NVIDIA | `api.nvidia.partners/edge/product/search?page=1&limit=12&locale=en-us&gpu=RTX%205090&manufacturer=NVIDIA` | Require the exact US Founders Edition listing and NVIDIA's own matching seller offer. `productAvailable`, `prdStatus` and official-offer `stock` must agree. `retailers[].isAvailable` alone is listing visibility, not stock. |
 
-The original product brief requires respecting retailer terms and robots.txt and stopping on protection. These are actual observed limits, not a claim that legitimate stock monitoring is inherently prohibited. Public frontend endpoints are not automatically licensed third-party APIs. No cookies, account sessions, challenge solvers, proxies or disguised user agents are used.
+All three returned usable HTTP 200 stock responses during research, reporting unavailable stock for the tested configuration at that time. Historical response fixtures do not stand in for live results. Subsequent app verification is recorded below.
 
-## Implemented behavior
+NVIDIA's separate `api.store.nvidia.com/partner/v1/feinventory` request returned HTTP 403 and is not used or retried. A denied HTML page or an API gateway's missing `/robots.txt` route does not establish the behavior of every separate operation on that provider. The product API has its own successful response evidence.
 
-- `apple-pickup` resolves the exact US part from the selected purchase page, selects a known Apple Store ID and its ZIP, and constructs the storefront fulfillment request. It accepts only the requested store and part. A missing store, missing part or unknown pickup state raises an error, never an out-of-stock or in-stock guess.
-- `playstation-direct` resolves the primary product code, constructs the public client's anonymous product-list request, and independently checks the API origin's robots.txt. It requires exact identity and public orderability. Preorders, login gates and membership gates cannot become public in-stock alerts.
-- `nvidia-store` checks only the exact US Founders Edition storefront page. Marketing text or the presence of an Add to Cart button never counts as stock.
-- The shared HTTP boundary preserves public HTTPS/DNS validation, pinned DNS, response-size and timeout limits, same-origin robots review, and protection detection. Each source requires the existing operator approval. Setup never grants it.
-- Official sources have a minimum five-minute interval. A PostgreSQL advisory lock and shared next-check scheduling permit at most one check per provider per minute across worker processes. Each check can include a product lookup and an availability request. This conservative starting cadence is not a five-second monitoring promise.
-- A protection/robots block stops all active sources for that connector, cancels their leases and prevents stale workers from committing stock. Failed checks do not change the last successful observation timestamp. Existing delivery checks reject blocked, stale or unavailable sources.
-- Successful observations use the existing stock-period, entitlement, deduplication, email and web-push queue. No new synthetic customer observations are installed.
-- The public stock finder prioritizes official listings and displays connection status separately from stock. ZIP search finds Apple Stores. PlayStation Direct and NVIDIA represent US **online** availability; their shipping ZIP eligibility is not verified by these adapters.
+`src/config/official-products.json` contains all eight iPhone Duo US unlocked part numbers, extracted from `PRODUCT_SELECTION_BOOTSTRAP.productSelectionData.products` on the [exact Apple purchase page](https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-256gb-star-white-unlocked). Each entry pairs the actual `seoUrlToken` with its part number; IDs are not guessed. Sony's code comes from the primary hero on its [PS5 Pro page](https://direct.playstation.com/en-us/buy-consoles/playstation5-pro-console). Runtime stock checks use these reviewed identities, without repeatedly fetching product HTML. Added catalog products still need reviewed exact identities and connector coverage.
 
-## Local setup and review
+## Request and persistence behavior
+
+- `/api/radar/stock-search` performs an on-demand check for a configured exact variant. Apple supports ZIP, city and device-location searches; PlayStation and NVIDIA provide US online stock. Their APIs do not establish shipping eligibility for an individual ZIP.
+- Only three fixed HTTPS API paths are allowed. Requests use the openly identified `RestockRadar/1.0` client, ordinary JSON headers, no authentication or cookies, no redirects, public DNS validation, a 20-second timeout and a 2 MB body limit. No browser impersonation, proxy rotation or challenge solving is used. Generic source crawling retains its separate DNS-pinned, robots-aware client.
+- Concurrent identical searches share one request. Successful results are reused for 30 seconds, retaining the original observation time. A database rate limit bounds each provider to 12 on-demand lookups per minute across application processes. This is not a five-second monitoring promise.
+- HTTP 401/403/429 or a challenge response stops that connector. The error is persisted with `Inventory endpoint blocked:`; subsequent searches do not retry it. Operator review is required to resume. A failure never advances a successful stock timestamp or becomes an out-of-stock guess.
+- Sources checked only by a search use `on_demand`, not `active`, and do not acquire background approval. Fresh stock is displayed for 60 seconds; the open browser then marks the snapshot stale using a local timer, without an automatic network request. An administrator pause is respected by manual checks as well. The UI states that automatic alerts are not enabled.
+- Real successful responses enter the existing source/history store. Database leases and provider locks fence stale responses and blocked providers. An on-demand in-stock observation cannot enqueue a customer notification. Only an approved active source can do that.
+
+## Background monitoring and email
+
+The original brief requires respecting retailer terms and robots, as well as stopping on protection. Apple's site terms restrict automated monitoring; Sony's API robots disallows crawling. Public technical access alone is not a license or retailer approval. Background polling has not been enabled. A user-approved single Apple diagnostic exception after a 403 is not permission for repeated polling.
+
+For an approved background source, the worker enforces at least five minutes between that source's polls and coordinates at most one check per provider per minute. Actual availability transitions use the existing deduplicated notification pipeline. Email still requires a configured provider and sender. No external alert delivery or restock latency is claimed by the live-check work. With no owned domain, Resend's default sender is limited to account-owner testing.
+
+## Local setup
 
 ```powershell
-# Report configuration only; makes no retailer requests and sends no messages.
 npm run sources:official
-
-# Prepare all eight Duo variants at up to five stores near a chosen US ZIP,
-# and configure the exact PS5 Pro and RTX 5090 official source records.
 npm.cmd run sources:official -- --setup --zip 10001 --limit 5
 ```
 
-Setup creates paused, unapproved Apple sources and records the observed Sony/NVIDIA blocks. It preserves already approved, active, blocked or historically observed sources. It never clears a block or activates monitoring. Repeat with another ZIP to prepare additional stores; `--limit` is bounded to 1–20. This is a source-configuration command, not an inventory import. Other catalog products need their exact selected purchase URL and a validated response before being connected; catalog metadata alone is insufficient.
+Setup prepares all eight Duo variants near that ZIP and the exact PS5 Pro and RTX 5090 records for on-demand checks. It does not grant background approval, overwrite history or clear an actual protection block. The stock finder adds matching Apple source records for recognized stores returned by a successful lookup. Existing research-only HTML/robots annotations can be superseded by a successful inventory operation; real inventory-operation blocks cannot.
 
-`/admin` supports all three connectors, fulfillment type and a US Apple Store selector. A source with stock history cannot change its product, connector or pickup location. A renderer or parser change can be inspected with fixture tests before any permitted live check. Do not enable a source while permission or the source's robots/protection restriction remains unresolved.
+Try `/stock?item=iphone-duo&variant=256gb-star-white&zip=10001`, `/stock?item=playstation-5-pro&variant=standard`, or `/stock?item=rtx-5090&variant=founders-edition`. Other products without mapped sources remain explicitly unknown.
 
-Email still needs a configured provider and sender. With no owned domain, Resend's default sender can only be used for limited account-owner testing; it is not a customer email launch configuration. Presence of environment values does not establish successful delivery.
+## Verification
 
-## Verification boundaries
+132 unit tests and 30 PostgreSQL integration tests passed. Tests cover minimal actual response shapes, synthetic positive stock, wrong products/stores, conflicting NVIDIA signals, Sony purchase gates, response limits, protection stops, provider coordination, stale-write fencing and on-demand observations not sending customer alerts. Automated tests do not contact retailers or send emails. The production build and browser checks passed. The approved single Apple diagnostic succeeded through the app: iPhone Duo 256GB Star White, ZIP 10001, 12 recognized stores returned unavailable stock at 18:44:38 UTC. The directory listed 31 stores within 50 miles; the other stores remained unknown. PS5 Pro returned out of stock at 18:45:44 UTC; RTX 5090 returned out of stock at 18:45:55 UTC. A repeated NVIDIA refresh displayed the original timestamp and “recent cached response.” Database inspection confirmed all 14 real observations, zero errors, no background approval, and zero notifications. These are observations at those times, not permanent availability claims.
 
-Automated tests use explicitly synthetic contract responses, including wrong SKUs/stores, unknown states, preorders, gated Sony products, blocked requests, and NVIDIA pages containing both button states. PostgreSQL integration tests cover shared provider throttling, a parsed stock observation opening one period and queuing one notification, duplicate commits, and provider blocking fencing a second worker. No test contacts a retailer or sends a real email.
+All eight Duo part identities are mapped, but only the Star White 256GB configuration was live-tested in this run. 47 Apple source records and the two official online source records are prepared for on-demand use. No other catalog products are presented as verified integrations. Email credentials were absent. The isolated Stripe lab remains available separately at port 3001.
 
-Public product-page identity extraction succeeded for the downloaded Apple and PlayStation pages. No real inventory endpoint response, live restock, or real customer alert has been verified. NVIDIA remains blocked at the product-page request.
-
-Local checkpoint: 40 paused Apple pickup records cover eight Duo variants at West 14th Street, Grand Central, SoHo, Fifth Avenue and Upper West Side. The PS5 Pro and RTX 5090 records retain the observed blocks. Browser checks confirmed ZIP 10001 results, correct official product links, and unknown/blocked status without false alert buttons for all three brands. The unit suite passed (123 tests), the added online-to-pickup rejection test passed with the official connector suite (11 tests), and all 29 PostgreSQL integration tests passed: 153 distinct passing tests. Type checking and the production build passed. Email credentials were absent; no real message was sent.
+The final browser run also verified that an open NVIDIA result changes to “Check again for current stock” after 60 seconds while retaining its observation time. No browser console errors were reported. The main app and isolated test lab were left running on ports 3000 and 3001.

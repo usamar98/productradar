@@ -22,9 +22,9 @@ export function dateTime(value: Date | null | undefined) { return value ? new In
 export function dateOnly(value: Date | null | undefined) { return value ? new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(value) : "No data yet"; }
 export function sourceState(source: PublicSource) {
   if (source.status === "blocked") return { label: "Check blocked", tone: "amber" };
-  if (!source.approved || source.status !== "active") return { label: "Tracking pending", tone: "neutral" };
+  if (source.status !== "on_demand" && (!source.approved || source.status !== "active")) return { label: "Tracking pending", tone: "neutral" };
   if (!source.lastCheckedAt || source.inStock === null) return { label: "No data yet", tone: "neutral" };
-  if (Date.now() - source.lastCheckedAt.getTime() > Math.max(source.pollSeconds * 3, 120) * 1000 || source.lastError) return { label: "Check delayed", tone: "amber" };
+  if (Date.now() - source.lastCheckedAt.getTime() > (source.status === "on_demand" ? 60_000 : Math.max(source.pollSeconds * 3, 120) * 1000) || source.lastError) return { label: "Check again for current stock", tone: "amber" };
   return source.inStock ? { label: "In stock", tone: "green" } : { label: "Out of stock", tone: "neutral" };
 }
 export function duration(event: PublicEvent) { if (!event.endedAt) return "Open period"; const seconds = Math.max(0, Math.round((event.endedAt.getTime() - event.seenAt.getTime()) / 1000)); return seconds < 60 ? `${seconds}s` : seconds < 3600 ? `${Math.floor(seconds / 60)}m ${seconds % 60}s` : `${Math.floor(seconds / 3600)}h ${Math.floor(seconds % 3600 / 60)}m`; }

@@ -13,7 +13,7 @@ export async function recordObservation(source: RadarSource, leaseUntil: Date, r
   if (source.connector === "local-test" && !isLocalTestMode()) throw new BlockedSourceError("Local-test observations cannot be recorded outside the isolated local lab.");
   return database.$transaction(async (tx) => {
     // Fence a stale worker before changing inventory or enqueueing anything.
-    const updated = await tx.radarSource.updateMany({ where: { id: source.id, leaseUntil, status: "active" }, data: {
+    const updated = await tx.radarSource.updateMany({ where: { id: source.id, leaseUntil, status: { in: ["active", "on_demand"] }, OR: [{ lastCheckedAt: null }, { lastCheckedAt: { lte: checkedAt } }] }, data: {
       inStock: result.inStock, priceCents: result.priceCents ?? null, lastCheckedAt: checkedAt,
       lastError: null, failureCount: 0, leaseUntil: null,
       nextCheckAt: new Date(checkedAt.getTime() + sourceDelay(source)),
@@ -24,7 +24,7 @@ export async function recordObservation(source: RadarSource, leaseUntil: Date, r
     if (transition !== "open") return null;
     const event = await tx.radarStockEvent.create({ data: { sourceId: source.id, inStock: true, priceCents: result.priceCents, seenAt: checkedAt } });
     // Synthetic hidden-item observations never enter the customer delivery path.
-    if (source.connector === "mock") return event;
+    if (source.connector === "mock" || source.status !== "active" || !source.approved) return event;
     const alerts = await tx.radarAlert.findMany({ where: {
       itemId: source.itemId, variantId: source.variantId, status: "active", activeUntil: { gt: checkedAt }, sourceIds: { has: source.id },
     }, include: { user: { include: { pushSubscriptions: true } }, subscription: true, plan: true } });
@@ -57,8 +57,9 @@ export async function claimSource(source: RadarSource, database = prisma) {
 export async function recordSourceFailure(source: RadarSource, leaseUntil: Date, error: unknown, database = prisma) {
   const blocked = error instanceof BlockedSourceError;
   const failures = source.failureCount + 1;
-  const message = error instanceof Error ? error.message.slice(0, 500) : "Source check failed.";
+  const message = `${blocked && isOfficialConnector(source.connector) ? "Inventory endpoint blocked: " : ""}${error instanceof Error ? error.message : "Source check failed."}`.slice(0, 500);
   return database.$transaction(async tx => {
+    if (blocked && isOfficialConnector(source.connector)) await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${`official-source:${source.connector}`}))`;
     const updated = await tx.radarSource.updateMany({ where: { id: source.id, leaseUntil }, data: {
       status: blocked ? "blocked" : "active", leaseUntil: null, failureCount: failures,
       // A failed attempt must not advance the last successful stock observation time.

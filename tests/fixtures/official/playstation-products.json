@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "code": "1000050805",
+      "purchasable": true,
+      "stock": {
+        "isProductLowStock": false,
+        "stockLevelStatus": "outOfStock"
+      },
+      "loginGated": true,
+      "psPlusGated": false,
+      "preOrderProduct": false,
+      "price": {
+        "basePrice": "899",
+        "currencyIso": "USD",
+        "currencySymbol": "$",
+        "decimalPrice": "00",
+        "value": 899
+      }
+    }
+  ]
+}

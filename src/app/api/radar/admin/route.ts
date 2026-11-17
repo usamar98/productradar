@@ -10,7 +10,7 @@ const url = z.string().url().max(2048).refine(value => { const u = new URL(value
 const input = z.discriminatedUnion("action", [
   z.object({ action: z.literal("login"), password: z.string().min(1).max(512) }),
   z.object({ action: z.literal("logout") }),
-  z.object({ action: z.literal("source"), id: z.string().optional(), itemId: z.string(), variantId: z.string(), retailer: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(80), label: z.string().min(1).max(120), productUrl: url, connector: z.enum(["jsonld", "mock", "apple-pickup", "playstation-direct", "nvidia-store"]), fulfillment: z.enum(["online", "pickup"]).default("online"), locationId: z.string().max(80).nullable().default(null), pollSeconds: z.number().int().min(15).max(86400), status: z.enum(["active", "paused"]), approved: z.boolean() }),
+  z.object({ action: z.literal("source"), id: z.string().optional(), itemId: z.string(), variantId: z.string(), retailer: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(80), label: z.string().min(1).max(120), productUrl: url, connector: z.enum(["jsonld", "mock", "apple-pickup", "playstation-direct", "nvidia-store"]), fulfillment: z.enum(["online", "pickup"]).default("online"), locationId: z.string().max(80).nullable().default(null), pollSeconds: z.number().int().min(15).max(86400), status: z.enum(["active", "paused", "on_demand"]), approved: z.boolean() }),
   z.object({ action: z.literal("pause"), id: z.string() }),
   z.object({ action: z.literal("cost"), label: z.string().min(1).max(200), amountCents: z.number().int().min(0).max(100000000), category: z.string().min(1).max(80), incurredAt: z.iso.datetime() }),
   z.object({ action: z.literal("post"), url, text: z.string().min(1).max(3000) }),
@@ -31,6 +31,7 @@ export async function POST(request: Request) {
         const variant = await prisma.radarVariant.findFirst({ where: { id: data.variantId, itemId: data.itemId }, include: { item: true } });
         if (!variant) throw new HttpError(400, "The variant must belong to the selected item.");
         if (data.status === "active" && !data.approved) throw new HttpError(400, "Review retailer terms and approve this source before activating it.");
+        if (data.status === "on_demand" && !isOfficialConnector(data.connector)) throw new HttpError(400, "On-demand checks require an official inventory connector.");
         if (data.connector === "mock" && (!variant.item.hidden || process.env.NODE_ENV === "production")) throw new HttpError(400, "Mock sources are restricted to hidden development items.");
         if (data.fulfillment === "pickup" && data.connector !== "apple-pickup") throw new HttpError(400, "Store pickup requires the Apple pickup connector; an online offer cannot verify a physical store's inventory.");
         if (isOfficialConnector(data.connector)) {

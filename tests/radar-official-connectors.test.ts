@@ -1,8 +1,13 @@
 import { describe, expect, it, vi } from "vitest";
-import { appleProductIdentity, applePickupUrl, parseApplePickup, playStationProductIdentity, playStationProductUrl, parsePlayStationProducts, createOfficialConnectors, validateOfficialSource } from "../src/lib/radar/official-connectors";
+import { appleProductIdentity, applePickupUrl, parseApplePickup, playStationProductIdentity, playStationProductUrl, parsePlayStationProducts, parseNvidiaProducts, createOfficialConnectors, validateOfficialSource } from "../src/lib/radar/official-connectors";
 import { BlockedSourceError } from "../src/lib/radar/source-http";
 import { isOfficialListing, officialConnection } from "../src/lib/radar/official-status";
 import { jsonldConnector } from "../src/lib/radar/connectors";
+import { isPublicInventoryOperation } from "../src/lib/radar/official-api";
+import { stockReading } from "../src/lib/radar/stock-finder";
+import appleCaptured from "./fixtures/official/apple-pickup.json";
+import sonyCaptured from "./fixtures/official/playstation-products.json";
+import nvidiaCaptured from "./fixtures/official/nvidia-products.json";
 
 // Contract fixtures, not captured stock. They must never be seeded into customer data.
 const appleUrl = "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-256gb-star-white-unlocked";
@@ -22,7 +27,7 @@ describe("official store contracts", () => {
     expect(url.origin).toBe("https://www.apple.com");
     expect(url.searchParams.get("parts.0")).toBe(part);
     expect(url.searchParams.get("location")).toBe("10001");
-    expect(url.searchParams.get("store")).toBe("R095");
+    expect(url.searchParams.has("store")).toBe(false);
     expect(() => applePickupUrl(part, "R095", "10001&store=R001")).toThrow();
   });
   it("only reports the exact part at the exact store and keeps unknown states unknown", () => {
@@ -39,12 +44,14 @@ describe("official store contracts", () => {
     expect(() => playStationProductIdentity('<div data-product-code="1000000001"></div>')).toThrow();
     expect(new URL(playStationProductUrl("1000050805")).pathname).toContain("/users/anonymous/products/productList");
   });
-  it("requires exact Sony identity and public orderability, excluding preorders and gated products", () => {
+  it("requires exact Sony stock identity and excludes preorders without confusing sign-in with inventory", () => {
     expect(parsePlayStationProducts(sony(), "1000050805")).toMatchObject({ inStock: true, priceCents: 89900 });
     expect(parsePlayStationProducts(sony({ preOrderProduct: true }), "1000050805").inStock).toBe(false);
     expect(parsePlayStationProducts(sony({ purchasable: false }), "1000050805").inStock).toBe(false);
     expect(parsePlayStationProducts(sony({ stock: { stockLevelStatus: "outOfStock" } }), "1000050805").inStock).toBe(false);
-    for (const patch of [{ loginGated: true }, { psPlusGated: true }, { stock: {} }, { code: "1000000001" }, { purchasable: undefined }]) expect(() => parsePlayStationProducts(sony(patch), "1000050805")).toThrow();
+    expect(parsePlayStationProducts(sony({ loginGated: true }), "1000050805")).toMatchObject({ inStock: true, raw: expect.stringContaining("sign-in required") });
+    expect(parsePlayStationProducts(sony({ psPlusGated: true }), "1000050805").raw).toContain("Plus required");
+    for (const patch of [{ stock: {} }, { code: "1000000001" }, { purchasable: undefined }]) expect(() => parsePlayStationProducts(sony(patch), "1000050805")).toThrow();
   });
   it("rejects wrong hosts, unselected products and fabricated pickup locations before HTTP", () => {
     expect(() => validateOfficialSource(source)).not.toThrow();
@@ -60,10 +67,10 @@ describe("official store contracts", () => {
     await expect(jsonldConnector.check({ ...source, connector: "jsonld" })).rejects.toThrow("cannot verify store pickup");
   });
   it("passes a matched Apple response through the connector without inventing a fallback", async () => {
-    const read = vi.fn().mockResolvedValueOnce(appleHtml()).mockResolvedValueOnce(JSON.stringify(applePayload()));
-    await expect(createOfficialConnectors(read)["apple-pickup"].check(source)).resolves.toMatchObject({ inStock: true, priceCents: 199900 });
-    expect(read).toHaveBeenCalledTimes(2);
-    expect(new URL(read.mock.calls[1][0]).searchParams.get("store")).toBe("R095");
+    const read = vi.fn().mockResolvedValueOnce(JSON.stringify(applePayload()));
+    await expect(createOfficialConnectors(read)["apple-pickup"].check(source)).resolves.toMatchObject({ inStock: true });
+    expect(read).toHaveBeenCalledTimes(1);
+    expect(new URL(read.mock.calls[0][0]).searchParams.get("location")).toBe("10153");
   });
   it("propagates a protection stop without retrying or choosing another endpoint", async () => {
     const read = vi.fn().mockRejectedValue(new BlockedSourceError("Access denied"));
@@ -83,5 +90,30 @@ describe("official store contracts", () => {
     expect(officialConnection("apple", [{ ...reading, status: "active", lastError: null }])?.state).toBe("waiting");
     expect(officialConnection("apple", [{ ...reading, status: "active", lastError: null, inStock: false, lastCheckedAt: new Date() }])?.state).toBe("connected");
     expect(officialConnection("apple", [{ ...reading, status: "active", lastError: null, inStock: true, lastCheckedAt: new Date(0) }])?.state).toBe("waiting");
+  });
+  it("parses minimal captured responses from all three actual public APIs", () => {
+    expect(parseApplePickup(appleCaptured, part, "R095").inStock).toBe(false);
+    expect(parsePlayStationProducts(sonyCaptured, "1000050805").inStock).toBe(false);
+    expect(parseNvidiaProducts(nvidiaCaptured, "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5090-founders-edition/").inStock).toBe(false);
+  });
+  it("never uses NVIDIA retailer-listing visibility or another seller as stock", () => {
+    const url = "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5090-founders-edition/";
+    const product = nvidiaCaptured.searchedProducts.productDetails[0];
+    const response = (changes: Record<string, unknown>) => ({ searchedProducts: { productDetails: [{ ...product, ...changes }] } });
+    expect(product.retailers[0].isAvailable).toBe(true);
+    expect(parseNvidiaProducts(nvidiaCaptured, url).inStock).toBe(false);
+    expect(parseNvidiaProducts(response({ productAvailable: true, prdStatus: "in_stock", retailers: [{ ...product.retailers[0], stock: 1 }] }), url).inStock).toBe(true);
+    for (const changes of [{ productAvailable: true }, { locale: "GB" }, { isFounderEdition: false }, { productSKU: "OTHER" }, { retailers: [{ ...product.retailers[0], purchaseLink: "https://www.bestbuy.com/item" }] }]) expect(() => parseNvidiaProducts(response(changes), url)).toThrow();
+  });
+  it("restricts API operations to exact public paths and excludes the denied NVIDIA inventory endpoint", () => {
+    expect(isPublicInventoryOperation(applePickupUrl(part, "R095", "10001"))).toBe(true);
+    expect(isPublicInventoryOperation(playStationProductUrl("1000050805"))).toBe(true);
+    for (const url of ["https://api.store.nvidia.com/partner/v1/feinventory?skus=NVGFT590", "https://api.nvidia.partners/account", "https://api.nvidia.partners.evil.example/edge/product/search", "https://user:pass@api.nvidia.partners/edge/product/search"]) expect(isPublicInventoryOperation(url)).toBe(false);
+  });
+  it("shows current on-demand stock without granting alert eligibility or inventing freshness", () => {
+    const reading = { ...source, approved: false, status: "on_demand", inStock: true, lastCheckedAt: new Date(), lastError: null, pollSeconds: 300 };
+    expect(stockReading(reading)).toMatchObject({ state: "in_stock", alertable: false });
+    expect(stockReading(reading, Date.now() + 61_000)).toMatchObject({ state: "stale", alertable: false });
+    expect(officialConnection("apple", [reading])).toMatchObject({ state: "connected", onDemand: true });
   });
 });

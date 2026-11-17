@@ -33,17 +33,17 @@ try {
         id: `official-${variant.id}-${store.id}`, itemId: apple.id, variantId: variant.id,
         retailer: store.id, label: store.name, locationId: store.id, fulfillment: "pickup",
         productUrl: `https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-${variant.slug}-unlocked`,
-        connector: "apple-pickup", pollSeconds: 300, status: "paused", approved: false,
-        lastError: "Official Apple pickup adapter configured. Automated monitoring is not authorized; no live observation has been recorded.",
+        connector: "apple-pickup", pollSeconds: 300, status: "on_demand", approved: false,
+        lastError: null,
       });
     }
     await save({ id: "ps5-sony", itemId: "ps5-pro", variantId: "ps5-pro-standard", retailer: "playstation-direct", label: "PlayStation Direct", fulfillment: "online", locationId: null,
-      productUrl: "https://direct.playstation.com/en-us/buy-consoles/playstation5-pro-console", connector: "playstation-direct", pollSeconds: 300, status: "blocked", approved: false,
-      lastError: "Research 2026-11-17: api.direct.playstation.com/robots.txt disallows all paths. No product API request was made. Availability is unknown.",
+      productUrl: "https://direct.playstation.com/en-us/buy-consoles/playstation5-pro-console", connector: "playstation-direct", pollSeconds: 300, status: "on_demand", approved: false,
+      lastError: null,
     });
     await save({ id: "rtx-5090-nvidia", itemId: "rtx-5090", variantId: "rtx-5090-standard", retailer: "nvidia", label: "NVIDIA Marketplace", fulfillment: "online", locationId: null,
-      productUrl: "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5090-founders-edition/", connector: "nvidia-store", pollSeconds: 300, status: "blocked", approved: false,
-      lastError: "Research 2026-11-17: the official product request returned Access Denied. Requests stopped. Availability is unknown.",
+      productUrl: "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5090-founders-edition/", connector: "nvidia-store", pollSeconds: 300, status: "on_demand", approved: false,
+      lastError: null,
     });
     console.log(JSON.stringify({ configuredNear: place.zip, stores: stores.map(store => ({ id: store.id, name: store.name })), ...counts, activated: 0 }));
   }

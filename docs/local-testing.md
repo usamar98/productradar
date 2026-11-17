@@ -2,7 +2,7 @@
 
 The lab at [localhost:3001/local-test](http://localhost:3001/local-test) exercises Stripe sandbox checkout, verified webhook activation, the stock worker and signed notification links. Stock comes from controls you operate, not Apple inventory. The main app remains at [localhost:3000](http://localhost:3000) with its ordinary retailer sources paused.
 
-The expanded main catalog contains **49 products and 290 curated configurations** across Apple, PlayStation and NVIDIA. Its 46 added products have no inventory sources; ordinary sources remain inactive; the [official integration setup](official-store-integrations.md) adds paused Apple pickup records and records the observed PlayStation/NVIDIA blocks. The lab still exercises the eight iPhone Duo configurations. Catalog browsing does not enable checkout for products without an eligible source. See [catalog implementation and maintenance](product-catalog.md) for scope, research references and stable IDs.
+The expanded main catalog contains **49 products and 290 curated configurations** across Apple, PlayStation and NVIDIA. Its 46 added products have no inventory sources; the [official integration setup](official-store-integrations.md) adds on-demand direct Apple pickup, PlayStation and NVIDIA sources. Automatic monitoring remains inactive. The lab still exercises the eight iPhone Duo configurations. Catalog browsing does not enable checkout for products without an eligible source. See [catalog implementation and maintenance](product-catalog.md) for scope, research references and stable IDs.
 
 ## Start the configured workspace again
 
@@ -61,7 +61,7 @@ At this earlier checkout checkpoint, the production build and 88 unit tests pass
 | Database | `restock_radar` | `restock_radar_local_test` |
 | Environment | `.env` | `.env.local-test` |
 | Build output | `.next` | `.next-local-test` |
-| Stock source | Inactive ordinary and official source records; no sources for 46 added products | Eight deterministic `local-test` sources |
+| Stock source | Direct on-demand checks for three core products; no sources for 46 added products | Eight deterministic `local-test` sources |
 | Notification delivery | Provider configuration or explicit local capture | Local capture only |
 
 `RADAR_LOCAL_TEST_MODE=true` works only in development, with a loopback app origin and a database name ending in `_local_test`. The runner also requires local mailbox capture and port 3001. It clears inherited application settings before loading the lab file. Use a separately generated `RADAR_AUTH_SECRET` for the lab. The app uses a separate lab session cookie.
@@ -183,4 +183,11 @@ See [functional gap review](store-stock-checker-case-study.md#functional-walkthr
 
 The competitor's public JavaScript requests its own catalog, store, stock and nearby-store APIs. It does not expose the server-side inventory collector or an authorized feed. Its robots rules disallow `/api/`, so those endpoints were not used as our data source. Browser refresh timing does not prove its upstream polling interval. See [the research addendum](store-stock-checker-case-study.md#public-code-inspection-november-17-2026).
 
-The original product brief requires respecting retailer terms. Apple's website terms restrict automated monitoring, so this implementation leaves the ordinary Apple sources paused until a suitable authorized inventory source is available. The local lab makes the rest of the payment and notification flow testable without representing simulated stock as live Apple availability. [Apple website terms](https://www.apple.com/legal/internet-services/terms/site.html)
+The original product brief requires respecting retailer terms. Apple's website terms restrict automated monitoring, so automatic Apple monitoring remains inactive. The direct-integration report describes separately requested public API lookups and protection-stop handling. The local lab makes the rest of the payment and notification flow testable without representing simulated stock as live Apple availability. [Apple website terms](https://www.apple.com/legal/internet-services/terms/site.html)
+
+
+## Direct official stock checks — November 17, 2026
+
+The main app now performs real user-requested checks for iPhone Duo pickup, PlayStation Direct PS5 Pro and NVIDIA's RTX 5090 product API. The browser run returned 12 Apple stores for ZIP 10001 and one official online listing for each other brand, all out of stock at their observed times. Unreturned Apple stores remain unknown. All eight Duo part identities are configured; the live run checked 256GB Star White. The 30-second response cache preserves the original timestamp, and snapshots become stale after 60 seconds without sending an automatic request.
+
+The production build, 132 unit tests and 30 PostgreSQL integration tests passed. On-demand observations do not grant background approval, enable checkout for an alert, or send a notification. Operator pauses and actual API blocks stop further checks. External email is still unconfigured. See the [integration report](official-store-integrations.md) for endpoints, matching rules, diagnostic approval and verification boundaries.

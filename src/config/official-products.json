@@ -1,0 +1,43 @@
+{
+  "reviewedAt": "2026-11-17",
+  "apple": [
+    {
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-256gb-night-sky-unlocked",
+      "partNumber": "MK1F4LL/A"
+    },
+    {
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-512gb-night-sky-unlocked",
+      "partNumber": "MK1H4LL/A"
+    },
+    {
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-512gb-star-white-unlocked",
+      "partNumber": "MK1G4LL/A"
+    },
+    {
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-256gb-star-white-unlocked",
+      "partNumber": "MK1E4LL/A"
+    },
+    {
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-1tb-night-sky-unlocked",
+      "partNumber": "MK1L4LL/A"
+    },
+    {
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-2tb-star-white-unlocked",
+      "partNumber": "MK1Q4LL/A"
+    },
+    {
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-1tb-star-white-unlocked",
+      "partNumber": "MK1J4LL/A"
+    },
+    {
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-2tb-night-sky-unlocked",
+      "partNumber": "MK1R4LL/A"
+    }
+  ],
+  "playstation": [
+    {
+      "productUrl": "https://direct.playstation.com/en-us/buy-consoles/playstation5-pro-console",
+      "productCode": "1000050805"
+    }
+  ]
+}

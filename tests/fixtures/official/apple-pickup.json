@@ -1,0 +1,19 @@
+{
+  "head": {
+    "status": "200"
+  },
+  "body": {
+    "stores": [
+      {
+        "storeNumber": "R095",
+        "partsAvailability": {
+          "MK1E4LL/A": {
+            "partNumber": "MK1E4LL/A",
+            "pickupDisplay": "unavailable",
+            "storePickEligible": true
+          }
+        }
+      }
+    ]
+  }
+}
