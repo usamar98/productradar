@@ -349,6 +349,8 @@ model RadarSubscription {
   userId String
   user RadarUser @relation(fields: [userId], references: [id])
   planId String
+  priceCents Int?
+  alertLimit Int?
   plan RadarPlan @relation(fields: [planId], references: [id])
   providerRef String @unique
   customerRef String?

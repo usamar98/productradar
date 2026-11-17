@@ -11,7 +11,7 @@ export const REFUND_POLICY = "Full refund if no in-stock alert for your item arr
 export function getPlan(id: string) { return PLANS.find(plan => plan.id === id); }
 
 /** One alert watches an item/variant; its selected retailers also consume slots. */
-export function assertPlanLimits(plan: Pick<RadarPlanConfig, "alertLimit">, sourceIds: readonly string[], existingSlots = 0) {
+export function assertPlanLimits(plan: { alertLimit: number }, sourceIds: readonly string[], existingSlots = 0) {
   if (sourceIds.length === 0) throw new Error("Choose at least one retailer.");
   if (new Set(sourceIds).size !== sourceIds.length) throw new Error("Choose each retailer only once.");
   if (!Number.isInteger(existingSlots) || existingSlots < 0 || sourceIds.length + existingSlots > plan.alertLimit) {
