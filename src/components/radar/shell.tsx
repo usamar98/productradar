@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ArrowUpRight, Bell, Menu, Radar, X } from "lucide-react";
 import styles from "./shell.module.css";
 
-const navigation = [{ label: "Products", href: "/products" }, { label: "Buying guides", href: "/guides" }, { label: "Pricing", href: "/pricing" }, { label: "Our track record", href: "/proof" }];
+const navigation = [{ label: "Check stock", href: "/stock" }, { label: "Products", href: "/products" }, { label: "Buying guides", href: "/guides" }, { label: "Pricing", href: "/pricing" }, { label: "Our track record", href: "/proof" }];
 const footerGroups = [
   { title: "Explore", links: [{ label: "All products", href: "/products" }, { label: "Apple products", href: "/brands/apple" }, { label: "PlayStation products", href: "/brands/playstation" }, { label: "NVIDIA graphics cards", href: "/brands/nvidia" }, { label: "Buying guides", href: "/guides" }] },
   { title: "Get to know us", links: [{ label: "How checks work", href: "/methodology" }, { label: "Our track record", href: "/proof" }, { label: "Pricing", href: "/pricing" }, { label: "Contact", href: "/contact" }] },

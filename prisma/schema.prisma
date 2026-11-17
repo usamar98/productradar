@@ -283,6 +283,9 @@ model RadarSource {
   variant RadarVariant @relation(fields: [variantId], references: [id])
   retailer String
   label String
+  // A store ID is meaningful only for pickup; online availability is separate.
+  locationId String?
+  fulfillment String @default("online")
   productUrl String
   connector String @default("jsonld")
   pollSeconds Int @default(15)
@@ -300,6 +303,7 @@ model RadarSource {
   @@unique([variantId, retailer])
   @@index([status, nextCheckAt])
   @@map("sources")
+  @@index([locationId, variantId])
 }
 model RadarStockEvent {
   id String @id @default(cuid())

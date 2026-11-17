@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ZipSearchEntry } from "@/components/radar/zip-search-entry";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Bell } from "lucide-react";
@@ -87,7 +88,7 @@ export default async function ProductPage({ params }: Props) {
     <div className={`rr-container ${styles.productDetails}`}>
     <DataNotice available={catalog.available} seeded={catalog.seeded}/>
     <section className={styles.availabilityIntro} id="availability"><span className="rr-eyebrow">YOUR NEXT MOVE STARTS HERE</span><h2>Availability.<br/><span>Without the guesswork.</span></h2><p>Compare retailer observations for the exact product you want. A pending connection means availability is unknown.</p></section>
-    <div className={styles.callout}><strong>Current tracking coverage</strong><p>{coverage}</p></div>
+    <ZipSearchEntry item={item.slug}/><div className={styles.callout}><strong>Current tracking coverage</strong><p>{coverage}</p></div>
     <div className={styles.stats}><div className={styles.stat}><span>Configurations in stock</span><strong>{observed ? available.length : "No data yet"}</strong><small>Fresh checks, counted per retailer and variant</small></div><div className={styles.stat}><span>Recorded stock periods</span><strong>{total != null && total > 0 ? total.toLocaleString("en-US") : "No data yet"}</strong><small>Observed availability, across sources</small></div><div className={styles.stat}><span>Last seen in stock</span><strong style={{fontSize: 18}}>{dateTime(events[0]?.seenAt)}</strong><small>{events[0]?.source.label || "Awaiting a connected source"}</small></div></div>
     <section className={styles.section}><div className="rr-section-heading"><div><span className="rr-eyebrow">THE STOCK CHECK</span><h2>Find your retailer.</h2></div></div><RetailerTable item={item}/></section>
     <div className={styles.split}><section className={`rr-panel ${styles.history}`}><header><span className="rr-eyebrow">ACTUAL OBSERVATIONS</span><h2>The latest stock periods</h2><p className={styles.note}><Link href={`/${item.slug}/restocks`}>View timestamps, durations and observation coverage →</Link></p></header><EventLog item={item} limit={6}/></section><aside className={styles.aside}><Bell size={26}/><h2>Your time.<br/>Back in your hands.</h2><p>Choose the exact variant and retailers you want. Email and browser push can notify you when a connected source detects a new in-stock period.</p><Link className="rr-button rr-primary" href={`/alerts?item=${item.slug}`}>Put it on my radar<ArrowRight size={15}/></Link><Link className={styles.mutedLink} href="/pricing">Compare alert plans and retailer slots</Link></aside></div>

@@ -6,6 +6,7 @@ import { isLocalTestMode } from "@/lib/radar/local-test";
 import { isLocalMailboxEnabled } from "@/lib/radar/local-mode";
 import Link from "next/link";
 import "./globals.css";
+import "./stock-features.css";
 
 const defaultMetadata = pageMetadata({ title: "Restock Radar — Free stock checks and restock alerts", description: "Browse products, compare recorded retailer availability and learn how to find your next purchase. Create an email and browser push alert for selected products.", path: "/" });
 export const metadata: Metadata = {

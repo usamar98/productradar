@@ -1,0 +1,4 @@
+import { ArrowRight, MapPin } from "lucide-react";
+export function ZipSearchEntry({ item = "iphone-duo", variant }: { item?: string; variant?: string }) {
+  return <section className="rr-zip-entry"><div><span className="rr-eyebrow">FREE STOCK CHECK</span><h2>Find it closer to home.</h2><p>Find nearby stores by ZIP code. Your first connected alert is free for 14 days.</p></div><form action="/stock" method="get"><input type="hidden" name="item" value={item}/>{variant && <input type="hidden" name="variant" value={variant}/>}<label htmlFor={`stock-zip-${item}`}><MapPin size={17}/>US ZIP code</label><div><input id={`stock-zip-${item}`} name="zip" inputMode="numeric" autoComplete="postal-code" pattern="[0-9]{5}(-[0-9]{4})?" required placeholder="e.g. 10001" maxLength={10}/><button className="rr-button rr-primary" type="submit">Check stock<ArrowRight size={16}/></button></div></form></section>;
+}

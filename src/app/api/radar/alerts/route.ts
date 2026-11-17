@@ -24,7 +24,7 @@ export async function POST(request: Request) {
       if (sources.length !== value.sourceIds.length) throw new HttpError(400, "Choose retailers for the selected item and variant.");
       if (sources.some(s => s.status !== "active" || !s.approved || s.connector === "mock" || (s.connector === "local-test" && !isLocalTestMode()))) throw new HttpError(503, "These retailers are not connected yet. You can browse stock for free while tracking is being set up.");
       const user = await tx.radarUser.upsert({ where: { email: value.email }, create: { email: value.email }, update: {} });
-      const existing = await tx.radarSubscription.findFirst({ where: { userId: user.id, status: "active", currentPeriodEnd: { gt: new Date() } }, orderBy: { createdAt: "desc" } });
+      const existing = await tx.radarSubscription.findFirst({ where: { userId: user.id, plan: { type: { not: "free" } }, status: "active", currentPeriodEnd: { gt: new Date() } }, orderBy: { createdAt: "desc" } });
       if (existing) {
         if (authenticatedId !== user.id) throw new HttpError(401, "Sign in with an email link to add alerts to your existing plan.");
         if (existing.planId !== plan.id) throw new HttpError(409, "Choose your current plan to use its remaining alerts. Manage billing to change plans.");

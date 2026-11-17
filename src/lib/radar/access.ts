@@ -11,7 +11,7 @@ export function radarSecret() {
   return secret;
 }
 export function hashToken(token: string) { return createHash("sha256").update(token).digest("hex"); }
-type SignedPayload = { purpose: "session" | "login" | "click"; userId?: string; alertId?: string; eventId?: string; nonce?: string; exp: number };
+type SignedPayload = { purpose: "session" | "login" | "click" | "free-alert"; userId?: string; alertId?: string; eventId?: string; nonce?: string; exp: number };
 function sign(payload: SignedPayload) {
   const body = Buffer.from(JSON.stringify(payload)).toString("base64url");
   return `${body}.${createHmac("sha256", radarSecret()).update(body).digest("base64url")}`;
@@ -29,6 +29,8 @@ function verify(token: string, purpose: SignedPayload["purpose"], now = Date.now
   } catch { return null; }
 }
 export function createLoginToken(userId: string) { return sign({ purpose: "login", userId, nonce: randomBytes(24).toString("base64url"), exp: Date.now() + 10 * 60_000 }); }
+export function createFreeAlertToken(userId: string, alertId: string) { return sign({ purpose: "free-alert", userId, alertId, nonce: randomBytes(24).toString("base64url"), exp: Date.now() + 10 * 60_000 }); }
+export function verifyFreeAlertToken(token: string) { const p = verify(token, "free-alert"); return p?.userId && p.alertId ? { userId: p.userId, alertId: p.alertId } : null; }
 export function verifyLoginToken(token: string) { const p = verify(token, "login"); return p?.userId ? { userId: p.userId } : null; }
 export function createSessionToken(userId: string) { return sign({ purpose: "session", userId, exp: Date.now() + 30 * 86400_000 }); }
 export function sessionUserId(token: string) { return verify(token, "session")?.userId ?? null; }

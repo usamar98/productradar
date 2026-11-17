@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { assertPlanLimits, getPlan, PLANS } from "../src/config/pricing";
-import { createClickToken, createLoginToken, createSessionToken, sessionUserId, verifyClickToken, verifyLoginToken } from "../src/lib/radar/access";
+import { createClickToken, createFreeAlertToken, createLoginToken, createSessionToken, sessionUserId, verifyClickToken, verifyFreeAlertToken, verifyLoginToken } from "../src/lib/radar/access";
 import { paymentReadiness, paymentClient } from "../src/lib/payments";
 
 afterEach(() => { vi.unstubAllEnvs(); vi.useRealTimers(); });
@@ -16,6 +16,22 @@ describe("plan retailer limits", () => {
   });
 });
 describe("separate authentication and click capabilities", () => {
+  it("binds free confirmation to its user and alert without granting a login or click capability", () => {
+    vi.stubEnv("RADAR_AUTH_SECRET", "f".repeat(48));
+    const token = createFreeAlertToken("user-one", "alert-one");
+    expect(verifyFreeAlertToken(token)).toEqual({ userId: "user-one", alertId: "alert-one" });
+    expect(verifyLoginToken(token)).toBeNull();
+    expect(sessionUserId(token)).toBeNull();
+    expect(verifyClickToken(token)).toBeNull();
+    expect(verifyFreeAlertToken(createSessionToken("user-one"))).toBeNull();
+    expect(verifyFreeAlertToken(token.slice(0, -3) + "bad")).toBeNull();
+  });
+  it("expires a free confirmation after ten minutes", () => {
+    vi.stubEnv("RADAR_AUTH_SECRET", "f".repeat(48)); vi.useFakeTimers();
+    const token = createFreeAlertToken("user-one", "alert-one");
+    vi.advanceTimersByTime(10 * 60_000);
+    expect(verifyFreeAlertToken(token)).toBeNull();
+  });
   it("keeps retry notification URLs byte-identical for a stable delivery timestamp", () => {
     vi.stubEnv("RADAR_AUTH_SECRET", "a".repeat(48)); vi.useFakeTimers();
     const issuedAt = Date.now();

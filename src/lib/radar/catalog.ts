@@ -6,7 +6,7 @@ import { previewCatalog } from "@/config/radar-catalog";
 export const BRAND = "Restock Radar";
 export const siteUrl = (process.env.APP_URL || "http://localhost:3000").replace(/\/$/, "");
 export type PublicEvent = { id: string; sourceId: string; inStock: boolean; priceCents: number | null; seenAt: Date; endedAt: Date | null };
-export type PublicSource = { id: string; itemId: string; variantId: string; retailer: string; label: string; productUrl: string; connector: string; pollSeconds: number; status: string; approved: boolean; inStock: boolean | null; priceCents: number | null; lastCheckedAt: Date | null; lastError: string | null; createdAt: Date | null; events: PublicEvent[] };
+export type PublicSource = { id: string; itemId: string; variantId: string; retailer: string; label: string; locationId?: string | null; fulfillment?: string; productUrl: string; connector: string; pollSeconds: number; status: string; approved: boolean; inStock: boolean | null; priceCents: number | null; lastCheckedAt: Date | null; lastError: string | null; createdAt: Date | null; events: PublicEvent[] };
 export type PublicItem = { id: string; slug: string; name: string; msrpCents: number | null; imageUrl: string | null; hidden: boolean; category: { name: string; slug: string }; variants: {id: string; slug: string; label: string}[]; sources: PublicSource[] };
 export type Catalog = { items: PublicItem[]; available: boolean; seeded: boolean };
 export const getCatalog = cache(async (): Promise<Catalog> => {

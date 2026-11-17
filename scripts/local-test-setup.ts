@@ -28,8 +28,8 @@ try {
         if (existing && (existing.connector !== "local-test" || existing.itemId !== "iphone-duo" || existing.variantId !== variantId || existing.productUrl !== productUrl)) throw new Error("An existing source does not match the isolated local-test configuration.");
         await tx.radarSource.upsert({
           where: { id: sourceId },
-          create: { id: sourceId, itemId: "iphone-duo", variantId, retailer: "apple-local-test", label: "Apple · LOCAL TEST", productUrl, connector: "local-test", approved: true, status: "active", pollSeconds: 15 },
-          update: { label: "Apple · LOCAL TEST", approved: true, status: "active", pollSeconds: 15, nextCheckAt: new Date(), leaseUntil: null, failureCount: 0, lastError: null },
+          create: { id: sourceId, itemId: "iphone-duo", variantId, retailer: "apple-local-test", label: "Apple Fifth Avenue · LOCAL TEST", locationId: "apple-r095", fulfillment: "pickup", productUrl, connector: "local-test", approved: true, status: "active", pollSeconds: 15 },
+          update: { label: "Apple Fifth Avenue · LOCAL TEST", locationId: "apple-r095", fulfillment: "pickup", approved: true, status: "active", pollSeconds: 15, nextCheckAt: new Date(), leaseUntil: null, failureCount: 0, lastError: null },
         });
         sourceIds.push(sourceId);
       }

@@ -38,7 +38,7 @@ Use the exact host configured in `APP_URL`: this workspace uses `http://localhos
 ## Test the flow
 
 1. Open [the lab controls](http://localhost:3001/local-test). Choose a configuration, select **Out of stock**, and wait until **Worker observed** also says out of stock.
-2. Follow that configuration's **Test checkout** link. The selected source should be **Apple · LOCAL TEST**. Enter your email and continue with the $9 until-caught pass.
+2. Follow that configuration's **Test checkout** link. The selected source should be **Apple Fifth Avenue · LOCAL TEST**. Enter your email and continue with the $9 until-caught pass.
 3. On Stripe's test checkout, use **4242 4242 4242 4242**, a future expiry such as **12/34**, and **123** as CVC. Test payments do not move funds. [Stripe test card instructions](https://docs.stripe.com/testing)
 4. Return to the lab and wait for an **active** alert and a verified test payment record. The success page alone does not activate an alert; the signed webhook must arrive and pass verification.
 5. Set the same configuration to **In stock**. The next worker tick records the observation, opens a stock period and queues its notification.
@@ -161,6 +161,23 @@ Browser checks verified Apple Mac filtering and comparison, brand-navigation sta
 The broader route and configuration coverage above comes from HTTP, database and automated checks, not an assertion that every configuration was clicked in a browser. The earlier Stripe lab results remain separate; expanding the catalog did not establish live retailer stock or external notification delivery.
 
 See [catalog maintenance](product-catalog.md), [Apple research](apple-launch-research.md), [PlayStation research](playstation-launch-research.md) and [NVIDIA research](nvidia-launch-research.md) for sources, date qualifications and configuration constraints.
+
+## ZIP search and free-first-alert verification — November 17, 2026
+
+Start with [the ZIP checker in the lab](http://localhost:3001/stock?item=iphone-duo&variant=256gb-star-white&zip=10001). It searches the real US store directory, while any lab inventory result is prominently labeled **LOCAL TEST**. The eight controlled sources are attached only to Apple Fifth Avenue (`apple-r095`) with pickup fulfillment. Other stores retain unknown availability.
+
+1. On [test controls](http://localhost:3001/local-test), choose **256GB Star White**, set **Out of stock**, and wait for the worker to observe it.
+2. Open the ZIP checker above. Select **Set a free alert** on Apple Fifth Avenue. The exact configuration, source and ZIP are preserved.
+3. Keep **First alert free**, enter an email not previously used for the free offer in this lab, and submit. The source must be connected. No Stripe checkout opens.
+4. Follow **Open local inbox**, then **Verify email for free alert** in the captured email, then **Confirm email & start free alert**. The email link expires in ten minutes. The confirmation creates one active $0 plan valid for 14 days and signs you in.
+5. Set the same configuration to **In stock** in the controls. Wait for **Worker observed: In stock**, then open the inbox. The new message must identify **256GB Star White** and **Apple Fifth Avenue · LOCAL TEST**.
+6. Trying another free signup with the same verified email must be rejected, including after pausing or expiry. A paid upgrade remains available. Use the previous Stripe test instructions to exercise that separate path.
+
+The browser run completed steps 1–5 using `free-zip-test@example.test`. ZIP 10001 returned 31 stores within 50 miles; pagination exposed all 31, the in-stock filter isolated the single simulated Fifth Avenue source, city/store search found Fifth Avenue, and an invalid ZIP returned a helpful validation message. At a 390px viewport the controls had no horizontal overflow; switching to PlayStation 5 Pro selected online fulfillment. No location permission was requested during these checks.
+
+TypeScript checking and **113 unit tests + 28 integration tests (141 total)** passed. The free-alert integration tests cover activation, delivery eligibility, concurrency, replay, replaced links, invalid sources and lifetime claim limits in the isolated test database. The production build also passed; the main source data still does not establish live store inventory. The local browser test produced a captured notification, not an externally delivered email or push notification.
+
+See [functional gap review](store-stock-checker-case-study.md#functional-walkthrough-and-gap-review--november-17-2026) and [implementation details](stock-finder.md).
 
 ## Live iPhone inventory remains pending
 

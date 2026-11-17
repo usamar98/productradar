@@ -7,6 +7,9 @@ export const PLANS = [
 export type PlanId = typeof PLANS[number]["id"];
 export type RadarPlanConfig = typeof PLANS[number];
 export const PASS_DAYS = 14;
+export const FREE_ALERT_DAYS = 14;
+export const FREE_PLAN = { id: "free", name: "First alert free", priceCents: 0, alertLimit: 1, type: "free", description: "One exact configuration at one connected retailer or store for 14 days. Once per verified email. No card, no renewal." } as const;
+export const ALERT_PLANS = [FREE_PLAN, ...PLANS] as const;
 export const REFUND_POLICY = "Full refund if no in-stock alert for your item arrives within 14 days of payment. Contact us with the email used at checkout to request your refund.";
 export function getPlan(id: string) { return PLANS.find(plan => plan.id === id); }
 

@@ -296,6 +296,7 @@ export function ProductExperience({ item, product, dateLabel, recent, models = [
             <span className={styles.selectionLabel}>YOUR SELECTION</span>
             <p aria-live="polite" aria-atomic="true"><strong>{presentation.title}</strong><span>{selected?.label ?? "Choose a configuration"}</span></p>
             <Link href={detailsHref} className={styles.primaryButton}>View this configuration<ArrowRight size={17}/></Link>
+            <Link href={`/stock?item=${item.slug}&variant=${selected.slug}`} className={styles.alertLink}>Check stock near you<ChevronRight size={15}/></Link>
             <Link href={alertHref} className={styles.alertLink}>Explore alert options<ChevronRight size={15}/></Link>
             {product && <a className={styles.alertLink} href={product.officialUrl} target="_blank" rel="noopener noreferrer">View {presentation.label} options ↗</a>}
             <small>Stock and prices are confirmed separately by retailer. Product purchases happen on the retailer’s website.</small>

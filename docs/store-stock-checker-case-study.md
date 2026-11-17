@@ -63,3 +63,30 @@ The frontend refreshes stock displays approximately every 20 seconds, but that i
 Robots disallows `/api/`; no competitor inventory API was queried or reused. No direct Apple inventory endpoint, credentials or reusable authorized feed was found in the inspected public assets. The technical conclusion is limited: the competitor serves inventory through a private backend, and reverse-engineering its public interface does not provide our app with an equivalent data supply. [Robots rules](https://storestockchecker.com/robots.txt)
 
 Restock Radar therefore keeps ordinary Apple sources paused. Its separate [local lab](local-testing.md) uses explicitly simulated stock alongside Stripe sandbox checkout and local email capture. A live connector still requires an appropriate inventory source and permission consistent with the original brief and [Apple's website terms](https://www.apple.com/legal/internet-services/terms/site.html).
+
+## Functional walkthrough and gap review — November 17, 2026
+
+The second review used the public homepage, product hub, restock report, signup and Team announcement. In a browser, the signup was advanced through iPhone Duo → Star White → 256GB → ZIP **10001** → nearby stores → email entry. The ZIP search returned ten nearby choices and selected the nearest three by default. No email, account or payment was submitted to the competitor. Its country selector contained 25 countries. Later signup steps and paid delivery behavior were reviewed from public descriptions; they were not exercised as a paying customer.
+
+The distinction in the free offer matters: the competitor allows free manual stock checks, while its signup explicitly says **“No free trial.”** A free first alert is our requested offer, not a claim about its pricing. Restock Radar now grants one verified email a $0 alert for one exact configuration at one connected source for 14 days, with no card or renewal. [Competitor signup](https://storestockchecker.com/start)
+
+| Capability | Public competitor behavior | Restock Radar after this change |
+| --- | --- | --- |
+| Location discovery | ZIP/postcode, city/store and device location; distance-sorted stores | US ZIP/ZIP+4, city/store search, explicit device-location action, four radii, directions and official links; 269 US Apple Stores |
+| Exact product selection | Product, finish, capacity, then stores | Existing 49-product catalog feeds the checker; exact configuration and source continue into alert signup |
+| Manual availability | Store-specific status and timestamps; in-stock filter | Free checker separates pickup from online inventory, filters all matching results, and displays fresh, stale or unknown states; ordinary sources remain unconnected |
+| Store scope | Several stores selected in onboarding | First free alert covers one store/source; paid 2/5/10-slot plans retain multiple-source selection |
+| Email verification | Six-digit email code before alert setup continues | Single-use, ten-minute email link with a deliberate confirmation button; monitoring starts only after verification |
+| Free entry point | Manual checks free; no free trial advertised | Manual checks plus the requested first free 14-day alert |
+| Notifications | Email, browser push and advertised speed claims | Existing email/push pipeline; free alert tested through the worker and local inbox. External delivery and timing have not been verified |
+| Payments and account | Stripe plans and account management | Existing Stripe sandbox checkout, webhook activation, portal, alert pausing; free plan bypasses payment and never renews |
+| Restock evidence | Store/configuration history and reports | Existing event history, coverage, freshness and proof pages; no simulated records presented as live customer proof |
+| Search pages | Product/configuration/store/city guides and links | Existing product/configuration/retailer/guide links plus `/stock`; no empty city pages generated just to target keywords |
+| International coverage | Country selection beyond the US | Not connected; the new physical-store directory is explicitly US Apple only |
+| Team delivery | $49/month Discord/Slack integration with store limits | Not implemented; needs real OAuth apps, channel authorization and its own billing/entitlement work |
+
+The most consequential remaining gap is inventory collection. A directory identifies a store; it does not prove that a particular configuration can be collected there. A ZIP also does not prove delivery eligibility. The implementation therefore matches pickup inventory only to an explicit store ID and exact variant. Paused sources cannot issue a free alert and do not consume the offer. No manufacturer-wide online result is reused as a physical store's stock.
+
+The homepage's polling/delivery speed claims, customer anecdotes and TrustMRR figures do not establish our achievable performance or the competitor's private collection method. Full parity is not established by this review. Remaining work includes a suitable live feed, international data, external email/push delivery validation and Team integrations. [Homepage](https://storestockchecker.com/), [Team announcement](https://storestockchecker.com/discord-slack-alerts)
+
+See [stock finder and free-alert implementation](stock-finder.md) for directory provenance, freshness rules, setup and maintenance, and [local testing](local-testing.md) for the reproducible flow.

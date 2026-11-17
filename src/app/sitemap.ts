@@ -15,6 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const items = catalog.items.filter(item => !item.hidden && getProductContent(item.slug));
     if (items.length) {
       routes.add("/products");
+      routes.add("/stock");
       routes.add("/guides");
     }
     for (const item of items) {
