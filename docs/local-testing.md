@@ -2,7 +2,7 @@
 
 The lab at [localhost:3001/local-test](http://localhost:3001/local-test) exercises Stripe sandbox checkout, verified webhook activation, the stock worker and signed notification links. Stock comes from controls you operate, not Apple inventory. The main app remains at [localhost:3000](http://localhost:3000) with its ordinary retailer sources paused.
 
-The expanded main catalog contains **49 products and 290 curated configurations** across Apple, PlayStation and NVIDIA. Its 46 added products have no inventory sources; the original 14 ordinary sources remain paused and unapproved. The lab still exercises the eight iPhone Duo configurations. Catalog browsing does not enable checkout for products without an eligible source. See [catalog implementation and maintenance](product-catalog.md) for scope, research references and stable IDs.
+The expanded main catalog contains **49 products and 290 curated configurations** across Apple, PlayStation and NVIDIA. Its 46 added products have no inventory sources; ordinary sources remain inactive; the [official integration setup](official-store-integrations.md) adds paused Apple pickup records and records the observed PlayStation/NVIDIA blocks. The lab still exercises the eight iPhone Duo configurations. Catalog browsing does not enable checkout for products without an eligible source. See [catalog implementation and maintenance](product-catalog.md) for scope, research references and stable IDs.
 
 ## Start the configured workspace again
 
@@ -61,7 +61,7 @@ At this earlier checkout checkpoint, the production build and 88 unit tests pass
 | Database | `restock_radar` | `restock_radar_local_test` |
 | Environment | `.env` | `.env.local-test` |
 | Build output | `.next` | `.next-local-test` |
-| Stock source | 14 paused ordinary sources; no sources for 46 added products | Eight deterministic `local-test` sources |
+| Stock source | Inactive ordinary and official source records; no sources for 46 added products | Eight deterministic `local-test` sources |
 | Notification delivery | Provider configuration or explicit local capture | Local capture only |
 
 `RADAR_LOCAL_TEST_MODE=true` works only in development, with a loopback app origin and a database name ending in `_local_test`. The runner also requires local mailbox capture and port 3001. It clears inherited application settings before loading the lab file. Use a separately generated `RADAR_AUTH_SECRET` for the lab. The app uses a separate lab session cookie.

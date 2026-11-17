@@ -3,6 +3,10 @@ import { prisma } from "../src/lib/db";
 import { BlockedSourceError, connectorFor } from "../src/lib/radar/connectors";
 import { canDeliver, pollDelayMs, stockTransition, type StockCheck } from "../src/lib/radar/domain";
 import { isLocalTestMode } from "../src/lib/radar/local-test";
+import { isOfficialConnector, officialMinPollSeconds, officialProviderIntervalSeconds } from "../src/lib/radar/official-connectors";
+
+const sourceInterval = (source: RadarSource) => isOfficialConnector(source.connector) ? Math.max(officialMinPollSeconds, source.pollSeconds) : source.pollSeconds;
+const sourceDelay = (source: RadarSource, failures = 0) => Math.max(isOfficialConnector(source.connector) ? officialMinPollSeconds * 1000 : 0, pollDelayMs(sourceInterval(source), failures));
 
 const sourceLeaseMs = 180_000;
 export async function recordObservation(source: RadarSource, leaseUntil: Date, result: StockCheck, checkedAt = new Date(), database = prisma) {
@@ -12,7 +16,7 @@ export async function recordObservation(source: RadarSource, leaseUntil: Date, r
     const updated = await tx.radarSource.updateMany({ where: { id: source.id, leaseUntil, status: "active" }, data: {
       inStock: result.inStock, priceCents: result.priceCents ?? null, lastCheckedAt: checkedAt,
       lastError: null, failureCount: 0, leaseUntil: null,
-      nextCheckAt: new Date(checkedAt.getTime() + pollDelayMs(source.pollSeconds)),
+      nextCheckAt: new Date(checkedAt.getTime() + sourceDelay(source)),
     } });
     if (!updated.count) return null;
     const transition = stockTransition(source.inStock, result.inStock);
@@ -35,22 +39,46 @@ export async function recordObservation(source: RadarSource, leaseUntil: Date, r
   });
 }
 
-async function pollSource(source: RadarSource & { item: { hidden: boolean } }) {
+export async function claimSource(source: RadarSource, database = prisma) {
   const now = new Date(), leaseUntil = new Date(now.getTime() + sourceLeaseMs);
-  const claimed = await prisma.radarSource.updateMany({ where: { id: source.id, status: "active", nextCheckAt: { lte: now }, OR: [{ leaseUntil: null }, { leaseUntil: { lte: now } }] }, data: { leaseUntil } });
-  if (!claimed.count) return;
+  return database.$transaction(async tx => {
+    // Serialize claims across worker processes, not only within one JavaScript process.
+    if (isOfficialConnector(source.connector)) await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${`official-source:${source.connector}`}))`;
+    const claimed = await tx.radarSource.updateMany({ where: { id: source.id, status: "active", nextCheckAt: { lte: now }, OR: [{ leaseUntil: null }, { leaseUntil: { lte: now } }] }, data: { leaseUntil } });
+    if (!claimed.count) return null;
+    if (isOfficialConnector(source.connector)) {
+      const next = new Date(now.getTime() + officialProviderIntervalSeconds * 1000);
+      await tx.radarSource.updateMany({ where: { connector: source.connector, status: "active", nextCheckAt: { lt: next } }, data: { nextCheckAt: next } });
+    }
+    return leaseUntil;
+  });
+}
+
+export async function recordSourceFailure(source: RadarSource, leaseUntil: Date, error: unknown, database = prisma) {
+  const blocked = error instanceof BlockedSourceError;
+  const failures = source.failureCount + 1;
+  const message = error instanceof Error ? error.message.slice(0, 500) : "Source check failed.";
+  return database.$transaction(async tx => {
+    const updated = await tx.radarSource.updateMany({ where: { id: source.id, leaseUntil }, data: {
+      status: blocked ? "blocked" : "active", leaseUntil: null, failureCount: failures,
+      // A failed attempt must not advance the last successful stock observation time.
+      lastError: message, nextCheckAt: new Date(Date.now() + sourceDelay(source, failures)),
+    } });
+    if (updated.count && blocked && isOfficialConnector(source.connector)) {
+      // Protection stops the provider's other active sources as well, including leased work.
+      await tx.radarSource.updateMany({ where: { connector: source.connector, status: "active" }, data: { status: "blocked", leaseUntil: null, lastError: message } });
+    }
+  });
+}
+
+async function pollSource(source: RadarSource & { item: { hidden: boolean } }) {
+  const leaseUntil = await claimSource(source);
+  if (!leaseUntil) return;
   try {
     const result = await connectorFor(source.connector).check(source);
     await recordObservation(source, leaseUntil, result);
   } catch (error) {
-    const blocked = error instanceof BlockedSourceError;
-    const failures = source.failureCount + 1;
-    await prisma.radarSource.updateMany({ where: { id: source.id, leaseUntil }, data: {
-      status: blocked ? "blocked" : "active", leaseUntil: null, lastCheckedAt: new Date(), failureCount: failures,
-      // Connector messages contain no credentials or request bodies.
-      lastError: error instanceof Error ? error.message.slice(0, 500) : "Source check failed.",
-      nextCheckAt: new Date(Date.now() + pollDelayMs(source.pollSeconds, failures)),
-    } });
+    await recordSourceFailure(source, leaseUntil, error);
   }
 }
 

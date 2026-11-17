@@ -98,7 +98,7 @@ Use Prisma Studio (`npx prisma studio`) or a SQL administration tool:
 
 ## Product discovery and SEO
 
-The public catalog now includes PS5 Pro and iPhone Duo, with eight Apple color/storage configurations. Run `npm run db:seed` to add missing catalog rows; existing source settings are preserved. Apple links point to exact US carrier-later configurations and are available for manual checks. They are **not** an Apple Store inventory integration. New Apple sources remain paused/unapproved with no invented availability. Do not activate a generic product-page connector as a substitute for store-specific pickup inventory.
+The public catalog contains 49 products and 290 configurations across Apple, PlayStation and NVIDIA. Run `npm run db:seed` to add missing catalog rows; existing source settings are preserved. The [official-store adapters](docs/official-store-integrations.md) resolve selected purchase-page identities and distinguish pickup from online stock. Live monitoring remains inactive or blocked by the documented upstream limits. A generic product-page offer cannot be used as store-specific pickup inventory.
 
 Browse `/products`, `/guides`, `/categories/consoles` and `/categories/smartphones`. Product pages link variants, retailers, buying guides and recorded history. Variant URLs use `/{item}/variants/{variant}`; alert links preserve product, variant and retailer selection. `/methodology` explains coverage, freshness, counting and duration limits.
 
@@ -133,4 +133,8 @@ Integration tests need `TEST_DATABASE_URL` pointing to a separate database endin
 
 Before launch, complete a real Stripe **test** checkout and cancellation/refund, a Resend inbox delivery, supported browser push delivery, and a permitted retailer observation-to-notification run. Local fixtures do not establish external acceptance. Check `/admin`, `/proof`, `sitemap.xml`, `robots.txt`, `/llms.txt` at the final origin. Results are in `docs/verification.md`.
 
-Defaults: Restock Radar; localhost until a domain is assigned; US/USD; PS5 Pro standard edition with four paused retailer placeholders; iPhone Duo with eight paused Apple configuration sources; hidden RTX 5090; one slot per retailer/variant; UTC history; no invented activity; test-only billing; local database/worker until free hosting and credentials are configured.
+Defaults: Restock Radar; localhost until a domain is assigned; US/USD; Apple, PlayStation and NVIDIA catalog; exact configuration and fulfillment matching; inactive or blocked ordinary sources; UTC history; no invented activity; test-only billing; local database/worker until hosting and provider access are configured.
+
+## Official Apple, PlayStation and NVIDIA sources
+
+The [official-store integration report](docs/official-store-integrations.md) documents the public frontend research, implemented adapters, exact SKU/store matching, and current upstream blocks. These connectors do not use Best Buy. Live retailer inventory and real alert delivery are not verified. Run `npm run sources:official` for local source and email configuration status. In PowerShell, prepare source records with `npm.cmd run sources:official -- --setup --zip 10001 --limit 5`; this does not activate monitoring.

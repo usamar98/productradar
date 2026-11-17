@@ -14,7 +14,7 @@ await prisma.radarVariant.upsert({ where: { id: "ps5-pro-standard" }, create: { 
 // making its identity precise: partner graphics cards are separate configurations.
 await prisma.radarVariant.upsert({ where: { id: "rtx-5090-standard" }, create: { id: "rtx-5090-standard", itemId: "rtx-5090", slug: "founders-edition", label: "Founders Edition · 32GB GDDR7" }, update: { slug: "founders-edition", label: "Founders Edition · 32GB GDDR7" } });
 for (const source of [
-  { id: "ps5-sony", retailer: "playstation-direct", label: "PlayStation Direct", productUrl: "https://direct.playstation.com/" },
+  { id: "ps5-sony", retailer: "playstation-direct", label: "PlayStation Direct", productUrl: "https://direct.playstation.com/en-us/buy-consoles/playstation5-pro-console" },
   { id: "ps5-bestbuy", retailer: "best-buy", label: "Best Buy", productUrl: "https://www.bestbuy.com/" },
   { id: "ps5-walmart", retailer: "walmart", label: "Walmart", productUrl: "https://www.walmart.com/" },
   { id: "ps5-amazon", retailer: "amazon", label: "Amazon", productUrl: "https://www.amazon.com/" },

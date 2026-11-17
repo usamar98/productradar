@@ -90,3 +90,5 @@ The most consequential remaining gap is inventory collection. A directory identi
 The homepage's polling/delivery speed claims, customer anecdotes and TrustMRR figures do not establish our achievable performance or the competitor's private collection method. Full parity is not established by this review. Remaining work includes a suitable live feed, international data, external email/push delivery validation and Team integrations. [Homepage](https://storestockchecker.com/), [Team announcement](https://storestockchecker.com/discord-slack-alerts)
 
 See [stock finder and free-alert implementation](stock-finder.md) for directory provenance, freshness rules, setup and maintenance, and [local testing](local-testing.md) for the reproducible flow.
+
+The follow-up [official-store integration investigation](official-store-integrations.md) records the public Apple/PlayStation endpoint discovery, the competitor backend boundary, actual robots/protection blocks, and the adapters now implemented. It does not establish how the competitor privately collects stock.

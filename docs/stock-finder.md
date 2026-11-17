@@ -14,7 +14,7 @@ An inventory adapter must explicitly supply `RadarSource.fulfillment = "pickup"`
 
 The endpoint returns the bounded complete matching directory (at most 269 entries). The client filters before paginating in groups of 30, so an in-stock result cannot disappear merely because it was outside the first page. Rapid requests abort and discard old responses. Product/configuration changes clear old results. A missing inventory connection is shown as unknown, not sold out.
 
-US Apple is the implemented physical-store coverage. There is no PlayStation/NVIDIA physical-store inventory integration or international directory. Official manufacturer links remain available. The main database's 14 ordinary sources remain paused and unapproved; the checker does not scrape Apple stock or reuse the competitor's inventory API.
+US Apple is the implemented physical-store coverage. There is no PlayStation/NVIDIA physical-store inventory integration or international directory. Official manufacturer links remain available. Official adapters now support exact Apple pickup configuration, PlayStation Direct product parsing and NVIDIA structured offers, with the upstream restrictions described in the [integration report](official-store-integrations.md). Sources remain inactive or blocked; no live inventory has been verified and the competitor's inventory API is not reused.
 
 ## Free offer and activation
 

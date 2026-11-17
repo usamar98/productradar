@@ -21,7 +21,7 @@ const existingCatalog: PublicItem[] = [
     category: { name: "Consoles", slug: "consoles" },
     variants: [{ id: "ps5-pro-standard", slug: "standard", label: "Standard edition" }],
     sources: [
-      ["playstation-direct", "PlayStation Direct", "https://direct.playstation.com/"],
+      ["playstation-direct", "PlayStation Direct", "https://direct.playstation.com/en-us/buy-consoles/playstation5-pro-console"],
       ["amazon", "Amazon", "https://www.amazon.com/"],
       ["best-buy", "Best Buy", "https://www.bestbuy.com/"],
       ["walmart", "Walmart", "https://www.walmart.com/"],
