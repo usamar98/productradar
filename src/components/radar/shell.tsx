@@ -7,7 +7,7 @@ import styles from "./shell.module.css";
 
 const navigation = [{ label: "Products", href: "/products" }, { label: "Buying guides", href: "/guides" }, { label: "Pricing", href: "/pricing" }, { label: "Our track record", href: "/proof" }];
 const footerGroups = [
-  { title: "Explore", links: [{ label: "All products", href: "/products" }, { label: "Consoles", href: "/categories/consoles" }, { label: "Smartphones", href: "/categories/smartphones" }, { label: "Buying guides", href: "/guides" }] },
+  { title: "Explore", links: [{ label: "All products", href: "/products" }, { label: "iPhone Duo", href: "/iphone-duo" }, { label: "PlayStation 5 Pro", href: "/playstation-5-pro" }, { label: "NVIDIA GeForce RTX 5090", href: "/rtx-5090" }, { label: "Buying guides", href: "/guides" }] },
   { title: "Get to know us", links: [{ label: "How checks work", href: "/methodology" }, { label: "Our track record", href: "/proof" }, { label: "Pricing", href: "/pricing" }, { label: "Contact", href: "/contact" }] },
   { title: "The essentials", links: [{ label: "My alerts", href: "/alerts/manage" }, { label: "Terms", href: "/terms" }, { label: "Privacy", href: "/privacy" }, { label: "Refunds", href: "/refunds" }] },
 ];

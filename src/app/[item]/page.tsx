@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Bell, Radio, ShieldCheck } from "lucide-react";
-import { ConsoleArt } from "@/components/radar/console-art";
+import { ArrowRight, Bell } from "lucide-react";
+import { ProductExperience } from "@/components/radar/product-experience";
 import { Breadcrumbs } from "@/components/radar/breadcrumbs";
-import { ProductCards, ProductIllustration } from "@/components/radar/catalog-cards";
+import { ProductCards } from "@/components/radar/catalog-cards";
 import { DataNotice, EventLog, JsonLd, RetailerTable } from "@/components/radar/public";
 import { allEvents, dateTime, getItem, siteUrl, sourceState, type PublicItem } from "@/lib/radar/catalog";
 import { getProductContent } from "@/lib/radar/product-content";
@@ -20,17 +20,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const catalog = await getItem(guide ? route.slice(11) : route);
   if (!catalog.item) return { title: "Item not found", robots: { index: false } };
   const item = catalog.item;
-  return pageMetadata({
+  const metadata = pageMetadata({
     title: guide ? `How to get ${item.name}` : `${item.name} stock tracker`,
     description: guide ? `Plan your ${item.name} purchase with configuration advice, official buying links, retailer checks and honest guidance on restock alerts.` : `Explore ${item.name} configurations, retailer availability and restock history. Check coverage and official buying links before setting an alert.`,
     path: `/${route}`, indexable: isCatalogPublished(catalog) && !!getProductContent(item.slug),
   });
+  if (!guide && item.imageUrl) {
+    const images = [{ url: new URL(item.imageUrl, siteUrl).toString(), alt: item.name }];
+    return { ...metadata, openGraph: { ...metadata.openGraph, images }, twitter: { ...metadata.twitter, images } };
+  }
+  return metadata;
 }
 
 function ProductSchema({ item }: { item: PublicItem }) {
   const content = getProductContent(item.slug);
   const offers = item.variants.length === 1 ? item.sources.filter(source => sourceState(source).tone === "green" && source.priceCents != null).map(source => ({ "@type": "Offer", url: source.productUrl, priceCurrency: "USD", price: source.priceCents! / 100, availability: "https://schema.org/InStock", seller: { "@type": "Organization", name: source.label } })) : [];
-  return <JsonLd value={{ "@context": "https://schema.org", "@type": "Product", name: item.name, url: `${siteUrl}/${item.slug}`, description: content?.summary || `Observed retailer availability for ${item.name}.`, ...(content ? { brand: { "@type": "Brand", name: content.brand } } : {}), ...(item.imageUrl ? { image: item.imageUrl } : {}), ...(offers.length ? { offers } : {}) }}/>;
+  return <JsonLd value={{ "@context": "https://schema.org", "@type": "Product", name: item.name, url: `${siteUrl}/${item.slug}`, description: content?.summary || `Observed retailer availability for ${item.name}.`, ...(content ? { brand: { "@type": "Brand", name: content.brand } } : {}), ...(item.imageUrl ? { image: new URL(item.imageUrl, siteUrl).toString() } : {}), ...(offers.length ? { offers } : {}) }}/>;
 }
 
 function ProductNavigation({ item, guide = false }: { item: PublicItem; guide?: boolean }) {
@@ -72,17 +77,19 @@ export default async function ProductPage({ params }: Props) {
     </article>
   </div>;
 
-  return <div className="rr-container">
-    <Breadcrumbs items={crumbs}/>
-    <div className={styles.productHero}><header className={styles.heading}><div><span className="rr-eyebrow">{item.category.name.toUpperCase()} · STOCK TRACKER</span><h1>{item.name}</h1><p>{content?.summary || "Your retailers, current observations, and a little less refreshing."}</p><div className={styles.actions}><Link className="rr-button rr-primary" href={`/alerts?item=${item.slug}`}><Bell size={16}/>Set up an alert<ArrowRight size={16}/></Link><Link href={`/how-to-get-${item.slug}`} className="rr-button rr-secondary">Read the buying guide</Link></div><span className={styles.window}><ShieldCheck size={13}/>Buy directly from the retailer</span></div></header><div className={item.category.slug === "smartphones" ? styles.productArtwork : styles.visual}>{item.slug === "playstation-5-pro" ? <><ConsoleArt/><small>Product illustration</small></> : item.imageUrl ? <img src={item.imageUrl} alt={item.name}/> : item.category.slug === "smartphones" ? <ProductIllustration item={item}/> : <Radio size={130} color="#b8a4d0"/>}</div></div>
-    <DataNotice available={catalog.available} seeded={catalog.seeded}/><ProductNavigation item={item}/>
-    <div className={styles.callout}><strong>What this tracker covers</strong><p>{coverage}</p></div>
+  return <div className={styles.productPage} data-product={item.slug}>
+    <div className="rr-container"><Breadcrumbs items={crumbs}/></div>
+    <ProductExperience key={item.slug} item={{ slug: item.slug, name: item.name, imageUrl: item.imageUrl, variants: item.variants.map(({ id, slug, label }) => ({ id, slug, label })) }}/>
+    <div className={`rr-container ${styles.productDetails}`}>
+    <DataNotice available={catalog.available} seeded={catalog.seeded}/>
+    <section className={styles.availabilityIntro} id="availability"><span className="rr-eyebrow">YOUR NEXT MOVE STARTS HERE</span><h2>Availability.<br/><span>Without the guesswork.</span></h2><p>Compare retailer observations for the exact product you want. A pending connection means availability is unknown.</p></section>
+    <div className={styles.callout}><strong>Current tracking coverage</strong><p>{coverage}</p></div>
     <div className={styles.stats}><div className={styles.stat}><span>Configurations in stock</span><strong>{observed ? available.length : "No data yet"}</strong><small>Fresh checks, counted per retailer and variant</small></div><div className={styles.stat}><span>Recorded stock periods</span><strong>{total != null && total > 0 ? total.toLocaleString("en-US") : "No data yet"}</strong><small>Observed availability, across sources</small></div><div className={styles.stat}><span>Last seen in stock</span><strong style={{fontSize: 18}}>{dateTime(events[0]?.seenAt)}</strong><small>{events[0]?.source.label || "Awaiting a connected source"}</small></div></div>
-    <section className={styles.section}><span className="rr-eyebrow">MAKE IT YOURS</span><h2>Choose your configuration.</h2><p className={styles.note}>Each configuration has its own source links and stock status. Availability for one does not establish availability for another.</p><div className={styles.variantGrid}>{item.variants.map(variant => <Link className={styles.variantCard} href={`/${item.slug}/variants/${variant.slug}`} key={variant.id}><span>{variant.label}</span><ArrowRight size={16}/></Link>)}</div></section>
     <section className={styles.section}><div className="rr-section-heading"><div><span className="rr-eyebrow">THE STOCK CHECK</span><h2>Find your retailer.</h2></div></div><RetailerTable item={item}/></section>
     <div className={styles.split}><section className={`rr-panel ${styles.history}`}><header><span className="rr-eyebrow">ACTUAL OBSERVATIONS</span><h2>The latest stock periods</h2><p className={styles.note}><Link href={`/${item.slug}/restocks`}>View timestamps, durations and observation coverage →</Link></p></header><EventLog item={item} limit={6}/></section><aside className={styles.aside}><Bell size={26}/><h2>Your time.<br/>Back in your hands.</h2><p>Choose the exact variant and retailers you want. Email and browser push can notify you when a connected source detects a new in-stock period.</p><Link className="rr-button rr-primary" href={`/alerts?item=${item.slug}`}>Put it on my radar<ArrowRight size={15}/></Link><Link className={styles.mutedLink} href="/pricing">Compare alert plans and retailer slots</Link></aside></div>
     {content && <section className={styles.guide}><h2>Before you buy {item.name}</h2><ul className={styles.linkList}>{content.buyingNotes.map(note => <li key={note}>{note}</li>)}</ul><p><Link href={`/how-to-get-${item.slug}`}>Read the full {item.name} buying guide</Link> for configuration advice, monitoring limits and purchase checks.</p><h2>Check the official information.</h2><ul className={styles.linkList}>{content.officialLinks.map(link => <li key={link.url}><a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} ↗</a></li>)}</ul><p className={styles.note}>Product guidance reviewed {content.reviewedAt}. Prices and availability must be confirmed at the retailer. Restock Radar is an independent monitoring service.</p></section>}
     {catalog.items.length > 1 && <section className={styles.section}><span className="rr-eyebrow">ALSO ON THE RADAR</span><h2>Explore another product.</h2><ProductCards items={catalog.items.filter(other => other.id !== item.id)}/></section>}
     <ProductSchema item={item}/>
+    </div>
   </div>;
 }

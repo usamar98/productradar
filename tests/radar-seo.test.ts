@@ -7,6 +7,7 @@ vi.mock("@/lib/radar/catalog", () => ({ BRAND: "Restock Radar", siteUrl: "https:
 import { hasObservations, isCatalogPublished, pageMetadata } from "../src/lib/radar/seo";
 import sitemap from "../src/app/sitemap";
 import robots from "../src/app/robots";
+import { previewCatalog } from "../src/config/radar-catalog";
 
 const source = (overrides: Partial<PublicSource> = {}): PublicSource => ({
   id: "source-1", itemId: "item-1", variantId: "variant-1", retailer: "official-store", label: "Official store",
@@ -68,10 +69,25 @@ describe("search discovery", () => {
   });
 
   it("keeps preview product routes out of discovery when the database is unavailable", async () => {
-    getCatalog.mockResolvedValue({ ...published(), available: false, seeded: false });
+    getCatalog.mockResolvedValue({ items: previewCatalog, available: false, seeded: false });
     const urls = (await sitemap()).map(entry => entry.url);
     expect(urls).toContain("https://radar.example/methodology");
-    expect(urls.some(url => url.includes("playstation") || url.endsWith("/products") || url.endsWith("/guides"))).toBe(false);
+    expect(urls.some(url => /playstation|iphone-duo|rtx-5090/.test(url) || url.endsWith("/products") || url.endsWith("/guides"))).toBe(false);
+    expect(previewCatalog.every(product => !hasObservations(product.sources))).toBe(true);
+    expect(previewCatalog.flatMap(product => product.sources).every(source => !source.approved && source.status === "paused" && source.inStock === null && source.events.length === 0)).toBe(true);
+  });
+
+  it("publishes the curated NVIDIA product without claiming unobserved retailer inventory", async () => {
+    getCatalog.mockResolvedValue(published([item({
+      id: "rtx-5090", slug: "rtx-5090", name: "NVIDIA GeForce RTX 5090", category: { slug: "graphics-cards", name: "Graphics cards" },
+      variants: [{ id: "rtx-5090-standard", slug: "founders-edition", label: "Founders Edition · 32GB GDDR7" }],
+      sources: [source({ itemId: "rtx-5090", variantId: "rtx-5090-standard", retailer: "nvidia" })],
+    })]));
+    const urls = (await sitemap()).map(entry => entry.url);
+    expect(urls).toContain("https://radar.example/rtx-5090");
+    expect(urls).toContain("https://radar.example/categories/graphics-cards");
+    expect(urls).toContain("https://radar.example/how-to-get-rtx-5090");
+    expect(urls.some(url => /\/restocks|\/variants\/|\/at\//.test(url))).toBe(false);
   });
 
   it("provides a route canonical, social preview and crawlable noindex for empty-data pages", () => {

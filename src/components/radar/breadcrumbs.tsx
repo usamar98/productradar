@@ -14,7 +14,7 @@ export function Breadcrumbs({ items }: { items: { label: string; href?: string }
     })),
   };
   return <>
-    <nav aria-label="Breadcrumb" className="rr-breadcrumbs" style={{ margin: "24px 0", fontSize: 12, color: "#716879" }}>
+    <nav aria-label="Breadcrumb" className="rr-breadcrumbs" style={{ margin: "24px 0", fontSize: 12, color: "var(--product-muted, #716879)" }}>
       <ol style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 9, listStyle: "none", padding: 0, margin: 0 }}>
         {items.map((item, index) => <li key={`${index}-${item.label}`} style={{ display: "flex", alignItems: "center", gap: 9 }}>
           {index > 0 ? <span aria-hidden="true" style={{ color: "#aca3b1" }}>/</span> : null}

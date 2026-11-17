@@ -6,6 +6,7 @@ import { ProductIllustration } from "@/components/radar/catalog-cards";
 import { DataNotice, EventLog, RetailerTable } from "@/components/radar/public";
 import { getItem } from "@/lib/radar/catalog";
 import { getProductContent } from "@/lib/radar/product-content";
+import { canVisitCatalogSource } from "@/lib/radar/catalog-reference";
 import { hasObservations, isCatalogPublished, pageMetadata } from "@/lib/radar/seo";
 import styles from "@/components/radar/catalog-cards.module.css";
 
@@ -23,7 +24,7 @@ export default async function VariantPage({ params }: Props) {
   if (!item || !variant) notFound();
   const sources = item.sources.filter(source => source.variantId === variant.id), scopedItem = { ...item, sources };
   const content = getProductContent(item.slug);
-  const referenceSources = sources.filter(source => /^https:\/\//.test(source.productUrl) && (source.approved || (item.slug === "iphone-duo" && source.retailer === "apple" && source.productUrl.startsWith("https://www.apple.com/shop/buy-iphone/iphone-duo/"))));
+  const referenceSources = sources.filter(source => canVisitCatalogSource(item.slug, source));
   const alertPath = `/alerts?${new URLSearchParams({ item: item.slug, variant: variant.slug }).toString()}`;
   return <div className={`rr-container ${styles.page}`}>
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: item.category.name, href: `/categories/${item.category.slug}` }, { label: item.name, href: `/${item.slug}` }, { label: variant.label }]}/>

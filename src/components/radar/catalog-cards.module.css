@@ -1,5 +1,5 @@
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-.card{border:1px solid #e5e0ed;border-radius:18px;background:#fff;overflow:hidden;min-width:0;transition:box-shadow .2s,border-color .2s}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.card{display:flex;flex-direction:column;border:1px solid #e5e0ed;border-radius:18px;background:#fff;overflow:hidden;min-width:0;transition:box-shadow .2s,border-color .2s}
 .card:hover{border-color:#cfc0e0;box-shadow:0 10px 32px #44315709}
 .artLink{display:block;background:#f6f2fb}
 .illustration{height:205px;position:relative;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 68%,#ded3f1,transparent 65%);overflow:hidden;color:#8b71aa}
@@ -14,13 +14,13 @@
 .console{position:relative;height:145px;width:87px;transform:rotate(8deg);border-radius:6px 19px 11px 4px;background:linear-gradient(90deg,#dbdbe7 0%,#faf9ff 28%,#e7e4f1 43%,#292639 45%,#2b293c 62%,#f4f1fa 64%,#fdfbff 100%);box-shadow:11px 13px 15px #4e3a5920}
 .console>span{position:absolute;left:3px;right:0;bottom:47px;height:6px;background:linear-gradient(90deg,#89819555,#292639 45%,#292639 62%,#89819555);box-shadow:0 8px #514a6155,0 16px #514a6155}
 .console svg{position:absolute;bottom:-3px;left:62px;color:#797181;background:#eeebf5;border-radius:35%;padding:4px;transform:rotate(-8deg)}
-.cardBody{padding:25px 27px 24px}
+.cardBody{padding:25px 27px 24px;display:flex;flex-direction:column;flex:1}
 .categoryLabel{display:inline-flex;align-items:center;gap:5px;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:#8a70a3;font-weight:600}
 .card h3{font-size:26px;font-weight:600;letter-spacing:-.8px;color:#33283e;margin:9px 0 11px}
 .card p{font-size:13px;line-height:1.8;color:#81758c;margin:0;min-height:47px}
 .cardMeta{display:flex;gap:8px 18px;flex-wrap:wrap;margin:18px 0 21px;color:#8b7e96;font-size:10px}
 .cardMeta span+span::before{content:"";display:inline-block;width:5px;height:5px;background:#c9b9d9;border-radius:50%;margin:0 7px 2px 0}
-.cardLinks{display:flex;justify-content:space-between;gap:15px;align-items:center;border-top:1px solid #eee9f2;padding-top:18px;font-size:12px;color:#8a789d}
+.cardLinks{display:flex;justify-content:space-between;gap:15px;align-items:center;border-top:1px solid #eee9f2;padding-top:18px;margin-top:auto;font-size:12px;color:#8a789d}
 .cardLinks a:first-child{display:flex;align-items:center;gap:8px;font-weight:600;color:#70538e}
 .page{padding-bottom:65px}
 .intro{max-width:760px;padding:25px 0 31px}
@@ -66,4 +66,16 @@
 .officialLinks a{color:#79598f;display:inline-flex;align-items:center;gap:5px;text-decoration:underline;text-underline-offset:4px}
 .sourceActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}
 .sourceActions a{display:inline-flex;align-items:center;gap:6px;padding:9px 13px;background:#f0eaf6;border-radius:7px;font-size:12px;color:#7b5b93}
+.photograph{height:240px;overflow:hidden;background:#f5f5f7;display:grid;place-items:center}
+.photograph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.apple img{object-fit:cover;object-position:center;padding:0}
+.playstation{background:#0052c3}.playstation img{object-position:76% center}
+.nvidia{background:#060c03}.nvidia img{object-position:65% center}
+.artLink:hover .photograph img{transform:scale(1.035)}
+.card[data-product="iphone-duo"] .categoryLabel,.card[data-product="iphone-duo"] .cardLinks a:first-child{color:#0071e3}
+.card[data-product="playstation-5-pro"] .categoryLabel,.card[data-product="playstation-5-pro"] .cardLinks a:first-child{color:#0068bd}
+.card[data-product="rtx-5090"] .categoryLabel,.card[data-product="rtx-5090"] .cardLinks a:first-child{color:#4b7500}
+.variantHero .photograph{height:330px;border-radius:18px}
+@media(min-width:701px) and (max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.photograph img{transition:none}.artLink:hover .photograph img{transform:none}}
 @media(max-width:700px){.cards,.guides,.variantHero{grid-template-columns:1fr}.illustration{height:180px}.cardBody{padding:22px}.intro{padding-top:16px}.intro h1{letter-spacing:-1.5px}.sectionHeading{align-items:flex-start;flex-direction:column;gap:11px}.details{grid-template-columns:1fr;gap:10px}.details>div{padding:17px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}.details dt{margin:0}.details dd{text-align:right;font-size:14px}.variantHero>.illustration{display:none}.callout{padding:21px;gap:12px}.guide{padding:24px}.cardLinks{font-size:12px}.filters{gap:7px}.filters a{padding:9px 13px}}

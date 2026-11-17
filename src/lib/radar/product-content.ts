@@ -11,6 +11,29 @@ export type ProductContent = {
 // Editorial facts are reviewed independently from inventory. This date must never
 // be presented as a retailer check time or used to manufacture a stock event.
 export const productContent: Record<string, ProductContent> = {
+  "rtx-5090": {
+    summary: "Meet NVIDIA GeForce RTX 5090 Founders Edition. Explore 32GB GDDR7 memory, Blackwell architecture and exact retailer links for your next PC build.",
+    brand: "NVIDIA",
+    reviewedAt: "2026-11-17",
+    coverage: "This tracker covers the RTX 5090 Founders Edition with 32GB GDDR7. NVIDIA Marketplace and Best Buy links are available for manual checks; automated inventory is not connected. Partner cards, bundles and other GeForce models are not interchangeable with this configuration.",
+    officialLinks: [
+      { label: "NVIDIA GeForce RTX 5090 specifications", url: "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/" },
+      { label: "RTX 5090 Founders Edition at NVIDIA Marketplace", url: "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5090-founders-edition/" },
+      { label: "Compare NVIDIA GeForce graphics cards", url: "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/" },
+    ],
+    buyingNotes: [
+      "Choose RTX 5090 Founders Edition if you want NVIDIA's own card design. Partner cards can use different coolers, dimensions, connectors and factory clock settings.",
+      "NVIDIA specifies 32GB GDDR7 memory and Blackwell architecture for RTX 5090. Check the exact model rather than relying on a listing photograph.",
+      "Check your case clearance, power supply and cable requirements against NVIDIA's system preparation guide before buying. Other components affect total system requirements.",
+      "Confirm the seller, condition, final price and return terms. A product link, an old stock period or an alert does not reserve a graphics card.",
+    ],
+    guideSections: [
+      { heading: "Start with the exact card", body: "Founders Edition is a specific RTX 5090 configuration. A partner-manufactured RTX 5090 is a different product even when it uses the same GPU and memory capacity. Check the manufacturer and full model name in the retailer's basket. This page keeps the Founders Edition links together so your selected card remains consistent." },
+      { heading: "Check your system before your basket", body: "Compare your chassis space, cooling layout, power supply and cable routing with the manufacturer's installation guidance. Leave room for the specified connectors and follow the cable maker's instructions. Review the requirements for the complete PC, especially if you are replacing a smaller or lower-power graphics card." },
+      { heading: "Compare offers on equal terms", body: "Separate new, refurbished and open-box listings, and verify who sells and fulfills the order. Shipping, taxes and bundled components affect the final price. The retailer's checkout is the authority for current availability, fulfillment and purchase terms; Restock Radar does not place an order on your behalf." },
+      { heading: "Use observed stock when it becomes available", body: "The catalog currently provides manual NVIDIA Marketplace and Best Buy links. Automated checks remain pending until an approved inventory connector is configured. Once a source is connected, compare each observation's timestamp with the retailer's current page. Recorded restocks describe the past and cannot guarantee a future shipment." },
+    ],
+  },
   "playstation-5-pro": {
     summary:
       "Compare PlayStation 5 Pro retailer sources, inspect their monitoring status and review recorded restocks for the standard console. Check the exact listing before choosing a console or bundle.",
@@ -109,6 +132,14 @@ export const categoryContent: Record<
   string,
   { description: string; buyingNotes: string[] }
 > = {
+  "graphics-cards": {
+    description: "Explore NVIDIA graphics cards with exact model information, official product references and retailer links. Start with the GeForce RTX 5090 Founders Edition, then check that your PC and the retailer's listing match the card you want.",
+    buyingNotes: [
+      "Compare the GPU and card manufacturer together; Founders Edition and partner cards can have different physical specifications.",
+      "Check power, cable and case-clearance requirements against the manufacturer's guide before ordering.",
+      "Use current retailer information for availability and price. Catalog specifications are not live inventory observations.",
+    ],
+  },
   consoles: {
     description:
       "Find console product pages, compare retailer sources and follow recorded restocks. Start with the exact console model, then compare standalone listings and bundles on their contents and final price.",

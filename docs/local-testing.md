@@ -140,6 +140,12 @@ Final lab counts were one payment, one stock event and one captured notification
 
 The early `charge.updated` delivery reached the app before checkout had created its payment projection and returned a retryable 503. A locally signed replay of that canonical Stripe test event returned 200; repeating it returned `duplicate: true` and the payment count stayed at one. This replay exercised webhook processing without manually granting payment or access.
 
+## Product-page redesign verification — November 17, 2026
+
+The catalog now exposes iPhone Duo, PlayStation 5 Pro and NVIDIA GeForce RTX 5090, each with a manufacturer-inspired product overview, original product photography and configuration links. The iPhone finish and storage controls update the image and carry the exact variant into alert setup. NVIDIA includes a Founders Edition configuration, graphics-card category, buying guide, and manual NVIDIA Marketplace and Best Buy links. Image provenance is recorded in [product photography sources](product-visual-sources.md).
+
+The production build, 93 unit tests and 23 integration tests passed. Desktop and 390px mobile browser checks covered all three product pages, with no horizontal page overflow; the iPhone 1TB Night Sky selection reached the matching alert form. HTTP checks verified all product pages, NVIDIA category/guide/variant/retailer routes, canonical metadata, social images and sitemap inclusion. Product structured data contains no unverified offers. All 14 ordinary retailer sources remain paused and unapproved; no live inventory was connected by this redesign. The isolated Stripe test lab and its previous payment/event/notification records remain separate.
+
 ## Live iPhone inventory remains pending
 
 The competitor's public JavaScript requests its own catalog, store, stock and nearby-store APIs. It does not expose the server-side inventory collector or an authorized feed. Its robots rules disallow `/api/`, so those endpoints were not used as our data source. Browser refresh timing does not prove its upstream polling interval. See [the research addendum](store-stock-checker-case-study.md#public-code-inspection-november-17-2026).

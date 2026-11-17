@@ -2,9 +2,12 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Gamepad2, Radio, Smartphone } from "lucide-react";
 import { sourceState, type PublicItem } from "@/lib/radar/catalog";
 import { getProductContent } from "@/lib/radar/product-content";
+import { productVisuals } from "@/lib/radar/product-visuals";
 import styles from "./catalog-cards.module.css";
 
 export function ProductIllustration({ item }: { item: PublicItem }) {
+  const visual = productVisuals[item.slug];
+  if (visual) return <div className={`${styles.photograph} ${styles[visual.theme]}`}><img src={visual.src} alt={visual.alt} width={600} height={400} loading="lazy" decoding="async"/></div>;
   const phone = item.category.slug === "smartphones";
   return <div className={`${styles.illustration} ${phone ? styles.phoneIllustration : ""}`} aria-hidden="true">
     <span className={styles.orbit}/>
@@ -18,12 +21,12 @@ export function ProductCards({ items }: { items: PublicItem[] }) {
     const content = getProductContent(item.slug);
     const connected = item.sources.filter(source => source.approved && source.status === "active").length;
     const freshInStock = item.sources.filter(source => sourceState(source).tone === "green").length;
-    return <article className={styles.card} key={item.id}>
+    return <article className={styles.card} data-product={item.slug} key={item.id}>
       <Link className={styles.artLink} href={`/${item.slug}`} aria-label={`View ${item.name} stock tracker`}><ProductIllustration item={item}/></Link>
       <div className={styles.cardBody}>
         <Link className={styles.categoryLabel} href={`/categories/${item.category.slug}`}>{item.category.name}<ArrowUpRight size={12}/></Link>
         <h3><Link href={`/${item.slug}`}>{item.name}</Link></h3>
-        <p>{content?.summary || `Explore ${item.name} configurations, retailer observations, and restock alert options.`}</p>
+        <p>{productVisuals[item.slug]?.description || content?.summary || `Explore ${item.name} configurations, retailer observations, and restock alert options.`}</p>
         <div className={styles.cardMeta}><span>{item.variants.length} {item.variants.length === 1 ? "configuration" : "configurations"}</span><span>{freshInStock ? `${freshInStock} in-stock ${freshInStock === 1 ? "source" : "sources"}` : connected ? "Check retailer observations" : "Tracking being prepared"}</span></div>
         <div className={styles.cardLinks}><Link href={`/${item.slug}`}>Explore tracker<ArrowRight size={15}/></Link><Link href={`/how-to-get-${item.slug}`}>Buying guide</Link></div>
       </div>

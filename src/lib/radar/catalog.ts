@@ -1,6 +1,7 @@
 import { cache } from "react";
 import { prisma } from "@/lib/db";
 import { isLocalTestMode } from "@/lib/radar/local-test";
+import { previewCatalog } from "@/config/radar-catalog";
 
 export const BRAND = "Restock Radar";
 export const siteUrl = (process.env.APP_URL || "http://localhost:3000").replace(/\/$/, "");
@@ -8,19 +9,11 @@ export type PublicEvent = { id: string; sourceId: string; inStock: boolean; pric
 export type PublicSource = { id: string; itemId: string; variantId: string; retailer: string; label: string; productUrl: string; connector: string; pollSeconds: number; status: string; approved: boolean; inStock: boolean | null; priceCents: number | null; lastCheckedAt: Date | null; lastError: string | null; createdAt: Date | null; events: PublicEvent[] };
 export type PublicItem = { id: string; slug: string; name: string; msrpCents: number | null; imageUrl: string | null; hidden: boolean; category: { name: string; slug: string }; variants: {id: string; slug: string; label: string}[]; sources: PublicSource[] };
 export type Catalog = { items: PublicItem[]; available: boolean; seeded: boolean };
-// Product metadata only. Fallbacks never create observations or customer activity.
-const previewItem: PublicItem = {
-  id: "ps5-pro", slug: "playstation-5-pro", name: "PlayStation 5 Pro", msrpCents: null, imageUrl: null, hidden: false,
-  category: { name: "Consoles", slug: "consoles" }, variants: [{ id: "ps5-pro-standard", slug: "standard", label: "Standard edition" }],
-  sources: [["playstation-direct", "PlayStation Direct"], ["amazon", "Amazon"], ["best-buy", "Best Buy"], ["walmart", "Walmart"]].map(([retailer, label]) => ({
-    id: `preview-${retailer}`, itemId: "ps5-pro", variantId: "ps5-pro-standard", retailer, label, productUrl: "", connector: "jsonld", pollSeconds: 15, status: "paused", approved: false, inStock: null, priceCents: null, lastCheckedAt: null, lastError: null, createdAt: null, events: [],
-  })),
-};
 export const getCatalog = cache(async (): Promise<Catalog> => {
   try {
     const items = await prisma.radarItem.findMany({ where: { hidden: false }, include: { category: true, variants: { orderBy: { slug: "asc" } }, sources: { where: { connector: { notIn: isLocalTestMode() ? ["mock"] : ["mock", "local-test"] } }, include: { events: { orderBy: { seenAt: "desc" }, take: 1000 } }, orderBy: { label: "asc" } } }, orderBy: { name: "asc" } });
-    return { items: items.length ? items : [previewItem], available: true, seeded: items.length > 0 };
-  } catch { return { items: [previewItem], available: false, seeded: false }; }
+    return { items: items.length ? items : previewCatalog, available: true, seeded: items.length > 0 };
+  } catch { return { items: previewCatalog, available: false, seeded: false }; }
 });
 export const getItem = cache(async (slug: string) => { const catalog = await getCatalog(); return { ...catalog, item: catalog.items.find(item => item.slug === slug) }; });
 export function allEvents(item: PublicItem) { return item.sources.flatMap(source => source.events.map(event => ({ ...event, source }))).sort((a, b) => b.seenAt.getTime() - a.seenAt.getTime()); }

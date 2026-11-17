@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/radar/breadcrumbs";
 import { DataNotice, EventLog, RetailerLogo, RetailerTable } from "@/components/radar/public";
 import { dateTime, getItem, money, sourceState } from "@/lib/radar/catalog";
 import { getProductContent } from "@/lib/radar/product-content";
+import { canVisitCatalogSource } from "@/lib/radar/catalog-reference";
 import { hasObservations, isCatalogPublished, pageMetadata } from "@/lib/radar/seo";
 import styles from "../../product.module.css";
 
@@ -37,7 +38,7 @@ export default async function RetailerPage({ params }: Props) {
       const variant = item.variants.find(value => value.id === source.variantId);
       const state = sourceState(source);
       // Paused catalog links are references, not approval to poll or evidence of inventory.
-      const canVisit = source.connector !== "mock" && /^https:\/\//.test(source.productUrl) && (source.approved || (item.slug === "iphone-duo" && source.retailer === "apple" && source.productUrl.startsWith("https://www.apple.com/shop/buy-iphone/iphone-duo/")));
+      const canVisit = canVisitCatalogSource(item.slug, source);
       return <article className={styles.sourceCard} id={variant?.slug || source.id} key={source.id}>
         <h3>{variant ? <Link href={`/${slug}/variants/${variant.slug}`}>{variant.label}</Link> : item.name}</h3>
         <span className={`rr-status rr-status-${state.tone}`}><i/>{state.label}</span>
