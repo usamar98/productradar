@@ -1,25 +1,53 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, Bell, ShieldCheck } from "lucide-react";
-import { DataNotice, EventLog, JsonLd, RetailerLogo, RetailerTable } from "@/components/radar/public";
-import { dateTime, getItem, money, siteUrl, sourceState } from "@/lib/radar/catalog";
+import { ArrowUpRight, Bell } from "lucide-react";
+import { Breadcrumbs } from "@/components/radar/breadcrumbs";
+import { DataNotice, EventLog, RetailerLogo, RetailerTable } from "@/components/radar/public";
+import { dateTime, getItem, money, sourceState } from "@/lib/radar/catalog";
+import { getProductContent } from "@/lib/radar/product-content";
+import { hasObservations, isCatalogPublished, pageMetadata } from "@/lib/radar/seo";
 import styles from "../../product.module.css";
 
 export const dynamic = "force-dynamic";
 type Props = { params: Promise<{ item: string; retailer: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { item: slug, retailer } = await params, { item } = await getItem(slug), source = item?.sources.find(value => value.retailer === retailer);
-  return item && source ? { title: `${item.name} at ${source.label} — stock and history`, description: `Check observed ${item.name} availability and prices at ${source.label}. Review recent in-stock periods and create an alert for this retailer.`, alternates: { canonical: `/${slug}/at/${retailer}` } } : { title: "Retailer not found", robots: { index: false } };
+  const { item: slug, retailer } = await params;
+  const catalog = await getItem(slug), item = catalog.item;
+  const sources = item?.sources.filter(source => source.retailer === retailer) || [];
+  return item && sources.length ? pageMetadata({ title: `${item.name} at ${sources[0].label}`, description: `Review ${item.name} configurations, observed prices and stock history at ${sources[0].label}. Keep your chosen variant when setting up an alert.`, path: `/${slug}/at/${retailer}`, indexable: isCatalogPublished(catalog) && hasObservations(sources) }) : { title: "Retailer not found", robots: { index: false } };
 }
 
 export default async function RetailerPage({ params }: Props) {
   const { item: slug, retailer } = await params, catalog = await getItem(slug), { item } = catalog;
-  const sources = item?.sources.filter(value => value.retailer === retailer) || [], source = sources[0];
-  if (!item || !source) notFound();
-  const state = sourceState(source), retailerItem = { ...item, sources };
-  const lastSeen = sources.flatMap(value => value.events).sort((a, b) => b.seenAt.getTime() - a.seenAt.getTime())[0];
-  const periodCount = sources.reduce((sum, value) => sum + value.events.length, 0);
-  const canVisit = source.approved && source.connector !== "mock" && /^https:\/\//.test(source.productUrl);
-  return <div className="rr-container"><Link className={styles.back} href={`/${slug}`}><ArrowLeft size={14}/>All {item.name} retailers</Link><header className={styles.heading}><div><span className="rr-eyebrow">ONE RETAILER. THE FULL PICTURE.</span><div className={styles.retailerIdentity}><RetailerLogo source={source}/><h1>{source.label}</h1></div><p>{item.name} stock, price, and recent observations in one place.</p></div><Link className="rr-button rr-primary" href={`/alerts?item=${slug}&source=${source.id}`}><Bell size={15}/>Alert me at this retailer</Link></header><DataNotice available={catalog.available} seeded={catalog.seeded}/><div className={styles.statusLine}><span className={`rr-status rr-status-${state.tone}`}><i/>{state.label}</span><span>{source.lastCheckedAt ? `Last check: ${dateTime(source.lastCheckedAt)}` : "No stock observations yet"}</span></div><div className={styles.stats}><div className={styles.stat}><span>Last reported price</span><strong>{source.priceCents != null && source.lastCheckedAt ? money(source.priceCents) : "No data yet"}</strong><small>USD · May change at checkout</small></div><div className={styles.stat}><span>Recorded periods in view</span><strong>{periodCount ? periodCount.toLocaleString("en-US") : "No data yet"}</strong><small>Up to latest 1,000 per variant</small></div><div className={styles.stat}><span>Last seen in stock</span><strong style={{ fontSize: 18 }}>{dateTime(lastSeen?.seenAt)}</strong><small>Observed start of the latest period</small></div></div><section className={styles.section}><h2>The current stock check</h2><RetailerTable item={item} sources={sources}/></section><div className={styles.split}><section className={`rr-panel ${styles.history}`}><header><span className="rr-eyebrow">OBSERVED AT {source.label.toUpperCase()}</span><h2>The retailer restock log</h2><p className={styles.note}>Latest 30 in-stock periods. All times are UTC.</p></header><EventLog item={retailerItem} limit={30}/></section><aside className={styles.aside}><ShieldCheck size={26}/><h2>Your purchase.<br/>Direct from the retailer.</h2><p>Confirm the exact edition, seller, shipping options, and final price before placing an order. Restock Radar does not reserve stock or complete purchases.</p>{canVisit ? <a href={source.productUrl} className="rr-button rr-primary" target="_blank" rel="noopener noreferrer">Visit {source.label}<ArrowUpRight size={15}/></a> : <p><strong>Retailer link pending setup.</strong><br/>The exact product link will appear once this source has been verified.</p>}<dl className={styles.detailList}><div><dt>Item</dt><dd>{item.name}</dd></div><div><dt>Edition</dt><dd>{item.variants.find(variant => variant.id === source.variantId)?.label || "See retailer details"}</dd></div><div><dt>Check interval</dt><dd>{source.approved && source.status === "active" ? `${source.pollSeconds} seconds, with jitter` : "Tracking pending"}</dd></div><div><dt>Market</dt><dd>United States · USD</dd></div></dl></aside></div><p className={styles.note}>A check can become delayed or blocked by the retailer. No automated access is attempted after bot protection is detected. Stock observations reflect a moment in time and do not guarantee availability.</p><JsonLd value={{ "@context": "https://schema.org", "@type": "Product", name: item.name, url: `${siteUrl}/${slug}/at/${retailer}`, description: `${item.name} stock observations at ${source.label}.`, ...(item.imageUrl ? { image: item.imageUrl } : {}), ...(state.tone === "green" && source.priceCents != null ? { offers: { "@type": "Offer", url: source.productUrl, priceCurrency: "USD", price: source.priceCents / 100, availability: "https://schema.org/InStock", seller: { "@type": "Organization", name: source.label } } } : {}) }}/></div>;
+  const sources = item?.sources.filter(source => source.retailer === retailer) || [];
+  if (!item || !sources.length) notFound();
+  const label = sources[0].label, retailerItem = { ...item, sources };
+  const content = getProductContent(item.slug);
+  const lastSeen = sources.flatMap(source => source.events).sort((a, b) => b.seenAt.getTime() - a.seenAt.getTime())[0];
+  const periodCount = sources.reduce((sum, source) => sum + source.events.length, 0);
+  return <div className="rr-container">
+    <Breadcrumbs items={[{ label: "Products", href: "/products" }, { label: item.name, href: `/${slug}` }, { label }]}/>
+    <header className={styles.heading}><div><span className="rr-eyebrow">RETAILER & CONFIGURATION</span><div className={styles.retailerIdentity}><RetailerLogo source={sources[0]}/><h1>{item.name} at {label}</h1></div><p>Compare each configuration separately. A status for one variant does not apply to another.</p></div></header>
+    <DataNotice available={catalog.available} seeded={catalog.seeded}/>
+    {content && <div className={styles.callout}><strong>Current monitoring coverage</strong><p>{content.coverage}</p></div>}
+    <div className={styles.stats}><div className={styles.stat}><span>Configurations listed</span><strong>{new Set(sources.map(source => source.variantId)).size}</strong><small>See individual status and price below</small></div><div className={styles.stat}><span>Recorded periods in view</span><strong>{periodCount ? periodCount.toLocaleString("en-US") : "No data yet"}</strong><small>Up to latest 1,000 per variant</small></div><div className={styles.stat}><span>Last seen in stock</span><strong style={{fontSize:18}}>{dateTime(lastSeen?.seenAt)}</strong><small>Latest observed period across configurations</small></div></div>
+    <section className={styles.section}><h2>The current stock check</h2><RetailerTable item={item} sources={sources}/></section>
+    <section className={styles.section}><h2>Pick the exact configuration.</h2><div className={styles.sourceGrid}>{sources.map(source => {
+      const variant = item.variants.find(value => value.id === source.variantId);
+      const state = sourceState(source);
+      // Paused catalog links are references, not approval to poll or evidence of inventory.
+      const canVisit = source.connector !== "mock" && /^https:\/\//.test(source.productUrl) && (source.approved || (item.slug === "iphone-duo" && source.retailer === "apple" && source.productUrl.startsWith("https://www.apple.com/shop/buy-iphone/iphone-duo/")));
+      return <article className={styles.sourceCard} id={variant?.slug || source.id} key={source.id}>
+        <h3>{variant ? <Link href={`/${slug}/variants/${variant.slug}`}>{variant.label}</Link> : item.name}</h3>
+        <span className={`rr-status rr-status-${state.tone}`}><i/>{state.label}</span>
+        <dl className={styles.detailList}><div><dt>Last observed price</dt><dd>{source.lastCheckedAt && source.priceCents != null ? money(source.priceCents) : "No data yet"}</dd></div><div><dt>Last check</dt><dd>{dateTime(source.lastCheckedAt)}</dd></div><div><dt>Checking interval</dt><dd>{source.approved && source.status === "active" ? `${source.pollSeconds} seconds, with jitter` : "Tracking pending"}</dd></div><div><dt>Market</dt><dd>United States · USD</dd></div></dl>
+        <div className={styles.actions}><Link className="rr-button rr-primary" href={`/alerts?item=${slug}&variant=${variant?.slug || source.variantId}&source=${source.id}`}><Bell size={14}/>Set up this alert</Link>{canVisit && <a className="rr-button rr-secondary" href={source.productUrl} target="_blank" rel="noopener noreferrer">View at {label}<ArrowUpRight size={14}/></a>}</div>
+        <p className={styles.note}>{canVisit ? "The retailer link identifies this configuration. Confirm price, fulfillment and availability there before purchasing." : "The retailer's exact product link is pending verification."}</p>
+      </article>;
+    })}</div></section>
+    <section className={`rr-panel ${styles.history}`}><header><span className="rr-eyebrow">OBSERVED AT {label.toUpperCase()}</span><h2>The retailer restock log</h2><p className={styles.note}>Latest 30 in-stock periods across the configurations above. All times are UTC.</p></header><EventLog item={retailerItem} limit={30}/></section>
+    <p className={styles.note}>Unknown, delayed and blocked checks cannot establish current availability. See <Link href="/methodology">how we measure stock</Link> for coverage, freshness and event definitions.</p>
+    <nav className={styles.tabs} aria-label="Related product pages"><Link href={`/${slug}`}>All {item.name} retailers</Link><Link href={`/${slug}/restocks`}>Restock history</Link><Link href={`/how-to-get-${slug}`}>Buying guide</Link><Link href="/products">Browse products</Link></nav>
+  </div>;
 }

@@ -88,7 +88,17 @@ Use Prisma Studio (`npx prisma studio`) or a SQL administration tool:
 2. Insert an item with its category, unique slug, name, optional MSRP/image, and `hidden=true` during preparation.
 3. Insert one or more variants belonging to it.
 4. In `/admin`, add exact retailer sources linked to the item/variant. Review permissions and connector output before activation.
-5. Set `hidden=false`. Public product, retailer, guide, restock, alert-selection, and sitemap routes discover it automatically.
+5. Add reviewed product guidance and official references to `src/lib/radar/product-content.ts`, plus category guidance when needed. Set `hidden=false`. Product, variant, retailer, guide, restock and alert-selection routes discover the catalog data automatically. Curated product/guide/category pages enter the sitemap; variant/history/retailer pages enter only after their sources have actual observations. Uncurated product and guide pages remain `noindex` until their editorial content is ready.
+
+## Product discovery and SEO
+
+The public catalog now includes PS5 Pro and iPhone Duo, with eight Apple color/storage configurations. Run `npm run db:seed` to add missing catalog rows; existing source settings are preserved. Apple links point to exact US carrier-later configurations and are available for manual checks. They are **not** an Apple Store inventory integration. New Apple sources remain paused/unapproved with no invented availability. Do not activate a generic product-page connector as a substitute for store-specific pickup inventory.
+
+Browse `/products`, `/guides`, `/categories/consoles` and `/categories/smartphones`. Product pages link variants, retailers, buying guides and recorded history. Variant URLs use `/{item}/variants/{variant}`; alert links preserve product, variant and retailer selection. `/methodology` explains coverage, freshness, counting and duration limits.
+
+Metadata includes unique canonical URLs, Open Graph/Twitter previews, visible breadcrumbs and matching JSON-LD. `/opengraph-image` supplies a 1200×630 share image. Empty observation pages remain available to users but are `noindex` and excluded from `/sitemap.xml`; mock, hidden and preview catalog entries are excluded. `/llms.txt` documents the same coverage boundaries. Set `APP_URL` to the final public origin before deploying. These improvements establish usable discovery paths, not guaranteed rankings, traffic or sales.
+
+The evidence, source links and implementation decisions are recorded in [the Store Stock Checker case study](docs/store-stock-checker-case-study.md). It distinguishes revenue from MRR/profit and does not attribute unmeasured growth to SEO.
 
 Prisma `Radar*` model names map to the brief’s lowercase tables. Existing GPU-only models/data remain for legacy compatibility; new flows use `/api/radar/*`. All tables have RLS enabled with no public Data API policies. Access is through the trusted server database connection only; never expose it or a Supabase service key to browsers.
 
@@ -117,4 +127,4 @@ Integration tests need `TEST_DATABASE_URL` pointing to a separate database endin
 
 Before launch, complete a real Stripe **test** checkout and cancellation/refund, a Resend inbox delivery, supported browser push delivery, and a permitted retailer observation-to-notification run. Local fixtures do not establish external acceptance. Check `/admin`, `/proof`, `sitemap.xml`, `robots.txt`, `/llms.txt` at the final origin. Results are in `docs/verification.md`.
 
-Defaults: Restock Radar; localhost until a domain is assigned; US/USD; PS5 Pro standard edition; four paused retailer placeholders; hidden RTX 5090; one slot per retailer; UTC history; no invented activity; test-only billing; local database/worker until free hosting and credentials are configured.
+Defaults: Restock Radar; localhost until a domain is assigned; US/USD; PS5 Pro standard edition with four paused retailer placeholders; iPhone Duo with eight paused Apple configuration sources; hidden RTX 5090; one slot per retailer/variant; UTC history; no invented activity; test-only billing; local database/worker until free hosting and credentials are configured.

@@ -39,7 +39,7 @@ export const getProof = cache(async () => {
     const [sent, posts, events] = await Promise.all([
       prisma.radarNotification.count({ where: { status: "sent", sentAt: { not: null }, stockEvent: { source: { connector: { not: "mock" }, item: { hidden: false } } } } }),
       prisma.radarCustomerPost.findMany({ orderBy: { createdAt: "desc" }, take: 50 }),
-      prisma.radarStockEvent.findMany({ where: { source: { connector: { not: "mock" }, item: { hidden: false } } }, include: { source: { include: { item: true } } }, orderBy: { seenAt: "desc" }, take: 50 }),
+      prisma.radarStockEvent.findMany({ where: { source: { connector: { not: "mock" }, item: { hidden: false } } }, include: { source: { include: { item: true, variant: true } } }, orderBy: { seenAt: "desc" }, take: 50 }),
     ]);
     return { available: true, sent, posts, events };
   } catch { return { available: false, sent: null, posts: [], events: [] }; }

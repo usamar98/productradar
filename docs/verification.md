@@ -4,7 +4,7 @@ Verified locally on 2026-11-17. The existing GPU-only application was preserved 
 
 ## Passing checks
 
-- `npm test`: **59 tests**, eight suites. Covers stock-period transitions, plan limits, duplicate delivery identities, exact-variant JSON-LD parsing, robots rules, blocked/private addresses, signed capabilities, stable notification retry URLs, Stripe signature validation, webhook idempotency, refunds, purchased pricing snapshots, and admin cookie security. Includes retained legacy regression tests.
+- `npm test`: **70 tests**, ten suites. Covers stock-period transitions, plan limits, duplicate delivery identities, exact-variant JSON-LD parsing, robots rules, blocked/private addresses, signed capabilities, stable notification retry URLs, Stripe signature validation, webhook idempotency, refunds, purchased pricing snapshots, and admin cookie security. Includes retained legacy regression tests, six SEO tests, and five exact-variant selection tests.
 - `npm run test:integration`: **23 tests**, six suites, on the isolated local `restock_radar_test` PostgreSQL database. No skipped suites. Includes concurrent fenced stock writes, period open/close/reopen, notification uniqueness, duplicate payment commits, signed retailer click expiry, account isolation, paused-pass replay, grandfathered pricing, cancellation, and refund ledger dates. Provider responses are fixtures; no external messages or charges are sent.
 - `npm run typecheck`: TypeScript strict check passes.
 - `npm run build`: Next.js production build succeeds with all new product, retailer, guide, history, alert, admin, policy, and SEO routes.
@@ -27,7 +27,7 @@ The `pg` driver emits a deprecation notice about query concurrency during an exi
 
 The following are implemented but cannot be verified against real services without configuration:
 
-- Approved exact retailer URLs and observed real stock data. Seed URLs are storefront placeholders, paused and unapproved.
+- Approved retailer integrations and observed real stock data. PS5 source URLs are storefront placeholders. The eight Apple configuration URLs are verified catalog references, but Apple Store pickup monitoring is not configured. All newly seeded sources are paused and unapproved.
 - Supabase deployment/connection; the connected account had unrelated projects, which were left unchanged. Verification used local PostgreSQL.
 - Stripe hosted **test** Checkout, portal cancellation, and actual webhook delivery. Live keys/events are rejected.
 - Resend verified sender and real inbox delivery.
@@ -35,4 +35,14 @@ The following are implemented but cannot be verified against real services witho
 - Final domain, support/operator details, organizer traffic script, and production hosting.
 - Worker Docker/Railway/Fly deployment. Configuration is supplied; no cloud worker was launched or paid plan activated.
 
-Do not describe this local verification as live retailer or provider acceptance. The README documents setup, deployment limits, and how to add products entirely through data.
+Do not describe this local verification as live retailer or provider acceptance. The README documents setup, deployment limits, catalog records and the editorial content needed before indexing new product pages.
+
+## November 17 competitor-informed catalog and SEO expansion
+
+- Case study completed before implementation, with public source links and explicit evidence limits in `docs/store-stock-checker-case-study.md`.
+- Added iPhone Duo, eight variants and exact Apple configuration links. The idempotent seed creates no stock, payment or notification activity.
+- Added product/guide directories, category hubs, variant routes, contextual links, original guidance and monitoring methodology. Retailer pages distinguish configurations instead of using the first source as a retailer-wide status. Event logs retain variant identity.
+- HTTP checks passed on 27 public pages, including all eight Apple variants. Confirmed canonical/OG URLs, Twitter cards and parseable JSON-LD. Unknown product/category/variant and hidden RTX routes return 404.
+- Sitemap excludes pending variant, retailer and history routes; these render `noindex, follow`. Catalog/guide/category pages remain discoverable. Legacy support/cancellation routes redirect to current destinations.
+- `/opengraph-image` returns a valid 1200×630 PNG. `llms.txt` includes the new product and methodology while disclosing pending coverage.
+- Browser verified catalog → iPhone Duo → 512GB Star White → Apple alert setup. Both the variant and source remain selected; pending-source and unconfigured-checkout notices remain visible. Mobile product directory reviewed at 390px.

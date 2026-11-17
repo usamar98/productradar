@@ -3,13 +3,15 @@ import { useEffect, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { ArrowRight, Bell, Check, LockKeyhole, ShieldCheck } from "lucide-react";
 import { PLANS, REFUND_POLICY } from "@/config/pricing";
-export type AlertItem = { id: string; slug: string; name: string; variants: { id: string; label: string }[]; sources: { id: string; variantId: string; label: string; approved: boolean; status: string }[] };
-export function CreateAlert({ items, initialItem, initialPlan, initialSource, available }: { items: AlertItem[]; initialItem?: string; initialPlan?: string; initialSource?: string; available: boolean }) {
-  const firstItem = items.find(item => item.slug === initialItem) || items[0];
+import { resolveAlertSelection } from "@/lib/radar/alert-selection";
+export type AlertItem = { id: string; slug: string; name: string; variants: { id: string; slug: string; label: string }[]; sources: { id: string; variantId: string; label: string; approved: boolean; status: string }[] };
+export function CreateAlert({ items, initialItem, initialVariant, initialPlan, initialSource, available }: { items: AlertItem[]; initialItem?: string; initialVariant?: string; initialPlan?: string; initialSource?: string; available: boolean }) {
+  const selection = resolveAlertSelection(items, { item: initialItem, variant: initialVariant, source: initialSource })!;
+  const firstItem = selection.item;
   const [itemId, setItemId] = useState(firstItem.id);
-  const [variantId, setVariantId] = useState(firstItem.variants[0]?.id || "");
+  const [variantId, setVariantId] = useState(selection.variantId);
   const [planId, setPlanId] = useState(PLANS.find(plan => plan.id === initialPlan)?.id || "starter");
-  const [sourceIds, setSourceIds] = useState<string[]>(firstItem.sources.some(source => source.id === initialSource && source.variantId === firstItem.variants[0]?.id) ? [initialSource!] : []);
+  const [sourceIds, setSourceIds] = useState<string[]>(selection.sourceIds);
   const [email, setEmail] = useState(""); const [busy, setBusy] = useState(false); const [message, setMessage] = useState(""); const [ready, setReady] = useState<{ready: boolean; message?: string} | null>(null);
   const item = items.find(value => value.id === itemId)!; const plan = PLANS.find(value => value.id === planId)!;
   useEffect(() => { let active = true; fetch("/api/radar/config").then(response => response.json()).then(value => { if (active) setReady(value); }).catch(() => { if (active) setReady({ready: false, message: "Checkout configuration could not be loaded. Try again shortly."}); }); return () => { active = false; }; }, []);
