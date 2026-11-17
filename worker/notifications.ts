@@ -23,7 +23,8 @@ export async function deliverNotification(id: string) {
   }
   try {
     const origin = new URL(process.env.APP_URL || "http://localhost:3000").origin;
-    const url = `${origin}/api/radar/click?token=${encodeURIComponent(createClickToken(alert.id, event.id))}`;
+    // Stable signing time keeps Resend's idempotent request body identical on retry.
+    const url = `${origin}/api/radar/click?token=${encodeURIComponent(createClickToken(alert.id, event.id, job.createdAt.getTime()))}`;
     const price = event.priceCents == null ? "Price not reported" : new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(event.priceCents / 100);
     const title = `${alert.item.name} is in stock at ${source.label}`;
     const description = `${alert.variant.label} · ${price}. Stock is not reserved and may sell out. This is an availability alert, not an automatic purchase.`;

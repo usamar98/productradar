@@ -31,7 +31,7 @@ export function createLoginToken(userId: string) { return sign({ purpose: "login
 export function verifyLoginToken(token: string) { const p = verify(token, "login"); return p?.userId ? { userId: p.userId } : null; }
 export function createSessionToken(userId: string) { return sign({ purpose: "session", userId, exp: Date.now() + 30 * 86400_000 }); }
 export function sessionUserId(token: string) { return verify(token, "session")?.userId ?? null; }
-export function createClickToken(alertId: string, eventId: string) { return sign({ purpose: "click", alertId, eventId, exp: Date.now() + 30 * 86400_000 }); }
+export function createClickToken(alertId: string, eventId: string, issuedAt = Date.now()) { return sign({ purpose: "click", alertId, eventId, exp: issuedAt + 30 * 86400_000 }); }
 export function verifyClickToken(token: string) { const p = verify(token, "click"); return p?.alertId && p.eventId ? { alertId: p.alertId, eventId: p.eventId } : null; }
 export function cookieToken(request: Request) { return request.headers.get("cookie")?.split(";").map(x => x.trim()).find(x => x.startsWith(`${RADAR_COOKIE}=`))?.slice(RADAR_COOKIE.length + 1) ?? ""; }
 export async function radarUser(request: Request) {

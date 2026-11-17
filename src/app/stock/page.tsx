@@ -1,4 +1,2 @@
-import type { Metadata } from "next";
-import { StockView } from "@/components/stock-view";
-export const metadata: Metadata = { title: "Retailer status" };
-export default function StockPage() { return <StockView />; }
+import { redirect } from "next/navigation";
+export default function StockPage() { redirect("/playstation-5-pro"); }
