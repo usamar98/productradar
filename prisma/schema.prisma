@@ -240,3 +240,217 @@ model MarketingExpense {
   channel String
   description String
 }
+
+// Generic Restock Radar catalog and delivery engine. Existing data is preserved.
+model RadarCategory {
+  id String @id @default(cuid())
+  slug String @unique
+  name String
+  items RadarItem[]
+  @@map("categories")
+}
+model RadarItem {
+  id String @id @default(cuid())
+  categoryId String
+  category RadarCategory @relation(fields: [categoryId], references: [id])
+  slug String @unique
+  name String
+  msrpCents Int?
+  imageUrl String?
+  hidden Boolean @default(false)
+  createdAt DateTime @default(now())
+  variants RadarVariant[]
+  sources RadarSource[]
+  alerts RadarAlert[]
+  @@map("items")
+}
+model RadarVariant {
+  id String @id @default(cuid())
+  itemId String
+  item RadarItem @relation(fields: [itemId], references: [id])
+  slug String
+  label String
+  sources RadarSource[]
+  alerts RadarAlert[]
+  @@unique([itemId, slug])
+  @@map("variants")
+}
+model RadarSource {
+  id String @id @default(cuid())
+  itemId String
+  item RadarItem @relation(fields: [itemId], references: [id])
+  variantId String
+  variant RadarVariant @relation(fields: [variantId], references: [id])
+  retailer String
+  label String
+  productUrl String
+  connector String @default("jsonld")
+  pollSeconds Int @default(15)
+  status String @default("paused")
+  approved Boolean @default(false)
+  inStock Boolean?
+  priceCents Int?
+  lastCheckedAt DateTime?
+  lastError String?
+  createdAt DateTime @default(now())
+  nextCheckAt DateTime @default(now())
+  leaseUntil DateTime?
+  failureCount Int @default(0)
+  events RadarStockEvent[]
+  @@unique([variantId, retailer])
+  @@index([status, nextCheckAt])
+  @@map("sources")
+}
+model RadarStockEvent {
+  id String @id @default(cuid())
+  sourceId String
+  source RadarSource @relation(fields: [sourceId], references: [id])
+  inStock Boolean @default(true)
+  priceCents Int?
+  seenAt DateTime @default(now())
+  endedAt DateTime?
+  notifications RadarNotification[]
+  @@index([sourceId, seenAt])
+  @@map("stock_events")
+}
+model RadarUser {
+  id String @id @default(cuid())
+  email String @unique
+  tokenHash String? @unique
+  createdAt DateTime @default(now())
+  pushSubscriptions RadarPushSubscription[]
+  subscriptions RadarSubscription[]
+  alerts RadarAlert[]
+  payments RadarPayment[]
+  @@map("users")
+}
+model RadarPushSubscription {
+  id String @id @default(cuid())
+  userId String
+  user RadarUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoint String @unique
+  keys Json
+  createdAt DateTime @default(now())
+  @@index([userId])
+  @@map("push_subscriptions")
+}
+model RadarPlan {
+  id String @id
+  name String
+  priceCents Int
+  alertLimit Int
+  type String
+  subscriptions RadarSubscription[]
+  alerts RadarAlert[]
+  @@map("plans")
+}
+model RadarSubscription {
+  id String @id @default(cuid())
+  userId String
+  user RadarUser @relation(fields: [userId], references: [id])
+  planId String
+  plan RadarPlan @relation(fields: [planId], references: [id])
+  providerRef String @unique
+  customerRef String?
+  status String @default("pending")
+  currentPeriodEnd DateTime?
+  cancelAtPeriodEnd Boolean @default(false)
+  canceledAt DateTime?
+  lastEventCreated Int @default(0)
+  createdAt DateTime @default(now())
+  alerts RadarAlert[]
+  @@index([userId])
+  @@map("subscriptions")
+}
+model RadarAlert {
+  id String @id @default(cuid())
+  userId String
+  user RadarUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  itemId String
+  item RadarItem @relation(fields: [itemId], references: [id])
+  variantId String
+  variant RadarVariant @relation(fields: [variantId], references: [id])
+  planId String
+  plan RadarPlan @relation(fields: [planId], references: [id])
+  subscriptionId String?
+  subscription RadarSubscription? @relation(fields: [subscriptionId], references: [id])
+  sourceIds String[]
+  status String @default("pending")
+  activeUntil DateTime?
+  caughtAt DateTime?
+  tokenHash String?
+  checkoutRef String? @unique
+  createdAt DateTime @default(now())
+  notifications RadarNotification[]
+  @@index([userId, status])
+  @@index([itemId, variantId, status])
+  @@map("alerts")
+}
+model RadarNotification {
+  id String @id @default(cuid())
+  alertId String
+  alert RadarAlert @relation(fields: [alertId], references: [id], onDelete: Cascade)
+  stockEventId String
+  stockEvent RadarStockEvent @relation(fields: [stockEventId], references: [id])
+  channel String
+  target String @default("email")
+  status String @default("pending")
+  attempts Int @default(0)
+  nextAttemptAt DateTime @default(now())
+  leaseUntil DateTime?
+  sentAt DateTime?
+  latencyMs Int?
+  lastError String?
+  createdAt DateTime @default(now())
+  @@unique([alertId, stockEventId, channel, target])
+  @@index([status, nextAttemptAt])
+  @@map("notifications")
+}
+model RadarPayment {
+  id String @id @default(cuid())
+  userId String
+  user RadarUser @relation(fields: [userId], references: [id])
+  amountCents Int
+  feeCents Int @default(0)
+  feeRecorded Boolean @default(false)
+  refundedCents Int @default(0)
+  refundedAt DateTime?
+  subscriptionId String?
+  periodEnd DateTime?
+  refunds RadarRefund[]
+  providerRef String @unique
+  createdAt DateTime @default(now())
+  @@index([createdAt])
+  @@map("payments")
+}
+model RadarRefund {
+  id String @id
+  paymentId String
+  payment RadarPayment @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  amountCents Int
+  status String
+  createdAt DateTime
+  @@index([createdAt])
+  @@map("refunds")
+}
+model RadarCost {
+  id String @id @default(cuid())
+  label String
+  amountCents Int
+  category String
+  incurredAt DateTime @default(now())
+  @@map("costs")
+}
+model RadarCustomerPost {
+  id String @id @default(cuid())
+  url String
+  text String
+  createdAt DateTime @default(now())
+  @@map("customer_posts")
+}
+model RadarWebhookEvent {
+  id String @id
+  type String
+  createdAt DateTime @default(now())
+  @@map("webhook_events")
+}
