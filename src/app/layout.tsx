@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { AppShell } from "@/components/app-shell";
+import { RadarShell } from "@/components/radar/shell";
+import { siteUrl } from "@/lib/radar/catalog";
 import "./globals.css";
 
-export const metadata: Metadata = { title: { default: "GPU Stock Watch — RTX 5090 Founders Edition", template: "%s · GPU Stock Watch" }, description: "A focused watch for the NVIDIA GeForce RTX 5090 Founders Edition at official US retailers. Configure your retailers, maximum price, and stock alert preferences.", robots: { index: false, follow: false } };
+export const metadata: Metadata = { metadataBase: new URL(siteUrl), title: { default: "Restock Radar — Your next obsession, back in stock", template: "%s | Restock Radar" }, description: "Check retailer stock for free. Create an email and browser push alert for PlayStation 5 Pro and other hard-to-find items.", openGraph: { siteName: "Restock Radar", type: "website" }, icons: { icon: "/radar-icon.svg" } };
 export const dynamic = "force-dynamic";
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  let trafficScriptUrl: string | undefined;
-  try { const value = new URL(process.env.TRAFFIC_VERIFICATION_SCRIPT_URL || ""); if (value.protocol === "https:" && !value.username && !value.password) trafficScriptUrl = value.toString(); } catch { /* Optional measurement is disabled until configured. */ }
-  return <html lang="en"><body><AppShell trafficScriptUrl={trafficScriptUrl}>{process.env.DEMO_MODE === "true" && <div className="demo-banner">Demo mode · Billing and customer notifications are disabled.</div>}{children}</AppShell></body></html>;
+  return <html lang="en"><head>{/* HACKATHON TRAFFIC TRACKER SLOT: add the organizer-provided script here after configuring any required visitor consent. */}</head><body><RadarShell>{children}</RadarShell></body></html>;
 }
