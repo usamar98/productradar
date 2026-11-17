@@ -2956,151 +2956,191 @@
       {
         "key": "connectivity",
         "label": "Connectivity"
+      },
+      {
+        "key": "band",
+        "label": "Band"
+      },
+      {
+        "key": "bandSize",
+        "label": "Band size"
       }
     ],
     "variants": [
       {
         "slug": "42mm-dark-bronze-gps",
-        "label": "42mm / Dark Bronze / GPS",
+        "label": "42mm / Dark Bronze / GPS / Olive Sport Band / S/M",
         "attributes": {
           "size": "42mm",
           "color": "Dark Bronze",
-          "connectivity": "GPS"
+          "connectivity": "GPS",
+          "band": "Olive Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "42mm-dark-bronze-gps-plus-cellular",
-        "label": "42mm / Dark Bronze / GPS + Cellular",
+        "label": "42mm / Dark Bronze / GPS + Cellular / Olive Sport Band / S/M",
         "attributes": {
           "size": "42mm",
           "color": "Dark Bronze",
-          "connectivity": "GPS + Cellular"
+          "connectivity": "GPS + Cellular",
+          "band": "Olive Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "42mm-black-gps",
-        "label": "42mm / Black / GPS",
+        "label": "42mm / Black / GPS / Black Sport Band / S/M",
         "attributes": {
           "size": "42mm",
           "color": "Black",
-          "connectivity": "GPS"
+          "connectivity": "GPS",
+          "band": "Black Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "42mm-black-gps-plus-cellular",
-        "label": "42mm / Black / GPS + Cellular",
+        "label": "42mm / Black / GPS + Cellular / Black Sport Band / S/M",
         "attributes": {
           "size": "42mm",
           "color": "Black",
-          "connectivity": "GPS + Cellular"
+          "connectivity": "GPS + Cellular",
+          "band": "Black Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "42mm-light-gold-gps",
-        "label": "42mm / Light Gold / GPS",
+        "label": "42mm / Light Gold / GPS / Sand Sport Band / S/M",
         "attributes": {
           "size": "42mm",
           "color": "Light Gold",
-          "connectivity": "GPS"
+          "connectivity": "GPS",
+          "band": "Sand Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "42mm-light-gold-gps-plus-cellular",
-        "label": "42mm / Light Gold / GPS + Cellular",
+        "label": "42mm / Light Gold / GPS + Cellular / Sand Sport Band / S/M",
         "attributes": {
           "size": "42mm",
           "color": "Light Gold",
-          "connectivity": "GPS + Cellular"
+          "connectivity": "GPS + Cellular",
+          "band": "Sand Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "42mm-space-gray-gps",
-        "label": "42mm / Space Gray / GPS",
+        "label": "42mm / Space Gray / GPS / Navy Blue Sport Band / S/M",
         "attributes": {
           "size": "42mm",
           "color": "Space Gray",
-          "connectivity": "GPS"
+          "connectivity": "GPS",
+          "band": "Navy Blue Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "42mm-space-gray-gps-plus-cellular",
-        "label": "42mm / Space Gray / GPS + Cellular",
+        "label": "42mm / Space Gray / GPS + Cellular / Navy Blue Sport Band / S/M",
         "attributes": {
           "size": "42mm",
           "color": "Space Gray",
-          "connectivity": "GPS + Cellular"
+          "connectivity": "GPS + Cellular",
+          "band": "Navy Blue Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "46mm-dark-bronze-gps",
-        "label": "46mm / Dark Bronze / GPS",
+        "label": "46mm / Dark Bronze / GPS / Olive Sport Band / S/M",
         "attributes": {
           "size": "46mm",
           "color": "Dark Bronze",
-          "connectivity": "GPS"
+          "connectivity": "GPS",
+          "band": "Olive Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "46mm-dark-bronze-gps-plus-cellular",
-        "label": "46mm / Dark Bronze / GPS + Cellular",
+        "label": "46mm / Dark Bronze / GPS + Cellular / Olive Sport Band / S/M",
         "attributes": {
           "size": "46mm",
           "color": "Dark Bronze",
-          "connectivity": "GPS + Cellular"
+          "connectivity": "GPS + Cellular",
+          "band": "Olive Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "46mm-black-gps",
-        "label": "46mm / Black / GPS",
+        "label": "46mm / Black / GPS / Black Sport Band / S/M",
         "attributes": {
           "size": "46mm",
           "color": "Black",
-          "connectivity": "GPS"
+          "connectivity": "GPS",
+          "band": "Black Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "46mm-black-gps-plus-cellular",
-        "label": "46mm / Black / GPS + Cellular",
+        "label": "46mm / Black / GPS + Cellular / Black Sport Band / S/M",
         "attributes": {
           "size": "46mm",
           "color": "Black",
-          "connectivity": "GPS + Cellular"
+          "connectivity": "GPS + Cellular",
+          "band": "Black Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "46mm-light-gold-gps",
-        "label": "46mm / Light Gold / GPS",
+        "label": "46mm / Light Gold / GPS / Sand Sport Band / S/M",
         "attributes": {
           "size": "46mm",
           "color": "Light Gold",
-          "connectivity": "GPS"
+          "connectivity": "GPS",
+          "band": "Sand Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "46mm-light-gold-gps-plus-cellular",
-        "label": "46mm / Light Gold / GPS + Cellular",
+        "label": "46mm / Light Gold / GPS + Cellular / Sand Sport Band / S/M",
         "attributes": {
           "size": "46mm",
           "color": "Light Gold",
-          "connectivity": "GPS + Cellular"
+          "connectivity": "GPS + Cellular",
+          "band": "Sand Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "46mm-space-gray-gps",
-        "label": "46mm / Space Gray / GPS",
+        "label": "46mm / Space Gray / GPS / Navy Blue Sport Band / S/M",
         "attributes": {
           "size": "46mm",
           "color": "Space Gray",
-          "connectivity": "GPS"
+          "connectivity": "GPS",
+          "band": "Navy Blue Sport Band",
+          "bandSize": "S/M"
         }
       },
       {
         "slug": "46mm-space-gray-gps-plus-cellular",
-        "label": "46mm / Space Gray / GPS + Cellular",
+        "label": "46mm / Space Gray / GPS + Cellular / Navy Blue Sport Band / S/M",
         "attributes": {
           "size": "46mm",
           "color": "Space Gray",
-          "connectivity": "GPS + Cellular"
+          "connectivity": "GPS + Cellular",
+          "band": "Navy Blue Sport Band",
+          "bandSize": "S/M"
         }
       }
     ]
@@ -3149,23 +3189,35 @@
       {
         "key": "connectivity",
         "label": "Connectivity"
+      },
+      {
+        "key": "band",
+        "label": "Band"
+      },
+      {
+        "key": "bandSize",
+        "label": "Band size"
       }
     ],
     "variants": [
       {
         "slug": "natural-titanium-gps-plus-cellular",
-        "label": "Natural Titanium / GPS + Cellular",
+        "label": "Natural Titanium / GPS + Cellular / Translucent Gray Ocean Band / One Size",
         "attributes": {
           "color": "Natural Titanium",
-          "connectivity": "GPS + Cellular"
+          "connectivity": "GPS + Cellular",
+          "band": "Translucent Gray Ocean Band",
+          "bandSize": "One Size"
         }
       },
       {
         "slug": "black-titanium-gps-plus-cellular",
-        "label": "Black Titanium / GPS + Cellular",
+        "label": "Black Titanium / GPS + Cellular / Translucent Black Ocean Band / One Size",
         "attributes": {
           "color": "Black Titanium",
-          "connectivity": "GPS + Cellular"
+          "connectivity": "GPS + Cellular",
+          "band": "Translucent Black Ocean Band",
+          "bandSize": "One Size"
         }
       }
     ]

@@ -1,5 +1,6 @@
 import { brands, launchDateLabel, launchProducts, type LaunchProduct } from "@/config/launch-catalog";
 import { configurationValues } from "./configuration";
+import { officialCatalog } from "./official-catalog";
 
 export type ProductContent = {
   summary: string;
@@ -85,7 +86,9 @@ function launchContent(product: LaunchProduct): ProductContent {
     summary: `${product.description} Compare the documented configurations and manufacturer specifications for ${product.name}.`,
     brand: brands[product.brand].name,
     reviewedAt: "2026-11-17",
-    coverage: `${product.name} has ${product.variants.length} documented configuration${product.variants.length === 1 ? "" : "s"} in this catalog. Automated inventory is not configured for this product. Manufacturer links provide product information; they do not establish current stock, local pickup or a delivery date.`,
+    coverage: officialCatalog.some(mapping => mapping.itemSlug === product.slug)
+      ? `${product.name} has ${officialCatalog.filter(mapping => mapping.itemSlug === product.slug).length} exact configurations connected to direct official stock checks. ${product.brand === "apple" ? "Search a US ZIP to check pickup at nearby Apple Stores. Custom configurations that Apple does not return are identified separately." : "Check the official US online store; delivery eligibility is confirmed at checkout."} Automatic alerts are not enabled.`
+      : `${product.name} has ${product.variants.length} documented configurations. This product has no verified direct inventory listing yet. Use the manufacturer link to check the exact configuration.`,
     officialLinks: [
       { label: `${product.name} official product information`, url: product.officialUrl },
       ...(product.launchSourceUrl === product.officialUrl ? [] : [{ label: `${product.name} launch reference`, url: product.launchSourceUrl }]),
@@ -99,7 +102,7 @@ function launchContent(product: LaunchProduct): ProductContent {
       { heading: `Understand ${product.name}`, body: `${product.description} ${product.features.map(feature => `${feature.label}: ${feature.value}. ${feature.description}`).join(" ")}` },
       { heading: "Choose a documented configuration", body: `${choices.join(" ")} Select a complete configuration, then match all of its details to the retailer's listing. The choices shown here represent documented combinations, rather than every possible custom build or retailer bundle.` },
       { heading: "Check compatibility and included accessories", body: hardwareNotes.join(" ") },
-      { heading: "Separate the launch from today's availability", body: `The documented launch is ${launchDateLabel(product)}. A launch date records when a product was introduced or made available; it does not show whether a retailer has it now. This catalog has no connected inventory source for ${product.name}. Use the official product reference to find current buying information, and confirm the exact configuration and fulfillment at the retailer before paying or traveling.` },
+      { heading: "Separate the launch from today's availability", body: `The documented launch is ${launchDateLabel(product)}. A launch date records when a product was introduced or made available; it does not show whether a retailer has it now. Use the stock checker for connected configurations, and the official product reference for other options. Confirm the exact configuration and fulfillment at the retailer before paying or traveling.` },
     ],
   };
 }
@@ -246,7 +249,7 @@ export const categoryContent: Record<string, CategoryContent> = {
   },
   smartphones: {
     description:
-      "Browse iPhone models and compare documented finishes, storage and hardware features. Choose the complete configuration before checking the manufacturer's buying options; local Apple Store pickup monitoring is not yet available.",
+      "Browse iPhone models and compare documented finishes, storage and hardware features. Choose the complete configuration before checking the manufacturer's buying options; use the ZIP checker for current pickup observations at nearby Apple Stores.",
     buyingNotes: [
       "Choose the complete model, capacity and finish before comparing offers.",
       "Check carrier compatibility, activation requirements and financing terms separately from the phone's listed price.",

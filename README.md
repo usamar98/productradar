@@ -138,3 +138,5 @@ Defaults: Restock Radar; localhost until a domain is assigned; US/USD; Apple, Pl
 ## Official Apple, PlayStation and NVIDIA sources
 
 The [official-store integration report](docs/official-store-integrations.md) documents the public API research, direct availability lookups, exact SKU/store matching, protection stops and verification limits. These connectors do not use Best Buy. Real external alert delivery is not verified. Run `npm run sources:official` for local source and email configuration status. In PowerShell, prepare source records with `npm.cmd run sources:official -- --setup --zip 10001 --limit 5`; this does not activate monitoring.
+
+The November 18 expansion connects 242 configurations across all 24 Apple products in the catalog, 19 PlayStation configurations and the RTX 5090/5080/5070 Founders Editions. Run the catalog seed, then `npm.cmd run sources:official -- --setup --zip 10001 --limit 1`. This registers manual checks without enabling background polling. Nine custom Mac options have explicit coverage messages and exact Apple links; they do not reuse a base model's stock. Apple Watch options show the included band and size.

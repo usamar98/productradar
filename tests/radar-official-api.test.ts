@@ -36,9 +36,10 @@ describe("fixed public inventory HTTP boundary", () => {
     await expect(readOfficialResource(url)).rejects.toThrow("size limit");
     await expect(readOfficialResource(url)).rejects.toThrow("HTTP 503");
   });
-  it("uses eight independently identified Apple parts and rejects unknown configuration URLs", () => {
-    expect(products.apple).toHaveLength(8);
-    expect(new Set(products.apple.map(product => product.partNumber)).size).toBe(8);
+  it("retains all eight Duo identities while resolving the expanded reviewed Apple catalog", () => {
+    const duo = products.apple.filter(product => product.itemSlug === "iphone-duo");
+    expect(duo).toHaveLength(8);
+    expect(new Set(duo.map(product => product.partNumber)).size).toBe(8);
     for (const product of products.apple) expect(reviewedAppleIdentity(product.productUrl)).toEqual({ partNumber: product.partNumber });
     expect(() => reviewedAppleIdentity(products.apple[0].productUrl + "-other")).toThrow("no verified");
   });

@@ -37,12 +37,12 @@ export function appleProductIdentity(html: string, productUrl: string) {
   const offers = nodes(products[0].offers).filter(node => node["@type"] === "Offer");
   if (offers.length !== 1 || typeof offers[0].sku !== "string") throw new Error("Apple did not provide one exact part number.");
   const [partNumber, option, ...extra] = offers[0].sku.split("+");
-  if (!/^[A-Z0-9]{5,12}LL\/A$/.test(partNumber) || extra.length || (option && option !== "unlocked")) throw new Error("This Apple part or purchase option is not supported by the US pickup connector.");
+  if (!/^[A-Z0-9]{5,12}\/A$/.test(partNumber) || extra.length || (option && option !== "unlocked")) throw new Error("This Apple part or purchase option is not supported by the US pickup connector.");
   return { partNumber, priceCents: usdCents(offers[0].price, offers[0].priceCurrency) };
 }
 
 export function applePickupUrl(partNumber: string, storeNumber: string, zip: string) {
-  if (!/^[A-Z0-9]{5,12}LL\/A$/.test(partNumber) || !/^R\d{3,5}$/.test(storeNumber) || !/^\d{5}$/.test(zip)) throw new Error("Apple pickup requires an exact US part, store and ZIP code.");
+  if (!/^[A-Z0-9]{5,12}\/A$/.test(partNumber) || !/^R\d{3,5}$/.test(storeNumber) || !/^\d{5}$/.test(zip)) throw new Error("Apple pickup requires an exact US part, store and ZIP code.");
   const url = new URL("https://www.apple.com/shop/retail/pickup-message");
   url.search = new URLSearchParams({ pl: "true", location: zip, "parts.0": partNumber }).toString();
   return url.href;
@@ -147,15 +147,17 @@ export async function lookupApplePickup(productUrl: string, zip: string, read: R
 
 export function validateOfficialSource(source: Pick<ConnectorSource, "connector" | "productUrl" | "locationId" | "fulfillment">) {
   const url = new URL(source.productUrl);
-  if (url.protocol !== "https:" || url.username || url.password || url.port || url.hash || url.search) throw new Error("Use the exact official US product URL without credentials, query parameters or fragments.");
+  if (url.protocol !== "https:" || url.username || url.password || url.port || url.hash) throw new Error("Use the exact official US product URL without credentials or fragments.");
   if (source.connector === "apple-pickup") {
-    if (url.hostname !== "www.apple.com" || !/^\/shop\/buy-[a-z-]+\/[^/]+\/[^/]+\/?$/.test(url.pathname)) throw new Error("Apple pickup needs a fully selected Apple purchase URL.");
+    // Some exact Apple configurations use a reviewed product query (Watch), or
+    // a single-SKU family URL (Apple TV). Never accept an arbitrary family URL.
+    if (url.hostname !== "www.apple.com" || !officialProducts.apple.some(product => product.productUrl === source.productUrl)) throw new Error("Apple pickup needs a fully selected, reviewed Apple purchase URL.");
     const store = stores.stores.find(store => store.id === source.locationId);
     if (source.fulfillment !== "pickup" || !store || !/^apple-r\d{3,5}$/.test(store.id)) throw new Error("Select a known US Apple Store for pickup.");
   } else if (source.connector === "playstation-direct") {
-    if (url.hostname !== "direct.playstation.com" || !/^\/en-us\/buy-[a-z-]+\/[^/]+\/?$/.test(url.pathname) || source.fulfillment === "pickup" || source.locationId) throw new Error("PlayStation Direct needs an exact US product URL with online fulfillment.");
+    if (url.search || url.hostname !== "direct.playstation.com" || !/^\/en-us\/buy-[a-z-]+\/[^/]+\/?$/.test(url.pathname) || source.fulfillment === "pickup" || source.locationId) throw new Error("PlayStation Direct needs an exact US product URL with online fulfillment.");
   } else if (source.connector === "nvidia-store") {
-    if (url.hostname !== "marketplace.nvidia.com" || !/^\/en-us\/consumer\/graphics-cards\/geforce-rtx-[a-z0-9-]+-founders-edition\/?$/.test(url.pathname) || source.fulfillment === "pickup" || source.locationId) throw new Error("NVIDIA needs an exact US Founders Edition listing with online fulfillment.");
+    if (url.search || url.hostname !== "marketplace.nvidia.com" || !/^\/en-us\/consumer\/graphics-cards\/geforce-rtx-[a-z0-9-]+-founders-edition\/?$/.test(url.pathname) || source.fulfillment === "pickup" || source.locationId) throw new Error("NVIDIA needs an exact US Founders Edition listing with online fulfillment.");
   } else throw new Error("Unknown official connector.");
 }
 

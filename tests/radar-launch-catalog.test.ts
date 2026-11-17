@@ -66,7 +66,7 @@ describe("researched launch catalog", () => {
       expect(content?.officialLinks.some(link => link.url === product.officialUrl || link.url.startsWith(`${product.officialUrl}specs/`))).toBe(true);
       expect(categoryContent[product.category.slug]?.buyingNotes.length, product.category.slug).toBeGreaterThanOrEqual(3);
       if (!existingSlugs.has(product.slug)) {
-        expect(content?.coverage).toContain("Automated inventory is not configured");
+        expect(content?.coverage).toMatch(/direct official stock checks|no verified direct inventory listing/);
         expect(content?.guideSections[0].body).toContain(product.features[0].value);
       }
     }

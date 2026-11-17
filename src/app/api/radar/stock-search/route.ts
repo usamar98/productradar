@@ -8,6 +8,7 @@ import { getLaunchProduct } from "@/config/launch-catalog";
 import { isLocalTestMode } from "@/lib/radar/local-test";
 import { isOfficialListing, officialConnection } from "@/lib/radar/official-status";
 import { liveInput, refreshLiveStock, type LiveLookup } from "@/lib/radar/live-stock";
+import { officialConfiguration } from "@/lib/radar/official-catalog";
 
 const input = z.object({ item: z.string().min(1).max(100), variant: z.string().min(1).max(100), mode: z.enum(["pickup", "online"]), zip: z.string().max(10).optional(), search: z.string().max(100).optional(), storeId: z.string().regex(/^apple-r\d{3,5}$/).optional(), latitude: z.number().min(-90).max(90).optional(), longitude: z.number().min(-180).max(180).optional(), radius: z.union([z.literal(25), z.literal(50), z.literal(100), z.literal(250)]).default(50) }).strict();
 export async function POST(request: Request) {
@@ -21,6 +22,7 @@ export async function POST(request: Request) {
     const item = await prisma.radarItem.findFirst({ where: { slug: value.item, hidden: false }, include: { variants: { where: { slug: value.variant } }, sources: { where: { connector: { notIn: local ? ["mock"] : ["mock", "local-test"] }, variant: { slug: value.variant } } } } });
     if (!item || item.variants.length !== 1) throw new HttpError(404, "Choose an available product and configuration.");
     const product = getLaunchProduct(item.slug);
+    const configuration = local ? null : officialConfiguration(item.slug, value.variant);
     let live: LiveLookup | null = null, liveError: string | null = null;
     async function refresh(zip?: string, storeIds?: string[]) {
       if (local || !item) return;
@@ -32,8 +34,16 @@ export async function POST(request: Request) {
     }
     const context = (sources = item.sources) => {
       const connection = local ? null : officialConnection(product?.brand, sources, product?.officialUrl);
-      return { connection, officialUrl: connection?.url || product?.officialUrl, live, liveError };
+      return { connection, configuration, officialUrl: connection?.url || product?.officialUrl, live, liveError };
     };
+    if (configuration && !configuration.checkable) {
+      const connection = officialConnection(product?.brand, [], configuration.productUrl || product?.officialUrl);
+      return Response.json({ mode: value.mode, stores: [], retailers: [], total: 0, configuration,
+        connection: connection ? { ...connection, state: "manual", message: configuration.reason } : null,
+        officialUrl: configuration.productUrl || product?.officialUrl, live: null, liveError: null,
+        message: configuration.reason,
+      }, { headers: { "Cache-Control": "private, no-store" } });
+    }
     const observation = (source: typeof item.sources[number] | undefined) => ({ ...stockReading(source), sourceId: source?.id || null, priceCents: source?.lastCheckedAt && !source.lastError ? source.priceCents : null, lastCheckedAt: source?.lastCheckedAt?.toISOString() || null, simulated: source?.connector === "local-test", onDemand: source?.status === "on_demand" });
     if (value.mode === "online") {
       await refresh();

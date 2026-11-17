@@ -29,7 +29,7 @@ These configurations are a curated set, not the manufacturer's complete configur
 
 Keep existing identifiers stable: the eight `iphone-duo-*` variant IDs, `ps5-pro` / `ps5-pro-standard`, and `rtx-5090` / `rtx-5090-standard`. The RTX 5090 variant slug remains `founders-edition`; its older database ID intentionally remains unchanged.
 
-All **46 added products have no stock sources**. The original three products retain **14 ordinary sources, paused and unapproved** at this checkpoint. Manufacturer product references are informational links, not exact-variant inventory feeds. The seed does not turn those references into active sources, prices, offers, stock history, payments or notifications. The separate Stripe lab continues to use eight controlled iPhone Duo sources; see [local testing](local-testing.md).
+At the original catalog-only checkpoint, all **46 added products had no stock sources**. The November 18 expansion adds direct on-demand sources for 242 Apple configurations across all 24 Apple products, 19 PlayStation configurations and three NVIDIA Founders Editions; see [official integrations](official-store-integrations.md). The original three products retain **14 ordinary sources, paused and unapproved** at this checkpoint. Manufacturer product references are informational links, not exact-variant inventory feeds. The seed does not turn those references into active sources, prices, offers, stock history, payments or notifications. The separate Stripe lab continues to use eight controlled iPhone Duo sources; see [local testing](local-testing.md).
 
 ## Updating the catalog
 

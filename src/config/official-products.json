@@ -1,43 +1,2465 @@
 {
-  "reviewedAt": "2026-11-17",
+  "reviewedAt": "2026-11-18",
   "apple": [
     {
+      "itemSlug": "iphone-duo",
+      "variantSlug": "256gb-night-sky",
       "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-256gb-night-sky-unlocked",
-      "partNumber": "MK1F4LL/A"
+      "partNumber": "MK1F4LL/A",
+      "configurationLabel": "256GB / Night Sky",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-256gb-night-sky-unlocked",
+      "reviewedAt": "2026-11-18"
     },
     {
-      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-512gb-night-sky-unlocked",
-      "partNumber": "MK1H4LL/A"
-    },
-    {
-      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-512gb-star-white-unlocked",
-      "partNumber": "MK1G4LL/A"
-    },
-    {
+      "itemSlug": "iphone-duo",
+      "variantSlug": "256gb-star-white",
       "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-256gb-star-white-unlocked",
-      "partNumber": "MK1E4LL/A"
+      "partNumber": "MK1E4LL/A",
+      "configurationLabel": "256GB / Star White",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-256gb-star-white-unlocked",
+      "reviewedAt": "2026-11-18"
     },
     {
+      "itemSlug": "iphone-duo",
+      "variantSlug": "512gb-night-sky",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-512gb-night-sky-unlocked",
+      "partNumber": "MK1H4LL/A",
+      "configurationLabel": "512GB / Night Sky",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-512gb-night-sky-unlocked",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-duo",
+      "variantSlug": "512gb-star-white",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-512gb-star-white-unlocked",
+      "partNumber": "MK1G4LL/A",
+      "configurationLabel": "512GB / Star White",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-512gb-star-white-unlocked",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-duo",
+      "variantSlug": "1tb-night-sky",
       "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-1tb-night-sky-unlocked",
-      "partNumber": "MK1L4LL/A"
+      "partNumber": "MK1L4LL/A",
+      "configurationLabel": "1TB / Night Sky",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-1tb-night-sky-unlocked",
+      "reviewedAt": "2026-11-18"
     },
     {
-      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-2tb-star-white-unlocked",
-      "partNumber": "MK1Q4LL/A"
-    },
-    {
+      "itemSlug": "iphone-duo",
+      "variantSlug": "1tb-star-white",
       "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-1tb-star-white-unlocked",
-      "partNumber": "MK1J4LL/A"
+      "partNumber": "MK1J4LL/A",
+      "configurationLabel": "1TB / Star White",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-1tb-star-white-unlocked",
+      "reviewedAt": "2026-11-18"
     },
     {
+      "itemSlug": "iphone-duo",
+      "variantSlug": "2tb-night-sky",
       "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-2tb-night-sky-unlocked",
-      "partNumber": "MK1R4LL/A"
+      "partNumber": "MK1R4LL/A",
+      "configurationLabel": "2TB / Night Sky",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-2tb-night-sky-unlocked",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-duo",
+      "variantSlug": "2tb-star-white",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-2tb-star-white-unlocked",
+      "partNumber": "MK1Q4LL/A",
+      "configurationLabel": "2TB / Star White",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-duo/7.6-inch-display-2tb-star-white-unlocked",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-17e",
+      "variantSlug": "black-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-17e/6.1-inch-display-256gb-black-unlocked",
+      "partNumber": "MHRN4LL/A",
+      "configurationLabel": "Black / 256GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-17e",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-17e",
+      "variantSlug": "black-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-17e/6.1-inch-display-512gb-black-unlocked",
+      "partNumber": "MHRR4LL/A",
+      "configurationLabel": "Black / 512GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-17e",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-17e",
+      "variantSlug": "white-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-17e/6.1-inch-display-256gb-white-unlocked",
+      "partNumber": "MHRP4LL/A",
+      "configurationLabel": "White / 256GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-17e",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-17e",
+      "variantSlug": "white-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-17e/6.1-inch-display-512gb-white-unlocked",
+      "partNumber": "MHRT4LL/A",
+      "configurationLabel": "White / 512GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-17e",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-17e",
+      "variantSlug": "soft-pink-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-17e/6.1-inch-display-256gb-soft-pink-unlocked",
+      "partNumber": "MHRQ4LL/A",
+      "configurationLabel": "Soft Pink / 256GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-17e",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-17e",
+      "variantSlug": "soft-pink-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-17e/6.1-inch-display-512gb-soft-pink-unlocked",
+      "partNumber": "MHRU4LL/A",
+      "configurationLabel": "Soft Pink / 512GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-17e",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "burgundy-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-256gb-burgundy-unlocked",
+      "partNumber": "MJQ54LL/A",
+      "configurationLabel": "Burgundy / 256GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "burgundy-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-512gb-burgundy-unlocked",
+      "partNumber": "MJQ94LL/A",
+      "configurationLabel": "Burgundy / 512GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "burgundy-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-1tb-burgundy-unlocked",
+      "partNumber": "MJQE4LL/A",
+      "configurationLabel": "Burgundy / 1TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "burgundy-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-2tb-burgundy-unlocked",
+      "partNumber": "MJQJ4LL/A",
+      "configurationLabel": "Burgundy / 2TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "glacier-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-256gb-glacier-unlocked",
+      "partNumber": "MJQ64LL/A",
+      "configurationLabel": "Glacier / 256GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "glacier-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-512gb-glacier-unlocked",
+      "partNumber": "MJQA4LL/A",
+      "configurationLabel": "Glacier / 512GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "glacier-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-1tb-glacier-unlocked",
+      "partNumber": "MJQF4LL/A",
+      "configurationLabel": "Glacier / 1TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "glacier-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-2tb-glacier-unlocked",
+      "partNumber": "MJQK4LL/A",
+      "configurationLabel": "Glacier / 2TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "silver-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-256gb-silver-unlocked",
+      "partNumber": "MJQ44LL/A",
+      "configurationLabel": "Silver / 256GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "silver-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-512gb-silver-unlocked",
+      "partNumber": "MJQ84LL/A",
+      "configurationLabel": "Silver / 512GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "silver-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-1tb-silver-unlocked",
+      "partNumber": "MJQD4LL/A",
+      "configurationLabel": "Silver / 1TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "silver-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-2tb-silver-unlocked",
+      "partNumber": "MJQH4LL/A",
+      "configurationLabel": "Silver / 2TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "black-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-256gb-black-unlocked",
+      "partNumber": "MJQ34LL/A",
+      "configurationLabel": "Black / 256GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "black-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-512gb-black-unlocked",
+      "partNumber": "MJQ74LL/A",
+      "configurationLabel": "Black / 512GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "black-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-1tb-black-unlocked",
+      "partNumber": "MJQC4LL/A",
+      "configurationLabel": "Black / 1TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro",
+      "variantSlug": "black-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.3-inch-display-2tb-black-unlocked",
+      "partNumber": "MJQG4LL/A",
+      "configurationLabel": "Black / 2TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "burgundy-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-burgundy-unlocked",
+      "partNumber": "MJW64LL/A",
+      "configurationLabel": "Burgundy / 256GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "burgundy-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-512gb-burgundy-unlocked",
+      "partNumber": "MJWA4LL/A",
+      "configurationLabel": "Burgundy / 512GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "burgundy-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-1tb-burgundy-unlocked",
+      "partNumber": "MJWF4LL/A",
+      "configurationLabel": "Burgundy / 1TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "burgundy-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-2tb-burgundy-unlocked",
+      "partNumber": "MJWK4LL/A",
+      "configurationLabel": "Burgundy / 2TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "glacier-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-glacier-unlocked",
+      "partNumber": "MJW74LL/A",
+      "configurationLabel": "Glacier / 256GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "glacier-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-512gb-glacier-unlocked",
+      "partNumber": "MJWC4LL/A",
+      "configurationLabel": "Glacier / 512GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "glacier-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-1tb-glacier-unlocked",
+      "partNumber": "MJWG4LL/A",
+      "configurationLabel": "Glacier / 1TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "glacier-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-2tb-glacier-unlocked",
+      "partNumber": "MJWL4LL/A",
+      "configurationLabel": "Glacier / 2TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "silver-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-silver-unlocked",
+      "partNumber": "MJW54LL/A",
+      "configurationLabel": "Silver / 256GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "silver-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-512gb-silver-unlocked",
+      "partNumber": "MJW94LL/A",
+      "configurationLabel": "Silver / 512GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "silver-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-1tb-silver-unlocked",
+      "partNumber": "MJWE4LL/A",
+      "configurationLabel": "Silver / 1TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "silver-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-2tb-silver-unlocked",
+      "partNumber": "MJWJ4LL/A",
+      "configurationLabel": "Silver / 2TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "black-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-256gb-black-unlocked",
+      "partNumber": "MJW44LL/A",
+      "configurationLabel": "Black / 256GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "black-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-512gb-black-unlocked",
+      "partNumber": "MJW84LL/A",
+      "configurationLabel": "Black / 512GB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "black-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-1tb-black-unlocked",
+      "partNumber": "MJWD4LL/A",
+      "configurationLabel": "Black / 1TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "iphone-18-pro-max",
+      "variantSlug": "black-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro/6.9-inch-display-2tb-black-unlocked",
+      "partNumber": "MJWH4LL/A",
+      "configurationLabel": "Black / 2TB",
+      "sourceUrl": "https://www.apple.com/shop/buy-iphone/iphone-18-pro",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-blue-128gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-128gb-blue-wifi",
+      "partNumber": "MH314LL/A",
+      "configurationLabel": "11-inch / Blue / 128GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-blue-128gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-128gb-blue-wifi-cellular",
+      "partNumber": "MH794LL/A",
+      "configurationLabel": "11-inch / Blue / 128GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-blue-256gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-256gb-blue-wifi",
+      "partNumber": "MH364LL/A",
+      "configurationLabel": "11-inch / Blue / 256GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-blue-256gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-256gb-blue-wifi-cellular",
+      "partNumber": "MH7E4LL/A",
+      "configurationLabel": "11-inch / Blue / 256GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-blue-512gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-512gb-blue-wifi",
+      "partNumber": "MH3C4LL/A",
+      "configurationLabel": "11-inch / Blue / 512GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-blue-512gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-512gb-blue-wifi-cellular",
+      "partNumber": "MH7J4LL/A",
+      "configurationLabel": "11-inch / Blue / 512GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-blue-1tb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-1tb-blue-wifi",
+      "partNumber": "MH3H4LL/A",
+      "configurationLabel": "11-inch / Blue / 1TB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-blue-1tb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-1tb-blue-wifi-cellular",
+      "partNumber": "MH7N4LL/A",
+      "configurationLabel": "11-inch / Blue / 1TB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-purple-128gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-128gb-purple-wifi",
+      "partNumber": "MH344LL/A",
+      "configurationLabel": "11-inch / Purple / 128GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-purple-128gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-128gb-purple-wifi-cellular",
+      "partNumber": "MH7C4LL/A",
+      "configurationLabel": "11-inch / Purple / 128GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-purple-256gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-256gb-purple-wifi",
+      "partNumber": "MH394LL/A",
+      "configurationLabel": "11-inch / Purple / 256GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-purple-256gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-256gb-purple-wifi-cellular",
+      "partNumber": "MH7G4LL/A",
+      "configurationLabel": "11-inch / Purple / 256GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-purple-512gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-512gb-purple-wifi",
+      "partNumber": "MH3E4LL/A",
+      "configurationLabel": "11-inch / Purple / 512GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-purple-512gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-512gb-purple-wifi-cellular",
+      "partNumber": "MH7L4LL/A",
+      "configurationLabel": "11-inch / Purple / 512GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-purple-1tb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-1tb-purple-wifi",
+      "partNumber": "MH3K4LL/A",
+      "configurationLabel": "11-inch / Purple / 1TB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-purple-1tb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-1tb-purple-wifi-cellular",
+      "partNumber": "MH7Q4LL/A",
+      "configurationLabel": "11-inch / Purple / 1TB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-starlight-128gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-128gb-starlight-wifi",
+      "partNumber": "MH334LL/A",
+      "configurationLabel": "11-inch / Starlight / 128GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-starlight-128gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-128gb-starlight-wifi-cellular",
+      "partNumber": "MH7A4LL/A",
+      "configurationLabel": "11-inch / Starlight / 128GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-starlight-256gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-256gb-starlight-wifi",
+      "partNumber": "MH374LL/A",
+      "configurationLabel": "11-inch / Starlight / 256GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-starlight-256gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-256gb-starlight-wifi-cellular",
+      "partNumber": "MH7F4LL/A",
+      "configurationLabel": "11-inch / Starlight / 256GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-starlight-512gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-512gb-starlight-wifi",
+      "partNumber": "MH3D4LL/A",
+      "configurationLabel": "11-inch / Starlight / 512GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-starlight-512gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-512gb-starlight-wifi-cellular",
+      "partNumber": "MH7K4LL/A",
+      "configurationLabel": "11-inch / Starlight / 512GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-starlight-1tb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-1tb-starlight-wifi",
+      "partNumber": "MH3J4LL/A",
+      "configurationLabel": "11-inch / Starlight / 1TB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-starlight-1tb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-1tb-starlight-wifi-cellular",
+      "partNumber": "MH7P4LL/A",
+      "configurationLabel": "11-inch / Starlight / 1TB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-space-gray-128gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-128gb-space-gray-wifi",
+      "partNumber": "MH304LL/A",
+      "configurationLabel": "11-inch / Space Gray / 128GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-space-gray-128gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-128gb-space-gray-wifi-cellular",
+      "partNumber": "MH784LL/A",
+      "configurationLabel": "11-inch / Space Gray / 128GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-space-gray-256gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-256gb-space-gray-wifi",
+      "partNumber": "MH354LL/A",
+      "configurationLabel": "11-inch / Space Gray / 256GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-space-gray-256gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-256gb-space-gray-wifi-cellular",
+      "partNumber": "MH7D4LL/A",
+      "configurationLabel": "11-inch / Space Gray / 256GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-space-gray-512gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-512gb-space-gray-wifi",
+      "partNumber": "MH3A4LL/A",
+      "configurationLabel": "11-inch / Space Gray / 512GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-space-gray-512gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-512gb-space-gray-wifi-cellular",
+      "partNumber": "MH7H4LL/A",
+      "configurationLabel": "11-inch / Space Gray / 512GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-space-gray-1tb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-1tb-space-gray-wifi",
+      "partNumber": "MH3G4LL/A",
+      "configurationLabel": "11-inch / Space Gray / 1TB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "11-inch-space-gray-1tb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/11-inch-display-1tb-space-gray-wifi-cellular",
+      "partNumber": "MH7M4LL/A",
+      "configurationLabel": "11-inch / Space Gray / 1TB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-blue-128gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-128gb-blue-wifi",
+      "partNumber": "MH5P4LL/A",
+      "configurationLabel": "13-inch / Blue / 128GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-blue-128gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-128gb-blue-wifi-cellular",
+      "partNumber": "MH9E4LL/A",
+      "configurationLabel": "13-inch / Blue / 128GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-blue-256gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-256gb-blue-wifi",
+      "partNumber": "MH5V4LL/A",
+      "configurationLabel": "13-inch / Blue / 256GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-blue-256gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-256gb-blue-wifi-cellular",
+      "partNumber": "MH9J4LL/A",
+      "configurationLabel": "13-inch / Blue / 256GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-blue-512gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-512gb-blue-wifi",
+      "partNumber": "MH604LL/A",
+      "configurationLabel": "13-inch / Blue / 512GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-blue-512gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-512gb-blue-wifi-cellular",
+      "partNumber": "MH9N4LL/A",
+      "configurationLabel": "13-inch / Blue / 512GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-blue-1tb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-1tb-blue-wifi",
+      "partNumber": "MH644LL/A",
+      "configurationLabel": "13-inch / Blue / 1TB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-blue-1tb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-1tb-blue-wifi-cellular",
+      "partNumber": "MH9T4LL/A",
+      "configurationLabel": "13-inch / Blue / 1TB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-purple-128gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-128gb-purple-wifi",
+      "partNumber": "MH5T4LL/A",
+      "configurationLabel": "13-inch / Purple / 128GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-purple-128gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-128gb-purple-wifi-cellular",
+      "partNumber": "MH9G4LL/A",
+      "configurationLabel": "13-inch / Purple / 128GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-purple-256gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-256gb-purple-wifi",
+      "partNumber": "MH5X4LL/A",
+      "configurationLabel": "13-inch / Purple / 256GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-purple-256gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-256gb-purple-wifi-cellular",
+      "partNumber": "MH9L4LL/A",
+      "configurationLabel": "13-inch / Purple / 256GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-purple-512gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-512gb-purple-wifi",
+      "partNumber": "MH624LL/A",
+      "configurationLabel": "13-inch / Purple / 512GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-purple-512gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-512gb-purple-wifi-cellular",
+      "partNumber": "MH9Q4LL/A",
+      "configurationLabel": "13-inch / Purple / 512GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-purple-1tb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-1tb-purple-wifi",
+      "partNumber": "MHDK4LL/A",
+      "configurationLabel": "13-inch / Purple / 1TB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-purple-1tb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-1tb-purple-wifi-cellular",
+      "partNumber": "MH9V4LL/A",
+      "configurationLabel": "13-inch / Purple / 1TB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-starlight-128gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-128gb-starlight-wifi",
+      "partNumber": "MH5Q4LL/A",
+      "configurationLabel": "13-inch / Starlight / 128GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-starlight-128gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-128gb-starlight-wifi-cellular",
+      "partNumber": "MH9F4LL/A",
+      "configurationLabel": "13-inch / Starlight / 128GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-starlight-256gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-256gb-starlight-wifi",
+      "partNumber": "MH5W4LL/A",
+      "configurationLabel": "13-inch / Starlight / 256GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-starlight-256gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-256gb-starlight-wifi-cellular",
+      "partNumber": "MH9K4LL/A",
+      "configurationLabel": "13-inch / Starlight / 256GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-starlight-512gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-512gb-starlight-wifi",
+      "partNumber": "MH614LL/A",
+      "configurationLabel": "13-inch / Starlight / 512GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-starlight-512gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-512gb-starlight-wifi-cellular",
+      "partNumber": "MH9P4LL/A",
+      "configurationLabel": "13-inch / Starlight / 512GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-starlight-1tb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-1tb-starlight-wifi",
+      "partNumber": "MH654LL/A",
+      "configurationLabel": "13-inch / Starlight / 1TB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-starlight-1tb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-1tb-starlight-wifi-cellular",
+      "partNumber": "MH9U4LL/A",
+      "configurationLabel": "13-inch / Starlight / 1TB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-space-gray-128gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-128gb-space-gray-wifi",
+      "partNumber": "MH5N4LL/A",
+      "configurationLabel": "13-inch / Space Gray / 128GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-space-gray-128gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-128gb-space-gray-wifi-cellular",
+      "partNumber": "MH9D4LL/A",
+      "configurationLabel": "13-inch / Space Gray / 128GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-space-gray-256gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-256gb-space-gray-wifi",
+      "partNumber": "MH5U4LL/A",
+      "configurationLabel": "13-inch / Space Gray / 256GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-space-gray-256gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-256gb-space-gray-wifi-cellular",
+      "partNumber": "MH9H4LL/A",
+      "configurationLabel": "13-inch / Space Gray / 256GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-space-gray-512gb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-512gb-space-gray-wifi",
+      "partNumber": "MH5Y4LL/A",
+      "configurationLabel": "13-inch / Space Gray / 512GB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-space-gray-512gb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-512gb-space-gray-wifi-cellular",
+      "partNumber": "MH9M4LL/A",
+      "configurationLabel": "13-inch / Space Gray / 512GB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-space-gray-1tb-wi-fi",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-1tb-space-gray-wifi",
+      "partNumber": "MH634LL/A",
+      "configurationLabel": "13-inch / Space Gray / 1TB / Wi-Fi",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-air-m4",
+      "variantSlug": "13-inch-space-gray-1tb-wi-fi-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-air/13-inch-display-1tb-space-gray-wifi-cellular",
+      "partNumber": "MH9R4LL/A",
+      "configurationLabel": "13-inch / Space Gray / 1TB / Wi-Fi + Cellular",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-air",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "midnight-128gb-wi-fi-standard-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/128gb-midnight-wifi-standard-glass",
+      "partNumber": "MJ6F4LL/A",
+      "configurationLabel": "Midnight / 128GB / Wi-Fi / Standard glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "midnight-128gb-wi-fi-plus-cellular-standard-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/128gb-midnight-wifi-cellular-standard-glass",
+      "partNumber": "MJ674LL/A",
+      "configurationLabel": "Midnight / 128GB / Wi-Fi + Cellular / Standard glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "midnight-256gb-wi-fi-standard-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/256gb-midnight-wifi-standard-glass",
+      "partNumber": "MJ6Q4LL/A",
+      "configurationLabel": "Midnight / 256GB / Wi-Fi / Standard glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "midnight-256gb-wi-fi-nano-texture-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/256gb-midnight-wifi-nano-texture-glass",
+      "partNumber": "ML2Q4LL/A",
+      "configurationLabel": "Midnight / 256GB / Wi-Fi / Nano-texture glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "midnight-256gb-wi-fi-plus-cellular-standard-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/256gb-midnight-wifi-cellular-standard-glass",
+      "partNumber": "MJ6C4LL/A",
+      "configurationLabel": "Midnight / 256GB / Wi-Fi + Cellular / Standard glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "midnight-256gb-wi-fi-plus-cellular-nano-texture-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/256gb-midnight-wifi-cellular-nano-texture-glass",
+      "partNumber": "ML2W4LL/A",
+      "configurationLabel": "Midnight / 256GB / Wi-Fi + Cellular / Nano-texture glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "midnight-512gb-wi-fi-standard-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/512gb-midnight-wifi-standard-glass",
+      "partNumber": "MJ6V4LL/A",
+      "configurationLabel": "Midnight / 512GB / Wi-Fi / Standard glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "midnight-512gb-wi-fi-nano-texture-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/512gb-midnight-wifi-nano-texture-glass",
+      "partNumber": "MJ6X4LL/A",
+      "configurationLabel": "Midnight / 512GB / Wi-Fi / Nano-texture glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "midnight-512gb-wi-fi-plus-cellular-standard-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/512gb-midnight-wifi-cellular-standard-glass",
+      "partNumber": "MJ6H4LL/A",
+      "configurationLabel": "Midnight / 512GB / Wi-Fi + Cellular / Standard glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "midnight-512gb-wi-fi-plus-cellular-nano-texture-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/512gb-midnight-wifi-cellular-nano-texture-glass",
+      "partNumber": "MJ6M4LL/A",
+      "configurationLabel": "Midnight / 512GB / Wi-Fi + Cellular / Nano-texture glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "starlight-128gb-wi-fi-standard-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/128gb-starlight-wifi-standard-glass",
+      "partNumber": "MJ6J4LL/A",
+      "configurationLabel": "Starlight / 128GB / Wi-Fi / Standard glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "starlight-128gb-wi-fi-plus-cellular-standard-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/128gb-starlight-wifi-cellular-standard-glass",
+      "partNumber": "MJ684LL/A",
+      "configurationLabel": "Starlight / 128GB / Wi-Fi + Cellular / Standard glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "starlight-256gb-wi-fi-standard-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/256gb-starlight-wifi-standard-glass",
+      "partNumber": "MJ6R4LL/A",
+      "configurationLabel": "Starlight / 256GB / Wi-Fi / Standard glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "starlight-256gb-wi-fi-nano-texture-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/256gb-starlight-wifi-nano-texture-glass",
+      "partNumber": "ML2T4LL/A",
+      "configurationLabel": "Starlight / 256GB / Wi-Fi / Nano-texture glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "starlight-256gb-wi-fi-plus-cellular-standard-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/256gb-starlight-wifi-cellular-standard-glass",
+      "partNumber": "MJ6D4LL/A",
+      "configurationLabel": "Starlight / 256GB / Wi-Fi + Cellular / Standard glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "starlight-256gb-wi-fi-plus-cellular-nano-texture-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/256gb-starlight-wifi-cellular-nano-texture-glass",
+      "partNumber": "ML2X4LL/A",
+      "configurationLabel": "Starlight / 256GB / Wi-Fi + Cellular / Nano-texture glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "starlight-512gb-wi-fi-standard-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/512gb-starlight-wifi-standard-glass",
+      "partNumber": "MJ6W4LL/A",
+      "configurationLabel": "Starlight / 512GB / Wi-Fi / Standard glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "starlight-512gb-wi-fi-nano-texture-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/512gb-starlight-wifi-nano-texture-glass",
+      "partNumber": "MJ6Y4LL/A",
+      "configurationLabel": "Starlight / 512GB / Wi-Fi / Nano-texture glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "starlight-512gb-wi-fi-plus-cellular-standard-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/512gb-starlight-wifi-cellular-standard-glass",
+      "partNumber": "MJ6K4LL/A",
+      "configurationLabel": "Starlight / 512GB / Wi-Fi + Cellular / Standard glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ipad-mini-a20-pro",
+      "variantSlug": "starlight-512gb-wi-fi-plus-cellular-nano-texture-glass",
+      "productUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini/512gb-starlight-wifi-cellular-nano-texture-glass",
+      "partNumber": "MJ6P4LL/A",
+      "configurationLabel": "Starlight / 512GB / Wi-Fi + Cellular / Nano-texture glass",
+      "sourceUrl": "https://www.apple.com/shop/buy-ipad/ipad-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-neo",
+      "variantSlug": "silver-256gb-8gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-neo/silver-256gb",
+      "partNumber": "MHFA4LL/A",
+      "configurationLabel": "13-inch MacBook Neo: Apple A18 Pro chip with 6-core CPU and 5-core GPU, 8GB, 256GB SSD - Silver",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-neo",
+      "variantSlug": "silver-512gb-8gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-neo/silver-512gb",
+      "partNumber": "MHFC4LL/A",
+      "configurationLabel": "13-inch MacBook Neo: Apple A18 Pro chip with 6-core CPU and 5-core GPU, 8GB, 512GB SSD, Touch ID - Silver",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-neo",
+      "variantSlug": "blush-256gb-8gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-neo/blush-256gb",
+      "partNumber": "MHFH4LL/A",
+      "configurationLabel": "13-inch MacBook Neo: Apple A18 Pro chip with 6-core CPU and 5-core GPU, 8GB, 256GB SSD - Blush",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-neo",
+      "variantSlug": "blush-512gb-8gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-neo/blush-512gb",
+      "partNumber": "MHFJ4LL/A",
+      "configurationLabel": "13-inch MacBook Neo: Apple A18 Pro chip with 6-core CPU and 5-core GPU, 8GB, 512GB SSD, Touch ID - Blush",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-neo",
+      "variantSlug": "citrus-256gb-8gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-neo/citrus-256gb",
+      "partNumber": "MHFD4LL/A",
+      "configurationLabel": "13-inch MacBook Neo: Apple A18 Pro chip with 6-core CPU and 5-core GPU, 8GB, 256GB SSD - Citrus",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-neo",
+      "variantSlug": "citrus-512gb-8gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-neo/citrus-512gb",
+      "partNumber": "MHFE4LL/A",
+      "configurationLabel": "13-inch MacBook Neo: Apple A18 Pro chip with 6-core CPU and 5-core GPU, 8GB, 512GB SSD, Touch ID - Citrus",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-neo",
+      "variantSlug": "indigo-256gb-8gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-neo/indigo-256gb",
+      "partNumber": "MHFF4LL/A",
+      "configurationLabel": "13-inch MacBook Neo: Apple A18 Pro chip with 6-core CPU and 5-core GPU, 8GB, 256GB SSD - Indigo",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-neo",
+      "variantSlug": "indigo-512gb-8gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-neo/indigo-512gb",
+      "partNumber": "MHFG4LL/A",
+      "configurationLabel": "13-inch MacBook Neo: Apple A18 Pro chip with 6-core CPU and 5-core GPU, 8GB, 512GB SSD, Touch ID - Indigo",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "13-inch-sky-blue-16gb-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-sky-blue-m5-chip-10-core-cpu-8-core-gpu-16gb-memory-512gb-storage",
+      "partNumber": "MDHH4LL/A",
+      "configurationLabel": "MacBook Air, 13-inch, M5 Chip, 10-core CPU, 8-core GPU, Sky Blue, 16GB memory, 512GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-sky-blue-m5-chip-10-core-cpu-8-core-gpu-16gb-memory-512gb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "13-inch-sky-blue-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-sky-blue-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MDHK4LL/A",
+      "configurationLabel": "MacBook Air, 13-inch, M5 Chip, 10-core CPU, 10-core GPU, Sky Blue, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-sky-blue-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "13-inch-silver-16gb-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-silver-m5-chip-10-core-cpu-8-core-gpu-16gb-memory-512gb-storage",
+      "partNumber": "MDH74LL/A",
+      "configurationLabel": "MacBook Air, 13-inch, M5 Chip, 10-core CPU, 8-core GPU, Silver, 16GB memory, 512GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-silver-m5-chip-10-core-cpu-8-core-gpu-16gb-memory-512gb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "13-inch-silver-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-silver-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MDH94LL/A",
+      "configurationLabel": "MacBook Air, 13-inch, M5 Chip, 10-core CPU, 10-core GPU, Silver, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-silver-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "13-inch-starlight-16gb-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-starlight-m5-chip-10-core-cpu-8-core-gpu-16gb-memory-512gb-storage",
+      "partNumber": "MDHA4LL/A",
+      "configurationLabel": "MacBook Air, 13-inch, M5 Chip, 10-core CPU, 8-core GPU, Starlight, 16GB memory, 512GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-starlight-m5-chip-10-core-cpu-8-core-gpu-16gb-memory-512gb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "13-inch-starlight-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-starlight-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MDHD4LL/A",
+      "configurationLabel": "MacBook Air, 13-inch, M5 Chip, 10-core CPU, 10-core GPU, Starlight, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-starlight-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "13-inch-midnight-16gb-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-midnight-m5-chip-10-core-cpu-8-core-gpu-16gb-memory-512gb-storage",
+      "partNumber": "MDHE4LL/A",
+      "configurationLabel": "MacBook Air, 13-inch, M5 Chip, 10-core CPU, 8-core GPU, Midnight, 16GB memory, 512GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-midnight-m5-chip-10-core-cpu-8-core-gpu-16gb-memory-512gb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "13-inch-midnight-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-midnight-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MDHG4LL/A",
+      "configurationLabel": "MacBook Air, 13-inch, M5 Chip, 10-core CPU, 10-core GPU, Midnight, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/13-inch-midnight-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "15-inch-sky-blue-16gb-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-sky-blue-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-512gb-storage",
+      "partNumber": "MDVQ4LL/A",
+      "configurationLabel": "MacBook Air, 15-inch, M5 Chip, 10-core CPU, 10-core GPU, Sky Blue, 16GB memory, 512GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-sky-blue-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-512gb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "15-inch-sky-blue-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-sky-blue-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MDVU4LL/A",
+      "configurationLabel": "MacBook Air, 15-inch, M5 Chip, 10-core CPU, 10-core GPU, Sky Blue, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-sky-blue-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "15-inch-silver-16gb-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-silver-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-512gb-storage",
+      "partNumber": "MDV94LL/A",
+      "configurationLabel": "MacBook Air, 15-inch, M5 Chip, 10-core CPU, 10-core GPU, Silver, 16GB memory, 512GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-silver-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-512gb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "15-inch-silver-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-silver-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MDVC4LL/A",
+      "configurationLabel": "MacBook Air, 15-inch, M5 Chip, 10-core CPU, 10-core GPU, Silver, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-silver-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "15-inch-starlight-16gb-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-starlight-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-512gb-storage",
+      "partNumber": "MDVD4LL/A",
+      "configurationLabel": "MacBook Air, 15-inch, M5 Chip, 10-core CPU, 10-core GPU, Starlight, 16GB memory, 512GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-starlight-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-512gb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "15-inch-starlight-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-starlight-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MDVF4LL/A",
+      "configurationLabel": "MacBook Air, 15-inch, M5 Chip, 10-core CPU, 10-core GPU, Starlight, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-starlight-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "15-inch-midnight-16gb-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-midnight-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-512gb-storage",
+      "partNumber": "MDVH4LL/A",
+      "configurationLabel": "MacBook Air, 15-inch, M5 Chip, 10-core CPU, 10-core GPU, Midnight, 16GB memory, 512GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-midnight-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-512gb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-air-m5",
+      "variantSlug": "15-inch-midnight-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-midnight-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MDVN4LL/A",
+      "configurationLabel": "MacBook Air, 15-inch, M5 Chip, 10-core CPU, 10-core GPU, Midnight, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-air/15-inch-midnight-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-m5-pro-max",
+      "variantSlug": "14-inch-space-black-m5-pro-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MGDR4LL/A",
+      "configurationLabel": "MacBook Pro, 14-inch, M5 Pro Chip, 15-core CPU, 16-core GPU, Space Black, Standard display, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-m5-pro-max",
+      "variantSlug": "14-inch-space-black-m5-max-36gb-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "partNumber": "MGDU4LL/A",
+      "configurationLabel": "MacBook Pro, 14-inch, M5 Max Chip, 18-core CPU, 32-core GPU, Space Black, Standard display, 36GB memory, 2TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-m5-pro-max",
+      "variantSlug": "14-inch-silver-m5-pro-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MGDN4LL/A",
+      "configurationLabel": "MacBook Pro, 14-inch, M5 Pro Chip, 15-core CPU, 16-core GPU, Silver, Standard display, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-m5-pro-max",
+      "variantSlug": "14-inch-silver-m5-max-36gb-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "partNumber": "MGDQ4LL/A",
+      "configurationLabel": "MacBook Pro, 14-inch, M5 Max Chip, 18-core CPU, 32-core GPU, Silver, Standard display, 36GB memory, 2TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-m5-pro-max",
+      "variantSlug": "16-inch-space-black-m5-pro-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/16-inch-space-black-standard-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MGEA4LL/A",
+      "configurationLabel": "MacBook Pro, 16-inch, M5 Pro Chip, 18-core CPU, 20-core GPU, Space Black, Standard display, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/16-inch-space-black-standard-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-m5-pro-max",
+      "variantSlug": "16-inch-space-black-m5-max-36gb-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/16-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "partNumber": "MGED4LL/A",
+      "configurationLabel": "MacBook Pro, 16-inch, M5 Max Chip, 18-core CPU, 32-core GPU, Space Black, Standard display, 36GB memory, 2TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/16-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-m5-pro-max",
+      "variantSlug": "16-inch-silver-m5-pro-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/16-inch-silver-standard-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MGE44LL/A",
+      "configurationLabel": "MacBook Pro, 16-inch, M5 Pro Chip, 18-core CPU, 20-core GPU, Silver, Standard display, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/16-inch-silver-standard-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-m5-pro-max",
+      "variantSlug": "16-inch-silver-m5-max-36gb-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/16-inch-silver-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "partNumber": "MGE74LL/A",
+      "configurationLabel": "MacBook Pro, 16-inch, M5 Max Chip, 18-core CPU, 32-core GPU, Silver, Standard display, 36GB memory, 2TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/16-inch-silver-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-m6",
+      "variantSlug": "space-black-16gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-1tb-storage",
+      "partNumber": "MHWT4LL/A",
+      "configurationLabel": "MacBook Pro, 14-inch, M6 Chip, 12-core CPU, 12-core GPU, Space Black, Standard display, 16GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-m6",
+      "variantSlug": "space-black-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MHWU4LL/A",
+      "configurationLabel": "MacBook Pro, 14-inch, M6 Chip, 12-core CPU, 12-core GPU, Space Black, Standard display, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-m6",
+      "variantSlug": "space-black-32gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-32gb-memory-1tb-storage",
+      "partNumber": "MHWV4LL/A",
+      "configurationLabel": "MacBook Pro, 14-inch, M6 Chip, 12-core CPU, 12-core GPU, Space Black, Standard display, 32GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-32gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-m6",
+      "variantSlug": "silver-16gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-1tb-storage",
+      "partNumber": "MHWW4LL/A",
+      "configurationLabel": "MacBook Pro, 14-inch, M6 Chip, 12-core CPU, 12-core GPU, Silver, Standard display, 16GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-m6",
+      "variantSlug": "silver-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MHWX4LL/A",
+      "configurationLabel": "MacBook Pro, 14-inch, M6 Chip, 12-core CPU, 12-core GPU, Silver, Standard display, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-m6",
+      "variantSlug": "silver-32gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-32gb-memory-1tb-storage",
+      "partNumber": "MHWY4LL/A",
+      "configurationLabel": "MacBook Pro, 14-inch, M6 Chip, 12-core CPU, 12-core GPU, Silver, Standard display, 32GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-32gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-proled-xdr",
+      "variantSlug": "14-inch-space-black-m5-pro-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/14-inch-space-black-standard-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MJ2K4LL/A",
+      "configurationLabel": "MacBook Pro with PROLED XDR Display, 14-inch, M5 Pro Chip, 15-core CPU, 16-core GPU, Space Black, Standard display, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/14-inch-space-black-standard-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-proled-xdr",
+      "variantSlug": "14-inch-space-black-m5-max-36gb-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/14-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "partNumber": "MJ2M4LL/A",
+      "configurationLabel": "MacBook Pro with PROLED XDR Display, 14-inch, M5 Max Chip, 18-core CPU, 32-core GPU, Space Black, Standard display, 36GB memory, 2TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/14-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-proled-xdr",
+      "variantSlug": "14-inch-silver-m5-pro-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/14-inch-silver-standard-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MJ2G4LL/A",
+      "configurationLabel": "MacBook Pro with PROLED XDR Display, 14-inch, M5 Pro Chip, 15-core CPU, 16-core GPU, Silver, Standard display, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/14-inch-silver-standard-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-proled-xdr",
+      "variantSlug": "14-inch-silver-m5-max-36gb-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/14-inch-silver-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "partNumber": "MJ2J4LL/A",
+      "configurationLabel": "MacBook Pro with PROLED XDR Display, 14-inch, M5 Max Chip, 18-core CPU, 32-core GPU, Silver, Standard display, 36GB memory, 2TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/14-inch-silver-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-proled-xdr",
+      "variantSlug": "16-inch-space-black-m5-pro-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/16-inch-space-black-standard-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MJ304LL/A",
+      "configurationLabel": "MacBook Pro with PROLED XDR Display, 16-inch, M5 Pro Chip, 18-core CPU, 20-core GPU, Space Black, Standard display, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/16-inch-space-black-standard-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-proled-xdr",
+      "variantSlug": "16-inch-space-black-m5-max-36gb-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/16-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "partNumber": "MJ314LL/A",
+      "configurationLabel": "MacBook Pro with PROLED XDR Display, 16-inch, M5 Max Chip, 18-core CPU, 32-core GPU, Space Black, Standard display, 36GB memory, 2TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/16-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-proled-xdr",
+      "variantSlug": "16-inch-silver-m5-pro-24gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/16-inch-silver-standard-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-24gb-memory-1tb-storage",
+      "partNumber": "MJ2W4LL/A",
+      "configurationLabel": "MacBook Pro with PROLED XDR Display, 16-inch, M5 Pro Chip, 18-core CPU, 20-core GPU, Silver, Standard display, 24GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/16-inch-silver-standard-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-24gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "macbook-pro-proled-xdr",
+      "variantSlug": "16-inch-silver-m5-max-36gb-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/16-inch-silver-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "partNumber": "MJ2X4LL/A",
+      "configurationLabel": "MacBook Pro with PROLED XDR Display, 16-inch, M5 Max Chip, 18-core CPU, 32-core GPU, Silver, Standard display, 36GB memory, 2TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr/16-inch-silver-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "imac-m6",
+      "variantSlug": "blue-m6-10-core-cpu-10-core-gpu-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-blue-m6-chip-10-core-cpu-10-core-gpu-16gb-memory-256gb-storage-stand",
+      "partNumber": "MH094LL/A",
+      "configurationLabel": "iMac, 24-inch, M6 Chip, 10-core CPU, 10-core GPU, Blue, Stand, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-blue-m6-chip-10-core-cpu-10-core-gpu-16gb-memory-256gb-storage-stand",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "imac-m6",
+      "variantSlug": "blue-m6-12-core-cpu-12-core-gpu-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-blue-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage-standard-glass-stand",
+      "partNumber": "MH1H4LL/A",
+      "configurationLabel": "iMac, 24-inch, M6 Chip, 12-core CPU, 12-core GPU, Blue, Standard glass, Stand, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-blue-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage-standard-glass-stand",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "imac-m6",
+      "variantSlug": "green-m6-10-core-cpu-10-core-gpu-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-green-m6-chip-10-core-cpu-10-core-gpu-16gb-memory-256gb-storage-stand",
+      "partNumber": "MH084LL/A",
+      "configurationLabel": "iMac, 24-inch, M6 Chip, 10-core CPU, 10-core GPU, Green, Stand, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-green-m6-chip-10-core-cpu-10-core-gpu-16gb-memory-256gb-storage-stand",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "imac-m6",
+      "variantSlug": "green-m6-12-core-cpu-12-core-gpu-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-green-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage-standard-glass-stand",
+      "partNumber": "MH1D4LL/A",
+      "configurationLabel": "iMac, 24-inch, M6 Chip, 12-core CPU, 12-core GPU, Green, Standard glass, Stand, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-green-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage-standard-glass-stand",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "imac-m6",
+      "variantSlug": "pink-m6-10-core-cpu-10-core-gpu-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-pink-m6-chip-10-core-cpu-10-core-gpu-16gb-memory-256gb-storage-stand",
+      "partNumber": "MH0A4LL/A",
+      "configurationLabel": "iMac, 24-inch, M6 Chip, 10-core CPU, 10-core GPU, Pink, Stand, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-pink-m6-chip-10-core-cpu-10-core-gpu-16gb-memory-256gb-storage-stand",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "imac-m6",
+      "variantSlug": "pink-m6-12-core-cpu-12-core-gpu-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-pink-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage-standard-glass-stand",
+      "partNumber": "MH1P4LL/A",
+      "configurationLabel": "iMac, 24-inch, M6 Chip, 12-core CPU, 12-core GPU, Pink, Standard glass, Stand, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-pink-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage-standard-glass-stand",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "imac-m6",
+      "variantSlug": "yellow-m6-12-core-cpu-12-core-gpu-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-yellow-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage-standard-glass-stand",
+      "partNumber": "MH174LL/A",
+      "configurationLabel": "iMac, 24-inch, M6 Chip, 12-core CPU, 12-core GPU, Yellow, Standard glass, Stand, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-yellow-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage-standard-glass-stand",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "imac-m6",
+      "variantSlug": "purple-m6-12-core-cpu-12-core-gpu-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-purple-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage-standard-glass-stand",
+      "partNumber": "MH1W4LL/A",
+      "configurationLabel": "iMac, 24-inch, M6 Chip, 12-core CPU, 12-core GPU, Purple, Standard glass, Stand, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-purple-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage-standard-glass-stand",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "imac-m6",
+      "variantSlug": "orange-m6-12-core-cpu-12-core-gpu-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-orange-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage-standard-glass-stand",
+      "partNumber": "MH214LL/A",
+      "configurationLabel": "iMac, 24-inch, M6 Chip, 12-core CPU, 12-core GPU, Orange, Standard glass, Stand, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-orange-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage-standard-glass-stand",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "imac-m6",
+      "variantSlug": "silver-m6-10-core-cpu-10-core-gpu-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-silver-m6-chip-10-core-cpu-10-core-gpu-16gb-memory-256gb-storage-stand",
+      "partNumber": "MH064LL/A",
+      "configurationLabel": "iMac, 24-inch, M6 Chip, 10-core CPU, 10-core GPU, Silver, Stand, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-silver-m6-chip-10-core-cpu-10-core-gpu-16gb-memory-256gb-storage-stand",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "imac-m6",
+      "variantSlug": "silver-m6-12-core-cpu-12-core-gpu-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-silver-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage-standard-glass-stand",
+      "partNumber": "MH114LL/A",
+      "configurationLabel": "iMac, 24-inch, M6 Chip, 12-core CPU, 12-core GPU, Silver, Standard glass, Stand, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-silver-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage-standard-glass-stand",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "mac-mini-2026",
+      "variantSlug": "m6-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/mac-mini/m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage",
+      "partNumber": "MHQK4LL/A",
+      "configurationLabel": "Mac mini, M6 Chip, 12-core CPU, 12-core GPU, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/mac-mini/m6-chip-12-core-cpu-12-core-gpu-16gb-memory-256gb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "mac-mini-2026",
+      "variantSlug": "m6-16gb-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/mac-mini/m6-chip-12-core-cpu-12-core-gpu-16gb-memory-512gb-storage",
+      "partNumber": "MHQL4LL/A",
+      "configurationLabel": "Mac mini, M6 Chip, 12-core CPU, 12-core GPU, 16GB memory, 512GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/mac-mini/m6-chip-12-core-cpu-12-core-gpu-16gb-memory-512gb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "mac-mini-2026",
+      "variantSlug": "m6-24gb-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/mac-mini/m6-chip-12-core-cpu-12-core-gpu-24gb-memory-512gb-storage",
+      "partNumber": "MHQM4LL/A",
+      "configurationLabel": "Mac mini, M6 Chip, 12-core CPU, 12-core GPU, 24GB memory, 512GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/mac-mini/m6-chip-12-core-cpu-12-core-gpu-24gb-memory-512gb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "mac-mini-2026",
+      "variantSlug": "m5-pro-24gb-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/mac-mini/m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-512gb-storage",
+      "partNumber": "MHQN4LL/A",
+      "configurationLabel": "Mac mini, M5 Pro Chip, 15-core CPU, 16-core GPU, 24GB memory, 512GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/mac-mini/m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-512gb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "mac-studio-2026",
+      "variantSlug": "m5-max-36gb-512gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/mac-studio/m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-512gb-storage",
+      "partNumber": "MHL64LL/A",
+      "configurationLabel": "Mac Studio, M5 Max Chip, 18-core CPU, 32-core GPU, 36GB memory, 512GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/mac-studio/m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-512gb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "mac-studio-2026",
+      "variantSlug": "m5-ultra-96gb-1tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/mac-studio/m5-ultra-chip-30-core-cpu-64-core-gpu-96gb-memory-1tb-storage",
+      "partNumber": "MHL74LL/A",
+      "configurationLabel": "Mac Studio, M5 Ultra Chip, 30-core CPU, 64-core GPU, 96GB memory, 1TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/mac-studio/m5-ultra-chip-30-core-cpu-64-core-gpu-96gb-memory-1tb-storage",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "studio-display-2026",
+      "variantSlug": "standard-glass-tilt-adjustable-stand",
+      "productUrl": "https://www.apple.com/shop/buy-mac/studio-display/standard-glass-tilt-adjustable-stand",
+      "partNumber": "MFEX4LL/A",
+      "configurationLabel": "Standard glass / Tilt-adjustable stand",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/studio-display",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "studio-display-2026",
+      "variantSlug": "standard-glass-tilt-and-height-adjustable-stand",
+      "productUrl": "https://www.apple.com/shop/buy-mac/studio-display/standard-glass-tilt-and-height-adjustable-stand",
+      "partNumber": "MFEW4LL/A",
+      "configurationLabel": "Standard glass / Tilt- and height-adjustable stand",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/studio-display",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "studio-display-2026",
+      "variantSlug": "standard-glass-vesa-mount-adapter",
+      "productUrl": "https://www.apple.com/shop/buy-mac/studio-display/standard-glass-vesa-mount-adapter",
+      "partNumber": "MFEY4LL/A",
+      "configurationLabel": "Standard glass / VESA mount adapter",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/studio-display",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "studio-display-2026",
+      "variantSlug": "nano-texture-glass-tilt-adjustable-stand",
+      "productUrl": "https://www.apple.com/shop/buy-mac/studio-display/nano-texture-glass-tilt-adjustable-stand",
+      "partNumber": "MFF14LL/A",
+      "configurationLabel": "Nano-texture glass / Tilt-adjustable stand",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/studio-display",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "studio-display-2026",
+      "variantSlug": "nano-texture-glass-tilt-and-height-adjustable-stand",
+      "productUrl": "https://www.apple.com/shop/buy-mac/studio-display/nano-texture-glass-tilt-and-height-adjustable-stand",
+      "partNumber": "MFF04LL/A",
+      "configurationLabel": "Nano-texture glass / Tilt- and height-adjustable stand",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/studio-display",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "studio-display-2026",
+      "variantSlug": "nano-texture-glass-vesa-mount-adapter",
+      "productUrl": "https://www.apple.com/shop/buy-mac/studio-display/nano-texture-glass-vesa-mount-adapter",
+      "partNumber": "MFF24LL/A",
+      "configurationLabel": "Nano-texture glass / VESA mount adapter",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/studio-display",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "studio-display-xdr",
+      "variantSlug": "standard-glass-tilt-and-height-adjustable-stand",
+      "productUrl": "https://www.apple.com/shop/buy-mac/studio-display-xdr/standard-glass-tilt-and-height-adjustable-stand",
+      "partNumber": "MFEL4LL/A",
+      "configurationLabel": "Standard glass / Tilt- and height-adjustable stand",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/studio-display-xdr",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "studio-display-xdr",
+      "variantSlug": "standard-glass-vesa-mount-adapter",
+      "productUrl": "https://www.apple.com/shop/buy-mac/studio-display-xdr/standard-glass-vesa-mount-adapter",
+      "partNumber": "MFEN4LL/A",
+      "configurationLabel": "Standard glass / VESA mount adapter",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/studio-display-xdr",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "studio-display-xdr",
+      "variantSlug": "nano-texture-glass-tilt-and-height-adjustable-stand",
+      "productUrl": "https://www.apple.com/shop/buy-mac/studio-display-xdr/nano-texture-glass-tilt-and-height-adjustable-stand",
+      "partNumber": "MFEP4LL/A",
+      "configurationLabel": "Nano-texture glass / Tilt- and height-adjustable stand",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/studio-display-xdr",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "studio-display-xdr",
+      "variantSlug": "nano-texture-glass-vesa-mount-adapter",
+      "productUrl": "https://www.apple.com/shop/buy-mac/studio-display-xdr/nano-texture-glass-vesa-mount-adapter",
+      "partNumber": "MFEQ4LL/A",
+      "configurationLabel": "Nano-texture glass / VESA mount adapter",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/studio-display-xdr",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "42mm-dark-bronze-gps",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjef4ls%2Fa&step=select",
+      "partNumber": "MJEF4LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS 42mm Dark Bronze Aluminum Case with Olive Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "42mm-dark-bronze-gps-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjg44ls%2Fa&step=select",
+      "partNumber": "MJG44LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS + Cellular 42mm Dark Bronze Aluminum Case with Olive Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "42mm-black-gps",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjea4ls%2Fa&step=select",
+      "partNumber": "MJEA4LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS 42mm Black Aluminum Case with Black Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "42mm-black-gps-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjg04ls%2Fa&step=select",
+      "partNumber": "MJG04LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS + Cellular 42mm Black Aluminum Case with Black Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "42mm-light-gold-gps",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjed4ls%2Fa&step=select",
+      "partNumber": "MJED4LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS 42mm Light Gold Aluminum Case with Sand Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "42mm-light-gold-gps-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjg24ls%2Fa&step=select",
+      "partNumber": "MJG24LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS + Cellular 42mm Light Gold Aluminum Case with Sand Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "42mm-space-gray-gps",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mje74ls%2Fa&step=select",
+      "partNumber": "MJE74LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS 42mm Space Gray Aluminum Case with Navy Blue Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "42mm-space-gray-gps-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjfx4ls%2Fa&step=select",
+      "partNumber": "MJFX4LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS + Cellular 42mm Space Gray Aluminum Case with Navy Blue Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "46mm-dark-bronze-gps",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjeq4ls%2Fa&step=select",
+      "partNumber": "MJEQ4LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS 46mm Dark Bronze Aluminum Case with Olive Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "46mm-dark-bronze-gps-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjgd4ls%2Fa&step=select",
+      "partNumber": "MJGD4LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS + Cellular 46mm Dark Bronze Aluminum Case with Olive Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "46mm-black-gps",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjek4ls%2Fa&step=select",
+      "partNumber": "MJEK4LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS 46mm Black Aluminum Case with Black Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "46mm-black-gps-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjg84ls%2Fa&step=select",
+      "partNumber": "MJG84LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS + Cellular 46mm Black Aluminum Case with Black Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "46mm-light-gold-gps",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjen4ls%2Fa&step=select",
+      "partNumber": "MJEN4LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS 46mm Light Gold Aluminum Case with Sand Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "46mm-light-gold-gps-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjga4ls%2Fa&step=select",
+      "partNumber": "MJGA4LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS + Cellular 46mm Light Gold Aluminum Case with Sand Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "46mm-space-gray-gps",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjeh4ls%2Fa&step=select",
+      "partNumber": "MJEH4LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS 46mm Space Gray Aluminum Case with Navy Blue Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-series-12",
+      "variantSlug": "46mm-space-gray-gps-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch?product=mjg64ls%2Fa&step=select",
+      "partNumber": "MJG64LS/A",
+      "configurationLabel": "Apple Watch Series 12 GPS + Cellular 46mm Space Gray Aluminum Case with Navy Blue Sport Band - S/M",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-ultra-4",
+      "variantSlug": "natural-titanium-gps-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch-ultra?product=mjad4ls%2Fa&step=select",
+      "partNumber": "MJAD4LS/A",
+      "configurationLabel": "Apple Watch Ultra 4 GPS + Cellular 49mm Natural Titanium Case with Translucent Gray Ocean Band",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-watch-ultra-4",
+      "variantSlug": "black-titanium-gps-plus-cellular",
+      "productUrl": "https://www.apple.com/shop/buy-watch/apple-watch-ultra?product=mjay4ls%2Fa&step=select",
+      "partNumber": "MJAY4LS/A",
+      "configurationLabel": "Apple Watch Ultra 4 GPS + Cellular 49mm Black Titanium Case with Translucent Black Ocean Band",
+      "sourceUrl": "https://www.apple.com/education/purchase/contracts/docs/NASPO_PSS_Apple_Branded.pdf",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "airpods-5",
+      "variantSlug": "usb-c-charging-case",
+      "productUrl": "https://www.apple.com/shop/buy-airpods/airpods-5/without-wireless-charging-case",
+      "partNumber": "MKFW4LL/A",
+      "configurationLabel": "USB-C Charging Case",
+      "sourceUrl": "https://www.apple.com/shop/buy-airpods/airpods-5",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "airpods-5",
+      "variantSlug": "wireless-charging-case",
+      "productUrl": "https://www.apple.com/shop/buy-airpods/airpods-5/with-wireless-charging-case",
+      "partNumber": "MKFT4LL/A",
+      "configurationLabel": "Wireless Charging Case",
+      "sourceUrl": "https://www.apple.com/shop/buy-airpods/airpods-5",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "airpods-max-2",
+      "variantSlug": "midnight",
+      "productUrl": "https://www.apple.com/shop/buy-airpods/airpods-max-2/midnight",
+      "partNumber": "MHWK4AM/A",
+      "configurationLabel": "Midnight",
+      "sourceUrl": "https://www.apple.com/shop/buy-airpods/airpods-max-2",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "airpods-max-2",
+      "variantSlug": "starlight",
+      "productUrl": "https://www.apple.com/shop/buy-airpods/airpods-max-2/starlight",
+      "partNumber": "MHWL4AM/A",
+      "configurationLabel": "Starlight",
+      "sourceUrl": "https://www.apple.com/shop/buy-airpods/airpods-max-2",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "airpods-max-2",
+      "variantSlug": "orange",
+      "productUrl": "https://www.apple.com/shop/buy-airpods/airpods-max-2/orange",
+      "partNumber": "MHWN4AM/A",
+      "configurationLabel": "Orange",
+      "sourceUrl": "https://www.apple.com/shop/buy-airpods/airpods-max-2",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "airpods-max-2",
+      "variantSlug": "purple",
+      "productUrl": "https://www.apple.com/shop/buy-airpods/airpods-max-2/purple",
+      "partNumber": "MHWP4AM/A",
+      "configurationLabel": "Purple",
+      "sourceUrl": "https://www.apple.com/shop/buy-airpods/airpods-max-2",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "airpods-max-2",
+      "variantSlug": "blue",
+      "productUrl": "https://www.apple.com/shop/buy-airpods/airpods-max-2/blue",
+      "partNumber": "MHWM4AM/A",
+      "configurationLabel": "Blue",
+      "sourceUrl": "https://www.apple.com/shop/buy-airpods/airpods-max-2",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "homeview",
+      "variantSlug": "tabletop-silver",
+      "productUrl": "https://www.apple.com/shop/buy-home/apple-homeview/apple-homeview-silver",
+      "partNumber": "MDH14LL/A",
+      "configurationLabel": "Tabletop / Silver",
+      "sourceUrl": "https://www.apple.com/shop/buy-home/apple-homeview",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "homeview",
+      "variantSlug": "tabletop-starlight",
+      "productUrl": "https://www.apple.com/shop/buy-home/apple-homeview/apple-homeview-starlight",
+      "partNumber": "MDH34LL/A",
+      "configurationLabel": "Tabletop / Starlight",
+      "sourceUrl": "https://www.apple.com/shop/buy-home/apple-homeview",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "homeview",
+      "variantSlug": "tabletop-rose-pink",
+      "productUrl": "https://www.apple.com/shop/buy-home/apple-homeview/apple-homeview-rose-pink",
+      "partNumber": "MDH44LL/A",
+      "configurationLabel": "Tabletop / Rose Pink",
+      "sourceUrl": "https://www.apple.com/shop/buy-home/apple-homeview",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "homeview",
+      "variantSlug": "tabletop-space-gray",
+      "productUrl": "https://www.apple.com/shop/buy-home/apple-homeview/apple-homeview-space-gray",
+      "partNumber": "MDH24LL/A",
+      "configurationLabel": "Tabletop / Space Gray",
+      "sourceUrl": "https://www.apple.com/shop/buy-home/apple-homeview",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "homeview",
+      "variantSlug": "wall-mounted-silver",
+      "productUrl": "https://www.apple.com/shop/buy-home/apple-homeview/apple-homeview-wall-mounted-silver",
+      "partNumber": "MDV64LL/A",
+      "configurationLabel": "Wall-mounted / Silver",
+      "sourceUrl": "https://www.apple.com/shop/buy-home/apple-homeview",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "homeview",
+      "variantSlug": "wall-mounted-space-gray",
+      "productUrl": "https://www.apple.com/shop/buy-home/apple-homeview/apple-homeview-wall-mounted-space-gray",
+      "partNumber": "MDV74LL/A",
+      "configurationLabel": "Wall-mounted / Space Gray",
+      "sourceUrl": "https://www.apple.com/shop/buy-home/apple-homeview",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "homepod-mini-2",
+      "variantSlug": "pink",
+      "productUrl": "https://www.apple.com/shop/buy-homepod/homepod-mini/pink",
+      "partNumber": "MGKR4AM/A",
+      "configurationLabel": "Pink",
+      "sourceUrl": "https://www.apple.com/shop/buy-homepod/homepod-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "homepod-mini-2",
+      "variantSlug": "green",
+      "productUrl": "https://www.apple.com/shop/buy-homepod/homepod-mini/green",
+      "partNumber": "MGHL4AM/A",
+      "configurationLabel": "Green",
+      "sourceUrl": "https://www.apple.com/shop/buy-homepod/homepod-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "homepod-mini-2",
+      "variantSlug": "blue",
+      "productUrl": "https://www.apple.com/shop/buy-homepod/homepod-mini/blue",
+      "partNumber": "MGHM4AM/A",
+      "configurationLabel": "Blue",
+      "sourceUrl": "https://www.apple.com/shop/buy-homepod/homepod-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "homepod-mini-2",
+      "variantSlug": "white",
+      "productUrl": "https://www.apple.com/shop/buy-homepod/homepod-mini/white",
+      "partNumber": "MGHK4AM/A",
+      "configurationLabel": "White",
+      "sourceUrl": "https://www.apple.com/shop/buy-homepod/homepod-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "homepod-mini-2",
+      "variantSlug": "midnight",
+      "productUrl": "https://www.apple.com/shop/buy-homepod/homepod-mini/midnight",
+      "partNumber": "MGHJ4AM/A",
+      "configurationLabel": "Midnight",
+      "sourceUrl": "https://www.apple.com/shop/buy-homepod/homepod-mini",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "apple-tv-4k-2026",
+      "variantSlug": "128gb-wi-fi-plus-ethernet",
+      "productUrl": "https://www.apple.com/shop/buy-tv/apple-tv-4k",
+      "partNumber": "MLFF4LL/A",
+      "configurationLabel": "128GB / Wi-Fi + Ethernet",
+      "sourceUrl": "https://www.apple.com/shop/buy-tv/apple-tv-4k",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "airtag-2",
+      "variantSlug": "1-pack",
+      "productUrl": "https://www.apple.com/shop/buy-airtag/airtag/1-pack",
+      "partNumber": "MFE94LL/A",
+      "configurationLabel": "1-pack",
+      "sourceUrl": "https://www.apple.com/shop/buy-airtag/airtag",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "airtag-2",
+      "variantSlug": "4-pack",
+      "productUrl": "https://www.apple.com/shop/buy-airtag/airtag/4-pack",
+      "partNumber": "MFEA4LL/A",
+      "configurationLabel": "4-pack",
+      "sourceUrl": "https://www.apple.com/shop/buy-airtag/airtag",
+      "reviewedAt": "2026-11-18"
     }
   ],
   "playstation": [
     {
+      "itemSlug": "playstation-5-pro",
+      "variantSlug": "standard",
       "productUrl": "https://direct.playstation.com/en-us/buy-consoles/playstation5-pro-console",
-      "productCode": "1000050805"
+      "productCode": "1000050805",
+      "configurationLabel": "PlayStation 5 Pro Console",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-consoles/playstation5-pro-console",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "playstation-5",
+      "variantSlug": "disc",
+      "productUrl": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
+      "productCode": "1000049888",
+      "configurationLabel": "PlayStation 5 Console - 1 TB (Disc Edition)",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-consoles/playstation5-console-1-tb",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "playstation-5",
+      "variantSlug": "digital",
+      "productUrl": "https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb",
+      "productCode": "1000049898",
+      "configurationLabel": "PlayStation 5 Digital Edition Console - 825 GB",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-consoles/playstation5-digital-edition-console-825-gb",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "playstation-portal",
+      "variantSlug": "white",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/playstation-portal-remote-player",
+      "productCode": "1000041319",
+      "configurationLabel": "PlayStation Portal™ Remote Player",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/playstation-portal-remote-player",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "playstation-portal",
+      "variantSlug": "midnight-black",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/playstation-portal-remote-player-midnight-black",
+      "productCode": "1000044180",
+      "configurationLabel": "PlayStation Portal™ Remote Player - Midnight Black",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/playstation-portal-remote-player-midnight-black",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "dualsense-edge",
+      "variantSlug": "white",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-edge-wireless-controller",
+      "productCode": "1000035016",
+      "configurationLabel": "DualSense Edge® wireless controller",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-edge-wireless-controller",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "dualsense-edge",
+      "variantSlug": "midnight-black",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-edge-wireless-controller-midnight-black",
+      "productCode": "1000046706",
+      "configurationLabel": "DualSense Edge® Wireless Controller - Midnight Black",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-edge-wireless-controller-midnight-black",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "pulse-elite",
+      "variantSlug": "white",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/pulse-elite-wireless-headset-ps5",
+      "productCode": "1000047817",
+      "configurationLabel": "PULSE Elite™ wireless headset - PS5",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/pulse-elite-wireless-headset-ps5",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "pulse-explore",
+      "variantSlug": "white",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/pulse-explore-wireless-earbuds-ps5",
+      "productCode": "1000038064",
+      "configurationLabel": "PULSE Explore™ wireless earbuds - PS5",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/pulse-explore-wireless-earbuds-ps5",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "pulse-explore",
+      "variantSlug": "midnight-black",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/pulse-explore-wireless-earbuds-midnight-black-ps5",
+      "productCode": "1000044170",
+      "configurationLabel": "PULSE Explore™ wireless earbuds - Midnight Black - PS5",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/pulse-explore-wireless-earbuds-midnight-black-ps5",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "access-controller",
+      "variantSlug": "standard",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/access-controller",
+      "productCode": "1000037582",
+      "configurationLabel": "Access™ controller",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/access-controller",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "playstation-27-inch-gaming-monitor",
+      "variantSlug": "27-inch",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/27-gaming-monitor-with-dualsense-charging-hook",
+      "productCode": "1000051334",
+      "configurationLabel": "27” Gaming Monitor with DualSense® Charging Hook ",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/27-gaming-monitor-with-dualsense-charging-hook",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "dualsense-marathon",
+      "variantSlug": "marathon",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-marathon-limited-edition",
+      "productCode": "1000051297",
+      "configurationLabel": "DualSense® Wireless Controller - Marathon™ Limited Edition",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-marathon-limited-edition",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "dualsense-hyperpop",
+      "variantSlug": "techno-red",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-techno-red-for-ps5-pc-mac-mobile",
+      "productCode": "1000048518",
+      "configurationLabel": "DualSense® Wireless Controller - Techno Red - For PS5, PC, MAC & Mobile",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-techno-red-for-ps5-pc-mac-mobile",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "dualsense-hyperpop",
+      "variantSlug": "remix-green",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-remix-green-for-ps5-pc-mac-mobile",
+      "productCode": "1000048534",
+      "configurationLabel": "DualSense® Wireless Controller - Remix Green - For PS5, PC, MAC & Mobile",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-remix-green-for-ps5-pc-mac-mobile",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "dualsense-hyperpop",
+      "variantSlug": "rhythm-blue",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-rhythm-blue-for-ps5-pc-mac-mobile",
+      "productCode": "1000048538",
+      "configurationLabel": "DualSense® Wireless Controller - Rhythm Blue - For PS5, PC, MAC & Mobile",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-rhythm-blue-for-ps5-pc-mac-mobile",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "dualsense-007-first-light",
+      "variantSlug": "007-first-light",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-007-first-light-limited-edition-for-ps5-pc-mac-mobile",
+      "productCode": "1000052026",
+      "configurationLabel": "DualSense® Wireless Controller - 007 First Light™ Limited Edition - For PS5, PC, MAC & Mobile",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-007-first-light-limited-edition-for-ps5-pc-mac-mobile",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "dualsense-lisa",
+      "variantSlug": "lisa",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-lisa-limited-edition-for-ps5-pc-mac-mobile",
+      "productCode": "1000057367",
+      "configurationLabel": "DualSense® Wireless Controller - LISA Limited Edition - For PS5, PC, Mac & Mobile",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-lisa-limited-edition-for-ps5-pc-mac-mobile",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "ps5-wolverine-console-covers",
+      "variantSlug": "slim-battle-yellow",
+      "productUrl": "https://direct.playstation.com/en-us/buy-accessories/ps5-console-covers-model-group-slim-marvels-wolverine-battle-yellow-limited-edition",
+      "productCode": "1000056867",
+      "configurationLabel": "PS5® Console Covers (model group - slim) - Marvel’s Wolverine Battle Yellow Limited Edition",
+      "sourceUrl": "https://direct.playstation.com/en-us/buy-accessories/ps5-console-covers-model-group-slim-marvels-wolverine-battle-yellow-limited-edition",
+      "reviewedAt": "2026-11-18"
+    }
+  ],
+  "unsupportedApple": [
+    {
+      "itemSlug": "macbook-pro-m6",
+      "variantSlug": "space-black-16gb-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-2tb-storage",
+      "configurationLabel": "MacBook Pro, 14-inch, M6 Chip, 12-core CPU, 12-core GPU, Space Black, Standard display, 16GB memory, 2TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-2tb-storage",
+      "reviewedAt": "2026-11-18",
+      "reason": "Apple lists this as a custom configuration. Its pickup API does not return availability for this configuration; confirm pickup with Apple."
+    },
+    {
+      "itemSlug": "macbook-pro-m6",
+      "variantSlug": "space-black-24gb-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-24gb-memory-2tb-storage",
+      "configurationLabel": "MacBook Pro, 14-inch, M6 Chip, 12-core CPU, 12-core GPU, Space Black, Standard display, 24GB memory, 2TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-24gb-memory-2tb-storage",
+      "reviewedAt": "2026-11-18",
+      "reason": "Apple lists this as a custom configuration. Its pickup API does not return availability for this configuration; confirm pickup with Apple."
+    },
+    {
+      "itemSlug": "macbook-pro-m6",
+      "variantSlug": "space-black-32gb-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-32gb-memory-2tb-storage",
+      "configurationLabel": "MacBook Pro, 14-inch, M6 Chip, 12-core CPU, 12-core GPU, Space Black, Standard display, 32GB memory, 2TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-32gb-memory-2tb-storage",
+      "reviewedAt": "2026-11-18",
+      "reason": "Apple lists this as a custom configuration. Its pickup API does not return availability for this configuration; confirm pickup with Apple."
+    },
+    {
+      "itemSlug": "macbook-pro-m6",
+      "variantSlug": "silver-16gb-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-2tb-storage",
+      "configurationLabel": "MacBook Pro, 14-inch, M6 Chip, 12-core CPU, 12-core GPU, Silver, Standard display, 16GB memory, 2TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-16gb-memory-2tb-storage",
+      "reviewedAt": "2026-11-18",
+      "reason": "Apple lists this as a custom configuration. Its pickup API does not return availability for this configuration; confirm pickup with Apple."
+    },
+    {
+      "itemSlug": "macbook-pro-m6",
+      "variantSlug": "silver-24gb-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-24gb-memory-2tb-storage",
+      "configurationLabel": "MacBook Pro, 14-inch, M6 Chip, 12-core CPU, 12-core GPU, Silver, Standard display, 24GB memory, 2TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-24gb-memory-2tb-storage",
+      "reviewedAt": "2026-11-18",
+      "reason": "Apple lists this as a custom configuration. Its pickup API does not return availability for this configuration; confirm pickup with Apple."
+    },
+    {
+      "itemSlug": "macbook-pro-m6",
+      "variantSlug": "silver-32gb-2tb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-32gb-memory-2tb-storage",
+      "configurationLabel": "MacBook Pro, 14-inch, M6 Chip, 12-core CPU, 12-core GPU, Silver, Standard display, 32GB memory, 2TB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m6-chip-12-core-cpu-12-core-gpu-32gb-memory-2tb-storage",
+      "reviewedAt": "2026-11-18",
+      "reason": "Apple lists this as a custom configuration. Its pickup API does not return availability for this configuration; confirm pickup with Apple."
+    },
+    {
+      "itemSlug": "imac-m6",
+      "variantSlug": "yellow-m6-10-core-cpu-10-core-gpu-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-yellow-m6-chip-10-core-cpu-10-core-gpu-16gb-memory-256gb-storage-stand",
+      "configurationLabel": "iMac, 24-inch, M6 Chip, 10-core CPU, 10-core GPU, Yellow, Stand, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-yellow-m6-chip-10-core-cpu-10-core-gpu-16gb-memory-256gb-storage-stand",
+      "reviewedAt": "2026-11-18",
+      "reason": "Apple lists this as a custom configuration. Its pickup API does not return availability for this configuration; confirm pickup with Apple."
+    },
+    {
+      "itemSlug": "imac-m6",
+      "variantSlug": "purple-m6-10-core-cpu-10-core-gpu-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-purple-m6-chip-10-core-cpu-10-core-gpu-16gb-memory-256gb-storage-stand",
+      "configurationLabel": "iMac, 24-inch, M6 Chip, 10-core CPU, 10-core GPU, Purple, Stand, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-purple-m6-chip-10-core-cpu-10-core-gpu-16gb-memory-256gb-storage-stand",
+      "reviewedAt": "2026-11-18",
+      "reason": "Apple lists this as a custom configuration. Its pickup API does not return availability for this configuration; confirm pickup with Apple."
+    },
+    {
+      "itemSlug": "imac-m6",
+      "variantSlug": "orange-m6-10-core-cpu-10-core-gpu-16gb-256gb",
+      "productUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-orange-m6-chip-10-core-cpu-10-core-gpu-16gb-memory-256gb-storage-stand",
+      "configurationLabel": "iMac, 24-inch, M6 Chip, 10-core CPU, 10-core GPU, Orange, Stand, 16GB memory, 256GB storage",
+      "sourceUrl": "https://www.apple.com/shop/buy-mac/imac/24-inch-orange-m6-chip-10-core-cpu-10-core-gpu-16gb-memory-256gb-storage-stand",
+      "reviewedAt": "2026-11-18",
+      "reason": "Apple lists this as a custom configuration. Its pickup API does not return availability for this configuration; confirm pickup with Apple."
+    }
+  ],
+  "nvidia": [
+    {
+      "itemSlug": "rtx-5090",
+      "variantSlug": "founders-edition",
+      "productUrl": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5090-founders-edition/",
+      "configurationLabel": "GeForce RTX 5090 Founders Edition",
+      "sourceUrl": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5090-founders-edition/",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "rtx-5080",
+      "variantSlug": "founders-edition",
+      "productUrl": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5080-founders-edition/",
+      "configurationLabel": "GeForce RTX 5080 Founders Edition",
+      "sourceUrl": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5080-founders-edition/",
+      "reviewedAt": "2026-11-18"
+    },
+    {
+      "itemSlug": "rtx-5070",
+      "variantSlug": "founders-edition",
+      "productUrl": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5070-founders-edition/",
+      "configurationLabel": "GeForce RTX 5070 Founders Edition",
+      "sourceUrl": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5070-founders-edition/",
+      "reviewedAt": "2026-11-18"
     }
   ]
 }
