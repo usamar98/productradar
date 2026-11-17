@@ -1,8 +1,10 @@
 # Restock Radar
 
-A generic restock-alert MVP: browse stock without an account, select an exact item/variant and retailers, pay through Stripe test Checkout, and receive Resend email and browser push when an observed stock period opens. Launch catalog: **PlayStation 5 Pro**, US retailers, USD. **RTX 5090** is seeded but hidden.
+A generic restock-alert MVP: browse stock without an account, select an exact item/variant and retailers, pay through Stripe test Checkout, and receive Resend email and browser push when an observed stock period opens. Catalog: **PlayStation 5 Pro** and **iPhone Duo**, US retailers, USD. **RTX 5090** is seeded but hidden.
 
 The app is implemented for local use and provider setup. **No live retail feeds, real payments, customer alerts, or hosted deployment are claimed.** Retailer URLs are intentionally paused placeholders. The seed inserts catalog metadata and plans only. Public metrics and history come from PostgreSQL; empty states say no data yet. A database outage displays an explicit connection notice and metadata-only preview.
+
+A separate [local test lab](docs/local-testing.md) at **http://localhost:3001/local-test** combines Stripe sandbox checkout, the normal webhook/worker pipeline, controlled stock signals and a local email inbox. Its inventory is explicitly simulated and its database is separate from the main app on port 3000. The temporary Stripe sandbox expires **November 24, 2026** unless claimed.
 
 ## Local setup
 
@@ -19,7 +21,9 @@ npm run dev
 
 Open http://localhost:3000. In a second terminal run `npm run worker`. `npm run worker:once` performs one cycle for diagnostics. Never run the old `src/worker` entrypoint for Restock Radar.
 
-This workspace has an isolated local cluster at `.local/postgres`, listening on **127.0.0.1:55432**, and `restock_radar` / `restock_radar_test` databases. The ignored `.env` contains its URLs and generated application/admin secrets. The cluster uses local development trust authentication and binds only to loopback; do not expose it to a network. To restart it on Windows:
+Run only one Next development server in this checkout. For the main app and local lab together, stop the main development server, build with `npm run build`, then use `npm run start` for port 3000 and `npm run local-test` for port 3001. Concurrent main/lab development servers caused reload loops through shared generated files despite their separate build directories. Build before starting the lab; see [the lab restart sequence](docs/local-testing.md#start-the-configured-workspace-again).
+
+This workspace has an isolated local cluster at `.local/postgres`, listening on **127.0.0.1:55432**, and `restock_radar`, `restock_radar_test` and `restock_radar_local_test` databases. The ignored environment files contain their URLs and generated application/admin secrets. The cluster uses local development trust authentication and binds only to loopback; do not expose it to a network. To restart it on Windows:
 
 ```powershell
 & 'C:\Program Files\PostgreSQL\17\bin\pg_ctl.exe' -D 'D:\productfind\.local\postgres' -l 'D:\productfind\.local\postgres-server.log' -o '-p 55432 -h 127.0.0.1' start
@@ -36,10 +40,10 @@ This workspace has an isolated local cluster at `.local/postgres`, listening on 
 
 ## Stripe test billing
 
-Set `STRIPE_SECRET_KEY=sk_test_...` and `STRIPE_WEBHOOK_SECRET=whsec_...`. The payment boundary is `src/lib/payments.ts`. It creates inline USD prices from the pricing constants; no Stripe price IDs are required. Live keys and live webhook events are rejected. Card details are entered only on Stripe-hosted Checkout.
+Set `STRIPE_SECRET_KEY` to a Stripe test key (`sk_test_`, `rk_test_` or temporary sandbox `rkcs_test_`) and `STRIPE_WEBHOOK_SECRET=whsec_...`. The payment boundary is `src/lib/payments.ts`. It creates inline USD prices from the pricing constants; no Stripe price IDs are required. Live keys and live webhook events are rejected. Card details are entered only on Stripe-hosted Checkout.
 
 ```sh
-stripe listen --forward-to localhost:3000/api/radar/webhook
+stripe listen --all-snapshot --forward-to http://localhost:3000/api/radar/webhook
 ```
 
 Register that endpoint in Stripe for these snapshot events:
@@ -66,13 +70,15 @@ refund.failed
 
 Enable cancellation in the Stripe Customer Portal. The account dashboard opens an owned portal session. Webhooks verify signatures and commit event markers with payment/subscription changes atomically. Database locks serialize concurrent updates; current Stripe state handles delayed events. A success redirect never grants access. Full refunds of the current paid period deactivate alerts. Renewals restore access only after a confirmed paid period. Refund requests are handled manually in Stripe under the editable 14-day policy; each refund retains its original date for reporting.
 
-Checkout requires configured transactional email, a secure session secret, and active approved sources. Placeholder retailers cannot be purchased. After checkout, customers request a secure email link to manage alerts and enable push. Login links last 10 minutes and are single use; sessions last 30 days. Notification clicks record `caught_at`; for one-time passes, clicking ends the pass even if the customer does not purchase. This is explained in the interface and terms.
+Checkout requires configured transactional email (or the explicit development-only local inbox), a secure session secret, and active approved sources. Placeholder retailers cannot be purchased. After checkout, customers request a secure email link to manage alerts and enable push. Login links last 10 minutes and are single use; sessions last 30 days. Notification clicks record `caught_at`; for one-time passes, clicking ends the pass even if the customer does not purchase. This is explained in the interface and terms. Set `STRIPE_PORTAL_CONFIGURATION_ID` to use a specific test portal configuration.
 
 ## Email and browser push
 
 Set `RESEND_API_KEY` and `EMAIL_FROM` using a verified sending domain. Set `SUPPORT_EMAIL` separately. Generate VAPID keys with `npx web-push generate-vapid-keys`, and set `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`. Share `RADAR_AUTH_SECRET` and `APP_URL` between the worker and web app. Public VAPID changes require rebuilding.
 
 Push uses an explicit button on `/alerts/manage`, `/sw.js`, and HTTPS (or localhost). Expired endpoints are removed. Email sends use stable Resend idempotency keys. Push uses per-alert/event tags and persistent browser deduplication. Transport delivery can be at-least-once after a network failure; stock is never reserved and no purchase is automated.
+
+For local testing, `RADAR_LOCAL_MAILBOX=true` with development mode and a loopback `APP_URL` captures email at `/local-inbox`. Captures are stored under ignored `.local/mailbox`, expire after 24 hours and never count as delivered-email proof. This mode is disabled in production. The separate lab requires it so simulated stock notifications cannot reach Resend or browser push.
 
 ## Worker
 

@@ -50,6 +50,16 @@ The US shop has distinct carrier-later configuration URLs. These identify catalo
 
 ## What remains unproven and how to measure it
 
-Rendered headings, page content and links were inspected. Raw competitor HTML metadata/schema, sitemap and robots contents were not verified because the research tools could not retrieve them reliably. We did not measure traffic, rankings, backlinks, Core Web Vitals, conversion rates or retention. No numeric SEO score is justified by this evidence.
+Rendered headings, page content and links were inspected. The initial review could not retrieve raw HTML, sitemap or robots reliably; the follow-up below subsequently retrieved selected public HTML, JavaScript and robots rules. It did not validate the entire sitemap or structured-data implementation. We did not measure traffic, rankings, backlinks, Core Web Vitals, conversion rates or retention. No numeric SEO score is justified by this evidence.
 
 Once hosted with real inventory, use Search Console for indexed URLs and search impressions/clicks. Measure landing page → alert setup → checkout → first delivered alert and retain the original landing path with an appropriate privacy policy. Review failed checks, time to delivery, refunds and retention alongside revenue. These are proposed measures, not claims of instrumentation already installed or targets inferred from the competitor.
+
+## Public-code inspection: November 17, 2026
+
+Four ordinary public requests retrieved the [homepage](https://storestockchecker.com/), [client JavaScript](https://storestockchecker.com/app.js), [robots rules](https://storestockchecker.com/robots.txt) and [256GB Star White page](https://storestockchecker.com/iphone-duo/256gb-star-white). The client requests its own `/api/catalog`, `/api/stores`, `/api/stock` and `/api/near` routes. Its stock presentation uses product part numbers, store identifiers, availability states and check timestamps. Those interfaces show how the browser consumes inventory; they do not reveal how the server obtains it.
+
+The frontend refreshes stock displays approximately every 20 seconds, but that is not evidence of the upstream collector's polling rate. Cloudflare response headers and worker-related comments suggest part of the serving infrastructure; they do not identify an inventory provider. Localhost-only mock paths in the script are development facilities, not evidence that public production data is simulated. [Public client script](https://storestockchecker.com/app.js)
+
+Robots disallows `/api/`; no competitor inventory API was queried or reused. No direct Apple inventory endpoint, credentials or reusable authorized feed was found in the inspected public assets. The technical conclusion is limited: the competitor serves inventory through a private backend, and reverse-engineering its public interface does not provide our app with an equivalent data supply. [Robots rules](https://storestockchecker.com/robots.txt)
+
+Restock Radar therefore keeps ordinary Apple sources paused. Its separate [local lab](local-testing.md) uses explicitly simulated stock alongside Stripe sandbox checkout and local email capture. A live connector still requires an appropriate inventory source and permission consistent with the original brief and [Apple's website terms](https://www.apple.com/legal/internet-services/terms/site.html).

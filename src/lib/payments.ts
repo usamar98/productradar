@@ -2,17 +2,22 @@ import Stripe from "stripe";
 import { getPlan, type RadarPlanConfig } from "@/config/pricing";
 import { HttpError } from "@/lib/security";
 import { radarOrigin } from "@/lib/radar/access";
+import { emailReadiness } from "@/lib/radar/email";
+
+export function isStripeTestKey(key: string | undefined): key is string {
+  return typeof key === "string" && /^(?:sk_test_|rk_test_|rkcs_test_)[A-Za-z0-9]+$/.test(key);
+}
 
 /** Provider boundary: replace this module to use another hosted payment provider. */
 export function paymentReadiness() {
-  if (!process.env.STRIPE_SECRET_KEY?.startsWith("sk_test_")) return { ready: false, message: "Checkout is not connected yet. Only Stripe test mode is enabled." };
+  if (!isStripeTestKey(process.env.STRIPE_SECRET_KEY)) return { ready: false, message: "Checkout is not connected yet. Only Stripe test mode is enabled." };
   if (!process.env.STRIPE_WEBHOOK_SECRET) return { ready: false, message: "Payment confirmation is not connected yet." };
-  if (!process.env.RADAR_AUTH_SECRET || process.env.RADAR_AUTH_SECRET.length < 32 || !process.env.RESEND_API_KEY || !process.env.EMAIL_FROM) return { ready: false, message: "Email and secure account access are not connected yet." };
+  if (!process.env.RADAR_AUTH_SECRET || process.env.RADAR_AUTH_SECRET.length < 32 || !emailReadiness().ready) return { ready: false, message: "Email and secure account access are not connected yet." };
   return { ready: true, message: "Stripe test mode. No real charges." };
 }
 export function paymentClient() {
   const key = process.env.STRIPE_SECRET_KEY;
-  if (!key?.startsWith("sk_test_")) throw new HttpError(503, "Checkout is not connected yet. Only Stripe test mode is enabled.");
+  if (!isStripeTestKey(key)) throw new HttpError(503, "Checkout is not connected yet. Only Stripe test mode is enabled.");
   return new Stripe(key, { maxNetworkRetries: 2, timeout: 15000 });
 }
 export function objectId(value: string | { id: string } | null | undefined) { return typeof value === "string" ? value : value?.id ?? null; }

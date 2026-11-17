@@ -1,9 +1,11 @@
-import { Resend } from "resend";
 import webpush from "web-push";
 import { prisma } from "../src/lib/db";
 import { createClickToken } from "../src/lib/radar/access";
 import { canDeliver } from "../src/lib/radar/domain";
 import { allowedPushEndpoint } from "../src/lib/security";
+import { sendRadarEmail } from "../src/lib/radar/email";
+import { isLocalMailboxEnabled } from "../src/lib/radar/local-mode";
+import { isLocalTestMode } from "../src/lib/radar/local-test";
 
 const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 const lifetimeMs = 15 * 60_000;
@@ -18,6 +20,10 @@ export async function deliverNotification(id: string) {
   } });
   const { alert, stockEvent: event } = job, source = event.source;
   const terminal = async (reason: string) => prisma.radarNotification.updateMany({ where: { id, leaseUntil }, data: { status: "failed", lastError: reason, leaseUntil: null } });
+  const localFixture = source.connector === "local-test";
+  if (localFixture && (!isLocalTestMode() || !isLocalMailboxEnabled() || job.channel !== "email")) {
+    await terminal("Local test notifications require the isolated test app and local email capture."); return;
+  }
   if (!canDeliver(alert, now) || !alert.sourceIds.includes(source.id) || source.itemId !== alert.itemId || source.variantId !== alert.variantId || event.endedAt || source.connector === "mock" || alert.item.hidden || source.status !== "active" || !source.approved || !source.inStock || source.lastError || !source.lastCheckedAt || now.getTime() - source.lastCheckedAt.getTime() > Math.max(60_000, source.pollSeconds * 3000) || now.getTime() - event.seenAt.getTime() > lifetimeMs) {
     await terminal("Alert no longer eligible or stock evidence expired."); return;
   }
@@ -26,16 +32,17 @@ export async function deliverNotification(id: string) {
     // Stable signing time keeps Resend's idempotent request body identical on retry.
     const url = `${origin}/api/radar/click?token=${encodeURIComponent(createClickToken(alert.id, event.id, job.createdAt.getTime()))}`;
     const price = event.priceCents == null ? "Price not reported" : new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(event.priceCents / 100);
-    const title = `${alert.item.name} is in stock at ${source.label}`;
+    const title = `${localFixture ? "LOCAL TEST: " : ""}${alert.item.name} is in stock at ${source.label}`;
     const description = `${alert.variant.label} · ${price}. Stock is not reserved and may sell out. This is an availability alert, not an automatic purchase.`;
     if (job.channel === "email") {
-      if (!process.env.RESEND_API_KEY || !process.env.EMAIL_FROM) throw new Error("Email delivery is not configured.");
-      const resend = new Resend(process.env.RESEND_API_KEY);
-      const response = await resend.emails.send({ from: process.env.EMAIL_FROM, to: alert.user.email, subject: title,
-        text: `${title}\n${description}\n\nView item: ${url}\n\nManage alerts: ${origin}/alerts\nIndependent service. Not affiliated with Sony or any retailer.`,
-        html: `<div style="font-family:Arial,sans-serif;max-width:560px;margin:auto;padding:28px"><p style="color:#66754e;font-weight:bold">RESTOCK RADAR</p><h1>${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p><p><a href="${escapeHtml(url)}" style="display:inline-block;background:#c6ef8a;color:#17200c;padding:14px 22px;text-decoration:none;border-radius:8px">View item at ${escapeHtml(source.label)}</a></p><p style="font-size:12px;color:#666">Independent service. Not affiliated with Sony or any retailer.</p></div>`,
+      const response = await sendRadarEmail({ to: alert.user.email, subject: title,
+        text: `${title}\n${description}\n\nView item: ${url}\n\nManage alerts: ${origin}/alerts/manage\nIndependent service. Not affiliated with product manufacturers or retailers.`,
+        html: `<div style="font-family:Arial,sans-serif;max-width:560px;margin:auto;padding:28px"><p style="color:#66754e;font-weight:bold">RESTOCK RADAR</p><h1>${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p><p><a href="${escapeHtml(url)}" style="display:inline-block;background:#c6ef8a;color:#17200c;padding:14px 22px;text-decoration:none;border-radius:8px">View item at ${escapeHtml(source.label)}</a></p><p style="font-size:12px;color:#666">Independent service. Not affiliated with product manufacturers or retailers.</p></div>`,
       }, { idempotencyKey: `radar-notification-${job.id}` });
-      if (response.error) throw new Error("Email provider did not accept the alert.");
+      if (response.captured) {
+        await prisma.radarNotification.updateMany({ where: { id, leaseUntil }, data: { status: "captured", sentAt: null, latencyMs: null, leaseUntil: null, lastError: null } });
+        return;
+      }
     } else if (job.channel === "push") {
       const push = alert.user.pushSubscriptions.find((subscription) => subscription.id === job.target);
       if (!push || !allowedPushEndpoint(push.endpoint)) { await terminal("Push subscription is no longer available."); return; }

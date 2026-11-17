@@ -1,5 +1,6 @@
 import { cache } from "react";
 import { prisma } from "@/lib/db";
+import { isLocalTestMode } from "@/lib/radar/local-test";
 
 export const BRAND = "Restock Radar";
 export const siteUrl = (process.env.APP_URL || "http://localhost:3000").replace(/\/$/, "");
@@ -17,7 +18,7 @@ const previewItem: PublicItem = {
 };
 export const getCatalog = cache(async (): Promise<Catalog> => {
   try {
-    const items = await prisma.radarItem.findMany({ where: { hidden: false }, include: { category: true, variants: { orderBy: { slug: "asc" } }, sources: { where: { connector: { not: "mock" } }, include: { events: { orderBy: { seenAt: "desc" }, take: 1000 } }, orderBy: { label: "asc" } } }, orderBy: { name: "asc" } });
+    const items = await prisma.radarItem.findMany({ where: { hidden: false }, include: { category: true, variants: { orderBy: { slug: "asc" } }, sources: { where: { connector: { notIn: isLocalTestMode() ? ["mock"] : ["mock", "local-test"] } }, include: { events: { orderBy: { seenAt: "desc" }, take: 1000 } }, orderBy: { label: "asc" } } }, orderBy: { name: "asc" } });
     return { items: items.length ? items : [previewItem], available: true, seeded: items.length > 0 };
   } catch { return { items: [previewItem], available: false, seeded: false }; }
 });
@@ -37,9 +38,9 @@ export function duration(event: PublicEvent) { if (!event.endedAt) return "Open 
 export const getProof = cache(async () => {
   try {
     const [sent, posts, events] = await Promise.all([
-      prisma.radarNotification.count({ where: { status: "sent", sentAt: { not: null }, stockEvent: { source: { connector: { not: "mock" }, item: { hidden: false } } } } }),
+      prisma.radarNotification.count({ where: { status: "sent", sentAt: { not: null }, stockEvent: { source: { connector: { notIn: ["mock", "local-test"] }, item: { hidden: false } } } } }),
       prisma.radarCustomerPost.findMany({ orderBy: { createdAt: "desc" }, take: 50 }),
-      prisma.radarStockEvent.findMany({ where: { source: { connector: { not: "mock" }, item: { hidden: false } } }, include: { source: { include: { item: true, variant: true } } }, orderBy: { seenAt: "desc" }, take: 50 }),
+      prisma.radarStockEvent.findMany({ where: { source: { connector: { notIn: ["mock", "local-test"] }, item: { hidden: false } } }, include: { source: { include: { item: true, variant: true } } }, orderBy: { seenAt: "desc" }, take: 50 }),
     ]);
     return { available: true, sent, posts, events };
   } catch { return { available: false, sent: null, posts: [], events: [] }; }

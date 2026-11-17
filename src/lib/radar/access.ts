@@ -1,8 +1,9 @@
 import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 import { prisma } from "@/lib/db";
 import { HttpError } from "@/lib/security";
+import { isLocalTestMode } from "@/lib/radar/local-test";
 
-export const RADAR_COOKIE = "radar_session";
+export const RADAR_COOKIE = isLocalTestMode() ? "radar_local_test_session" : "radar_session";
 export function radarOrigin() { return new URL(process.env.APP_URL || "http://localhost:3000").origin; }
 export function radarSecret() {
   const secret = process.env.RADAR_AUTH_SECRET;

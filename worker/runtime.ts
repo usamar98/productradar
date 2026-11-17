@@ -2,9 +2,11 @@ import type { Prisma, RadarSource } from "@prisma/client";
 import { prisma } from "../src/lib/db";
 import { BlockedSourceError, connectorFor } from "../src/lib/radar/connectors";
 import { canDeliver, pollDelayMs, stockTransition, type StockCheck } from "../src/lib/radar/domain";
+import { isLocalTestMode } from "../src/lib/radar/local-test";
 
 const sourceLeaseMs = 180_000;
 export async function recordObservation(source: RadarSource, leaseUntil: Date, result: StockCheck, checkedAt = new Date(), database = prisma) {
+  if (source.connector === "local-test" && !isLocalTestMode()) throw new BlockedSourceError("Local-test observations cannot be recorded outside the isolated local lab.");
   return database.$transaction(async (tx) => {
     // Fence a stale worker before changing inventory or enqueueing anything.
     const updated = await tx.radarSource.updateMany({ where: { id: source.id, leaseUntil, status: "active" }, data: {

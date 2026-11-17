@@ -2,6 +2,7 @@ import { lookup } from "node:dns/promises";
 import { request } from "node:https";
 import { isIP } from "node:net";
 import type { StockCheck } from "./domain";
+import { isLocalTestMode, readLocalStock } from "./local-test";
 
 export type ConnectorSource = { id: string; productUrl: string; connector: string; approved: boolean; item?: { hidden: boolean } };
 export interface Connector { check(source: ConnectorSource): Promise<StockCheck> }
@@ -146,8 +147,13 @@ export const mockConnector: Connector = { async check(source) {
   if (process.env.NODE_ENV === "production" || process.env.ALLOW_MOCK_CONNECTOR !== "true" || source.item?.hidden !== true) throw new BlockedSourceError("Mock checks require ALLOW_MOCK_CONNECTOR=true, development mode, and a hidden test item.");
   return { inStock: Math.random() > 0.5, raw: "development mock" };
 } };
+export const localTestConnector: Connector = { async check(source) {
+  if (!isLocalTestMode() || !source.approved) throw new BlockedSourceError("Local-test inventory is restricted to the isolated local development lab.");
+  return { inStock: await readLocalStock(source.id), raw: "LOCAL TEST — synthetic stock signal, not retailer inventory" };
+} };
 export function connectorFor(name: string): Connector {
   if (name === "jsonld") return jsonldConnector;
   if (name === "mock") return mockConnector;
+  if (name === "local-test") return localTestConnector;
   throw new BlockedSourceError(`Unsupported connector: ${name}`);
 }
