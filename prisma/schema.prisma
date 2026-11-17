@@ -1,0 +1,242 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+}
+enum InventoryState {
+  IN_STOCK
+  OUT_OF_STOCK
+  PREORDER
+  BACKORDER
+  UNKNOWN
+  CHECK_FAILED
+}
+model User {
+  id String @id
+  name String
+  email String @unique
+  emailVerified Boolean @default(false)
+  image String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  sessions Session[]
+  accounts Account[]
+  watch Watch?
+  subscription Subscription?
+  pushSubscriptions PushSubscription[]
+  notifications NotificationJob[]
+  payments Payment[]
+  attributions Attribution[]
+  checkoutAttempt CheckoutAttempt?
+}
+model Session {
+  id String @id
+  expiresAt DateTime
+  token String @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
+}
+model Account {
+  id String @id
+  accountId String
+  providerId String
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken String?
+  refreshToken String?
+  idToken String?
+  accessTokenExpiresAt DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope String?
+  password String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([userId])
+}
+model Verification {
+  id String @id
+  identifier String
+  value String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([identifier])
+}
+model RateLimit {
+  id String @id @default(cuid())
+  key String @unique
+  count Int
+  lastRequest BigInt
+}
+model Watch {
+  id String @id @default(cuid())
+  userId String @unique
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  retailers String[] @default(["bestbuy"])
+  maxPriceCents Int?
+  emailEnabled Boolean @default(true)
+  pushEnabled Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Subscription {
+  id String @id @default(cuid())
+  userId String @unique
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stripeCustomerId String? @unique
+  stripeSubscriptionId String? @unique
+  status String @default("inactive")
+  currentPeriodEnd DateTime?
+  cancelAtPeriodEnd Boolean @default(false)
+  refundedAt DateTime?
+  lastEventCreated Int @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Retailer {
+  id String @id
+  name String
+  sourceUrl String
+  productIdentifier String
+  enabled Boolean @default(false)
+  intervalSeconds Int @default(300)
+  lastAttemptAt DateTime?
+  lastSuccessfulCheck DateTime?
+  lastState InventoryState @default(UNKNOWN)
+  lastPriceCents Int?
+  lastError String?
+  nextCheckAt DateTime @default(now())
+  leaseUntil DateTime?
+  observations InventoryObservation[]
+  events StockEvent[]
+}
+model InventoryObservation {
+  id String @id @default(cuid())
+  retailerId String
+  retailer Retailer @relation(fields: [retailerId], references: [id])
+  productIdentifier String
+  sourceUrl String
+  state InventoryState
+  priceCents Int?
+  currency String @default("USD")
+  checkedAt DateTime
+  evidence Json
+  shipping String?
+  pickup String?
+  events StockEvent[]
+  @@index([retailerId, checkedAt])
+  @@unique([retailerId, checkedAt])
+}
+model StockEvent {
+  id String @id @default(cuid())
+  retailerId String
+  retailer Retailer @relation(fields: [retailerId], references: [id])
+  observationId String @unique
+  observation InventoryObservation @relation(fields: [observationId], references: [id])
+  createdAt DateTime @default(now())
+  jobs NotificationJob[]
+  @@index([retailerId, createdAt])
+}
+model NotificationJob {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  eventId String
+  event StockEvent @relation(fields: [eventId], references: [id])
+  channel String
+  target String @default("email")
+  status String @default("pending")
+  attempts Int @default(0)
+  nextAttemptAt DateTime @default(now())
+  leaseUntil DateTime?
+  deliveredAt DateTime?
+  lastError String?
+  createdAt DateTime @default(now())
+  @@unique([userId, eventId, channel, target])
+  @@index([status, nextAttemptAt])
+  @@index([userId, createdAt])
+}
+model PushSubscription {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoint String @unique
+  p256dh String
+  auth String
+  createdAt DateTime @default(now())
+  @@index([userId])
+}
+model StripeEvent {
+  id String @id
+  type String
+  createdAt DateTime @default(now())
+}
+model CheckoutAttempt {
+  id String @id @default(cuid())
+  userId String @unique
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessionId String? @unique
+  expiresAt DateTime
+  priceId String
+  customerId String
+  attributionId String?
+  createdAt DateTime @default(now())
+}
+model Payment {
+  id String @id
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  stripeCustomerId String
+  stripePaymentIntentId String? @unique
+  amountCents Int
+  currency String @default("usd")
+  status String
+  refundedCents Int @default(0)
+  paidAt DateTime
+  attributionId String?
+  attribution Attribution? @relation(fields: [attributionId], references: [id])
+  refunds Refund[]
+  @@index([userId])
+}
+model Refund {
+  id String @id
+  paymentId String
+  payment Payment @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  amountCents Int
+  currency String
+  status String
+  createdAt DateTime
+  updatedAt DateTime @updatedAt
+  @@index([paymentId])
+}
+model Attribution {
+  id String @id @default(cuid())
+  userId String?
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  visitorId String?
+  consentedAt DateTime
+  utmSource String?
+  utmMedium String?
+  utmCampaign String?
+  utmTerm String?
+  utmContent String?
+  referringDomain String?
+  landingPage String
+  createdAt DateTime @default(now())
+  payments Payment[]
+  @@index([userId])
+}
+model MarketingExpense {
+  id String @id @default(cuid())
+  date DateTime
+  amountCents Int
+  currency String @default("usd")
+  channel String
+  description String
+}

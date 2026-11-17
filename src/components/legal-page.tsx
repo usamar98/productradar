@@ -1,0 +1,3 @@
+import Link from "next/link";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
+export function LegalPage({ title, intro, children }: { title: string; intro: string; children: React.ReactNode }) { return <div className="page-container legal-page"><Link href="/" className="text-link back-link"><ArrowLeft size={14} />Back to overview</Link><div className="section-eyebrow">GPU STOCK WATCH</div><h1>{title}</h1><p className="legal-intro">{intro}</p><article className="panel legal-content">{children}</article><div className="legal-end"><span>Questions about your account?</span><Link href="/support" className="text-link">Visit support<ArrowUpRight size={13} /></Link></div></div>; }
