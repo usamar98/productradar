@@ -1,16 +1,88 @@
 "use client";
-import Link from "next/link";
-import {useCallback,useEffect,useState} from "react";
 
-type State={payment:{ready:boolean;message:string};sources:{id:string;variant:string;variantSlug:string;itemSlug:string;desired:boolean;observed:boolean|null;lastCheckedAt:string|null;error:string|null}[];alerts:{id:string;status:string;activeUntil:string|null;caughtAt:string|null;variant:{label:string}}[];payments:number;notifications:{status:string;count:number}[];expiresAt:string|null};
-export function LocalTestPanel(){
- const [state,setState]=useState<State|null>(null),[error,setError]=useState(""),[message,setMessage]=useState(""),[busy,setBusy]=useState<string|null>(null);
- const refresh=useCallback(async(signal?:AbortSignal)=>{try{const r=await fetch("/api/radar/local-test",{cache:"no-store",signal});const data=await r.json();if(!r.ok)throw new Error(data.error||"Unable to load test controls.");setState(data);setError("");}catch(e){if(!(e instanceof DOMException&&e.name==="AbortError"))setError(e instanceof Error?e.message:"Unable to refresh.");}},[]);
- useEffect(()=>{const controller=new AbortController();void refresh(controller.signal);const timer=setInterval(()=>void refresh(controller.signal),5000);return()=>{controller.abort();clearInterval(timer);};},[refresh]);
- async function setStock(sourceId:string,inStock:boolean){setBusy(sourceId);setError("");try{const r=await fetch("/api/radar/local-test",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({sourceId,inStock})});const data=await r.json();if(!r.ok)throw new Error(data.error);setMessage(data.message);await refresh();}catch(e){setError(e instanceof Error?e.message:"Could not change the test signal.");}finally{setBusy(null);}}
- if(!state)return <p role="status">{error||"Loading local test controls…"}</p>;
- return <><article className="rr-prose"><h2>Test a free alert.</h2><p>Open <Link href="/stock?item=iphone-duo&variant=256gb-star-white&zip=10001">the ZIP stock finder</Link>, choose Apple Fifth Avenue, and select Set a free alert. Confirm your email using the link in the local inbox. No card is required. After activation, set that configuration to In stock below and check the inbox for its simulated restock alert.</p><h2>Test Stripe checkout.</h2><ol><li>Keep your chosen configuration out of stock. Open its checkout link below and enter your email.</li><li>On Stripe's <strong>test</strong> checkout, use card <strong>4242 4242 4242 4242</strong>, any future expiry such as 12/34, and any three-digit CVC. No real funds move.</li><li>Return here and wait until the alert shows <strong>active</strong>. Only a verified Stripe webhook can activate a paid alert.</li><li>Set that same configuration to <strong>In stock</strong>. The worker records the transition and queues a notification.</li><li>Open the <Link href="/local-inbox">local inbox</Link> and follow the notification. For an until-caught pass, the signed click ends the pass.</li><li>Request a sign-in link on <Link href="/alerts/manage">My alerts</Link>, read it in the local inbox, then inspect your active alerts and Stripe billing portal.</li></ol><p>To repeat the stock transition, set Out of stock, wait for the observed state to change, then set In stock. Repeating In stock alone must not create a duplicate event.</p><p><strong>Checkout:</strong> {state.payment.message} {state.expiresAt&&`Sandbox expiry: ${state.expiresAt}.`}</p><p><strong>Apple integration:</strong> no live inventory feed is connected. These controls simulate stock; they do not scrape Apple or the competitor.</p></article>
- {error&&<p role="alert" className="rr-form-message">{error}</p>}{message&&<p role="status" className="rr-form-message rr-success">{message}</p>}
- <section className="rr-section"><div className="rr-section-heading"><h2>Control a test configuration.</h2><button className="rr-button rr-secondary" onClick={()=>void refresh()}>Refresh status</button></div><div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(270px,1fr))",gap:18}}>{state.sources.map(source=><article key={source.id} className="rr-form-card"><h3>{source.variant}</h3><p style={{marginTop:12}}>Test signal: {source.desired?"In stock":"Out of stock"}<br/>Worker observed: {source.observed===null?"No observation yet":source.observed?"In stock":"Out of stock"}<br/>Last check: {source.lastCheckedAt?new Date(source.lastCheckedAt).toLocaleTimeString():"Pending"}</p>{source.error&&<p role="alert">{source.error}</p>}<div style={{display:"flex",gap:10,flexWrap:"wrap",marginTop:18}}><button className="rr-button rr-secondary" disabled={busy===source.id} onClick={()=>void setStock(source.id,false)}>Out of stock</button><button className="rr-button rr-primary" disabled={busy===source.id} onClick={()=>void setStock(source.id,true)}>In stock</button></div><Link className="rr-text-link" style={{marginTop:18,display:"inline-block"}} href={`/alerts?item=${source.itemSlug}&variant=${source.variantSlug}&source=${source.id}&plan=pass`}>Test checkout for {source.variant} →</Link></article>)}</div></section>
- <section className="rr-prose"><h2>Payment and alert evidence</h2><p>Verified Stripe test payment records: {state.payments}. Local captures: {state.notifications.find(n=>n.status==="captured")?.count||0}. Pending notifications: {state.notifications.filter(n=>n.status==="pending"||n.status==="sending").reduce((sum,n)=>sum+n.count,0)}.</p>{state.alerts.length?<ul>{state.alerts.map(alert=><li key={alert.id}>{alert.variant.label}: <strong>{alert.status}</strong>{alert.caughtAt?" · notification clicked":""}</li>)}</ul>:<p>No test alerts yet. Verify a free alert or complete a test checkout to create one.</p>}<p><Link href="/local-inbox">Open local inbox</Link> · <Link href="/alerts/manage">Manage alerts and billing</Link></p></section></>;
+import Link from "next/link";
+import { useCallback, useEffect, useState } from "react";
+
+type Source = {
+  id: string; item: string; itemSlug: string; variant: string; variantSlug: string; label: string;
+  feed: boolean; paused: boolean; desired: boolean | null; observed: boolean | null; lastCheckedAt: string | null; error: string | null;
+};
+type State = {
+  sources: Source[]; alerts: { id: string; status: string; caughtAt: string | null; variant: { label: string } }[];
+  payment: { message: string }; payments: number; notifications: { status: string; count: number }[]; expiresAt: string | null;
+};
+
+const stockLabel = (value: boolean | null) => value === null ? "Awaiting first observation" : value ? "In stock" : "Out of stock";
+
+export function LocalTestPanel() {
+  const [state, setState] = useState<State | null>(null);
+  const [error, setError] = useState(""), [message, setMessage] = useState(""), [busy, setBusy] = useState<string | null>(null);
+  const refresh = useCallback(async (signal?: AbortSignal) => {
+    try {
+      const response = await fetch("/api/radar/local-test", { cache: "no-store", signal });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Unable to load test controls.");
+      setState(data);
+    } catch (e) { if (!signal?.aborted) setError(e instanceof Error ? e.message : "Unable to refresh."); }
+  }, []);
+  useEffect(() => {
+    const controller = new AbortController();
+    void refresh(controller.signal);
+    const timer = setInterval(() => void refresh(controller.signal), 5000);
+    return () => { controller.abort(); clearInterval(timer); };
+  }, [refresh]);
+
+  async function setStock(sourceId: string, inStock: boolean) {
+    setBusy(sourceId); setError(""); setMessage("");
+    try {
+      const response = await fetch("/api/radar/local-test", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sourceId, inStock }) });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Unable to change stock.");
+      setMessage(data.message); await refresh();
+    } catch (e) { setError(e instanceof Error ? e.message : "Could not update the stock signal."); }
+    finally { setBusy(null); }
+  }
+
+  if (!state) return <p role="status">{error || "Loading local test controls…"}</p>;
+  function cards(sources: Source[]) {
+    return <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))", gap: 18 }}>
+      {sources.map(source => {
+        const query = new URLSearchParams({ item: source.itemSlug, variant: source.variantSlug, source: source.id });
+        return <article key={source.id} className="rr-form-card">
+          <h3>{source.item}</h3><p>{source.variant}<br/>{source.label}</p>
+          <p><strong>{source.paused ? "Paused" : stockLabel(source.observed)}</strong>{source.lastCheckedAt && <> · {new Date(source.lastCheckedAt).toLocaleTimeString()}</>}
+            {!source.feed && source.desired !== source.observed && <><br/>Waiting for the worker to observe {stockLabel(source.desired).toLowerCase()}.</>}</p>
+          {source.error && <p role="alert">{source.error}</p>}
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBlock: 16 }}>
+            <button className="rr-button rr-secondary" disabled={busy !== null || source.paused} onClick={() => void setStock(source.id, false)}>Out of stock</button>
+            <button className="rr-button rr-secondary" disabled={busy !== null || source.paused} onClick={() => void setStock(source.id, true)}>In stock</button>
+          </div>
+          <Link className="rr-button rr-primary" href={"/alerts?" + query + "&plan=free"}>Set a free alert</Link>
+          <p><Link className="rr-text-link" href={"/alerts?" + query + "&plan=pass"}>Test Stripe checkout →</Link></p>
+        </article>;
+      })}
+    </div>;
+  }
+  return <>
+    <section className="rr-section">
+      <div className="rr-section-heading"><h2>Test a restock email</h2><Link className="rr-text-link" href="/local-inbox">Open local inbox →</Link></div>
+      <ol className="rr-prose"><li>Choose a product below, set it to <strong>Out of stock</strong>, and open <strong>Set a free alert</strong>.</li>
+        <li>Enter an email address. Open the confirmation in the local inbox and activate the alert.</li>
+        <li>Return here and set that product to <strong>In stock</strong>. Its restock email will appear in the inbox. You can close the signup tab after activation.</li></ol>
+      {error && <p role="alert" className="rr-form-message">{error}</p>}
+      {message && <p role="status" className="rr-form-message rr-success">{message}</p>}
+      {cards(state.sources.filter(source => source.feed))}
+    </section>
+    <section className="rr-prose"><h2>Alert activity</h2>
+      <p>{state.notifications.find(row => row.status === "captured")?.count || 0} restock emails captured · {state.notifications.filter(row => ["pending", "sending"].includes(row.status)).reduce((sum, row) => sum + row.count, 0)} notifications pending · {state.payments} verified test payments</p>
+      {state.alerts.length > 0 && <ul>{state.alerts.map(alert => <li key={alert.id}>{alert.variant.label} · <strong>{alert.status}</strong>{alert.caughtAt && " · product link opened"}</li>)}</ul>}
+      <Link href="/alerts/manage">Manage your alerts</Link>
+    </section>
+    <details className="rr-prose"><summary>Test Stripe checkout and iPhone pickup</summary>
+      <p>Choose a test checkout link, use test card <strong>4242 4242 4242 4242</strong>, a future expiry and any three-digit CVC. Wait for the alert to become active after the Stripe webhook. Opening the product link ends an until-caught pass.</p>
+      <p>{state.payment.message} {state.expiresAt && "Sandbox expiry " + state.expiresAt}</p>
+      <p>You can also select Apple Fifth Avenue in the <Link href="/stock?item=iphone-duo&variant=256gb-star-white&zip=10001">ZIP stock finder</Link>. The worker checks these iPhone test signals on its next tick.</p>
+      {cards(state.sources.filter(source => !source.feed))}
+    </details>
+  </>;
 }

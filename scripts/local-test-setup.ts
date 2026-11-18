@@ -3,6 +3,8 @@ import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { resolve } from "node:path";
 import { isLocalTestMode, setLocalStock } from "../src/lib/radar/local-test";
+import { localFeedSamples } from "../src/lib/radar/local-feed";
+import { getLaunchProduct, productItemId, productVariantId } from "../src/config/launch-catalog";
 
 const loaded = config({ path: resolve(process.cwd(), ".env.local-test"), override: true, quiet: true });
 if (loaded.error) throw new Error("Create .env.local-test for the isolated lab before running setup.");
@@ -35,6 +37,17 @@ try {
       }
     }
   });
-  for (const sourceId of sourceIds) await setLocalStock(sourceId, false);
-  console.log(`Prepared ${sourceIds.length} isolated LOCAL TEST sources with out-of-stock signals. No payment, subscription, stock event or notification was fabricated. Start the lab worker to observe the signals.`);
+  for (const sourceId of sourceIds) await setLocalStock(sourceId, false, { initializeOnly: true });
+  const { receiveInventory } = await import("../src/lib/radar/inventory-feed");
+  for (const { brand, item, variant, storeId, priceCents } of localFeedSamples) {
+    const product = getLaunchProduct(item)!;
+    const category = await db.radarCategory.upsert({ where: { slug: product.category.slug }, create: { id: product.category.slug, ...product.category }, update: {} });
+    const saved = await db.radarItem.upsert({ where: { slug: item }, create: { id: productItemId(item), slug: item, name: product.name, imageUrl: product.image.src, categoryId: category.id }, update: {} });
+    const sku = await db.radarVariant.upsert({ where: { itemId_slug: { itemId: saved.id, slug: variant } }, create: {
+      id: productVariantId(item, variant), itemId: saved.id, slug: variant, label: product.variants.find(option => option.slug === variant)!.label,
+    }, update: {} });
+    const existing = await db.radarSource.findUnique({ where: { variantId_retailer: { variantId: sku.id, retailer: "feed-" + (storeId || brand) } } });
+    if (!existing) await receiveInventory(brand, { item, variant, storeId, priceCents, inStock: false, observedAt: new Date().toISOString() }, db);
+  }
+  console.log(`Prepared ${localFeedSamples.length} signed inventory samples and ${sourceIds.length} worker-polled iPhone configurations in the isolated lab.`);
 } finally { await db.$disconnect(); }

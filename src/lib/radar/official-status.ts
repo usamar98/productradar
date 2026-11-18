@@ -1,3 +1,4 @@
+import { sourceCanAlert } from "./inventory-feed-auth";
 import type { StockReading } from "./stock-finder";
 
 const providers = {
@@ -17,13 +18,13 @@ export function isOfficialListing(brand: string | undefined, url: string) {
 export function officialConnection(brand: string | undefined, sources: Source[], fallbackUrl?: string) {
   if (!isBrand(brand)) return null;
   const provider = providers[brand];
-  const connected = sources.filter(source => source.connector === provider.connector);
-  const active = connected.filter(source => (source.approved && source.status === "active") || source.status === "on_demand");
+  const connected = sources.filter(source => source.connector === provider.connector || source.connector === "inventory-" + brand);
+  const active = connected.filter(source => sourceCanAlert(source) || source.status === "on_demand");
   const verified = active.filter(source => !source.lastError && source.inStock !== null && source.lastCheckedAt && Date.now() - source.lastCheckedAt.getTime() <= (source.status === "on_demand" ? 60_000 : Math.max(source.pollSeconds * 3, 120) * 1000));
   const blocked = connected.some(source => source.status === "blocked");
   const state = verified.length ? "connected" : active.length ? "waiting" : blocked ? "blocked" : "pending";
   const onDemand = verified.length > 0 && verified.every(source => source.status === "on_demand");
-  const message = state === "connected" ? `${provider.name} returned availability for ${verified.length} ${brand === "apple" ? "store(s)" : "listing(s)"}. ${onDemand ? "Checks run when you search; automatic alerts are not enabled." : "See each result’s latest observation."}`
+  const message = state === "connected" ? `Stock reports cover ${verified.length} ${brand === "apple" ? "store(s)" : "listing(s)"}. ${onDemand ? "Checks run when you search; automatic alerts are not enabled." : "See the latest observation and alert options for each result."}`
     : state === "waiting" ? `${provider.name} tracking is awaiting a successful stock check.`
     : state === "blocked" ? `${provider.name} is not allowing automated availability checks. Check this configuration directly with the store.`
     : `Live ${provider.name} tracking is not active for this configuration. Check availability directly with the store.`;

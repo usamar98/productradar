@@ -1,7 +1,8 @@
-import type { Prisma, RadarSource } from "@prisma/client";
+import type { RadarSource } from "@prisma/client";
 import { prisma } from "../src/lib/db";
 import { BlockedSourceError, connectorFor } from "../src/lib/radar/connectors";
-import { canDeliver, pollDelayMs, stockTransition, type StockCheck } from "../src/lib/radar/domain";
+import { pollDelayMs, type StockCheck } from "../src/lib/radar/domain";
+import { recordStockPeriod } from "../src/lib/radar/stock-period";
 import { isLocalTestMode } from "../src/lib/radar/local-test";
 import { isOfficialConnector, officialMinPollSeconds, officialProviderIntervalSeconds } from "../src/lib/radar/official-connectors";
 
@@ -19,23 +20,7 @@ export async function recordObservation(source: RadarSource, leaseUntil: Date, r
       nextCheckAt: new Date(checkedAt.getTime() + sourceDelay(source)),
     } });
     if (!updated.count) return null;
-    const transition = stockTransition(source.inStock, result.inStock);
-    if (transition === "close") await tx.radarStockEvent.updateMany({ where: { sourceId: source.id, endedAt: null }, data: { endedAt: checkedAt } });
-    if (transition !== "open") return null;
-    const event = await tx.radarStockEvent.create({ data: { sourceId: source.id, inStock: true, priceCents: result.priceCents, seenAt: checkedAt } });
-    // Synthetic hidden-item observations never enter the customer delivery path.
-    if (source.connector === "mock" || source.status !== "active" || !source.approved) return event;
-    const alerts = await tx.radarAlert.findMany({ where: {
-      itemId: source.itemId, variantId: source.variantId, status: "active", activeUntil: { gt: checkedAt }, sourceIds: { has: source.id },
-    }, include: { user: { include: { pushSubscriptions: true } }, subscription: true, plan: true } });
-    const jobs: Prisma.RadarNotificationCreateManyInput[] = [];
-    for (const alert of alerts) {
-      if (!canDeliver(alert, checkedAt)) continue;
-      jobs.push({ alertId: alert.id, stockEventId: event.id, channel: "email", target: "email" });
-      for (const push of alert.user.pushSubscriptions) jobs.push({ alertId: alert.id, stockEventId: event.id, channel: "push", target: push.id });
-    }
-    if (jobs.length) await tx.radarNotification.createMany({ data: jobs, skipDuplicates: true });
-    return event;
+    return recordStockPeriod(tx, source, result, checkedAt);
   });
 }
 
@@ -44,7 +29,7 @@ export async function claimSource(source: RadarSource, database = prisma) {
   return database.$transaction(async tx => {
     // Serialize claims across worker processes, not only within one JavaScript process.
     if (isOfficialConnector(source.connector)) await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${`official-source:${source.connector}`}))`;
-    const claimed = await tx.radarSource.updateMany({ where: { id: source.id, status: "active", nextCheckAt: { lte: now }, OR: [{ leaseUntil: null }, { leaseUntil: { lte: now } }] }, data: { leaseUntil } });
+    const claimed = await tx.radarSource.updateMany({ where: { id: source.id, status: "active", approved: true, nextCheckAt: { lte: now }, OR: [{ leaseUntil: null }, { leaseUntil: { lte: now } }] }, data: { leaseUntil } });
     if (!claimed.count) return null;
     if (isOfficialConnector(source.connector)) {
       const next = new Date(now.getTime() + officialProviderIntervalSeconds * 1000);
@@ -86,6 +71,6 @@ async function pollSource(source: RadarSource & { item: { hidden: boolean } }) {
 export async function pollDueSources() {
   if (process.env.DEMO_MODE === "true") return;
   const now = new Date();
-  const sources = await prisma.radarSource.findMany({ where: { status: "active", nextCheckAt: { lte: now }, OR: [{ leaseUntil: null }, { leaseUntil: { lte: now } }] }, include: { item: { select: { hidden: true } } }, orderBy: { nextCheckAt: "asc" }, take: 4 });
+  const sources = await prisma.radarSource.findMany({ where: { status: "active", approved: true, nextCheckAt: { lte: now }, OR: [{ leaseUntil: null }, { leaseUntil: { lte: now } }] }, include: { item: { select: { hidden: true } } }, orderBy: { nextCheckAt: "asc" }, take: 4 });
   await Promise.allSettled(sources.map(pollSource));
 }

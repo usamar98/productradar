@@ -3,7 +3,7 @@ import { prisma } from "@/lib/db";
 import { apiError, HttpError, readJson } from "@/lib/security";
 import { assertRadarOrigin, rateLimit } from "@/lib/radar/access";
 import { lookupZip, nearbyStores, storeDirectory } from "@/lib/radar/locations";
-import { pickupSource, pickupStockReading, stockReading } from "@/lib/radar/stock-finder";
+import { hasCurrentReading, latestEvidence, pickupSource, pickupStockReading, preferredSource, readingLifetimeMs, stockReading } from "@/lib/radar/stock-finder";
 import { getLaunchProduct } from "@/config/launch-catalog";
 import { isLocalTestMode } from "@/lib/radar/local-test";
 import { isOfficialListing, officialConnection } from "@/lib/radar/official-status";
@@ -44,10 +44,23 @@ export async function POST(request: Request) {
         message: configuration.reason,
       }, { headers: { "Cache-Control": "private, no-store" } });
     }
-    const observation = (source: typeof item.sources[number] | undefined) => ({ ...stockReading(source), sourceId: source?.id || null, priceCents: source?.lastCheckedAt && !source.lastError ? source.priceCents : null, lastCheckedAt: source?.lastCheckedAt?.toISOString() || null, simulated: source?.connector === "local-test", onDemand: source?.status === "on_demand" });
+    const observation = (source: typeof item.sources[number] | undefined, selection = source) => ({
+      ...stockReading(source), sourceId: selection?.id || null, alertable: stockReading(selection).alertable,
+      priceCents: source?.lastCheckedAt && !source.lastError ? source.priceCents : null, lastCheckedAt: source?.lastCheckedAt?.toISOString() || null,
+      expiresAt: source?.lastCheckedAt && hasCurrentReading(source) ? source.lastCheckedAt.getTime() + readingLifetimeMs(source) : null,
+      simulated: source?.connector === "local-test", onDemand: source?.status === "on_demand",
+    });
     if (value.mode === "online") {
-      await refresh();
-      return Response.json({ mode: "online", ...context(), stores: [], retailers: item.sources.filter(source => source.fulfillment !== "pickup" && (local || isOfficialListing(product?.brand, source.productUrl))).map(source => ({ name: source.label, url: source.productUrl, ...observation(source) })), total: 0, message: "Online stock is separate from local pickup. Confirm delivery to your ZIP at checkout. PlayStation account or membership requirements may apply to purchasing." }, { headers: { "Cache-Control": "private, no-store" } });
+      const listings = () => item.sources.filter(source => source.fulfillment !== "pickup" && (local || isOfficialListing(product?.brand, source.productUrl)));
+      const feed = listings().find(source => source.status === "feed" && stockReading(source).alertable);
+      if (!hasCurrentReading(feed)) await refresh();
+      const byUrl = new Map<string, typeof item.sources>();
+      for (const source of listings()) byUrl.set(source.productUrl, [...(byUrl.get(source.productUrl) || []), source]);
+      const retailers = Array.from(byUrl.values(), group => {
+        const source = preferredSource(group)!;
+        return { name: source.label, url: source.productUrl, ...observation(latestEvidence(group, source), source) };
+      });
+      return Response.json({ mode: "online", ...context(), stores: [], retailers, total: 0, message: "Online stock is separate from local pickup. Confirm delivery to your ZIP at checkout. PlayStation account or membership requirements may apply to purchasing." }, { headers: { "Cache-Control": "private, no-store" } });
     }
     const place = value.zip ? await lookupZip(value.zip) : null;
     const point = place || (value.latitude !== undefined && value.longitude !== undefined ? { latitude: value.latitude, longitude: value.longitude } : undefined);
@@ -57,15 +70,21 @@ export async function POST(request: Request) {
     const selectedStore = value.storeId ? found.find(store => store.id === value.storeId) : undefined;
     if (value.storeId && !selectedStore) throw new HttpError(400, "Choose a store from these search results.");
     if (selectedStore && pickupSource(item.sources, selectedStore.id)?.status === "paused") throw new HttpError(400, "Checks for this store have been paused.");
-    const targets = (selectedStore ? [selectedStore] : found).filter(store => pickupSource(item.sources, store.id)?.status !== "paused");
+    const targets = (selectedStore ? [selectedStore] : found).filter(store => {
+      const source = pickupSource(item.sources, store.id);
+      return source?.status !== "paused" && !(source?.status === "feed" && hasCurrentReading(source));
+    });
     if (supportsPickup && targets.length) await refresh(selectedStore?.postalCode.slice(0, 5) || place?.zip || targets[0].postalCode.slice(0, 5), targets.map(store => store.id));
     const lookup = live as LiveLookup | null;
     const connected = !!liveInput(item.id, item.variants[0].id, item.sources, "pickup");
     const blocked = item.sources.some(source => source.connector === "apple-pickup" && source.status === "blocked" && source.lastError?.startsWith("Inventory endpoint blocked:"));
     const stores = found.map(store => {
-      const source = pickupSource(item.sources, store.id);
-      return { ...store, distance: store.distance === null ? null : Math.round(store.distance * 10) / 10, ...observation(source),
+      const matching = item.sources.filter(source => source.fulfillment === "pickup" && source.locationId === store.id);
+      const selection = preferredSource(matching);
+      const source = latestEvidence(matching, selection);
+      return { ...store, distance: store.distance === null ? null : Math.round(store.distance * 10) / 10, ...observation(source, selection),
         ...(local ? { canCheckStore: false, reason: null } : pickupStockReading(source, { connected, blocked, omitted: lookup?.unresolvedStoreIds.includes(store.id) })),
+        ...(selection?.status === "feed" && stockReading(selection).alertable ? { alertable: true } : {}),
       };
     });
     const coverage = { total: stores.length, checked: stores.filter(store => ["in_stock", "out_of_stock"].includes(store.state)).length };

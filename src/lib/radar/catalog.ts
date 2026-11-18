@@ -1,3 +1,4 @@
+import { sourceCanAlert } from "./inventory-feed-auth";
 import { cache } from "react";
 import { prisma } from "@/lib/db";
 import { isLocalTestMode } from "@/lib/radar/local-test";
@@ -22,7 +23,7 @@ export function dateTime(value: Date | null | undefined) { return value ? new In
 export function dateOnly(value: Date | null | undefined) { return value ? new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(value) : "No data yet"; }
 export function sourceState(source: PublicSource) {
   if (source.status === "blocked") return { label: "Check blocked", tone: "amber" };
-  if (source.status !== "on_demand" && (!source.approved || source.status !== "active")) return { label: "Tracking pending", tone: "neutral" };
+  if (source.status !== "on_demand" && !sourceCanAlert(source)) return { label: "Tracking pending", tone: "neutral" };
   if (!source.lastCheckedAt || source.inStock === null) return { label: "No data yet", tone: "neutral" };
   if (Date.now() - source.lastCheckedAt.getTime() > (source.status === "on_demand" ? 60_000 : Math.max(source.pollSeconds * 3, 120) * 1000) || source.lastError) return { label: "Check again for current stock", tone: "amber" };
   return source.inStock ? { label: "In stock", tone: "green" } : { label: "Out of stock", tone: "neutral" };

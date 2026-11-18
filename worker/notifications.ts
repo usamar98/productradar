@@ -6,6 +6,7 @@ import { allowedPushEndpoint } from "../src/lib/security";
 import { sendRadarEmail } from "../src/lib/radar/email";
 import { isLocalMailboxEnabled } from "../src/lib/radar/local-mode";
 import { isLocalTestMode } from "../src/lib/radar/local-test";
+import { sourceCanAlert } from "../src/lib/radar/inventory-feed-auth";
 
 const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 const lifetimeMs = 15 * 60_000;
@@ -24,7 +25,7 @@ export async function deliverNotification(id: string) {
   if (localFixture && (!isLocalTestMode() || !isLocalMailboxEnabled() || job.channel !== "email")) {
     await terminal("Local test notifications require the isolated test app and local email capture."); return;
   }
-  if (!canDeliver(alert, now) || !alert.sourceIds.includes(source.id) || source.itemId !== alert.itemId || source.variantId !== alert.variantId || event.endedAt || source.connector === "mock" || alert.item.hidden || source.status !== "active" || !source.approved || !source.inStock || source.lastError || !source.lastCheckedAt || now.getTime() - source.lastCheckedAt.getTime() > Math.max(60_000, source.pollSeconds * 3000) || now.getTime() - event.seenAt.getTime() > lifetimeMs) {
+  if (!canDeliver(alert, now) || !alert.sourceIds.includes(source.id) || source.itemId !== alert.itemId || source.variantId !== alert.variantId || event.endedAt || alert.item.hidden || !sourceCanAlert(source) || !source.inStock || source.lastError || !source.lastCheckedAt || now.getTime() - source.lastCheckedAt.getTime() > Math.max(60_000, source.pollSeconds * 3000) || now.getTime() - event.seenAt.getTime() > lifetimeMs) {
     await terminal("Alert no longer eligible or stock evidence expired."); return;
   }
   try {
@@ -33,11 +34,12 @@ export async function deliverNotification(id: string) {
     const url = `${origin}/api/radar/click?token=${encodeURIComponent(createClickToken(alert.id, event.id, job.createdAt.getTime()))}`;
     const price = event.priceCents == null ? "Price not reported" : new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(event.priceCents / 100);
     const title = `${localFixture ? "LOCAL TEST: " : ""}${alert.item.name} is in stock at ${source.label}`;
-    const description = `${alert.variant.label} · ${price}. Stock is not reserved and may sell out. This is an availability alert, not an automatic purchase.`;
+    const observed = event.seenAt.toISOString().replace("T", " ").slice(0, 19) + " UTC";
+    const description = `${alert.variant.label} · ${price}. Observed ${observed}. Stock may sell out before checkout.`;
     if (job.channel === "email") {
       const response = await sendRadarEmail({ to: alert.user.email, subject: title,
         text: `${title}\n${description}\n\nView item: ${url}\n\nManage alerts: ${origin}/alerts/manage\nIndependent service. Not affiliated with product manufacturers or retailers.`,
-        html: `<div style="font-family:Arial,sans-serif;max-width:560px;margin:auto;padding:28px"><p style="color:#66754e;font-weight:bold">RESTOCK RADAR</p><h1>${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p><p><a href="${escapeHtml(url)}" style="display:inline-block;background:#c6ef8a;color:#17200c;padding:14px 22px;text-decoration:none;border-radius:8px">View item at ${escapeHtml(source.label)}</a></p><p style="font-size:12px;color:#666">Independent service. Not affiliated with product manufacturers or retailers.</p></div>`,
+        html: `<div style="font-family:Arial,sans-serif;max-width:560px;margin:auto;padding:28px"><p style="color:#66754e;font-weight:bold">RESTOCK RADAR</p><h1>${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p><p><a href="${escapeHtml(url)}" style="display:inline-block;background:#c6ef8a;color:#17200c;padding:14px 22px;text-decoration:none;border-radius:8px">View item at ${escapeHtml(source.label)}</a></p><p><a href="${escapeHtml(origin)}/alerts/manage">Manage or pause your alerts</a></p><p style="font-size:12px;color:#666">Independent service. Not affiliated with product manufacturers or retailers.</p></div>`,
       }, { idempotencyKey: `radar-notification-${job.id}` });
       if (response.captured) {
         await prisma.radarNotification.updateMany({ where: { id, leaseUntil }, data: { status: "captured", sentAt: null, latencyMs: null, leaseUntil: null, lastError: null } });

@@ -103,7 +103,7 @@ node --env-file=.env.local-test --import=tsx prisma/seed.ts
 npm run local-test:setup
 ```
 
-`local-test:setup` pauses ordinary sources inside the lab database, prepares its eight test sources and sets their input signals to out of stock. It does not delete earlier payments, alerts or history, and it does not create payment, stock-event or notification fixtures. Let the worker observe the resulting out-of-stock state before beginning another test.
+`local-test:setup` pauses ordinary polling sources in the isolated database. It initializes eight iPhone signals and three signed inventory samples, preserving existing signals and history on subsequent runs. For a new manual test, set the selected configuration to out of stock before enrolling. The [three-brand email test](restock-emails.md) exercises verified signup, worker delivery and retailer links.
 
 ## Stripe sandbox and expiry
 

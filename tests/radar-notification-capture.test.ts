@@ -40,6 +40,20 @@ describe("worker local-capture accounting", () => {
     await deliverNotification("job");
     expect(harness.update).toHaveBeenLastCalledWith(expect.objectContaining({ data: expect.objectContaining({ status: "sent", sentAt: expect.any(Date) }) }));
   });
+  it("rechecks the supplier key before sending a queued restock", async () => {
+    vi.stubEnv("RADAR_LOCAL_TEST_MODE", "false"); vi.stubEnv("DEMO_MODE", "false");
+    const job = notification("inventory-nvidia");
+    Object.assign(job.stockEvent.source, { status: "feed", approved: false });
+    harness.find.mockResolvedValue(job);
+    vi.stubEnv("RADAR_NVIDIA_FEED_SECRET", "");
+    await deliverNotification("job");
+    expect(harness.send).not.toHaveBeenCalled();
+    vi.stubEnv("RADAR_NVIDIA_FEED_SECRET", "n".repeat(40));
+    harness.send.mockResolvedValue({ id: "accepted", captured: false });
+    await deliverNotification("job");
+    expect(harness.send).toHaveBeenCalledWith(expect.objectContaining({ to: job.alert.user.email }), { idempotencyKey: "radar-notification-job" });
+    expect(harness.update).toHaveBeenLastCalledWith(expect.objectContaining({ data: expect.objectContaining({ status: "sent" }) }));
+  });
   it("does not send a synthetic local notification outside the isolated lab", async () => {
     harness.find.mockResolvedValue(notification("local-test"));
     await deliverNotification("job");

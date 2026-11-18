@@ -61,7 +61,7 @@ function start(name, commandArgs) {
 
 process.once("SIGINT", () => { void stop(); });
 process.once("SIGTERM", () => { void stop(); });
-if (!args.includes("--worker")) start("Local lab web", [require.resolve("next/dist/bin/next"), "dev", "--hostname", "127.0.0.1", "--port", "3001"]);
+if (!args.includes("--worker")) start("Local lab web", [require.resolve("next/dist/bin/next"), "dev", "--webpack", "--hostname", "127.0.0.1", "--port", "3001"]);
 if (!args.includes("--web")) start("Local lab worker", ["--import", "tsx", resolve(root, "worker/index.ts")]);
 console.log(`LOCAL TEST lab: ${args.includes("--worker") ? "worker only" : app.origin}. Synthetic stock and captured local mail; Stripe remains in test mode.`);
 await finished;

@@ -5,6 +5,8 @@ import { prisma } from "@/lib/db";
 import { apiError, HttpError, readJson } from "@/lib/security";
 import { ADMIN_COOKIE, adminLoginLimit, adminToken, checkAdminPassword, requireAdmin } from "@/lib/radar/admin";
 import { isOfficialConnector, officialMinPollSeconds, validateOfficialSource } from "@/lib/radar/official-connectors";
+import { isInventoryFeedSource } from "@/lib/radar/source-types";
+import { sourceCanAlert } from "@/lib/radar/inventory-feed-auth";
 
 const url = z.string().url().max(2048).refine(value => { const u = new URL(value); return u.protocol === "https:" && !u.username && !u.password && !u.port && u.hostname.includes(".") && !/localhost|\.local$|\.internal$/.test(u.hostname); }, "Use a public HTTPS URL.");
 const input = z.discriminatedUnion("action", [
@@ -12,6 +14,7 @@ const input = z.discriminatedUnion("action", [
   z.object({ action: z.literal("logout") }),
   z.object({ action: z.literal("source"), id: z.string().optional(), itemId: z.string(), variantId: z.string(), retailer: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(80), label: z.string().min(1).max(120), productUrl: url, connector: z.enum(["jsonld", "mock", "apple-pickup", "playstation-direct", "nvidia-store"]), fulfillment: z.enum(["online", "pickup"]).default("online"), locationId: z.string().max(80).nullable().default(null), pollSeconds: z.number().int().min(15).max(86400), status: z.enum(["active", "paused", "on_demand"]), approved: z.boolean() }),
   z.object({ action: z.literal("pause"), id: z.string() }),
+  z.object({ action: z.literal("resume-feed"), id: z.string() }),
   z.object({ action: z.literal("cost"), label: z.string().min(1).max(200), amountCents: z.number().int().min(0).max(100000000), category: z.string().min(1).max(80), incurredAt: z.iso.datetime() }),
   z.object({ action: z.literal("post"), url, text: z.string().min(1).max(3000) }),
   z.object({ action: z.literal("delete-post"), id: z.string() }),
@@ -42,12 +45,25 @@ export async function POST(request: Request) {
         const { action: _action, id, ...record } = data;
         const existing = id ? await prisma.radarSource.findUnique({ where: { id } }) : null;
         if (id && !existing) throw new HttpError(404, "Source not found.");
+        if (existing && isInventoryFeedSource(existing)) throw new HttpError(400, "Use the pause or resume control for supplier feeds.");
         if (existing && (existing.itemId !== record.itemId || existing.variantId !== record.variantId)) throw new HttpError(400, "Create a new source to track another item or variant.");
         if (existing && (existing.productUrl !== record.productUrl || existing.connector !== record.connector || existing.locationId !== record.locationId || existing.fulfillment !== record.fulfillment) && await prisma.radarStockEvent.count({ where: { sourceId: existing.id } })) throw new HttpError(400, "A source with recorded history cannot change its product, connector or fulfillment location. Add a new retailer slug to preserve its history.");
         if (id) await prisma.radarSource.update({ where: { id }, data: { ...record, nextCheckAt: new Date(), leaseUntil: null, failureCount: 0, lastError: null } });
         else await prisma.radarSource.create({ data: record });
       }
-      if (data.action === "pause") await prisma.radarSource.update({ where: { id: data.id }, data: { status: "paused", leaseUntil: null } });
+      if (data.action === "pause") await prisma.$transaction(async tx => {
+        const source = await tx.radarSource.update({ where: { id: data.id }, data: { status: "paused", leaseUntil: null } });
+        if (isInventoryFeedSource(source)) {
+          const now = new Date();
+          await tx.radarStockEvent.updateMany({ where: { sourceId: source.id, endedAt: null }, data: { endedAt: now } });
+          await tx.radarSource.update({ where: { id: source.id }, data: { inStock: null, priceCents: null, lastCheckedAt: null } });
+        }
+      });
+      if (data.action === "resume-feed") {
+        const source = await prisma.radarSource.findUnique({ where: { id: data.id } });
+        if (!source || !isInventoryFeedSource(source) || !sourceCanAlert({ ...source, status: "feed" })) throw new HttpError(409, "Configure this supplier's signing key before resuming its feed.");
+        await prisma.radarSource.updateMany({ where: { id: source.id, status: "paused" }, data: { status: "feed", approved: false, lastCheckedAt: new Date() } });
+      }
       if (data.action === "cost") await prisma.radarCost.create({ data: { label: data.label, amountCents: data.amountCents, category: data.category, incurredAt: new Date(data.incurredAt) } });
       if (data.action === "post") await prisma.radarCustomerPost.create({ data: { url: data.url, text: data.text } });
       if (data.action === "delete-post") await prisma.radarCustomerPost.delete({ where: { id: data.id } });

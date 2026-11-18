@@ -3,14 +3,14 @@ import { prisma } from "@/lib/db";
 import { FREE_PLAN, FREE_ALERT_DAYS } from "@/config/pricing";
 import { HttpError } from "@/lib/security";
 import { createFreeAlertToken, hashToken, verifyFreeAlertToken } from "./access";
-import { isLocalTestMode } from "./local-test";
+import { sourceCanAlert } from "./inventory-feed-auth";
 
 export type FreeAlertInput = { email: string; itemId: string; variantId: string; sourceIds: string[] };
 async function eligibleSources(tx: Prisma.TransactionClient, input: Omit<FreeAlertInput, "email">) {
   if (input.sourceIds.length !== 1) throw new HttpError(400, "Your free alert covers one retailer or store.");
   const source = await tx.radarSource.findFirst({ where: { id: input.sourceIds[0], itemId: input.itemId, variantId: input.variantId, item: { hidden: false } } });
   if (!source) throw new HttpError(400, "Choose a retailer for this exact configuration.");
-  if (!source.approved || source.status !== "active" || source.connector === "mock" || (source.connector === "local-test" && !isLocalTestMode())) throw new HttpError(503, "This retailer is not connected yet. Your free alert has not been used.");
+  if (!sourceCanAlert(source)) throw new HttpError(503, "This retailer is not connected yet. Your free alert has not been used.");
 }
 async function activate(tx: Prisma.TransactionClient, userId: string, alertId: string) {
   const providerRef = `free:${userId}`;

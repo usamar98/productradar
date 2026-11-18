@@ -1,3 +1,5 @@
+import { officialCatalog } from "./official-catalog";
+
 type ReferenceSource = { connector: string; productUrl: string; approved: boolean; retailer: string };
 
 const gpuReferences: Record<string, string> = {
@@ -12,6 +14,9 @@ export function canVisitCatalogSource(itemSlug: string, source: ReferenceSource)
   try { url = new URL(source.productUrl); } catch { return false; }
   if (url.protocol !== "https:" || url.username || url.password) return false;
   if (source.approved) return true;
+  if (source.retailer.startsWith("feed-") && (source.connector.startsWith("inventory-") || source.connector === "local-test")) {
+    return officialCatalog.some(product => product.itemSlug === itemSlug && product.productUrl === source.productUrl);
+  }
   if (itemSlug === "iphone-duo" && source.retailer === "apple") {
     return source.productUrl.startsWith("https://www.apple.com/shop/buy-iphone/iphone-duo/");
   }

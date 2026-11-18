@@ -4,7 +4,7 @@ import { assertPlanLimits, getPlan } from "@/config/pricing";
 import { apiError, HttpError, readJson } from "@/lib/security";
 import { assertRadarOrigin, cookieToken, rateLimit, sessionUserId } from "@/lib/radar/access";
 import { createPaymentCheckout, paymentReadiness } from "@/lib/payments";
-import { isLocalTestMode } from "@/lib/radar/local-test";
+import { sourceCanAlert } from "@/lib/radar/inventory-feed-auth";
 
 const input = z.object({ email: z.email().max(254).transform(v => v.toLowerCase().trim()), itemId: z.string().min(1).max(100), variantId: z.string().min(1).max(100), sourceIds: z.array(z.string().min(1).max(100)).min(1).max(10), planId: z.string().min(1).max(30) }).strict();
 export async function POST(request: Request) {
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
       await tx.$queryRaw`SELECT true AS locked FROM pg_advisory_xact_lock(hashtextextended(${`radar-checkout:${value.email}`}, 0))`;
       const sources = await tx.radarSource.findMany({ where: { id: { in: value.sourceIds }, itemId: value.itemId, variantId: value.variantId, item: { hidden: false } } });
       if (sources.length !== value.sourceIds.length) throw new HttpError(400, "Choose retailers for the selected item and variant.");
-      if (sources.some(s => s.status !== "active" || !s.approved || s.connector === "mock" || (s.connector === "local-test" && !isLocalTestMode()))) throw new HttpError(503, "These retailers are not connected yet. You can browse stock for free while tracking is being set up.");
+      if (sources.some(source => !sourceCanAlert(source))) throw new HttpError(503, "These retailers are not connected yet. You can browse stock for free while tracking is being set up.");
       const user = await tx.radarUser.upsert({ where: { email: value.email }, create: { email: value.email }, update: {} });
       const existing = await tx.radarSubscription.findFirst({ where: { userId: user.id, plan: { type: { not: "free" } }, status: "active", currentPeriodEnd: { gt: new Date() } }, orderBy: { createdAt: "desc" } });
       if (existing) {

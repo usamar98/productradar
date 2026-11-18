@@ -3,6 +3,8 @@ import { prisma } from "../src/lib/db";
 import { lookupZip, nearbyStores } from "../src/lib/radar/locations";
 import { officialConnectorNames } from "../src/lib/radar/official-connectors";
 import { officialCatalog } from "../src/lib/radar/official-catalog";
+import { feedBrands, feedSecret } from "../src/lib/radar/inventory-feed-auth";
+import { emailReadiness } from "../src/lib/radar/email";
 import type { Prisma } from "@prisma/client";
 
 const args = process.argv.slice(2);
@@ -53,5 +55,9 @@ try {
     if (missing.length) process.exitCode = 1;
   }
   const summary = await prisma.radarSource.groupBy({ by: ["connector", "status", "approved"], where: { connector: { in: [...officialConnectorNames] } }, _count: { _all: true } });
-  console.log(JSON.stringify({ officialSources: summary, emailCredentialsPresent: !!(process.env.RESEND_API_KEY && process.env.EMAIL_FROM), note: "Configuration is not proof of working live inventory or email delivery. No retailer requests or alerts are sent by this status report." }));
+  const feeds = await Promise.all(feedBrands.map(async brand => {
+    const records = await prisma.radarSource.aggregate({ where: { connector: "inventory-" + brand, status: "feed" }, _count: true, _max: { lastCheckedAt: true } });
+    return { brand, signingKeyConfigured: !!feedSecret(brand), sources: records._count, lastObservation: records._max.lastCheckedAt };
+  }));
+  console.log(JSON.stringify({ officialSources: summary, feeds, email: emailReadiness().mode, emailCredentialsPresent: !!(process.env.RESEND_API_KEY && process.env.EMAIL_FROM), note: "Configuration status only. This command does not check stock or send email." }));
 } finally { await prisma.$disconnect(); }

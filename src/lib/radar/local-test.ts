@@ -53,13 +53,14 @@ export async function readLocalStock(sourceId: string): Promise<boolean> {
 
 // Only the lab web process writes signals. The worker only reads the atomic file.
 let pendingWrite: Promise<void> = Promise.resolve();
-export function setLocalStock(sourceId: string, inStock: boolean): Promise<void> {
+export function setLocalStock(sourceId: string, inStock: boolean, options: { initializeOnly?: boolean } = {}): Promise<void> {
   assertLocalTestMode();
   assertSourceId(sourceId);
   if (typeof inStock !== "boolean") throw new Error("Local stock status must be a boolean.");
   const operation = pendingWrite.catch(() => {}).then(async () => {
     assertLocalTestMode();
     const signals = await readSignals(true);
+    if (options.initializeOnly && Object.hasOwn(signals, sourceId)) return;
     signals[sourceId] = inStock;
     const target = stockPath();
     const temporary = `${target}.${process.pid}.${randomUUID()}.tmp`;

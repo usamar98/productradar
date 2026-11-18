@@ -70,9 +70,11 @@ refund.failed
 
 Enable cancellation in the Stripe Customer Portal. The account dashboard opens an owned portal session. Webhooks verify signatures and commit event markers with payment/subscription changes atomically. Database locks serialize concurrent updates; current Stripe state handles delayed events. A success redirect never grants access. Full refunds of the current paid period deactivate alerts. Renewals restore access only after a confirmed paid period. Refund requests are handled manually in Stripe under the editable 14-day policy; each refund retains its original date for reporting.
 
-Checkout requires configured transactional email (or the explicit development-only local inbox), a secure session secret, and active approved sources. Placeholder retailers cannot be purchased. After checkout, customers request a secure email link to manage alerts and enable push. Login links last 10 minutes and are single use; sessions last 30 days. Notification clicks record `caught_at`; for one-time passes, clicking ends the pass even if the customer does not purchase. This is explained in the interface and terms. Set `STRIPE_PORTAL_CONFIGURATION_ID` to use a specific test portal configuration.
+Checkout requires configured transactional email (or the explicit development-only local inbox), a secure session secret, and a connected inventory feed or approved polling source. Placeholder retailers cannot be purchased. After checkout, customers request a secure email link to manage alerts and enable push. Login links last 10 minutes and are single use; sessions last 30 days. Notification clicks record `caught_at`; for one-time passes, clicking ends the pass even if the customer does not purchase. This is explained in the interface and terms. Set `STRIPE_PORTAL_CONFIGURATION_ID` to use a specific test portal configuration.
 
 ## Email and browser push
+
+The local lab exercises verified signup and a signed inventory update for a MacBook Air pickup, a PS5 Pro and an RTX 5090. Run `npm run test:alerts:local` with the lab running. Supplier configuration, the webhook contract and customer email delivery are documented in [Restock email setup](docs/restock-emails.md).
 
 Set `RESEND_API_KEY` and `EMAIL_FROM` using a verified sending domain. Set `SUPPORT_EMAIL` separately. Generate VAPID keys with `npx web-push generate-vapid-keys`, and set `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`. Share `RADAR_AUTH_SECRET` and `APP_URL` between the worker and web app. Public VAPID changes require rebuilding.
 

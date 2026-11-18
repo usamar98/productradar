@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Gamepad2, Radio, Smartphone } from "lucide-react";
+import { sourceCanAlert } from "@/lib/radar/inventory-feed-auth";
 import { sourceState, type PublicItem } from "@/lib/radar/catalog";
 import { getProductContent } from "@/lib/radar/product-content";
 import { productVisuals } from "@/lib/radar/product-visuals";
@@ -19,7 +20,7 @@ export function ProductIllustration({ item }: { item: PublicItem }) {
 export function ProductCards({ items }: { items: PublicItem[] }) {
   return <div className={styles.cards}>{items.filter(item => !item.hidden).map(item => {
     const content = getProductContent(item.slug);
-    const connected = item.sources.filter(source => source.approved && source.status === "active").length;
+    const connected = item.sources.filter(sourceCanAlert).length;
     const freshInStock = item.sources.filter(source => sourceState(source).tone === "green").length;
     return <article className={styles.card} data-product={item.slug} key={item.id}>
       <Link className={styles.artLink} href={`/${item.slug}`} aria-label={`View ${item.name} stock tracker`}><ProductIllustration item={item}/></Link>

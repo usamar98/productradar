@@ -87,7 +87,7 @@ function launchContent(product: LaunchProduct): ProductContent {
     brand: brands[product.brand].name,
     reviewedAt: "2026-11-17",
     coverage: officialCatalog.some(mapping => mapping.itemSlug === product.slug)
-      ? `${product.name} has ${officialCatalog.filter(mapping => mapping.itemSlug === product.slug).length} exact configurations connected to direct official stock checks. ${product.brand === "apple" ? "Search a US ZIP to check pickup at nearby Apple Stores. Custom configurations that Apple does not return are identified separately." : "Check the official US online store; delivery eligibility is confirmed at checkout."} Automatic alerts are not enabled.`
+      ? `${product.name} has ${officialCatalog.filter(mapping => mapping.itemSlug === product.slug).length} exact configurations connected to direct official stock checks. ${product.brand === "apple" ? "Search a US ZIP to check pickup at nearby Apple Stores. Custom configurations that Apple does not return are identified separately." : "Check the official US online store; delivery eligibility is confirmed at checkout."} Choose a connected store or listing to get automatic restock emails.`
       : `${product.name} has ${product.variants.length} documented configurations. This product has no verified direct inventory listing yet. Use the manufacturer link to check the exact configuration.`,
     officialLinks: [
       { label: `${product.name} official product information`, url: product.officialUrl },
@@ -115,7 +115,7 @@ export const productContent: Record<string, ProductContent> = {
     summary: "Meet NVIDIA GeForce RTX 5090 Founders Edition. Explore 32GB GDDR7 memory, Blackwell architecture and exact retailer links for your next PC build.",
     brand: "NVIDIA",
     reviewedAt: "2026-11-17",
-    coverage: "This tracker covers the RTX 5090 Founders Edition with 32GB GDDR7. The free checker requests NVIDIA’s own US product API for this exact card. Automatic alerts are not enabled; retailer links are also available for manual checks. Partner cards, bundles and other GeForce models are not interchangeable with this configuration.",
+    coverage: "This tracker covers the RTX 5090 Founders Edition with 32GB GDDR7. The free checker requests NVIDIA’s own US product API for this exact card. Connected listings offer restock emails. Retailer links are also available for manual checks. Partner cards, bundles and other GeForce models are not interchangeable with this configuration.",
     officialLinks: [
       { label: "NVIDIA GeForce RTX 5090 specifications", url: "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/" },
       { label: "RTX 5090 Founders Edition at NVIDIA Marketplace", url: "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5090-founders-edition/" },
@@ -131,7 +131,7 @@ export const productContent: Record<string, ProductContent> = {
       { heading: "Start with the exact card", body: "Founders Edition is a specific RTX 5090 configuration. A partner-manufactured RTX 5090 is a different product even when it uses the same GPU and memory capacity. Check the manufacturer and full model name in the retailer's basket. This page keeps the Founders Edition links together so your selected card remains consistent." },
       { heading: "Check your system before your basket", body: "Compare your chassis space, cooling layout, power supply and cable routing with the manufacturer's installation guidance. Leave room for the specified connectors and follow the cable maker's instructions. Review the requirements for the complete PC, especially if you are replacing a smaller or lower-power graphics card." },
       { heading: "Compare offers on equal terms", body: "Separate new, refurbished and open-box listings, and verify who sells and fulfills the order. Shipping, taxes and bundled components affect the final price. The retailer's checkout is the authority for current availability, fulfillment and purchase terms; Restock Radar does not place an order on your behalf." },
-      { heading: "Use observed stock when it becomes available", body: "The free checker requests the exact Founders Edition offer from NVIDIA’s product API. It keeps NVIDIA’s own stock separate from other retailers and marks conflicting responses unknown. Compare each observation’s timestamp with the retailer’s current page; these checks do not enable automatic alerts. Recorded restocks describe the past and cannot guarantee a future shipment." },
+      { heading: "Use observed stock when it becomes available", body: "The free checker requests the exact Founders Edition offer from NVIDIA’s product API. It keeps NVIDIA’s own stock separate from other retailers and marks conflicting responses unknown. Compare each observation’s timestamp with the retailer’s current page. Listings with ongoing inventory updates also offer restock emails. Recorded restocks describe the past and cannot guarantee a future shipment." },
     ],
   },
   "playstation-5-pro": {
@@ -182,7 +182,7 @@ export const productContent: Record<string, ProductContent> = {
     brand: "Apple",
     reviewedAt: "2026-11-17",
     coverage:
-      "The free ZIP checker requests pickup availability directly from Apple for the selected iPhone Duo configuration. Each result matches an exact part and Apple Store. Unreturned stores remain unknown, and automatic alerts are not enabled. Delivery dates and future restocks are not inferred from pickup results.",
+      "The free ZIP checker requests pickup availability directly from Apple for the selected iPhone Duo configuration. Each result matches an exact part and Apple Store. Stores with ongoing inventory updates offer restock emails. Other stores show the latest available check. Delivery dates and future restocks are not inferred from pickup results.",
     officialLinks: [
       {
         label: "Apple iPhone Duo specifications",

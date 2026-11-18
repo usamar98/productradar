@@ -5,7 +5,7 @@ import { ArrowRight, Bell, LocateFixed, MapPin, Search } from "lucide-react";
 import styles from "./stock-finder.module.css";
 
 type Item = { slug: string; name: string; brand?: string; variants: { slug: string; label: string }[] };
-type Reading = { reason?: string | null; canCheckStore?: boolean; onDemand?: boolean; sourceId: string | null; state: string; label: string; alertable: boolean; lastCheckedAt: string | null; simulated: boolean };
+type Reading = { reason?: string | null; canCheckStore?: boolean; onDemand?: boolean; sourceId: string | null; state: string; label: string; alertable: boolean; lastCheckedAt: string | null; expiresAt?: number | null; simulated: boolean };
 type Store = Reading & { id: string; name: string; address: string; city: string; region: string; postalCode: string; distance: number | null; url: string; latitude: number; longitude: number };
 function isStore(reading: Reading & {name: string; url: string}): reading is Store { return "address" in reading; }
 type Connection = { onDemand?: boolean; name: string; state: string; message: string; scope: string; url?: string };
@@ -31,8 +31,7 @@ export function NearbyStock({ item, variant, initialZip = "", defaultMode = "pic
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | undefined;
     const expiries = [...(result?.stores || []), ...(result?.retailers || [])]
-      .filter(reading => reading.onDemand && reading.lastCheckedAt)
-      .map(reading => new Date(reading.lastCheckedAt!).getTime() + 60_001);
+      .flatMap(reading => reading.expiresAt ? [reading.expiresAt + 1] : []);
     function update() {
       const now = Date.now(); setDisplayTime(now);
       const next = Math.min(...expiries.filter(time => time > now));
@@ -69,7 +68,7 @@ export function NearbyStock({ item, variant, initialZip = "", defaultMode = "pic
   function submit(event: FormEvent) { event.preventDefault(); void run(); }
   const alertUrl = (sourceId: string) => `/alerts?${new URLSearchParams({ item, variant, source: sourceId, plan: "free", ...(zip ? { zip } : {}) })}`;
   const readings = (result?.mode === "pickup" ? result.stores : result?.retailers || []).map(reading =>
-    reading.onDemand && reading.lastCheckedAt && displayTime - new Date(reading.lastCheckedAt).getTime() > 60_000
+    reading.expiresAt && displayTime > reading.expiresAt
       ? { ...reading, state: "stale", label: "Check again for current stock" } : reading);
   const matching = readings?.filter(reading => !onlyStock || reading.state === "in_stock") || [];
   const shown = matching.slice(0, visibleLimit);

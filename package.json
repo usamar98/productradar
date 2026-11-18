@@ -14,6 +14,7 @@
     "worker:once": "tsx worker/index.ts --once",
     "local-test:setup": "tsx scripts/local-test-setup.ts",
     "local-test": "node scripts/local-test-run.mjs",
+    "test:alerts:local": "tsx scripts/test-restock-emails.ts",
     "stripe:listen": "node scripts/stripe-local.mjs",
     "stripe:listen:local-test": "node scripts/stripe-local.mjs --lab",
     "db:generate": "prisma generate",
