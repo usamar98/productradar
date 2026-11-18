@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { apiError, HttpError, readJson } from "@/lib/security";
 import { assertRadarOrigin, createLoginToken, createSessionToken, hashToken, radarOrigin, radarSecret, RADAR_COOKIE, rateLimit, verifyLoginToken } from "@/lib/radar/access";
-import { emailReadiness, sendRadarEmail } from "@/lib/radar/email";
+import { assertEmailRecipient, emailReadiness, sendRadarEmail } from "@/lib/radar/email";
 import { assertLocalRequest } from "@/lib/radar/local-mode";
 
 export async function POST(request: Request) {
@@ -13,6 +13,7 @@ export async function POST(request: Request) {
     if (!emailMode.ready) throw new HttpError(503, "Email sign-in is not connected yet. Please check back soon.");
     if (emailMode.mode === "local") assertLocalRequest(request);
     const { email } = await readJson(request, z.object({ email: z.email().max(254).transform(v => v.toLowerCase().trim()) }).strict());
+    assertEmailRecipient(email);
     await rateLimit(`login:${email}`, 3, 600);
     const user = await prisma.radarUser.findUnique({ where: { email } });
     if (user) {

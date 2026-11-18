@@ -2,6 +2,7 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 import { HttpError } from "../security";
 import { isLocalMailboxEnabled } from "./local-mode";
 import { isLocalTestMode } from "./local-test";
+import { partnerizeStockConfig, sonyPartnerRetailer } from "./partnerize-config";
 
 export const feedBrands = ["apple", "playstation", "nvidia"] as const;
 export type FeedBrand = typeof feedBrands[number];
@@ -24,6 +25,7 @@ export function sourceCanAlert(source: { status: string; approved: boolean; conn
   if (source.connector === "mock") return false;
   if (source.connector === "local-test" && !isLocalTestMode()) return false;
   if (source.status !== "feed") return source.status === "active" && source.approved;
+  if (source.connector === "inventory-playstation" && source.retailer === sonyPartnerRetailer) return !!partnerizeStockConfig();
   const brand = source.connector === "local-test"
     ? feedBrands.find(value => source.retailer?.startsWith("feed-" + value + "-") || source.retailer === "feed-" + value)
     : feedBrands.find(value => source.connector === "inventory-" + value);

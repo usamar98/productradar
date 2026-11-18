@@ -6,6 +6,7 @@ import { isLocalTestMode } from "./local-test";
 import { storeDirectory } from "./locations";
 import { officialCatalogProduct } from "./official-catalog";
 import { recordStockPeriod } from "./stock-period";
+import { sonyPartnerRetailer } from "./partnerize-config";
 
 const slug = z.string().min(1).max(100);
 const report = z.object({
@@ -27,13 +28,18 @@ export function inventoryReport(brand: FeedBrand, value: unknown, now = Date.now
   return { input, observedAt, product, store };
 }
 
-export async function receiveInventory(brand: FeedBrand, value: unknown, database = prisma) {
+export async function receiveInventory(brand: FeedBrand, value: unknown, database = prisma, partnerLease?: Date) {
   const { input, observedAt, product, store } = inventoryReport(brand, value);
   const local = isLocalTestMode();
-  const retailer = "feed-" + (store?.id || brand);
+  if (partnerLease && (local || brand !== "playstation")) throw new HttpError(400, "This feed covers PlayStation Direct US online stock.");
+  const retailer = partnerLease ? sonyPartnerRetailer : "feed-" + (store?.id || brand);
   const connector = local ? "local-test" : "inventory-" + brand;
   const label = (store?.name || (brand === "nvidia" ? "NVIDIA Marketplace" : "PlayStation Direct")) + (local ? " · LOCAL TEST" : "");
   return database.$transaction(async tx => {
+    if (partnerLease) {
+      const [sync] = await tx.$queryRaw<{ blocked: boolean; leaseUntil: Date | null }[]>`SELECT blocked, "leaseUntil" FROM inventory_feed_sync WHERE id = ${sonyPartnerRetailer} FOR SHARE`;
+      if (!sync || sync.blocked || sync.leaseUntil?.getTime() !== partnerLease.getTime() || partnerLease.getTime() <= Date.now()) throw new HttpError(409, "The partner sync lease expired.");
+    }
     const variant = await tx.radarVariant.findFirst({ where: { slug: input.variant, item: { slug: input.item, hidden: false } }, select: { id: true, itemId: true } });
     if (!variant) throw new HttpError(422, "This configuration is unavailable in the catalog.");
     // Serialize the initial insert as well as observations from concurrent supplier retries.

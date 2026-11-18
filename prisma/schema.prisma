@@ -460,3 +460,13 @@ model RadarWebhookEvent {
   createdAt DateTime @default(now())
   @@map("webhook_events")
 }
+
+model RadarFeedSync {
+  id String @id
+  blocked Boolean @default(false)
+  nextCheckAt DateTime @default(now())
+  leaseUntil DateTime?
+  revision String?
+  message String?
+  @@map("inventory_feed_sync")
+}

@@ -5,12 +5,14 @@ import { apiError, HttpError, readJson } from "@/lib/security";
 import { assertRadarOrigin, cookieToken, rateLimit, sessionUserId } from "@/lib/radar/access";
 import { createPaymentCheckout, paymentReadiness } from "@/lib/payments";
 import { sourceCanAlert } from "@/lib/radar/inventory-feed-auth";
+import { assertEmailRecipient } from "@/lib/radar/email";
 
 const input = z.object({ email: z.email().max(254).transform(v => v.toLowerCase().trim()), itemId: z.string().min(1).max(100), variantId: z.string().min(1).max(100), sourceIds: z.array(z.string().min(1).max(100)).min(1).max(10), planId: z.string().min(1).max(30) }).strict();
 export async function POST(request: Request) {
   try {
     assertRadarOrigin(request);
     const value = await readJson(request, input);
+    assertEmailRecipient(value.email);
     const plan = getPlan(value.planId);
     if (!plan) throw new HttpError(400, "Choose a valid plan.");
     try { assertPlanLimits({ alertLimit: 10 }, value.sourceIds); } catch (error) { throw new HttpError(400, (error as Error).message); }

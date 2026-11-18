@@ -30,7 +30,7 @@ export async function validatePublicUrl(value: string) {
 }
 
 /** Pin the validated DNS result to the connection to prevent DNS rebinding. */
-export async function safeFetch(value: string, redirects = 0, allowRedirects = true): Promise<{ status: number; text: string; location?: string }> {
+export async function safeFetch(value: string, redirects = 0, allowRedirects: boolean | "publisher-file" = true): Promise<{ status: number; text: string; location?: string }> {
   if (redirects > 3) throw new Error("Too many source redirects.");
   const { url, address } = await validatePublicUrl(value);
   const response = await new Promise<{ status: number; text: string; location?: string }>((resolve, reject) => {
@@ -51,8 +51,8 @@ export async function safeFetch(value: string, redirects = 0, allowRedirects = t
   if ([301, 302, 303, 307, 308].includes(response.status) && response.location) {
     if (!allowRedirects) throw new BlockedSourceError("Product URL redirects; review the final exact URL and its robots policy before enabling.");
     const next = new URL(response.location, url);
-    // Each origin needs an independent terms/robots assessment; do not follow away from it.
-    if (next.origin !== url.origin) throw new BlockedSourceError("Source redirects to another origin; review its URL and permission.");
+    // An authenticated publisher's file may live on a CDN. Every hop still uses a public, pinned HTTPS address.
+    if (next.origin !== url.origin && allowRedirects !== "publisher-file") throw new BlockedSourceError("Source redirects to another origin; review its URL and permission.");
     return safeFetch(next.href, redirects + 1, allowRedirects);
   }
   return response;

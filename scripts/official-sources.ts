@@ -5,6 +5,7 @@ import { officialConnectorNames } from "../src/lib/radar/official-connectors";
 import { officialCatalog } from "../src/lib/radar/official-catalog";
 import { feedBrands, feedSecret } from "../src/lib/radar/inventory-feed-auth";
 import { emailReadiness } from "../src/lib/radar/email";
+import { partnerizeStockConfig, sonyPartnerRetailer } from "../src/lib/radar/partnerize-config";
 import type { Prisma } from "@prisma/client";
 
 const args = process.argv.slice(2);
@@ -59,5 +60,8 @@ try {
     const records = await prisma.radarSource.aggregate({ where: { connector: "inventory-" + brand, status: "feed" }, _count: true, _max: { lastCheckedAt: true } });
     return { brand, signingKeyConfigured: !!feedSecret(brand), sources: records._count, lastObservation: records._max.lastCheckedAt };
   }));
-  console.log(JSON.stringify({ officialSources: summary, feeds, email: emailReadiness().mode, emailCredentialsPresent: !!(process.env.RESEND_API_KEY && process.env.EMAIL_FROM), note: "Configuration status only. This command does not check stock or send email." }));
+  const partnerSync = await prisma.radarFeedSync.findUnique({ where: { id: sonyPartnerRetailer }, select: { blocked: true, nextCheckAt: true, message: true } });
+  const email = emailReadiness().mode;
+  console.log(JSON.stringify({ officialSources: summary, feeds, playstationPartner: { configured: !!partnerizeStockConfig(), scheduler: partnerSync },
+    email, emailCredentialsPresent: email === "resend", note: "Configuration status only. This command does not check stock or send email." }));
 } finally { await prisma.$disconnect(); }

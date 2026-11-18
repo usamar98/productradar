@@ -7,6 +7,7 @@ import { ADMIN_COOKIE, adminLoginLimit, adminToken, checkAdminPassword, requireA
 import { isOfficialConnector, officialMinPollSeconds, validateOfficialSource } from "@/lib/radar/official-connectors";
 import { isInventoryFeedSource } from "@/lib/radar/source-types";
 import { sourceCanAlert } from "@/lib/radar/inventory-feed-auth";
+import { sonyPartnerRetailer } from "@/lib/radar/partnerize-config";
 
 const url = z.string().url().max(2048).refine(value => { const u = new URL(value); return u.protocol === "https:" && !u.username && !u.password && !u.port && u.hostname.includes(".") && !/localhost|\.local$|\.internal$/.test(u.hostname); }, "Use a public HTTPS URL.");
 const input = z.discriminatedUnion("action", [
@@ -61,7 +62,8 @@ export async function POST(request: Request) {
       });
       if (data.action === "resume-feed") {
         const source = await prisma.radarSource.findUnique({ where: { id: data.id } });
-        if (!source || !isInventoryFeedSource(source) || !sourceCanAlert({ ...source, status: "feed" })) throw new HttpError(409, "Configure this supplier's signing key before resuming its feed.");
+        if (!source || !isInventoryFeedSource(source) || !sourceCanAlert({ ...source, status: "feed" })) throw new HttpError(409, "Connect this inventory provider before resuming its feed.");
+        if (source.retailer === sonyPartnerRetailer && (await prisma.radarFeedSync.findUnique({ where: { id: sonyPartnerRetailer } }))?.blocked) throw new HttpError(409, "Restore campaign feed access before resuming this product.");
         await prisma.radarSource.updateMany({ where: { id: source.id, status: "paused" }, data: { status: "feed", approved: false, lastCheckedAt: new Date() } });
       }
       if (data.action === "cost") await prisma.radarCost.create({ data: { label: data.label, amountCents: data.amountCents, category: data.category, incurredAt: new Date(data.incurredAt) } });

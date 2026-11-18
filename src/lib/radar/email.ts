@@ -5,6 +5,7 @@ import { setTimeout } from "node:timers/promises";
 import { Resend } from "resend";
 import { HttpError } from "@/lib/security";
 import { isLocalMailboxEnabled } from "@/lib/radar/local-mode";
+import { localSenderConnected, localSenderToken } from "./resend-local";
 
 export type RadarEmail = { to: string; subject: string; text: string; html?: string };
 export type CapturedEmail = { id: string; to: string; subject: string; text: string; createdAt: string };
@@ -17,7 +18,7 @@ export function emailReadiness(): { ready: boolean; mode: "local" | "resend" | n
   if (isLocalMailboxEnabled()) return { ready: true, mode: "local", message: "Local inbox — messages are captured, not emailed." };
   // An unsafe local-mode configuration must not accidentally send real email.
   if (process.env.RADAR_LOCAL_MAILBOX === "true") return { ready: false, mode: null, message: "Local email capture is available only in development on a loopback address." };
-  if (process.env.RESEND_API_KEY && process.env.EMAIL_FROM) return { ready: true, mode: "resend", message: "Email delivery is connected." };
+  if ((process.env.RESEND_API_KEY || localSenderConnected()) && process.env.EMAIL_FROM) return { ready: true, mode: "resend", message: "Email delivery is connected." };
   return { ready: false, mode: null, message: "Email delivery is not connected yet." };
 }
 
@@ -99,7 +100,18 @@ export async function sendRadarEmail(message: RadarEmail, options: { idempotency
   const readiness = emailReadiness();
   if (!readiness.ready) throw new HttpError(503, readiness.message);
   if (readiness.mode === "local") return captureEmail(message, options.idempotencyKey);
-  const result = await new Resend(process.env.RESEND_API_KEY!).emails.send({ from: process.env.EMAIL_FROM!, ...message }, options.idempotencyKey ? { idempotencyKey: options.idempotencyKey } : undefined);
-  if (result.error || !result.data?.id) throw new HttpError(503, "Email provider did not accept the message. Please retry.");
+  assertEmailRecipient(message.to);
+  const credential = process.env.RESEND_API_KEY || await localSenderToken();
+  const result = await new Resend(credential).emails.send({ from: process.env.EMAIL_FROM!, ...message }, options.idempotencyKey ? { idempotencyKey: options.idempotencyKey } : undefined);
+  if (result.error || !result.data?.id) {
+    if (result.error?.statusCode === 403 && process.env.RADAR_RESEND_TEST_TO) throw new HttpError(503, "Resend rejected the sender or recipient. For the test sender, sign in with the same address as the test recipient.");
+    if (result.error?.statusCode === 401) throw new HttpError(503, "Resend could not authenticate the sender. Reconnect the email account.");
+    throw new HttpError(503, "Email provider did not accept the message. Please retry.");
+  }
   return { id: result.data.id, captured: false };
+}
+
+export function assertEmailRecipient(to: string) {
+  const owner = process.env.RADAR_RESEND_TEST_TO?.trim().toLowerCase();
+  if (owner && !isLocalMailboxEnabled() && to.trim().toLowerCase() !== owner) throw new HttpError(503, "Email delivery is currently limited to the Resend account owner's test.");
 }

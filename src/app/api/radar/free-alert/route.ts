@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { apiError, HttpError, readJson } from "@/lib/security";
 import { assertRadarOrigin, cookieToken, createSessionToken, hashToken, radarOrigin, radarSecret, RADAR_COOKIE, rateLimit, sessionUserId } from "@/lib/radar/access";
 import { confirmFreeAlert, requestFreeAlert } from "@/lib/radar/free-alert";
-import { emailReadiness, sendRadarEmail } from "@/lib/radar/email";
+import { assertEmailRecipient, emailReadiness, sendRadarEmail } from "@/lib/radar/email";
 import { assertLocalRequest } from "@/lib/radar/local-mode";
 
 const input = z.object({ email: z.email().max(254).transform(value => value.toLowerCase().trim()), itemId: z.string().min(1).max(100), variantId: z.string().min(1).max(100), sourceIds: z.array(z.string().min(1).max(100)).length(1) }).strict();
@@ -14,6 +14,7 @@ export async function POST(request: Request) {
     if (!mode.ready) throw new HttpError(503, "Email verification is not connected yet. Your free alert has not been used.");
     if (mode.mode === "local") assertLocalRequest(request);
     const value = await readJson(request, input);
+    assertEmailRecipient(value.email);
     await rateLimit(`free-alert:${value.email}`, 3, 600);
     await rateLimit(`free-alert-ip:${request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local"}`, 15, 600);
     const result = await requestFreeAlert(value, sessionUserId(cookieToken(request)));

@@ -4,6 +4,16 @@ Customers choose an exact configuration and a retailer. Apple pickup alerts also
 
 ## Run the complete flow locally
 
+### Send a real email to the Resend account owner
+
+In the main app's local `.env`, set `RADAR_RESEND_LOCAL_OAUTH=true`, `RADAR_LOCAL_MAILBOX=false`, `EMAIL_FROM="Restock Radar <onboarding@resend.dev>"` and `RADAR_RESEND_TEST_TO` to the email you use to sign in to Resend. Run `npm run email:connect`, open the printed loopback link, and approve the send-only grant. The local web app and worker share the encrypted grant under `.local` and renew it on use. If access was revoked, run `npm run email:connect -- --reconnect`. [Resend OAuth](https://resend.com/docs/guides/building-a-resend-oauth-client)
+
+Run `npm run email:test` to send the account owner one delivery test per UTC day. The message identifies the original official-store observation time if one is available. The command prints Resend's acceptance ID. The `--dry-run` option previews the selected observation and `--wait` waits for an open authorization session. To send to customers, use the verified sender and server credentials described below. [Resend default sender](https://resend.com/docs/knowledge-base/403-error-resend-dev-domain)
+
+For a single-step owner delivery test, `npm run email:setup` keeps a connection link open at `http://127.0.0.1:3424/connect` until you authorize. It sends the dated test immediately after approval and reports the result in the browser.
+
+### Exercise simulated restocks in the local inbox
+
 Start PostgreSQL and configure the isolated database and loopback settings described in [local testing](local-testing.md). In two terminals, run the following commands.
 
 ```sh

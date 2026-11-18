@@ -2,6 +2,16 @@
 
 The stock finder now connects directly to public Apple pickup, PlayStation Direct and NVIDIA product APIs. These integrations do not use Best Buy or the competitor's inventory. A lookup records the response's actual observation time; automatic monitoring and external alert delivery are separate capabilities.
 
+## Background inventory for US stores
+
+Apple pickup and NVIDIA's US Founders Edition listings support shopper-initiated checks in this project. Their public website terms restrict automated monitoring. A merchant-supplied inventory stream can report changes through the existing signed endpoint without any visitor traffic. [Apple website terms](https://www.apple.com/legal/internet-services/terms/site.html) · [NVIDIA website terms](https://www.nvidia.com/en-us/about-nvidia/terms-of-service/) · [Inventory webhook](restock-emails.md)
+
+PlayStation Direct offers approved partners a product feed. After joining the US campaign, set `PARTNERIZE_APPLICATION_KEY`, `PARTNERIZE_USER_API_KEY`, `PARTNERIZE_PUBLISHER_ID` and `PARTNERIZE_PLAYSTATION_CAMPAIGN_ID` in the web app and worker environments. Run `npm run sources:playstation -- --list` to list the active feeds available to that publisher. Download links and credentials stay private. [PlayStation Direct partner program](https://direct.playstation.com/en-us/playstation-affiliate-programme) · [Partnerize feed discovery API](https://api-docs.partnerize.com/partner/)
+
+Select the US feed in `PARTNERIZE_PLAYSTATION_FEED_ID`. Set `PARTNERIZE_STOCK_COLUMNS` to a JSON object mapping `sku`, `link`, `availability` and `observedAt` to the actual merchant headers. If the feed uses different stock values, also map `inStock` and `outOfStock` to those exact strings. `observedAt` must be the merchant's inventory timestamp with a timezone. Confirm the feed provides explicit orderable stock for the exact Sony SKU before mapping the fields. Partnerize preserves the merchant's file format. This importer reads uncompressed CSV, TSV and PSV files up to 2 MB. [Partnerize feed formats](https://help.phgsupport.com/hc/en-us/articles/5274612958621-Onboarding-FAQ-s)
+
+Apply migrations and run the worker. It discovers the assigned feed at the configured interval (five minutes by default), matches both SKU and US store link and records observations up to five minutes old. Feed processing time identifies a file edition. It cannot establish when Sony observed stock. A missing row, unknown stock value, stale timestamp or first in-stock snapshot cannot trigger a restock alert. Per-product pauses persist. `npm run sources:playstation` shows the scheduler result. After the provider restores access or a changed file schema has been reviewed, `npm run sources:playstation -- --resume` establishes a new baseline.
+
 ## What Store Stock Checker reveals
 
 Its [terms](https://storestockchecker.com/legal) describe checking Apple's online store for the selected product and store's pickup availability. Its [public client](https://storestockchecker.com/app.js) calls its own catalog, store and stock APIs. The upstream collector is private: neither its specific Apple endpoint nor its permission arrangements can be established from that client. Polling Apple's pickup data and caching results is a plausible implementation, not a verified description of its backend. No competitor inventory API is reused.

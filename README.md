@@ -74,6 +74,8 @@ Checkout requires configured transactional email (or the explicit development-on
 
 ## Email and browser push
 
+For an owner-only email from the main local app, set `RADAR_RESEND_LOCAL_OAUTH=true`, `RADAR_LOCAL_MAILBOX=false`, `EMAIL_FROM="Restock Radar <onboarding@resend.dev>"` and `RADAR_RESEND_TEST_TO` to your Resend account email. Run `npm run email:connect` and approve the browser prompt. Then run `npm run email:test` to send a dated delivery test. Run `npm run email:test -- --dry-run` to inspect the selected observation.
+
 The local lab exercises verified signup and a signed inventory update for a MacBook Air pickup, a PS5 Pro and an RTX 5090. Run `npm run test:alerts:local` with the lab running. Supplier configuration, the webhook contract and customer email delivery are documented in [Restock email setup](docs/restock-emails.md).
 
 Set `RESEND_API_KEY` and `EMAIL_FROM` using a verified sending domain. Set `SUPPORT_EMAIL` separately. Generate VAPID keys with `npx web-push generate-vapid-keys`, and set `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`. Share `RADAR_AUTH_SECRET` and `APP_URL` between the worker and web app. Public VAPID changes require rebuilding.
