@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Bell } from "lucide-react";
 import { BrandDirectory } from "@/components/radar/brand-directory";
+import { FeaturedStockTables } from "@/components/radar/featured-stock-tables";
 import { HomeHero } from "@/components/radar/home-hero";
-import { DataNotice, EventLog, FAQ, HowItWorks, Pricing, RetailerTable } from "@/components/radar/public";
+import { EventLog, FAQ, HowItWorks, Pricing } from "@/components/radar/public";
 import { ZipSearchEntry } from "@/components/radar/zip-search-entry";
-import { getCatalog, sourceState } from "@/lib/radar/catalog";
+import { getCatalog } from "@/lib/radar/catalog";
+import { featuredAvailability } from "@/lib/radar/featured-availability";
 import { isCatalogPublished, pageMetadata } from "@/lib/radar/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -25,8 +27,7 @@ export default async function HomePage() {
   const catalog = await getCatalog();
   const published = new Set(catalog.items.map(product => product.slug));
   const item = catalog.items.find(product => product.slug === "playstation-5-pro") || catalog.items[0];
-  const checked = item.sources.filter(source => source.lastCheckedAt);
-  const inStock = item.sources.filter(source => sourceState(source).tone === "green");
+  const now = Date.now();
 
   return (
     <>
@@ -40,21 +41,7 @@ export default async function HomePage() {
           </div>
           <BrandDirectory />
         </section>
-        <section className="rr-section rr-stock-section" id="retailers">
-          <div className="rr-section-heading">
-            <div><h2>{item.name} stock</h2><p>Latest observations by retailer.</p></div>
-            <Link className="rr-text-link" href={`/${item.slug}`}>View product details <ArrowUpRight size={15} /></Link>
-          </div>
-          <DataNotice available={catalog.available} seeded={catalog.seeded} />
-          <RetailerTable item={item} />
-          <div className="rr-stock-bottom">
-            <span>
-              <i className={checked.length ? "rr-dot-connected" : undefined} />
-              {checked.length ? `${inStock.length} of ${item.sources.length} retailers currently reporting in stock` : "Retailer connections are being prepared. No stock data yet."}
-            </span>
-            <Link href={`/${item.slug}/restocks`}>Explore restock patterns <ArrowRight size={14} /></Link>
-          </div>
-        </section>
+        <FeaturedStockTables groups={featuredAvailability(catalog, now)} connected={catalog.available && catalog.seeded} initialTime={now} />
         <div className="rr-activity-grid">
           <section className="rr-panel">
             <div className="rr-panel-heading">

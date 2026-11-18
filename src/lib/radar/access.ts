@@ -44,7 +44,20 @@ export async function radarUser(request: Request) {
   if (!user) throw new HttpError(401, "Your session has expired. Sign in again.");
   return user;
 }
-export function assertRadarOrigin(request: Request) { if (request.headers.get("origin") !== radarOrigin()) throw new HttpError(403, "This request must come from this website."); }
+const loopbackNames = ["localhost", "127.0.0.1", "[::1]"];
+
+export function assertRadarOrigin(request: Request) {
+  const configured = new URL(radarOrigin());
+  const origin = request.headers.get("origin");
+  if (configured.protocol === "http:" && loopbackNames.includes(configured.hostname)) {
+    // The local preview may open at 127.0.0.1. Still require the browser's own host and configured port.
+    const target = new URL(request.url);
+    const host = request.headers.get("host") ?? target.host;
+    const port = configured.port ? `:${configured.port}` : "";
+    if (target.protocol === "http:" && loopbackNames.some(name => host === name + port) && origin === `http://${host}`) return;
+  } else if (origin === configured.origin) return;
+  throw new HttpError(403, "This request must come from this website.");
+}
 
 /** Atomic persistent rate limits work across Vercel instances. Never store raw IP/email. */
 export async function rateLimit(key: string, limit: number, windowSeconds: number) {

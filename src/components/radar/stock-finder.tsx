@@ -2,15 +2,12 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { ArrowRight, Bell, LocateFixed, MapPin, Search } from "lucide-react";
+import type { StockSearchReading as Reading, StockSearchResult, StoreReading as Store } from "@/lib/radar/stock-search-result";
 import styles from "./stock-finder.module.css";
 
 type Item = { slug: string; name: string; brand?: string; variants: { slug: string; label: string }[] };
-type Reading = { reason?: string | null; canCheckStore?: boolean; onDemand?: boolean; sourceId: string | null; state: string; label: string; alertable: boolean; lastCheckedAt: string | null; expiresAt?: number | null; simulated: boolean };
-type Store = Reading & { id: string; name: string; address: string; city: string; region: string; postalCode: string; distance: number | null; url: string; latitude: number; longitude: number };
 function isStore(reading: Reading & {name: string; url: string}): reading is Store { return "address" in reading; }
-type Connection = { onDemand?: boolean; name: string; state: string; message: string; scope: string; url?: string };
 type SearchRequest = { item: string; variant: string; mode: "pickup" | "online"; radius: number; zip?: string; search?: string; latitude?: number; longitude?: number; storeId?: string };
-type Result = { configuration?: { checkable: boolean; label: string | null; reason: string | null; productUrl: string | null } | null; live?: { checkedAt: string; count: number; cached: boolean; lookups: number; warning?: string | null } | null; coverage?: { total: number; checked: number }; liveError?: string | null; connection?: Connection | null; mode: "pickup" | "online"; place?: { zip: string; city: string; region: string } | null; stores: Store[]; retailers?: (Reading & { name: string; url: string })[]; total: number; directoryCount?: number; officialUrl?: string; message?: string };
 export function StockFinder({ items, initialItem, initialVariant, initialZip }: { items: Item[]; initialItem?: string; initialVariant?: string; initialZip?: string }) {
   const first = items.find(item => item.slug === initialItem) || items.find(item => item.slug === "iphone-duo") || items[0];
   const [itemSlug, setItemSlug] = useState(first.slug);
@@ -21,7 +18,7 @@ export function StockFinder({ items, initialItem, initialVariant, initialZip }: 
 export function NearbyStock({ item, variant, initialZip = "", defaultMode = "pickup" }: { item: string; variant: string; initialZip?: string; defaultMode?: "pickup" | "online" }) {
   const [mode, setMode] = useState(defaultMode), [zip, setZip] = useState(initialZip), [search, setSearch] = useState("");
   const [radius, setRadius] = useState(50), [onlyStock, setOnlyStock] = useState(false), [visibleLimit, setVisibleLimit] = useState(30);
-  const [result, setResult] = useState<Result | null>(null), [error, setError] = useState(""), [busy, setBusy] = useState(false);
+  const [result, setResult] = useState<StockSearchResult | null>(null), [error, setError] = useState(""), [busy, setBusy] = useState(false);
   const controller = useRef<AbortController | null>(null);
   const generation = useRef(0);
   const lastSearch = useRef<SearchRequest | null>(null);
