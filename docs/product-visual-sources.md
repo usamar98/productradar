@@ -52,6 +52,16 @@ Original asset URLs:
 
 These photographs depict Founders Edition hardware. They must not be presented as photographs of a different board partner's configuration.
 
+## Homepage product lineup
+
+The three WebP files in `public/images/hero` preserve the manufacturers’ product silhouettes, transparent edges and shadows. The crops remove empty space around each original.
+
+| Asset | Dimensions | Manufacturer photograph |
+| --- | --- | --- |
+| `iphone-duo.webp` | 792 × 520 | Apple's Star White finish image documented above, showing the open iPhone Duo and its rear enclosure. |
+| `ps5-pro.webp` | 645 × 715 | [PlayStation Direct’s PS5 Pro and DualSense photograph](https://media.direct.playstation.com/is/image/sierialto/PS5-Pro-2TB-Hero-1-console-with-dualsense?wid=1200&fmt=png-alpha) |
+| `rtx-5090.webp` | 1076 × 520 | [NVIDIA’s front photograph of the GeForce RTX 5090 Founders Edition](https://assets.nvidia.partners/images/5090_Front_.webp) |
+
 ## Verification
 
-All seven files were opened successfully, image dimensions were checked, and the product identity and composition were visually inspected. Each file is under 700 KB. Asset files were downloaded unchanged from URLs present in the official public pages. No stock endpoint was requested while sourcing this photography. Copyright and trademarks remain with Apple, Sony Interactive Entertainment, and NVIDIA respectively; this source record is attribution, not a claim of ownership or a license grant.
+The seven original product-page files are under 700 KB each. The three homepage crops total 206 KiB. The photographs were inspected for product identity, composition, and dimensions. Copyright and trademarks belong to their respective owners.

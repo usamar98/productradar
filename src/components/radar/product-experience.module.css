@@ -1,9 +1,9 @@
 .experience {
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --ink: #1d1d1f;
-  --muted: #6e6e73;
-  --soft: #f5f5f7;
+  --accent: #171717;
+  --accent-hover: #383838;
+  --ink: #1c1c1c;
+  --muted: #747474;
+  --soft: #f3f3f3;
   background: #fff;
   color: var(--ink);
   overflow: clip;
@@ -15,31 +15,31 @@
   outline-offset: 5px;
 }
 
-.playstation { --accent: #0068bd; --accent-hover: #0057a0; }
-.nvidia { --accent: #76b900; --accent-hover: #8ed600; }
+.playstation { --accent: #171717; --accent-hover: #383838; }
+.nvidia { --accent: #ededed; --accent-hover: #fff; }
 .collectionNav { width: min(1200px, calc(100% - 80px)); margin: 0 auto; padding: 15px 0 22px; }
-.collectionNav > div { display: flex; justify-content: space-between; gap: 20px; font-size: 11px; color: #66666f; }
-.collectionNav > div > a { color: #4d4d57; font-weight: 550; }
+.collectionNav > div { display: flex; justify-content: space-between; gap: 20px; font-size: 11px; color: #686868; }
+.collectionNav > div > a { color: #4d4d4d; font-weight: 550; }
 .collectionNav > div > span { display: flex; align-items: center; gap: 9px; font-size: 10px; }
 .collectionNav nav { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
-.collectionNav nav a { padding: 10px 13px; border: 1px solid #e0e0e6; border-radius: 20px; font-size: 10px; color: #66666f; }
-.collectionNav nav a[aria-current="page"] { background: #1d1d1f; color: #fff; border-color: #1d1d1f; }
-.launchDate { color: #74747c; font-size: 10px; line-height: 1.8; margin-top: 18px; }
-.playstation .launchDate, .nvidia .launchDate { color: #b9c7d9; }
+.collectionNav nav a { padding: 10px 13px; border: 1px solid #dcdcdc; border-radius: 20px; font-size: 10px; color: #686868; }
+.collectionNav nav a[aria-current="page"] { background: #1c1c1c; color: #fff; border-color: #1c1c1c; }
+.launchDate { color: #5b5b5b; font-size: 10px; line-height: 1.8; margin-top: 18px; }
+.playstation .launchDate, .nvidia .launchDate { color: #cdcdcd; }
 .featuresSection { width: min(1200px, calc(100% - 80px)); margin: 0 auto; padding: 85px 0 15px; scroll-margin-top: 100px; }
 .featureCards { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
-.featureCards article { background: #f5f5f7; border-radius: 18px; padding: 28px; }
-.featureCards article > span { font-size: 11px; color: #6f6f78; }
+.featureCards article { background: #f3f3f3; border-radius: 18px; padding: 28px; }
+.featureCards article > span { font-size: 11px; color: #5b5b5b; }
 .featureCards h3 { font-size: 25px; font-weight: 600; letter-spacing: -.7px; line-height: 1.25; margin: 15px 0; overflow-wrap: anywhere; }
-.featureCards p { font-size: 12px; line-height: 1.9; color: #6d6d76; }
-.specificationLink { display: inline-flex; margin-top: 24px; font-size: 12px; color: #0071e3; }
-.nvidia .specificationLink { color: #426900; }
+.featureCards p { font-size: 12px; line-height: 1.9; color: #5b5b5b; }
+.specificationLink { display: inline-flex; margin-top: 24px; font-size: 12px; color: #5b5b5b; }
+.nvidia .specificationLink { color: #5b5b5b; }
 .optionChoices { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; margin-top: 20px; }
-.optionChoice { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 17px; min-height: 60px; color: #33333a; border: 1px solid #bbbcc3; border-radius: 11px; background: #fff; text-align: left; font-size: 13px; line-height: 1.6; cursor: pointer; }
+.optionChoice { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 17px; min-height: 60px; color: #2d2d2d; border: 1px solid #b8b8b8; border-radius: 11px; background: #fff; text-align: left; font-size: 13px; line-height: 1.6; cursor: pointer; }
 .optionChoice svg { flex-shrink: 0; }
 .optionChoice[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
-.nvidia .optionChoice[aria-pressed="true"] { border-color: #426900; box-shadow: inset 0 0 0 1px #426900; }
-.configurationMessage { font-size: 11px; color: #5d6270; line-height: 1.8; margin: 0 0 25px; }
+.nvidia .optionChoice[aria-pressed="true"] { border-color: #5b5b5b; box-shadow: inset 0 0 0 1px #5b5b5b; }
+.configurationMessage { font-size: 11px; color: #686868; line-height: 1.8; margin: 0 0 25px; }
 .extendedProduct.apple .productImage { object-fit: contain; padding: 25px; }
 .extendedProduct.playstation .heroVisual { position: relative; inset: auto; height: 500px; }
 .extendedProduct.playstation .heroImage { object-fit: contain; padding: 40px; object-position: center; }
@@ -52,7 +52,7 @@
 
 .productNav {
   border-bottom: 1px solid #00000013;
-  background: #fafafbe8;
+  background: #fcfcfce8;
   backdrop-filter: blur(18px);
 }
 
@@ -66,7 +66,7 @@
 }
 
 .productName { font-size: 20px; font-weight: 650; letter-spacing: -.65px; margin-right: auto; }
-.productNav nav { display: flex; gap: 26px; font-size: 12px; color: #515157; }
+.productNav nav { display: flex; gap: 26px; font-size: 12px; color: #4d4d4d; }
 .productNav nav a { padding: 15px 0; }
 .productNav nav a:hover { color: var(--accent); }
 .navButton { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #fff; font-size: 11px; padding: 9px 14px; border-radius: 22px; }
@@ -86,143 +86,143 @@
 .textButton { display: inline-flex; align-items: center; gap: 3px; font-size: 15px; color: var(--accent); }
 .textButton:hover { text-decoration: underline; text-underline-offset: 4px; }
 .heroVisual { position: relative; }
-.heroImage { object-fit: contain; }
-.heroFoot { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: min(1200px, calc(100% - 80px)); margin: 0 auto; padding: 24px 0; font-size: 10px; color: #78787f; border-top: 1px solid #0000000f; }
+.heroImage { object-fit: contain; filter: grayscale(1); }
+.heroFoot { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: min(1200px, calc(100% - 80px)); margin: 0 auto; padding: 24px 0; font-size: 10px; color: #5b5b5b; border-top: 1px solid #0000000f; }
 .heroFoot span, .heroFoot a { display: inline-flex; align-items: center; gap: 8px; }
 .heroFoot a:hover { color: var(--accent); }
 
 .apple .heroCopy { text-align: center; padding: 62px 24px 0; }
 .apple .brandLabel { display: none; }
-.apple .eyebrow { color: #85858b; }
+.apple .eyebrow { color: #686868; }
 .apple .hero h1 { font-size: clamp(52px, 5.8vw, 78px); letter-spacing: -3.8px; margin-top: 19px; }
-.apple .tagline { color: #4d4d52; }
+.apple .tagline { color: #4d4d4d; }
 .apple .description { margin: 20px auto 0; max-width: 560px; font-size: 16px; }
 .apple .heroActions { justify-content: center; margin-top: 25px; }
 .apple .heroVisual { width: min(1070px, 100%); height: clamp(310px, 38vw, 510px); margin: 22px auto 2px; }
 .apple .heroImage { object-position: center; }
-.apple .featureStrip { border-top: 1px solid #f1f1f3; }
+.apple .featureStrip { border-top: 1px solid #f3f3f3; }
 
-.playstation .hero { background: #002d91; color: #fff; }
+.playstation .hero { background: #2d2d2d; color: #fff; }
 .playstation .heroInner { min-height: 650px; display: grid; grid-template-columns: .93fr 1.07fr; align-items: center; }
-.playstation .hero:before { content: ""; position: absolute; inset: 0; background: linear-gradient(125deg, #00195c 0%, #0042b9 57%, #057bde 100%); }
+.playstation .hero:before { content: ""; position: absolute; inset: 0; background: linear-gradient(125deg, #1c1c1c 0%, #3e3e3e 57%, #686868 100%); }
 .playstation .hero:after { content: ""; position: absolute; width: 760px; height: 760px; right: -250px; top: -130px; border: 1px solid #ffffff16; transform: rotate(27deg); pointer-events: none; }
 .playstation .heroCopy { padding: 60px 0 65px max(40px, calc((100vw - 1200px) / 2)); margin-left: min(0px, calc((1360px - 100vw) / 2)); }
 .playstation .brandLabel { color: #fff; font-size: 24px; font-weight: 700; letter-spacing: -.7px; margin-bottom: 40px; }
-.playstation .eyebrow { color: #b9d5ff; letter-spacing: 1.6px; }
+.playstation .eyebrow { color: #cdcdcd; letter-spacing: 1.6px; }
 .playstation .hero h1 { font-size: clamp(43px, 4.8vw, 67px); letter-spacing: -2.8px; max-width: 500px; margin: 22px 0 18px; }
 .playstation .tagline { font-size: 29px; font-weight: 400; letter-spacing: -.9px; max-width: 320px; }
-.playstation .description { color: #d1e1ff; font-size: 15px; max-width: 400px; }
+.playstation .description { color: #dcdcdc; font-size: 15px; max-width: 400px; }
 .playstation .heroVisual { position: absolute; inset: 0; height: 100%; width: 100%; z-index: 1; margin: 0; }
 .playstation .heroImage { padding: 0; object-fit: cover; object-position: 60% center; }
 .playstation .heroCopy { padding-right: 20px; }
 .playstation .visualAccent { display: none; }
 .playstation .heroActions { gap: 21px; }
-.playstation .hero .primaryButton { background: #fff; color: #004099; font-weight: 650; }
-.playstation .hero .primaryButton:hover { background: #edf6ff; }
+.playstation .hero .primaryButton { background: #fff; color: #3e3e3e; font-weight: 650; }
+.playstation .hero .primaryButton:hover { background: #f3f3f3; }
 .playstation .hero .textButton { color: #fff; font-size: 13px; }
-.playstation .heroFoot { position: relative; color: #c9ddff; border-top-color: #ffffff20; z-index: 1; }
+.playstation .heroFoot { position: relative; color: #dcdcdc; border-top-color: #ffffff20; z-index: 1; }
 .playstation .heroFoot a:hover { color: #fff; }
 
 .nvidia .productNav { background: #151515; border-bottom-color: #ffffff1a; color: #fff; }
 .nvidia .productNav nav { color: #c4c4c4; }
-.nvidia .hero { background: #080909; color: #fff; }
+.nvidia .hero { background: #111111; color: #fff; }
 .nvidia .heroInner { min-height: 665px; display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; }
 .nvidia .heroCopy { padding: 60px 0 70px max(40px, calc((100vw - 1200px) / 2)); margin-left: min(0px, calc((1360px - 100vw) / 2)); }
-.nvidia .brandLabel { text-transform: uppercase; letter-spacing: 1.2px; font-size: 17px; border-left: 4px solid #76b900; padding-left: 12px; margin-bottom: 42px; }
-.nvidia .eyebrow { color: #95c64f; letter-spacing: 1.6px; }
+.nvidia .brandLabel { text-transform: uppercase; letter-spacing: 1.2px; font-size: 17px; border-left: 4px solid #a2a2a2; padding-left: 12px; margin-bottom: 42px; }
+.nvidia .eyebrow { color: #b8b8b8; letter-spacing: 1.6px; }
 .nvidia .hero h1 { font-size: clamp(44px, 4.9vw, 69px); letter-spacing: -2.7px; max-width: 550px; line-height: 1.06; margin: 23px 0 21px; }
 .nvidia .tagline { color: #d1d1d1; font-size: 26px; letter-spacing: -.6px; }
-.nvidia .description { color: #a4a6a4; font-size: 15px; max-width: 395px; }
+.nvidia .description { color: #bdbdbd; font-size: 15px; max-width: 395px; }
 .nvidia .heroVisual { height: 600px; min-width: 0; }
 .nvidia .heroImage { object-fit: contain; object-position: center; }
-.nvidia .hero .primaryButton, .nvidia .configurationPanel .primaryButton { color: #10160a; border-radius: 2px; font-weight: 700; }
-.nvidia .hero .textButton { color: #d5d8d1; font-size: 13px; }
+.nvidia .hero .primaryButton, .nvidia .configurationPanel .primaryButton { color: #111111; border-radius: 2px; font-weight: 700; }
+.nvidia .hero .textButton { color: #dcdcdc; font-size: 13px; }
 .nvidia .heroActions { gap: 22px; }
-.nvidia .heroFoot { color: #9b9e98; border-top-color: #ffffff18; }
-.nvidia .featureStrip { background: #111312; color: #fff; border-top: 1px solid #ffffff16; }
+.nvidia .heroFoot { color: #bdbdbd; border-top-color: #ffffff18; }
+.nvidia .featureStrip { background: #111111; color: #fff; border-top: 1px solid #ffffff16; }
 .nvidia .feature + .feature { border-color: #ffffff1a; }
-.nvidia .feature strong { color: #a2ce67; }
-.nvidia .feature span { color: #a0a59f; }
+.nvidia .feature strong { color: #b8b8b8; }
+.nvidia .feature span { color: #bdbdbd; }
 
-.featureStrip { display: grid; grid-template-columns: repeat(3, 1fr); padding: 43px max(40px, calc((100vw - 1140px) / 2)); background: #f7f8fa; }
+.featureStrip { display: grid; grid-template-columns: repeat(3, 1fr); padding: 43px max(40px, calc((100vw - 1140px) / 2)); background: #f8f8f8; }
 .feature { text-align: center; padding: 7px 18px; }
-.feature + .feature { border-left: 1px solid #dfe2e7; }
+.feature + .feature { border-left: 1px solid #e5e5e5; }
 .feature strong { display: block; font-size: 29px; letter-spacing: -1px; font-weight: 600; }
-.feature span { display: block; font-size: 12px; color: #777b83; margin-top: 9px; line-height: 1.5; }
+.feature span { display: block; font-size: 12px; color: #5b5b5b; margin-top: 9px; line-height: 1.5; }
 
 .configure { width: min(1200px, calc(100% - 80px)); margin: 0 auto; padding: 95px 0 90px; scroll-margin-top: 105px; }
 .sectionIntro { margin-bottom: 50px; }
 .sectionEyebrow { display: block; font-size: 10px; letter-spacing: 1.8px; color: var(--accent); font-weight: 650; }
 .sectionIntro h2 { font-size: clamp(35px, 4vw, 51px); letter-spacing: -2px; font-weight: 650; line-height: 1.12; margin: 16px 0 19px; }
-.sectionIntro h2 span { color: #77777c; }
-.sectionIntro > p { color: #73737a; font-size: 16px; line-height: 1.65; }
+.sectionIntro h2 span { color: #5b5b5b; }
+.sectionIntro > p { color: #5b5b5b; font-size: 16px; line-height: 1.65; }
 .configureGrid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: start; }
-.preview { border-radius: 24px; background: #f5f5f7; min-width: 0; overflow: hidden; }
-.previewTop { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 27px 28px; font-size: 11px; color: #8a8a90; }
-.previewTop > span:first-child { font-weight: 600; color: #505056; }
+.preview { border-radius: 24px; background: #f3f3f3; min-width: 0; overflow: hidden; }
+.previewTop { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 27px 28px; font-size: 11px; color: #686868; }
+.previewTop > span:first-child { font-weight: 600; color: #4d4d4d; }
 .previewImage { position: relative; height: 390px; }
 .productImage { object-fit: contain; padding: 20px; }
 .apple .productImage { object-fit: cover; padding: 0; }
 .previewCaption { padding: 25px 28px 31px; display: flex; flex-direction: column; gap: 7px; }
 .previewCaption strong { font-size: 21px; font-weight: 600; letter-spacing: -.6px; }
-.previewCaption span { font-size: 12px; color: #828288; line-height: 1.6; }
+.previewCaption span { font-size: 12px; color: #686868; line-height: 1.6; }
 .playstation .preview { background: #070707; color: #fff; }
-.playstation .previewTop, .playstation .previewCaption span { color: #a3a3aa; }
-.playstation .previewTop > span:first-child { color: #e0e0e7; }
+.playstation .previewTop, .playstation .previewCaption span { color: #686868; }
+.playstation .previewTop > span:first-child { color: #e5e5e5; }
 .playstation .previewImage { height: 430px; }
 .playstation .productImage { padding: 0; }
-.nvidia .preview { background: #111312; color: #fff; border-radius: 2px; }
-.nvidia .previewTop, .nvidia .previewCaption span { color: #9fa39e; }
-.nvidia .previewTop > span:first-child { color: #d1d4ce; }
+.nvidia .preview { background: #111111; color: #fff; border-radius: 2px; }
+.nvidia .previewTop, .nvidia .previewCaption span { color: #686868; }
+.nvidia .previewTop > span:first-child { color: #cdcdcd; }
 .nvidia .previewImage { height: 340px; }
 .nvidia .productImage { padding: 0; }
 
 .configurationPanel { min-width: 0; padding-top: 8px; }
 .fieldset { border: 0; margin: 0 0 32px; padding: 0; min-width: 0; }
-.fieldset legend { font-size: 22px; font-weight: 550; letter-spacing: -.7px; color: #797980; line-height: 1.4; padding: 0; }
-.fieldset legend > span { color: #1d1d1f; }
-.currentChoice { font-size: 13px; margin: 18px 0; color: #66666d; }
+.fieldset legend { font-size: 22px; font-weight: 550; letter-spacing: -.7px; color: #5b5b5b; line-height: 1.4; padding: 0; }
+.fieldset legend > span { color: #1c1c1c; }
+.currentChoice { font-size: 13px; margin: 18px 0; color: #686868; }
 .colorChoices { display: flex; gap: 25px; }
-.colorOption { border: 0; background: none; padding: 4px 0; display: flex; flex-direction: column; align-items: center; gap: 10px; min-width: 72px; font-size: 11px; color: #6d6d73; }
+.colorOption { border: 0; background: none; padding: 4px 0; display: flex; flex-direction: column; align-items: center; gap: 10px; min-width: 72px; font-size: 11px; color: #5b5b5b; }
 .colorSwatch { display: block; width: 37px; height: 37px; border-radius: 50%; border: 1px solid #0000000c; position: relative; }
-.nightSky { background: #343845; box-shadow: inset 0 2px 3px #ffffff18; }
-.starWhite { background: #e7e6e3; box-shadow: inset 0 2px 3px #ffffff; }
-.colorOption[aria-pressed="true"] { color: #1d1d1f; font-weight: 600; }
+.nightSky { background: #3e3e3e; box-shadow: inset 0 2px 3px #ffffff18; }
+.starWhite { background: #e5e5e5; box-shadow: inset 0 2px 3px #ffffff; }
+.colorOption[aria-pressed="true"] { color: #1c1c1c; font-weight: 600; }
 .colorOption[aria-pressed="true"] .colorSwatch:after { content: ""; position: absolute; inset: -5px; border: 2px solid var(--accent); border-radius: 50%; }
 .capacityChoices { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
-.capacityOption { background: #fff; border: 1px solid #b9b9bf; border-radius: 12px; padding: 20px; min-height: 65px; font-size: 16px; font-weight: 550; display: flex; align-items: center; justify-content: space-between; color: #242428; }
-.capacityOption:hover { border-color: #545459; }
+.capacityOption { background: #fff; border: 1px solid #b8b8b8; border-radius: 12px; padding: 20px; min-height: 65px; font-size: 16px; font-weight: 550; display: flex; align-items: center; justify-content: space-between; color: #1c1c1c; }
+.capacityOption:hover { border-color: #5b5b5b; }
 .capacityOption[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
 .capacityOption svg { color: var(--accent); }
 .editionChoices { display: grid; gap: 12px; margin-top: 23px; }
-.editionOption { display: flex; align-items: center; justify-content: space-between; gap: 18px; text-align: left; background: #fff; border: 1px solid #c5c7cc; border-radius: 13px; padding: 23px; color: #1d1d1f; min-height: 100px; }
+.editionOption { display: flex; align-items: center; justify-content: space-between; gap: 18px; text-align: left; background: #fff; border: 1px solid #cdcdcd; border-radius: 13px; padding: 23px; color: #1c1c1c; min-height: 100px; }
 .editionOption[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
 .editionOption strong { display: block; font-size: 18px; font-weight: 600; }
-.editionOption small { display: block; margin-top: 8px; font-size: 12px; color: #75767c; }
+.editionOption small { display: block; margin-top: 8px; font-size: 12px; color: #5b5b5b; }
 .editionOption > svg { color: var(--accent); flex-shrink: 0; }
 .nvidia .editionOption { border-radius: 2px; }
-.selectionNote { font-size: 12px; line-height: 1.8; color: #77777e; margin: -7px 0 25px; }
-.selectionSummary { background: #f5f5f7; border-radius: 16px; padding: 27px; }
-.selectionLabel { color: #898990; font-size: 9px; letter-spacing: 1.5px; font-weight: 600; }
+.selectionNote { font-size: 12px; line-height: 1.8; color: #5b5b5b; margin: -7px 0 25px; }
+.selectionSummary { background: #f3f3f3; border-radius: 16px; padding: 27px; }
+.selectionLabel { color: #686868; font-size: 9px; letter-spacing: 1.5px; font-weight: 600; }
 .selectionSummary p { display: flex; flex-direction: column; gap: 7px; margin-top: 14px; }
 .selectionSummary p strong { font-size: 23px; font-weight: 600; letter-spacing: -.8px; }
-.selectionSummary p span { font-size: 14px; color: #717178; }
+.selectionSummary p span { font-size: 14px; color: #5b5b5b; }
 .selectionSummary .primaryButton { width: 100%; margin-top: 24px; font-size: 13px; }
 .alertLink { display: flex; justify-content: center; align-items: center; gap: 5px; color: var(--accent); font-size: 12px; margin-top: 17px; }
 .alertLink:hover { text-decoration: underline; text-underline-offset: 4px; }
-.selectionSummary small { display: block; font-size: 10px; line-height: 1.7; color: #85858c; margin-top: 23px; text-align: center; }
-.nvidia .selectionSummary { border-radius: 2px; background: #f3f5ef; }
-.nvidia .alertLink { color: #426900; }
-.nvidia .sectionEyebrow, .nvidia .availabilityArrow, .nvidia .editionOption > svg { color: #426900; }
-.nvidia .editionOption[aria-pressed="true"] { border-color: #426900; box-shadow: inset 0 0 0 1px #426900; }
+.selectionSummary small { display: block; font-size: 10px; line-height: 1.7; color: #686868; margin-top: 23px; text-align: center; }
+.nvidia .selectionSummary { border-radius: 2px; background: #f3f3f3; }
+.nvidia .alertLink { color: #5b5b5b; }
+.nvidia .sectionEyebrow, .nvidia .availabilityArrow, .nvidia .editionOption > svg { color: #5b5b5b; }
+.nvidia .editionOption[aria-pressed="true"] { border-color: #5b5b5b; box-shadow: inset 0 0 0 1px #5b5b5b; }
 .nvidia .configure a:focus-visible,
 .nvidia .configure button:focus-visible,
-.nvidia .availabilityLead a:focus-visible { outline-color: #426900; }
-.availabilityLead { width: min(1200px, calc(100% - 80px)); margin: 0 auto; border-top: 1px solid #e8e8ec; padding: 45px 0 42px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.nvidia .availabilityLead a:focus-visible { outline-color: #5b5b5b; }
+.availabilityLead { width: min(1200px, calc(100% - 80px)); margin: 0 auto; border-top: 1px solid #e5e5e5; padding: 45px 0 42px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
 .availabilityLead h2 { font-size: 31px; letter-spacing: -1.15px; font-weight: 600; margin: 13px 0 12px; }
-.availabilityLead p { color: #7b7b82; font-size: 14px; line-height: 1.65; }
-.availabilityArrow { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 53px; height: 53px; border: 1px solid #dcdce2; border-radius: 50%; color: var(--accent); }
-.availabilityArrow:hover { background: #f4f4f7; }
+.availabilityLead p { color: #5b5b5b; font-size: 14px; line-height: 1.65; }
+.availabilityArrow { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 53px; height: 53px; border: 1px solid #dcdcdc; border-radius: 50%; color: var(--accent); }
+.availabilityArrow:hover { background: #f3f3f3; }
 
 @media (min-width: 1600px) {
   .playstation .heroCopy, .nvidia .heroCopy { padding-left: 80px; margin-left: 0; }

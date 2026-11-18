@@ -26,7 +26,7 @@ export default async function LocalInboxPage() {
     {!messages.length && <div className="rr-prose" style={{ marginTop: 24 }}><h2>Your local inbox is empty.</h2><p>Request a sign-in link from <a href="/alerts/manage">My alerts</a> using an existing account. A captured message will appear here after you refresh.</p></div>}
     <div style={{ display: "grid", gap: 20, marginTop: 25 }}>{messages.map(message => <article key={message.id} className="rr-prose" style={{ margin: 0, maxWidth: "none" }}>
       <h2 style={{ marginTop: 0 }}>{message.subject}</h2><p style={{ fontSize: 12 }}>To: {message.to}<br/><time dateTime={message.createdAt}>{new Date(message.createdAt).toLocaleString("en-US", { timeZone: "UTC" })} UTC</time></p>
-      <pre style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere", fontFamily: "inherit", fontSize: 13, lineHeight: 1.8, color: "#6c5f76", background: "#f7f3fa", padding: 18, borderRadius: 10 }}>{message.text}</pre>
+      <pre style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere", fontFamily: "inherit", fontSize: 13, lineHeight: 1.8, color: "var(--rr-muted)", background: "var(--rr-surface)", padding: 18, borderRadius: 10 }}>{message.text}</pre>
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 18 }}>{localActions(message.text).map(url => <a key={url} href={url} className="rr-button rr-primary" referrerPolicy="no-referrer">{new URL(url).pathname.endsWith("login") ? "Open single-use sign-in link" : new URL(url).pathname.endsWith("verify-free") ? "Verify email for free alert" : "Open captured alert link"}</a>)}</div>
     </article>)}</div>
   </div>;

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GeistSans } from "geist/font/sans";
 import { RadarShell } from "@/components/radar/shell";
 import { BRAND, siteUrl } from "@/lib/radar/catalog";
 import { pageMetadata } from "@/lib/radar/seo";
@@ -23,5 +24,21 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     { "@type": "Organization", "@id": `${siteUrl}/#organization`, name: BRAND, url: siteUrl, logo: `${siteUrl}/radar-icon.svg` },
     { "@type": "WebSite", "@id": `${siteUrl}/#website`, name: BRAND, url: siteUrl, inLanguage: "en", publisher: { "@id": `${siteUrl}/#organization` } },
   ] };
-  return <html lang="en"><head>{/* HACKATHON TRAFFIC TRACKER SLOT: add the organizer-provided script here after configuring any required visitor consent. */}</head><body>{isLocalTestMode() ? <aside style={{background:"#ffedbe",color:"#5b3f0a",padding:"12px 20px",textAlign:"center",fontSize:13,lineHeight:1.6}}><strong>LOCAL TEST LAB — simulated inventory · Stripe test payments</strong><br/>Apple, PlayStation and NVIDIA use controlled stock updates here. <Link href="/local-test" style={{textDecoration:"underline"}}>Test controls</Link> · <Link href="/local-inbox" style={{textDecoration:"underline"}}>Local inbox</Link></aside> : isLocalMailboxEnabled() ? <aside style={{background:"#eee8f7",color:"#62457c",padding:"10px 20px",textAlign:"center",fontSize:12}}>Local development: email is captured in the <Link href="/local-inbox" style={{textDecoration:"underline"}}>local inbox</Link>.</aside> : null}<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(identity).replace(/</g, "\\u003c") }}/><RadarShell>{children}</RadarShell></body></html>;
+  return (
+    <html lang="en" className={GeistSans.variable}>
+      <head>{/* HACKATHON TRAFFIC TRACKER SLOT: add the organizer-provided script here after configuring any required visitor consent. */}</head>
+      <body>
+        {isLocalTestMode() ? (
+          <aside className="rr-environment-note">
+            <strong>LOCAL TEST LAB — simulated inventory · Stripe test payments</strong><br />
+            Apple, PlayStation and NVIDIA use controlled stock updates here. <Link href="/local-test">Test controls</Link> · <Link href="/local-inbox">Local inbox</Link>
+          </aside>
+        ) : isLocalMailboxEnabled() ? (
+          <aside className="rr-environment-note">Local development: email is captured in the <Link href="/local-inbox">local inbox</Link>.</aside>
+        ) : null}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(identity).replace(/</g, "\\u003c") }} />
+        <RadarShell>{children}</RadarShell>
+      </body>
+    </html>
+  );
 }
